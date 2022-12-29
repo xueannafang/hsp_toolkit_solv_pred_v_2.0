@@ -72,7 +72,7 @@ def input_cas():
     check the format of cas no is valid
     """
 
-    cas_list = []
+    usr_cas_list = []
     i = 0
     to_continue = True
 
@@ -105,15 +105,37 @@ def input_cas():
                 print("Wrong CAS No. format")
                 invalid_input()
             else:
-                cas_list.append(usr_input_cas_no_spc)
+                usr_cas_list.append(usr_input_cas_no_spc)
                 i += 1
     
-    print(cas_list, i)
+    #print(usr_cas_list)
+    return usr_cas_list
 
 
 
 
+def generate_candidate_list():
+    """
+    Generate solvent candidate list. Ask users to determine whether they want to use default option or manually edit the list.
+    """
+    how_to_select_candidate = str(input("Please select the method to construct solvent candidate list. [1-default/2-manual]" )).lower()
+
+    valid_how_to_select_candidate_list = ['1', '2', 'default', 'manual', 'd', 'm']
+    candidate_cas_list = []
+
+    if not is_symbol_valid(valid_how_to_select_candidate_list, how_to_select_candidate):
+        invalid_input()
+
+    elif how_to_select_candidate in ['1', 'default', 'd']:
+        
+        pass
+    # load default candidate list
+
+    elif how_to_select_candidate in ['2', 'manual', 'm']:
+        usr_solv_candidate_cas_list = input_cas()
+    
+    # ask user if there is any solvents to be further included or don't want
 
 
-input_cas()
+#input_cas()
 #load_db("db_mis.json")
