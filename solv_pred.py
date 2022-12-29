@@ -5,18 +5,18 @@ import json
 cas_valid_symbol_list = ['0','1','2','3','4','5','6','7','8','9','-'] # '0123456789-'
 
 
-def load_db(db):
+def load_js(js_file):
     """
     load database
     """
     current_path = os.getcwd()
-    full_db_path = current_path + "\\" + str(db)
+    full_js_path = current_path + "\\" + str(js_file)
 
-    with open(full_db_path) as f:
-        db_js = json.load(f)
+    with open(full_js_path) as f:
+        js = json.load(f)
     #print(db_js[1]["CAS"])
 
-    return db_js
+    return js
 
 def separate_multi_entry(multi_entry, separate_symbol = ";"):
     """
@@ -66,6 +66,14 @@ def is_cas_form_valid(input_cas):
                 return True
     return False
 
+def is_option_valid(val_opt_list, usr_input):
+    no_space_usr_ip = rm_spc(usr_input)
+    # invalid_opt_exist = False
+    # if no_space_usr_ip not in val_opt_list:
+    #     invalid_opt_exist = True
+    # return not invalid_opt_exist
+    return no_space_usr_ip in val_opt_list
+
 def input_cas():
     """
     construct solvent candidate list from user input
@@ -75,8 +83,6 @@ def input_cas():
     usr_cas_list = []
     i = 0
     to_continue = True
-
-    print("Prepare solvent candidate list. Please submit CAS No. of solvents to be considered as candidates. Add one solvent at one time. Press enter to finish.")
 
     while to_continue:
 
@@ -114,28 +120,72 @@ def input_cas():
 
 
 
-def generate_candidate_list():
+def generate_candidate_list(default_solv_cand_js):
     """
     Generate solvent candidate list. Ask users to determine whether they want to use default option or manually edit the list.
     """
-    how_to_select_candidate = str(input("Please select the method to construct solvent candidate list. [1-default/2-manual]" )).lower()
+    print("Generate solvent candidate list: \n You can select to use the default list [1] or manually input the CAS No. [2] \n The default candidate list include the following solvents: ")
 
-    valid_how_to_select_candidate_list = ['1', '2', 'default', 'manual', 'd', 'm']
-    candidate_cas_list = []
+    default_solv_candidate_js = load_js(default_solv_cand_js)
+    default_solv_candidate_cas_list = []
+    default_solv_candidate_name_list = []
 
-    if not is_symbol_valid(valid_how_to_select_candidate_list, how_to_select_candidate):
-        invalid_input()
-
-    elif how_to_select_candidate in ['1', 'default', 'd']:
+    for i, entry in enumerate(default_solv_candidate_js):
+        default_solv_candidate_cas_list.append(entry['CAS'])
+        default_solv_candidate_name_list.append(entry['Solvent'])
         
-        pass
-    # load default candidate list
+    print(default_solv_candidate_name_list)
 
-    elif how_to_select_candidate in ['2', 'manual', 'm']:
-        usr_solv_candidate_cas_list = input_cas()
-    
-    # ask user if there is any solvents to be further included or don't want
+    to_continue = True
+
+    while to_continue:
+
+        valid_how_to_select_candidate_list = ['1', '2', 'default', 'manual', 'd', 'm']
+        candidate_cas_list = []
+        how_to_select_candidate = str(input("Please select the method to construct solvent candidate list. [1-default/2-manual]: " )).lower()
+
+        if not is_option_valid(valid_how_to_select_candidate_list, how_to_select_candidate):
+            invalid_input()
+
+        elif how_to_select_candidate in ['1', 'default', 'd']:
+            candidate_cas_list = default_solv_candidate_cas_list
+            to_continue = False
+
+        elif how_to_select_candidate in ['2', 'manual', 'm']:
+            print("Please submit CAS No. of solvents to be considered as candidates. Add one solvent at one time. Press enter to finish.")
+            usr_solv_candidate_cas_list = input_cas()
+            candidate_cas_list = usr_solv_candidate_cas_list
+            to_continue = False
+            #print(usr_solv_candidate_cas_list)
+
+    print('You have selected the following solvents as candidates: ')
+    print(candidate_cas_list)
+        # ask user if there is any solvents to be further included or don't want
+
+    to_continue = True
+    cas_to_remove = []
+
+    while to_continue:
+
+        remove_check = input("Do you want to remove any solvent? [y/n] ? ").lower()
+
+        if remove_check in ['y', 'yes']:
+            cas_to_remove_usr = input_cas()
+
+        elif remove_check in ['n', 'no']:
+            cas_to_remove_usr = []
+            to_continue = False
+
+        else:
+            invalid_input()
+        
+        cas_to_remove += cas_to_remove_usr
+
+    if cas_to_remove:
+        print('The following solvents will be removed: ')
+        print(cas_to_remove)
 
 
 #input_cas()
 #load_db("db_mis.json")
+generate_candidate_list('default_solv_candidate.json')
