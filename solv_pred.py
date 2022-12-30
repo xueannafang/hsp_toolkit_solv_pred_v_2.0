@@ -68,10 +68,6 @@ def is_cas_form_valid(input_cas):
 
 def is_option_valid(val_opt_list, usr_input):
     no_space_usr_ip = rm_spc(usr_input)
-    # invalid_opt_exist = False
-    # if no_space_usr_ip not in val_opt_list:
-    #     invalid_opt_exist = True
-    # return not invalid_opt_exist
     return no_space_usr_ip in val_opt_list
 
 def input_cas():
@@ -117,8 +113,32 @@ def input_cas():
     #print(usr_cas_list)
     return usr_cas_list
 
+def remove_cas():
+    """
+    ask user to remove any unwanted solvent cas from the candidate list
+    """
+    to_continue = True
+    cas_to_remove = []
 
+    while to_continue:
 
+        remove_check = input("Do you want to remove any solvent? [y/n] ? ").lower()
+
+        if remove_check in ['y', 'yes']:
+            cas_to_remove_usr = input_cas()
+
+        elif remove_check in ['n', 'no']:
+            cas_to_remove_usr = []
+            to_continue = False
+
+        else:
+            invalid_input()
+        
+        cas_to_remove += cas_to_remove_usr
+
+    if cas_to_remove:
+        print('The following solvents will be removed: ')
+        print(cas_to_remove)
 
 def generate_candidate_list(default_solv_cand_js):
     """
@@ -134,7 +154,7 @@ def generate_candidate_list(default_solv_cand_js):
         default_solv_candidate_cas_list.append(entry['CAS'])
         default_solv_candidate_name_list.append(entry['Solvent'])
         
-    print(default_solv_candidate_name_list)
+    print(default_solv_candidate_js)
 
     to_continue = True
 
@@ -160,32 +180,27 @@ def generate_candidate_list(default_solv_cand_js):
 
     print('You have selected the following solvents as candidates: ')
     print(candidate_cas_list)
-        # ask user if there is any solvents to be further included or don't want
+        # ask user if there is any solvents to be removed
 
-    to_continue = True
-    cas_to_remove = []
+    remove_cas()
+    
 
-    while to_continue:
+def is_cas_in(input_cas_list, available_cas_list):
 
-        remove_check = input("Do you want to remove any solvent? [y/n] ? ").lower()
+    not_in_list = []
 
-        if remove_check in ['y', 'yes']:
-            cas_to_remove_usr = input_cas()
+    for input_cas in input_cas_list:
+        if input_cas not in available_cas_list:
+            not_in_list.append(input_cas)
 
-        elif remove_check in ['n', 'no']:
-            cas_to_remove_usr = []
-            to_continue = False
+    return not_in_list
+            
 
-        else:
-            invalid_input()
-        
-        cas_to_remove += cas_to_remove_usr
 
-    if cas_to_remove:
-        print('The following solvents will be removed: ')
-        print(cas_to_remove)
+def solv_pred_main(db = 'db_solv_pred_v2.json', candidate = 'default_solv_candidate.json'):
+
 
 
 #input_cas()
 #load_db("db_mis.json")
-generate_candidate_list('default_solv_candidate.json')
+#generate_candidate_list('default_solv_candidate.json')
