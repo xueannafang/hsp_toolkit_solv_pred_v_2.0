@@ -5,6 +5,9 @@
 
 - db_mis.json has been renamed as db_solv_pred_v2.json
 - UI included
+- separate different functions
+- db init
+- remove func included, with filtration check
 
 
 ## updates (26/12/2022)
