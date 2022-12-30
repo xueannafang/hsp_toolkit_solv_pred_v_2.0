@@ -197,10 +197,3 @@ def is_cas_in(input_cas_list, available_cas_list):
             
 
 
-def solv_pred_main(db = 'db_solv_pred_v2.json', candidate = 'default_solv_candidate.json'):
-
-
-
-#input_cas()
-#load_db("db_mis.json")
-#generate_candidate_list('default_solv_candidate.json')
