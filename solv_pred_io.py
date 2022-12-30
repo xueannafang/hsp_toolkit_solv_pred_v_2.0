@@ -37,12 +37,13 @@ def input_cas():
 
         if not usr_input_cas:
 
-            finish_check = input("Have all the solvent candidates been added? [y/n] ? ").lower()
+            print('Have all the solvent candidates been added?')
+            finish_check = continue_check()
 
-            if finish_check in ['y', 'yes']:
+            if finish_check== 1:
                 to_continue = False
 
-            elif finish_check in ['n', 'no']:
+            elif finish_check == 0:
                 not_finish = ' '
                 while not_finish != '':
                     not_finish = input("Press enter to continue adding the next solvent. [enter]")
@@ -60,3 +61,34 @@ def input_cas():
     
     #print(usr_cas_list)
     return usr_cas_list
+
+
+def continue_check():
+
+    continue_check_ip = input('[y/n]: ').lower()
+
+    if continue_check_ip in ['y', 'yes']:
+        continue_idx = 1
+    elif continue_check_ip in ['n', 'no']:
+        continue_idx = 0
+    else:
+        continue_idx = -1
+    
+    return continue_idx
+
+def get_key(key):
+    return lambda x:x.get(key)
+
+def db_init(db_js):
+    """
+    initialise database
+    """
+    key_in_db_list = ['No.', 'CAS', 'Name', 'D', 'P', 'H', 'Mole_vol', 'ims_idx', 'bp', 'mw', 'viscosity', 'vis_temp', 'heat_of_vap', 'hov_temp', 'SMILES']
+
+    full_db_info_list = []
+
+    for key in key_in_db_list:
+        db_key_list = [key, list(map(get_key(key), db_js))]
+        full_db_info_list.append(db_key_list)
+    
+    return full_db_info_list

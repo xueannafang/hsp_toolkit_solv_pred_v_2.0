@@ -10,33 +10,45 @@ def remove_cas():
 
     while to_continue:
 
-        remove_check = input("Do you want to remove any solvent? [y/n] ? ").lower()
+        print("Do you want to remove any solvent? \n")
+        remove_check = sp_io.continue_check()
 
-        if remove_check in ['y', 'yes']:
+        if remove_check == 1:
             cas_to_remove_usr = sp_io.input_cas()
 
-        elif remove_check in ['n', 'no']:
+        elif remove_check == 0:
             cas_to_remove_usr = []
-            to_continue = False
+            #to_continue = False
 
         else:
             sp_vld_chk.invalid_input()
         
         cas_to_remove += cas_to_remove_usr
 
-    if cas_to_remove:
-        print('The following solvents will be removed: ')
-        print(cas_to_remove)
+    
+        if len(cas_to_remove) != 0:
+            print('The following solvents will be removed: ')
+            print(cas_to_remove)
+        
+        else:
+            print('No solvent will be removed.')
+        
+        print('Continue? ')
 
+        remove_finish = sp_io.continue_check()
 
-def is_cas_in(input_cas_list, available_cas_list):
+        if remove_finish == 1:
+            to_continue = False
 
-    not_in_list = []
+        elif remove_finish == 0:
+            pass
 
-    for input_cas in input_cas_list:
-        if input_cas not in available_cas_list:
-            not_in_list.append(input_cas)
+        else:
+            sp_vld_chk.invalid_input()
+    
+    return cas_to_remove
 
-    return not_in_list
-            
-    pass
+    
+
+        
+

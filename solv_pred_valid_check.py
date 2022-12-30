@@ -35,7 +35,6 @@ def is_option_valid(val_opt_list, usr_input):
     no_space_usr_ip = sp_rtxt.rm_spc(usr_input)
     return no_space_usr_ip in val_opt_list
 
-
 def is_cas_in(input_cas_list, available_cas_list):
     """
     check if the cas on the current to-be-removed list is on the available cas list
