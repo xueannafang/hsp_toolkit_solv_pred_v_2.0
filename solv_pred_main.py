@@ -6,9 +6,14 @@ import solv_pred_io as sp_io
 import solv_pred_gen_cand as sp_gen_cand
 import solv_pred_cand_edit as sp_cand_ed
 import solv_pred_valid_check as sp_vld_chk
+import solv_pred_fetch_info as sp_ftch_info
 
 
 def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_solv_candidate.json'):
+
+    """
+    Load database and default candidate list.
+    """
 
     print('Loading database and default candidate list...')
     
@@ -17,11 +22,17 @@ def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_sol
 
     db_full_info_list = sp_io.db_init(db_js)
     db_cas_list = db_full_info_list[1][1]
-    db_name_list = db_full_info_list[2][1]
+    #db_name_list = db_full_info_list[2][1]
     #print(db_cas_list, db_name_list)
 
     if db_js and default_solv_candidate_js:
         print('Database and default solvent candidate list has been loaded. \n Please follow the instruction to continue: ')
+    
+    
+    """
+    Step_1: Generate candidate list
+    """
+    
     
     usr_gen_cand_list = sp_gen_cand.generate_candidate_list(default_solv_candidate_js)
 
@@ -48,9 +59,24 @@ def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_sol
     final_db_cas_filt = sp_vld_chk.not_in_db_filt(edited_cand_list, not_in_db_cas_final)
 
     print('Candidate list successfully generated:')
-    print(final_db_cas_filt)
+    #print(final_db_cas_filt)
 
-    print('Step 2: Specify parameters.')
+    final_db_name_filt = []
+
+    for cas in final_db_cas_filt:
+        matched_name = sp_ftch_info.fetch_name(cas, db_js)
+        final_db_name_filt.append(matched_name)
+    
+    print(final_db_name_filt)
+
+
+    """
+    Step 2: Specify calculation parameters.
+    """
+
+    print('Step 2: Specify parameters. \n Please follow the instruction to specify the \n 1) Maximum number of solvents (n) to be included in each combination (default = 2); \n 2) Highest acceptable error of HSP (tol_err) of the predicted combination (default = 0.5); \n 3) Lowest acceptable concentration (tol_conc) of each predicted solvent component (default = 0.01). \nThe default temperature is 25C. \n Press [t] to set a different temperature. \n [t] - Set a different temperature \n [c] - Continue as room temperature.')
+
+
 
 
 
