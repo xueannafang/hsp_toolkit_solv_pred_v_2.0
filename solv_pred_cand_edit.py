@@ -169,6 +169,8 @@ def edit_cand_list(current_cand_cas_list):
 
             final_cand_list = edit_cand_cas_option(current_cand_cas_list, edit_operation)
 
+            
+
         else:
             sp_vld_chk.invalid_input()
     

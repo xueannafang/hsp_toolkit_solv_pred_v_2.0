@@ -1,0 +1,1 @@
+#key func: fetch required information from the database (json)

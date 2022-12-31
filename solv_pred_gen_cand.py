@@ -6,7 +6,7 @@ def generate_candidate_list(default_solv_cand_js):
     """
     Generate solvent candidate list. Ask users to determine whether they want to use default option or manually edit the list.
     """
-    print("Step 1. Generate solvent candidate list: \n You can select to use the default list [1] or manually input the CAS No. [2] \n Press [v] to check the default candidate list. \n Press [q] to quit. \n")
+    print("Step 1: Generate solvent candidate list: \n You can select to use the default list [1] or manually input the CAS No. [2] \n Press [v] to check the default candidate list. \n Press [q] to quit. \n")
 
     default_solv_candidate_js = default_solv_cand_js
     default_solv_candidate_cas_list = []

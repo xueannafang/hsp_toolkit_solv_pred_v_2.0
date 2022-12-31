@@ -79,3 +79,17 @@ def finish_check():
         invalid_input()
     
     return to_continue
+
+
+def not_in_db_filt(before_filt_list, not_in_db_list):
+    """
+    raise warning and remove not-in-db candidates
+    """
+    if len(not_in_db_list) != 0:
+        after_db_filt_cand_list = list(set(before_filt_list) - set(not_in_db_list))
+        print('Done. \n The following solvents are not in the database and will be ignored: ')
+        print(not_in_db_list)
+    else:
+        after_db_filt_cand_list = before_filt_list
+    
+    return after_db_filt_cand_list

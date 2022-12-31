@@ -36,18 +36,29 @@ def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_sol
 
     not_in_db_cas = sp_vld_chk.is_cas_in(after_usr_filt_cand_list, db_cas_list)
 
-    if len(not_in_db_cas) != 0:
-        after_db_filt_cand_list = list(set(after_usr_filt_cand_list) - set(not_in_db_cas))
-        print('Done. \n The following solvents are not in the database and will be ignored: ')
-        print(not_in_db_cas)
-    else:
-        after_db_filt_cand_list = after_usr_filt_cand_list
-
-
+    after_db_filt_cand_list = sp_vld_chk.not_in_db_filt(after_usr_filt_cand_list, not_in_db_cas)
+    
     print('Done. \n The following solvents will be considered as candidates: ')
     print(after_db_filt_cand_list)
     
-    sp_cand_ed.edit_cand_list(after_db_filt_cand_list)
+    edited_cand_list = sp_cand_ed.edit_cand_list(after_db_filt_cand_list)
+
+    not_in_db_cas_final = sp_vld_chk.is_cas_in(edited_cand_list, db_cas_list)
+
+    final_db_cas_filt = sp_vld_chk.not_in_db_filt(edited_cand_list, not_in_db_cas_final)
+
+    print('Candidate list successfully generated:')
+    print(final_db_cas_filt)
+
+    print('Step 2: Specify parameters.')
+
+
+
+
+
+
+
+
 
 
 solv_pred_main()
