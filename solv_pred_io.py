@@ -44,9 +44,10 @@ def input_cas():
                 to_continue = False
 
             elif finish_check == 0:
-                not_finish = ' '
-                while not_finish != '':
-                    not_finish = input("Press enter to continue adding the next solvent. [enter]")
+                pass
+                # not_finish = ' '
+                # while not_finish != '':
+                #     not_finish = input("Press enter to continue adding the next solvent. [enter]")
 
             else:
                 sp_vld_chk.invalid_input()
@@ -65,7 +66,7 @@ def input_cas():
 
 def continue_check():
 
-    continue_check_ip = input('[y/n]: ').lower()
+    continue_check_ip = sp_rtxt.rm_spc(input('[y/n]: ').lower())
 
     if continue_check_ip in ['y', 'yes']:
         continue_idx = 1

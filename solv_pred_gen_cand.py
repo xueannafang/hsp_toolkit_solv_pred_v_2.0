@@ -46,10 +46,7 @@ def generate_candidate_list(default_solv_cand_js):
                 print(cddt)
 
         elif how_to_select_candidate in ['q', 'quit']:
-            if len(candidate_cas_list) >= 1:
-                to_continue = False
-            else:
-                print('You have not selected any solvent candidate. \n [ctrl + c] to force quit.')
+            exit()
 
     #print('You have selected the following solvents as candidates: ')
     #print(candidate_cas_list)

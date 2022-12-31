@@ -1,4 +1,5 @@
 import solv_pred_reg_txt as sp_rtxt
+import solv_pred_io as sp_io
 
 def data_available(entry):
     """
@@ -46,3 +47,35 @@ def is_cas_in(input_cas_list, available_cas_list):
             not_in_list.append(input_cas)
 
     return not_in_list
+
+def can_be_removed_check(to_be_rm_list, to_rm_from_list):
+
+    cannot_rm_list = is_cas_in(to_be_rm_list, to_rm_from_list)
+    #check if cas to be removed is in the candidate list
+
+    if len(cannot_rm_list) != 0:
+        print('The following solvents can not be removed and will be ignored:')
+        print(cannot_rm_list)
+        valid_cas_to_remove = list(set(to_be_rm_list) - set(cannot_rm_list))
+
+    else:
+        valid_cas_to_remove = to_be_rm_list
+    
+    cas_list_after_filt = list(set(to_rm_from_list) - set(valid_cas_to_remove))
+    
+    return cas_list_after_filt
+
+
+def finish_check():
+    finish_check = sp_io.continue_check()
+
+    if finish_check == 1:
+        to_continue = False
+
+    elif finish_check == 0:
+        pass
+
+    else:
+        invalid_input()
+    
+    return to_continue

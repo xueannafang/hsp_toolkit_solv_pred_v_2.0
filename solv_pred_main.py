@@ -26,38 +26,28 @@ def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_sol
     usr_gen_cand_list = sp_gen_cand.generate_candidate_list(default_solv_candidate_js)
 
     usr_gen_cas_to_remove = sp_cand_ed.remove_cas()
-    cannot_remove_list = sp_vld_chk.is_cas_in(usr_gen_cas_to_remove, usr_gen_cand_list)
+
+    print('Checking if any solvent is not on the candidate list...')
+
+    after_usr_filt_cand_list = sp_vld_chk.can_be_removed_check(usr_gen_cas_to_remove, usr_gen_cand_list)
     #check if cas to be removed is in the candidate list
 
-    if len(cannot_remove_list) != 0:
-        print('The following solvents are not included in the aforementioned solvent candidate list and will be ignored:')
-        print(cannot_remove_list)
-        valid_cas_to_remove = list(set(usr_gen_cas_to_remove) - set(cannot_remove_list))
-        #print('The following solvents will be removed: ')
-        #print(valid_cas_to_remove)
+    print('Done. \n Checking if any solvent is not in the database...')
+
+    not_in_db_cas = sp_vld_chk.is_cas_in(after_usr_filt_cand_list, db_cas_list)
+
+    if len(not_in_db_cas) != 0:
+        after_db_filt_cand_list = list(set(after_usr_filt_cand_list) - set(not_in_db_cas))
+        print('Done. \n The following solvents are not in the database and will be ignored: ')
+        print(not_in_db_cas)
     else:
-        valid_cas_to_remove = usr_gen_cas_to_remove
-    
-    cas_list_after_usr_filt = list(set(usr_gen_cand_list) - set(valid_cas_to_remove))
-
-    not_in_db_cas_list = sp_vld_chk.is_cas_in(cas_list_after_usr_filt, db_cas_list)
-
-    if len(not_in_db_cas_list) != 0:
-        print('The following solvents are not included in the database and will be ignored: ')
-        print(not_in_db_cas_list)
-        cas_list_after_db_filt = list(set(cas_list_after_usr_filt) - set(not_in_db_cas_list))
-    
-    else:
-        cas_list_after_db_filt = cas_list_after_usr_filt
-    
-    print('The following solvents will be considered as candidates: ')
-    print(cas_list_after_db_filt)
-
-    
+        after_db_filt_cand_list = after_usr_filt_cand_list
 
 
+    print('Done. \n The following solvents will be considered as candidates: ')
+    print(after_db_filt_cand_list)
     
-    #check if cas is in the usr_gen_cand_list and in the db
+    sp_cand_ed.edit_cand_list(after_db_filt_cand_list)
 
 
 solv_pred_main()
