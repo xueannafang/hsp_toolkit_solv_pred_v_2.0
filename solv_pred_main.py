@@ -74,7 +74,10 @@ def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_sol
     Step 2: Specify calculation parameters.
     """
 
-    print('Step 2: Specify parameters. \n Please follow the instruction to specify the \n 1) Maximum number of solvents (n) to be included in each combination (default = 2); \n 2) Highest acceptable error of HSP (tol_err) of the predicted combination (default = 0.5); \n 3) Lowest acceptable concentration (tol_conc) of each predicted solvent component (default = 0.01). \nThe default temperature is 25C. \n Press [t] to set a different temperature. \n [t] - Set a different temperature \n [c] - Continue as room temperature.')
+    
+
+
+
 
 
 
