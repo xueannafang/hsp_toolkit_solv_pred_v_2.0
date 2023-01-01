@@ -75,7 +75,7 @@ def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_sol
     Step 2: Specify calculation parameters.
     """
 
-    sp_prmtr.specify_parameter(db_full_info_list)
+    temp_updt_db, usr_n, usr_tol_err, usr_tol_conc = sp_prmtr.specify_parameter(db_full_info_list)
 
     
 

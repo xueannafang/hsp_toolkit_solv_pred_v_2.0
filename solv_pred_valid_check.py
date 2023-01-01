@@ -5,7 +5,7 @@ def data_available(entry):
     """
     check if the corresponding data is available in the database
     """
-    if entry == -1:
+    if entry in [-1, 'None']:
         return False
 
 def invalid_input():
@@ -105,4 +105,48 @@ def is_float(usr_input_number_str):
 
     except ValueError:
         return False
+
+def rm_repeat(old_list):
+    """
+    Remove repeated elements in the list
+    """
+
+    no_repeat_set = set(old_list)
+    new_list = list(no_repeat_set)
+
+    return new_list
+
+def descend_list(random_list):
+    """
+    descend all the elements in a list
+    """
+    sort_descend_list = list.sort(random_list, reverse = True)
+
+    return sort_descend_list
+
+
+def rm_incomplete_entry(to_rm_idx_list, to_rm_from_db_info_list):
+    """
+    remove unwanted idx from current db info list
+    """
+    descend_idx_list = descend_list(to_rm_idx_list)
+
+    after_rm_db_info_list = to_rm_from_db_info_list
+
+    for i, entry in after_rm_db_info_list:
+        new_db_info_list = entry[1]
+        for a, j in enumerate(descend_idx_list):
+            new_db_info_list.pop(j)
+        entry[1] = new_db_info_list
+    
+    return after_rm_db_info_list
+    
+    
+    
+
+
+
+
+
+
 

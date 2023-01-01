@@ -86,7 +86,8 @@ def edit_cand_cas_option(current_cand_cas_list, operation):
     """
 
     to_continue = True
-    crt_cand_cas_list = current_cand_cas_list
+
+    crt_cand_cas_list = sp_vld_chk.rm_repeat(current_cand_cas_list)
 
     while to_continue:
         #print('')
@@ -96,6 +97,7 @@ def edit_cand_cas_option(current_cand_cas_list, operation):
         elif operation == 'a':
             cas_to_add_list = add_cas()
             crt_cand_cas_list += cas_to_add_list
+            crt_cand_cas_list = sp_vld_chk.rm_repeat(crt_cand_cas_list)
             print('Continue?')
             to_continue = sp_vld_chk.finish_check()
             print(crt_cand_cas_list)
@@ -103,10 +105,10 @@ def edit_cand_cas_option(current_cand_cas_list, operation):
         elif operation == 'rm':
             
             cas_to_rm_list = remove_cas()
+            crt_cand_cas_list = sp_vld_chk.rm_repeat(crt_cand_cas_list)
             after_filt = sp_vld_chk.can_be_removed_check(cas_to_rm_list, crt_cand_cas_list)
-            crt_cand_cas_list = after_filt
-
-            print(crt_cand_cas_list, after_filt)
+            crt_cand_cas_list = sp_vld_chk.rm_repeat(after_filt)
+            #print(crt_cand_cas_list, after_filt)
 
             if len(crt_cand_cas_list) == 0:
                 print('Warning: No solvent candidate has been selected. Please add solvents.')
@@ -131,7 +133,7 @@ def edit_cand_cas_option(current_cand_cas_list, operation):
 def edit_cand_list(current_cand_cas_list):
 
     to_continue = True
-    final_cand_list = current_cand_cas_list
+    final_cand_list = sp_vld_chk.rm_repeat(current_cand_cas_list)
 
     while to_continue:
         print('Submit?')

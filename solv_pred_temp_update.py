@@ -78,22 +78,24 @@ def temp_corr_db(db_info_list, current_temp, target_temp):
                     updt_h_list.append(j_old_h)
                 
             entry[1] = updt_h_list
-        
     
-    #print(updt_d_list, updt_p_list, updt_h_list)
-    print('temperature correction done.')
-    #print(temp_corr_db_info_list)
+    not_corr_idx_list_no_rep = sp_vld_chk.rm_repeat(not_corr_idx_list) #solvent idx on this list will be removed from the database for further calculation
 
-        #remember to remove same invalid idx in the end
+    """
+    Remove solvents with incomplete info
+    """
+
+    temp_corr_db_info_list_filt = sp_vld_chk.rm_incomplete_entry(not_corr_idx_list_no_rep, temp_corr_db_info_list)
+
+    #print(updt_d_list, updt_p_list, updt_h_list)
+    print('Temperature correction done.')
+    #print('Note: Miscibility check will be disabled for non room temperature setup. \n')
+    return temp_corr_db_info_list_filt
 
 
 
 def bp_filt_db(db_info_list, bp_low_limit, bp_high_limit = 300):
+    """
+    Filter solvents whose boiling point is beyond the processable region.
+    """
     pass
-
-
-
-def temp_updt_db(ori_db_json):
-    return temp_updated_bp_filt_db
-    pass
-
