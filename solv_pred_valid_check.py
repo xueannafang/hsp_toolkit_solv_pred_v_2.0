@@ -93,3 +93,16 @@ def not_in_db_filt(before_filt_list, not_in_db_list):
         after_db_filt_cand_list = before_filt_list
     
     return after_db_filt_cand_list
+
+
+def is_float(usr_input_number_str):
+    """
+    Check if usr input is a float
+    """
+    try:
+        float(usr_input_number_str)
+        return True
+
+    except ValueError:
+        return False
+
