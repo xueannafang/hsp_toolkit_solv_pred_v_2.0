@@ -106,6 +106,57 @@ def is_float(usr_input_number_str):
     except ValueError:
         return False
 
+def is_n_vld(usr_input_n):
+    """
+    check if the usr input is a positive integer larger or equal to 2
+    """
+    try:
+        if int(usr_input_n) > 1:
+            return True
+        elif int(usr_input_n) <= 1:
+            print('n must be >= 2')
+            return False
+    
+    except ValueError:
+        print('Invalid input: Please enter an integer >= 2')
+        return False
+
+
+def is_tol_err_vld(usr_input_tol_err):
+    """
+    check if the usr input tol_err is a positive float
+    """
+    try:
+        if float(usr_input_tol_err) > 0:
+            return True
+        
+        elif float(usr_input_tol_err) <= 0:
+            print('tolerance of error must be a positive float')
+            return False
+    
+    except ValueError:
+        print('Invalid input. Please enter a positive float')
+        return False
+
+def is_tol_conc_vld(usr_input_tol_conc):
+    """
+    check if the usr input tol_conc is a positive float between 0 and 1
+    """
+    try:
+        if float(usr_input_tol_conc) >= 0 and float(usr_input_tol_conc) <= 1:
+            return True
+        
+        elif float(usr_input_tol_conc) < 0 or float(usr_input_tol_conc) > 1:
+            print('tolerance of concentration must be a float between 0 and 1')
+            return False
+    
+    except ValueError:
+        print('Invalid input. Please enter a float between 0 and 1')
+        return False
+        
+
+
+
 def rm_repeat(old_list):
     """
     Remove repeated elements in the list

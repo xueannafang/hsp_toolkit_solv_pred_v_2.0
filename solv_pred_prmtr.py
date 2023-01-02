@@ -78,10 +78,62 @@ def specify_temp(orig_db_info_list):
 
 def specify_cand_parameter():
     #check if usr wants to use default or not
-    to_specify_list = ['n', 'tol_err', 'tol_conc']
-    n = input('Please specify n: ')
-    tol_err = input('Please specify tolerance of error: ')
-    tol_conc = input('Please specify lowest acceptable concentration: ')
+    #to_specify_list = ['n', 'tol_err', 'tol_conc']
+    usr_cand_parameter_default_list = [2, 0.5, 0.01] # in the order of n, tol_err, tol_conc
+    usr_cand_parameter_list = []
+
+    to_continue = True
+    while to_continue:
+
+        usr_set_option = input('Set parameters: \n[d] - use default settings for all parameters. \n[m] - manually set parameters. \n')
+        valid_set_option_list = ['d', 'm', 'default', 'manual']
+        usr_cand_parameter_list = []
+
+        if not sp_vld_chk.is_option_valid(valid_set_option_list, usr_set_option):
+            sp_vld_chk.invalid_input()
+        
+        elif usr_set_option in ['d', 'default']:
+            usr_cand_parameter_list = usr_cand_parameter_default_list
+            print('Default parameters will be applied.')
+            print('Continue?')
+            to_continue = sp_vld_chk.finish_check()
+        
+        elif usr_set_option in ['m', 'manual']:
+            print('Please specify parameters.')
+            print('n is the maximum number of solvents involved in each prediction.\nMust be a postivie integer >= 2.')
+            usr_n = sp_rtxt.rm_spc(input('Please specify n: '))
+            print('tolerance of error is the highest acceptable absolute error of HSP from the predicted solvent mixture. \n Must be a positive float.')
+            usr_tol_err = sp_rtxt.rm_spc(input('Please specify tolerance of error: '))
+            print('lowest acceptable concentration is the threshold of predicted solvent concentration below which will be filtered out. \nMust be a float between 0 and 1. \n0 stands for 0%. 1 stands for 100%.')
+            usr_tol_conc = sp_rtxt.rm_spc(input('Please specify lowest acceptable concentration: '))
+
+            usr_n_valid = sp_vld_chk.is_n_vld(usr_n)
+            usr_tol_err_valid = sp_vld_chk.is_tol_err_vld(usr_tol_err)
+            usr_tol_conc_valid = sp_vld_chk.is_tol_conc_vld(usr_tol_conc)
+
+            parameter_valid_check_list = [usr_n_valid, usr_tol_err_valid, usr_tol_conc_valid]
+            
+            if False not in parameter_valid_check_list:  # all
+                usr_cand_parameter_list = [usr_n, usr_tol_err, usr_tol_conc]
+                print('n, tol_err, tol_conc have been specified as: ')
+                print(usr_cand_parameter_list)
+                print('Continue?')
+                to_continue = sp_vld_chk.finish_check()
+            
+    return usr_cand_parameter_list
+            
+
+            
+
+
+
+
+
+
+
+
+
+
     return [n, tol_err, tol_conc]
 
 
