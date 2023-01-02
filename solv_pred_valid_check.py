@@ -114,11 +114,11 @@ def is_n_vld(usr_input_n):
         if int(usr_input_n) > 1:
             return True
         elif int(usr_input_n) <= 1:
-            print('n must be >= 2')
+            print('Invalid input of n: n must be >= 2')
             return False
     
     except ValueError:
-        print('Invalid input: Please enter an integer >= 2')
+        print('Invalid input of n: Please enter an integer >= 2')
         return False
 
 
@@ -131,11 +131,28 @@ def is_tol_err_vld(usr_input_tol_err):
             return True
         
         elif float(usr_input_tol_err) <= 0:
-            print('tolerance of error must be a positive float')
+            print('Invalid input of tol_err: tolerance of error must be a positive float')
             return False
     
     except ValueError:
-        print('Invalid input. Please enter a positive float')
+        print('Invalid input of tol_err: Please enter a positive float')
+        return False
+
+
+def is_tgt_vld(usr_input_tgt):
+    """
+    check if the usr input tgt is a non-negative float
+    """
+    try:
+        if float(usr_input_tgt) >= 0:
+            return True
+        
+        elif float(usr_input_tgt) < 0:
+            print('Invalid input of target HSP: Must be a non-negative float')
+            return False
+    
+    except ValueError:
+        print('Invalid input of target HSP: Must be a non-negative float')
         return False
 
 def is_tol_conc_vld(usr_input_tol_conc):
@@ -147,11 +164,11 @@ def is_tol_conc_vld(usr_input_tol_conc):
             return True
         
         elif float(usr_input_tol_conc) < 0 or float(usr_input_tol_conc) > 1:
-            print('tolerance of concentration must be a float between 0 and 1')
+            print('Invalid tol_conc: tolerance of concentration must be a float between 0 and 1')
             return False
     
     except ValueError:
-        print('Invalid input. Please enter a float between 0 and 1')
+        print('Invalid input of tol_conc: Please enter a float between 0 and 1')
         return False
         
 
@@ -180,15 +197,22 @@ def rm_incomplete_entry(to_rm_idx_list, to_rm_from_db_info_list):
     """
     remove unwanted idx from current db info list
     """
-    descend_idx_list = descend_list(to_rm_idx_list)
+    if len(to_rm_idx_list) != 0:
 
-    after_rm_db_info_list = to_rm_from_db_info_list
+        descend_idx_list = descend_list(to_rm_idx_list)
 
-    for i, entry in after_rm_db_info_list:
-        new_db_info_list = entry[1]
-        for a, j in enumerate(descend_idx_list):
-            new_db_info_list.pop(j)
-        entry[1] = new_db_info_list
+        after_rm_db_info_list = to_rm_from_db_info_list
+
+        for i, entry in after_rm_db_info_list:
+            new_db_info_list = entry[1]
+            for a, j in enumerate(descend_idx_list):
+                new_db_info_list.pop(j)
+            entry[1] = new_db_info_list
+    
+    else:
+
+        after_rm_db_info_list = to_rm_from_db_info_list
+        
     
     return after_rm_db_info_list
     

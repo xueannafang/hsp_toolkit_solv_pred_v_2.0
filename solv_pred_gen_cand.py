@@ -1,12 +1,13 @@
 import solv_pred_valid_check as sp_vld_chk
 import solv_pred_io as sp_io
+import solv_pred_reg_txt as sp_rtxt
 
 
 def generate_candidate_list(default_solv_cand_js):
     """
     Generate solvent candidate list. Ask users to determine whether they want to use default option or manually edit the list.
     """
-    print("Step 1: Generate solvent candidate list: \n You can select to use the default list [1] or manually input the CAS No. [2] \n Press [v] to check the default candidate list. \n Press [q] to quit. \n")
+    print("Step 1: Generate solvent candidate list: \n You can select to use the default list (recommend) or manually input the CAS No. \n")
 
     default_solv_candidate_js = default_solv_cand_js
     default_solv_candidate_cas_list = []
@@ -23,7 +24,7 @@ def generate_candidate_list(default_solv_cand_js):
         valid_how_to_select_candidate_list = ['1', '2', 'default', 'manual', 'quit', 'd', 'm', 'v', 'q']
         candidate_cas_list = []
 
-        how_to_select_candidate = str(input("Please select the method to construct solvent candidate list: \n [1] - default \n [2] - manual \n [v] - visualise default solvent list \n [q] - quit \n" )).lower()
+        how_to_select_candidate = sp_rtxt.rm_spc(str(input("Please select the method to construct solvent candidate list: \n [1] - default (recommend - the default list can still be edited in the following steps) \n [2] - manual \n [v] - visualise default solvent list \n [q] - quit \n" ))).lower()
 
         if not sp_vld_chk.is_option_valid(valid_how_to_select_candidate_list, how_to_select_candidate):
             sp_vld_chk.invalid_input()
