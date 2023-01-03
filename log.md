@@ -1,4 +1,8 @@
 # Solvent Predictor v2.0
+## TODO (03/01/2022)
+ - check the logic of quit check (finish check - unboundlocalerror: to_continue_finish referenced before assignment.
+ - test the error input
+ - include matrix calculation and filtration step
 
 
 ## updates (30/12/2022)
