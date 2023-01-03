@@ -17,9 +17,9 @@ def generate_candidate_list(default_solv_cand_js):
         default_solv_candidate_cas_list.append(entry['CAS'])
         default_solv_candidate_name_list.append(entry['Solvent'])
 
-    to_continue = True
+    to_continue_gen_cand_lst = True
 
-    while to_continue:
+    while to_continue_gen_cand_lst:
 
         valid_how_to_select_candidate_list = ['1', '2', 'default', 'manual', 'quit', 'd', 'm', 'v', 'q']
         candidate_cas_list = []
@@ -32,13 +32,13 @@ def generate_candidate_list(default_solv_cand_js):
         elif how_to_select_candidate in ['1', 'default', 'd']:
             candidate_cas_list = default_solv_candidate_cas_list
             print('You have selected to use the default solvent candidate list.')
-            to_continue = False
+            to_continue_gen_cand_lst = False
 
         elif how_to_select_candidate in ['2', 'manual', 'm']:
             print("Please submit CAS No. of solvents to be considered as candidates. Add one solvent at one time. Press [enter] to continue.")
             usr_solv_candidate_cas_list = sp_io.input_cas()
             candidate_cas_list = usr_solv_candidate_cas_list
-            to_continue = False
+            to_continue_gen_cand_lst = False
             #print(usr_solv_candidate_cas_list)
         
         elif how_to_select_candidate in ['v']:
@@ -47,8 +47,11 @@ def generate_candidate_list(default_solv_cand_js):
                 print(cddt)
 
         elif how_to_select_candidate in ['q', 'quit']:
-            exit()
-
+            print('Confirm to quit?')
+            to_finish_sel_cand = sp_vld_chk.finish_check()
+            if to_finish_sel_cand == True:
+                exit()
+                
     #print('You have selected the following solvents as candidates: ')
     #print(candidate_cas_list)
     

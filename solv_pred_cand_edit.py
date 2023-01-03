@@ -1,14 +1,15 @@
 import solv_pred_valid_check as sp_vld_chk
 import solv_pred_io as sp_io
+import solv_pred_reg_txt as sp_rtxt
 
 def remove_cas():
     """
     ask user to remove any unwanted solvent cas from the candidate list
     """
-    to_continue = True
+    to_continue_rm_cas = True
     cas_to_remove = []
 
-    while to_continue:
+    while to_continue_rm_cas:
 
         print("Do you want to remove any solvent? \n")
         remove_check = sp_io.continue_check()
@@ -19,9 +20,9 @@ def remove_cas():
 
         elif remove_check == 0:
             cas_to_remove_usr = []
-            #to_continue = False
+            #to_continue_rm_cas = False
             print('Continue? ')
-            to_continue = sp_vld_chk.finish_check()
+            to_continue_rm_cas = sp_vld_chk.finish_check()
 
         else:
             sp_vld_chk.invalid_input()
@@ -45,22 +46,22 @@ def add_cas():
     This function is included in the editing step (before submission)
     """
 
-    to_continue = True
+    to_continue_add_cas = True
     cas_to_add = []
 
-    while to_continue:
+    while to_continue_add_cas:
         print("Do you want to add any solvent? \n")
         add_check = sp_io.continue_check()
 
         if add_check == 1:
             cas_to_add_usr = sp_io.input_cas()
-            to_continue = False
+            to_continue_add_cas = False
 
         elif add_check == 0:
             cas_to_add_usr = []
             print('Continue?')
 
-            to_continue = sp_vld_chk.finish_check()
+            to_continue_add_cas = sp_vld_chk.finish_check()
 
         else:
             sp_vld_chk.invalid_input()
@@ -85,21 +86,21 @@ def edit_cand_cas_option(current_cand_cas_list, operation):
     if wrong invalid input has been given, return [n]
     """
 
-    to_continue = True
+    to_continue_ed_cas_opt = True
 
     crt_cand_cas_list = sp_vld_chk.rm_repeat(current_cand_cas_list)
 
-    while to_continue:
+    while to_continue_ed_cas_opt:
         #print('')
         if operation == 'n':
-            to_continue = False
+            to_continue_ed_cas_opt = False
 
         elif operation == 'a':
             cas_to_add_list = add_cas()
             crt_cand_cas_list += cas_to_add_list
             crt_cand_cas_list = sp_vld_chk.rm_repeat(crt_cand_cas_list)
             print('Continue?')
-            to_continue = sp_vld_chk.finish_check()
+            to_continue_ed_cas_opt = sp_vld_chk.finish_check()
             print(crt_cand_cas_list)
         
         elif operation == 'rm':
@@ -113,29 +114,32 @@ def edit_cand_cas_option(current_cand_cas_list, operation):
             if len(crt_cand_cas_list) == 0:
                 print('Warning: No solvent candidate has been selected. Please add solvents.')
             print('Continue?')
-            to_continue = sp_vld_chk.finish_check()
+            to_continue_ed_cas_opt = sp_vld_chk.finish_check()
         
         elif operation == 'v':
             print('Current candidate list:')
             print(crt_cand_cas_list)
             print('Continue?')
-            to_continue = sp_vld_chk.finish_check()
+            to_continue_ed_cas_opt = sp_vld_chk.finish_check()
         
         elif operation == 'q':
-            exit()
+            print('Confirm to quit?')
+            to_finish_ed_cand = sp_vld_chk.finish_check()
+            if to_finish_ed_cand == True:
+                exit()
         
         elif operation == 's':
             print('Continue?')
-            to_continue = sp_vld_chk.finish_check()
+            to_continue_ed_cas_opt = sp_vld_chk.finish_check()
         
     return crt_cand_cas_list
 
 def edit_cand_list(current_cand_cas_list):
 
-    to_continue = True
+    to_continue_ed_cas_lst = True
     final_cand_list = sp_vld_chk.rm_repeat(current_cand_cas_list)
 
-    while to_continue:
+    while to_continue_ed_cas_lst:
         print('Submit?')
         submit_check = sp_io.continue_check()
 
@@ -143,12 +147,12 @@ def edit_cand_list(current_cand_cas_list):
             final_cand_list = final_cand_list
             print('The following solvents will be considered as candidates: ')
             print(final_cand_list)
-            to_continue = False
+            to_continue_ed_cas_lst = False
             
         elif submit_check == 0:
 
             valid_how_to_edit_cand_list = ['a', 'rm', 'v', 's', 'q', 'add', 'remove', 'visualise', 'submit', 'quit']
-            how_to_edit_cand = str(input("Please select one of the following options: \n[a] - add CAS \n[rm] - remove CAS \n[v] - visualise current candidate list\n[s] - submit\n[q] - quit\n" )).lower()
+            how_to_edit_cand = sp_rtxt.rm_spc(str(input("Please select one of the following options: \n[a] - add CAS \n[rm] - remove CAS \n[v] - visualise current candidate list\n[s] - submit\n[q] - quit\n" ))).lower()
 
             if not sp_vld_chk.is_option_valid(valid_how_to_edit_cand_list, how_to_edit_cand):
                 sp_vld_chk.invalid_input()

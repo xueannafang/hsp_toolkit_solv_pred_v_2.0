@@ -1,5 +1,6 @@
 import solv_pred_reg_txt as sp_rtxt
 import solv_pred_io as sp_io
+import solv_pred_fetch_info as sp_ftch_info
 
 def data_available(entry):
     """
@@ -70,7 +71,7 @@ def finish_check():
     finish_check = sp_io.continue_check()
 
     if finish_check == 1:
-        to_continue = False
+        to_continue_finish_chk = False
 
     elif finish_check == 0:
         pass
@@ -78,7 +79,7 @@ def finish_check():
     else:
         invalid_input()
     
-    return to_continue
+    return to_continue_finish_chk
 
 
 def not_in_db_filt(before_filt_list, not_in_db_list):
@@ -215,6 +216,76 @@ def rm_incomplete_entry(to_rm_idx_list, to_rm_from_db_info_list):
         
     
     return after_rm_db_info_list
+
+
+def is_cand_list_longer_than_n(cand_cas_list, n):
+    """
+    validate if the candidate list is longer than user-specified n
+    """
+    if len(cand_cas_list) > int(n):
+        print('Validation of n is done.')
+        return True
+    else:
+        print('Warning: Candidate list does not contain enough solvents to iterate through.')
+        print('Please add more solvent candidates or decrease n.')
+        return False
+
+
+def is_target_achievable(db_info_list, cand_cas_list, target_hsp):
+    """
+    validate if the target is covered by the region connected by all the solvent candidate in the hansen space
+    """
+    cand_idx_cas_hsp_list = sp_ftch_info.fetch_idx_cas_hsp(cand_cas_list, db_info_list)
+
+    all_d = sp_ftch_info.fetch_sub_hsp(cand_idx_cas_hsp_list, 'd')
+    all_p = sp_ftch_info.fetch_sub_hsp(cand_idx_cas_hsp_list, 'p')
+    all_h = sp_ftch_info.fetch_sub_hsp(cand_idx_cas_hsp_list, 'h')
+
+    d_range = [min(all_d), max(all_d)]
+    p_range = [min(all_p), max(all_p)]
+    h_range = [min(all_h), max(all_h)]
+
+    target_d = float(target_hsp[0])
+    target_p = float(target_hsp[1])
+    target_h = float(target_hsp[2])
+
+    if target_d > d_range[0] and target_d < d_range[1]:
+        print('Target D validation done.')
+        d_check = True
+    else:
+        print('Target D is not achievable.')
+        print('Target D must be in the interval of ' + str(d_range[0]) + ' to ' + str(d_range[1]))
+        d_check = False
+    
+    if target_p > p_range[0] and target_p < p_range[1]:
+        print('Target P validation done.')
+        p_check = True
+    else:
+        print('Target P is not achievable.')
+        print('Target P must be in the interval of ' + str(p_range[0]) + ' to ' + str(p_range[1]))
+        p_check = False
+    
+    if target_h > h_range[0] and target_h < h_range[1]:
+        print('Target H validation done.')
+        h_check = True
+    else:
+        print('Target H is not achievable.')
+        print('Target H must be in the interval of ' + str(h_range[0]) + ' to ' + str(h_range[1]))
+        h_check = False
+    
+    if False in [d_check, p_check, h_check]:
+        target_check = False
+    
+    else:
+        target_check = True
+
+    return target_check
+
+    
+
+    
+    #cand_idx, cand_cas, cand_hsp
+
     
     
     

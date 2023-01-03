@@ -102,16 +102,9 @@ def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_sol
     print('Step 2: Specify parameters. \n Please follow the instruction to specify the \n - Maximum number of solvents (n) to be included in each combination (default = 2); \n - Highest acceptable error of HSP (tol_err) of the predicted combination (default = 0.5); \n - Lowest acceptable concentration (tol_conc) of each predicted solvent component (default = 0.01). \n - Target HSP (target D, P, H). \n Temperature (default = 25 C). \n')
 
     temp_updt_db, is_temp_updt = sp_prmtr.specify_temp(db_full_info_list) #is_temp_updt = 1 will disable the follow up miscibility check
-    usr_n, usr_tol_err_d, usr_tol_err_p, usr_tol_err_h, usr_tol_conc = sp_prmtr.specify_cand_parameter()
-    usr_tgt_hsp_list = sp_prmtr.specify_target() # in the order of d, p, h
-    #print(is_temp_updt, usr_tgt_hsp_list, usr_n, usr_tol_err_d, usr_tol_err_p, usr_tol_err_h, usr_tol_conc)
-
-    #check if the length of candidate list is larger than or equal to n, if not, pop warning and return to specify n step or edit candidate list
-    #check if the target hsp is covered by all the solvent candidate, if not, pop warning saying mission impossible and ask if user want to reset candidate list or reset the target or quit
-    #this step needs to give each procedure an index and include everything in a big while true
-
-
     
+    all_parameters = sp_prmtr.get_parameter(final_db_cas_filt, temp_updt_db)
+    print(all_parameters)
 
 
 
