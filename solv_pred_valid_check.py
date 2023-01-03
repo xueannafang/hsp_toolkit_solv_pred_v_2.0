@@ -69,11 +69,13 @@ def can_be_removed_check(to_be_rm_list, to_rm_from_list):
 
 def finish_check():
     finish_check = sp_io.continue_check()
+    to_continue_finish_chk = True
 
     if finish_check == 1:
         to_continue_finish_chk = False
 
     elif finish_check == 0:
+
         pass
 
     else:

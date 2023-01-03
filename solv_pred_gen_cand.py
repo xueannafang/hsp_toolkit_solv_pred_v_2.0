@@ -49,7 +49,7 @@ def generate_candidate_list(default_solv_cand_js):
         elif how_to_select_candidate in ['q', 'quit']:
             print('Confirm to quit?')
             to_finish_sel_cand = sp_vld_chk.finish_check()
-            if to_finish_sel_cand == True:
+            if to_finish_sel_cand != True:
                 exit()
                 
     #print('You have selected the following solvents as candidates: ')

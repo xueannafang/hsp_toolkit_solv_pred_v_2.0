@@ -61,7 +61,7 @@ def specify_temp(orig_db_info_list):
         elif temp_confirm in ['q', 'quit']:
             print('Confirm to quit?')
             to_finish_temp_confm = sp_vld_chk.finish_check()
-            if to_finish_temp_confm == True:
+            if to_finish_temp_confm != True:
                 exit()
     
     return [db_temp_corr, temp_edit]
@@ -210,7 +210,7 @@ def get_parameter(cand_cas_list, db_info_list):
             elif reset_option in ['q', 'quit']:
                 print('Confirm to quit?')
                 to_finish_reset_opt = sp_vld_chk.finish_check()
-                if to_finish_reset_opt == True:
+                if to_finish_reset_opt != True:
                     exit()
             
             elif reset_option in ['r', 'reset']:
