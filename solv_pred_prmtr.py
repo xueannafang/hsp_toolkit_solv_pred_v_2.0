@@ -96,11 +96,11 @@ def specify_cand_parameter():
             usr_n = sp_rtxt.rm_spc(input('Please specify n: '))
             
             print('tolerance of error is the highest acceptable absolute error of HSP from the predicted solvent mixture. \n Must be a positive float.')
-            usr_tol_err_d = sp_rtxt.rm_spc(input('Please specify tolerance of error for dispersion term (tol_err D): '))
-            usr_tol_err_p = sp_rtxt.rm_spc(input('Please specify tolerance of error for dipolar term (tol_err P): '))
-            usr_tol_err_h = sp_rtxt.rm_spc(input('Please specify tolerance of error for hydrogen bond term (tol_err H): '))
+            usr_tol_err_d = sp_rtxt.rm_spc(input('Please specify tolerance of error for dispersion term (tol_err_D): '))
+            usr_tol_err_p = sp_rtxt.rm_spc(input('Please specify tolerance of error for dipolar term (tol_err_P): '))
+            usr_tol_err_h = sp_rtxt.rm_spc(input('Please specify tolerance of error for hydrogen bond term (tol_err_H): '))
             
-            print('lowest acceptable concentration is the threshold of predicted solvent concentration below which will be filtered out. \nMust be a float between 0 and 1. \n0 stands for 0%. 1 stands for 100%.')
+            print('lowest acceptable concentration is the threshold of predicted solvent concentration below which will be filtered out. \nMust be a float between 0 and 1. \n')
             usr_tol_conc = sp_rtxt.rm_spc(input('Please specify lowest acceptable concentration: '))
 
             

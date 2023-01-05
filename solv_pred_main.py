@@ -99,12 +99,43 @@ def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_sol
 
     """
 
-    print('Step 2: Specify parameters. \n Please follow the instruction to specify the \n - Maximum number of solvents (n) to be included in each combination (default = 2); \n - Highest acceptable error of HSP (tol_err) of the predicted combination (default = 0.5); \n - Lowest acceptable concentration (tol_conc) of each predicted solvent component (default = 0.01). \n - Target HSP (target D, P, H). \n Temperature (default = 25 C). \n')
+    print('=========================\nStep 2: Specify parameters. \n Please follow the instruction to specify the \n - Maximum number of solvents (n) to be included in each combination (default = 2); \n - Highest acceptable error of HSP (tol_err) of the predicted combination (default = 0.5); \n - Lowest acceptable concentration (tol_conc) of each predicted solvent component (default = 0.01). \n - Target HSP (target D, P, H). \n Temperature (default = 25 C). \n')
 
     temp_updt_db, is_temp_updt = sp_prmtr.specify_temp(db_full_info_list) #is_temp_updt = 1 will disable the follow up miscibility check
     
     all_parameters = sp_prmtr.get_parameter(final_db_cas_filt, temp_updt_db)
-    print(all_parameters)
+    print('Parameter selection done.\n')
+    #print(all_parameters)
+
+    n = all_parameters[0]
+    target_hsp_list = all_parameters[1] # in the order of d, p, h
+    tol_err_list = all_parameters[2] # in the order of tol_err_d, tol_err_p, tol_err_h
+    tol_conc = all_parameters[3]
+    cand_cas_for_calc_list = all_parameters[4]
+
+    """
+    Step 3
+
+    Main calculation cell
+
+    Iterate through all the combinations of n-nary solvent systems
+    Construct standard HSP matrix based on n-candidate combination
+    Construct target HSP matrix with statistical perturbation
+    Statistical validation
+    Rough filtration - concentration renormalisation - fine filtration
+    """
+
+    
+
+
+    """
+    Step 4
+    optional filtrations
+    miscibility check
+    bp check
+
+    """
+
 
 
 
