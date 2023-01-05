@@ -8,6 +8,7 @@ import solv_pred_cand_edit as sp_cand_ed
 import solv_pred_valid_check as sp_vld_chk
 import solv_pred_fetch_info as sp_ftch_info
 import solv_pred_prmtr as sp_prmtr
+import solv_pred_calc as sp_clc
 
 
 def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_solv_candidate.json'):
@@ -124,6 +125,11 @@ def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_sol
     Statistical validation
     Rough filtration - concentration renormalisation - fine filtration
     """
+
+    #print(temp_updt_db)
+    sp_clc.mtrx_s_bf_comb(cand_cas_for_calc_list, temp_updt_db)
+
+    
 
     
 

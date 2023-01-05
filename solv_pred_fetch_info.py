@@ -28,7 +28,10 @@ def fetch_idx_cas_hsp(to_fetch_cas_list, db_info_list):
             fetch_all_info = []
             if db_cas == cas:
                 fetch_all_info = [all_db_idx[j], all_db_cas[j], [all_db_d[j], all_db_p[j], all_db_h[j]]]
+                #print(fetch_all_info)
                 idx_cas_hsp_list.append(fetch_all_info)
+        
+        #print(idx_cas_hsp_list)
     
     return idx_cas_hsp_list
 
@@ -36,7 +39,7 @@ def fetch_idx_cas_hsp(to_fetch_cas_list, db_info_list):
 def fetch_sub_hsp(idx_cas_hsp_list, to_fetch_opt):
     """
     fetch sub-hsp from idx_cas_hsp list
-    to_fetch_opt = d, p, h
+    to_fetch_opt = d, p, h, cas, idx
     """
     sub_hsp_list = []
 
@@ -54,6 +57,14 @@ def fetch_sub_hsp(idx_cas_hsp_list, to_fetch_opt):
         elif to_fetch_opt == 'h':
             h = all_hsp[2]
             sub_hsp_list.append(h)
+        
+        elif to_fetch_opt == 'cas':
+            cas = idx_cas_hsp[1]
+            sub_hsp_list.append(cas)
+        
+        elif to_fetch_opt == 'idx':
+            idx = idx_cas_hsp[0]
+            sub_hsp_list.append(idx)
     
     return sub_hsp_list
 
