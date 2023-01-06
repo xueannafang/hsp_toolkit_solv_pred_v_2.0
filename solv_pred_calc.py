@@ -71,8 +71,76 @@ def itrt_cand(cand_cas_list, db_list, n):
         
         all_comb_mat_s_arr_t.append(comb_for_s_arr_t)
         all_comb_mat_cas.append(comb_for_cas)
+
+    # print(all_comb_mat_s_arr_t)
+    # print(all_comb_mat_cas)
     
     return all_comb_mat_s_arr_t, all_comb_mat_cas
+
+
+def all_mat_s_arr(all_mat_s_arr_t):
+    
+    all_mat_s_arr_t_back = []
+    
+    for arr_t in all_mat_s_arr_t:
+
+        arr_t_back = np.array(arr_t).transpose()
+        all_mat_s_arr_t_back.append(arr_t_back)
+    
+    # print(all_mat_s_arr_t_back)
+    return all_mat_s_arr_t_back
+
+def solv_pinv_s(mat_s_arr):
+    """
+    calculate the left pseudo inverse of matrix s
+    """
+
+    pinv_s_arr = np.linalg.pinv(mat_s_arr)
+
+    return pinv_s_arr
+
+def perturb_mat_d(tgt_hsp_list, rep_ptb_time = 50, var = 0.1):
+    """
+    apply perturbation on the target hsp
+    var is the variance of gaussian random variable serving as the perturbation
+    """
+    # init_mat_d = np.zeros((4, rep_ptb_time))
+
+    flt_tgt_hsp_list = list(np.float_(tgt_hsp_list)) # the original usr input hsps are string type
+
+    tgt_hsp_vec_with_1 = flt_tgt_hsp_list.append(1)
+
+    # tgt_hsp_vec = np.array([tgt_hsp_vec_with_1]).transpose()
+    
+    pbt_mat = np.random.randn(rep_ptb_time, 4) * (var, var, var, 0)
+
+    mat_d_bf_t = pbt_mat + tgt_hsp_vec_with_1
+
+    mat_d_t = np.array(mat_d_bf_t).transpose() # mat_d_t is now a 4 x rep_ptb_time matrix
+
+    return mat_d_t
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
