@@ -121,6 +121,17 @@ def perturb_mat_d(tgt_hsp_list, rep_ptb_time = 50, var = 0.1):
     return mat_d_t
 
 
+def solv_c_from_s_d(mat_s_arr, mat_d_arr):
+    """
+    solve coefficient matrix c
+    """
+    mat_c_arr = solv_pinv_s(mat_s_arr) @ mat_d_arr
+
+    return mat_c_arr
+
+
+
+
 
 
 
