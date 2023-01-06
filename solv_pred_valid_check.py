@@ -1,3 +1,5 @@
+import numpy as np
+
 import solv_pred_reg_txt as sp_rtxt
 import solv_pred_io as sp_io
 import solv_pred_fetch_info as sp_ftch_info
@@ -285,8 +287,7 @@ def is_target_achievable(db_info_list, cand_cas_list, target_hsp):
 
     
 
-    
-    #cand_idx, cand_cas, cand_hsp
+
 
     
     

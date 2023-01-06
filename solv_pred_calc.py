@@ -130,6 +130,28 @@ def solv_c_from_s_d(mat_s_arr, mat_d_arr):
     return mat_c_arr
 
 
+def stat_check_c(mat_c_arr, tol_rep_std = 0.1):
+    """
+    for as-calculated matrix c:
+        check if the standard deviation along all the perturbation is below tol_rep_std (default = 0.1)
+        check if the total concentration is above 105% or below 95%
+    """
+
+    c_mean_ov_t_arr = np.mean(mat_c_arr, axis = 1) # work out the mean for each row in c
+    c_std_ov_t_arr = np.std(mat_c_arr, axis = 1)
+    c_tot_of_n = sum(c_mean_ov_t_arr)
+
+    stat_check_c = True
+
+    if c_std_ov_t_arr > tol_rep_std or c_tot_of_n > 1.05 or c_tot_of_n < 0.95:
+        stat_check_c = False
+    
+    return stat_check_c
+
+    
+
+    
+
 
 
 
