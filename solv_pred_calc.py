@@ -99,22 +99,25 @@ def solv_pinv_s(mat_s_arr):
 
     return pinv_s_arr
 
-def perturb_mat_d(tgt_hsp_list, rep_ptb_time = 50, var = 0.1):
-    """
-    apply perturbation on the target hsp
-    var is the variance of gaussian random variable serving as the perturbation
-    """
-    # init_mat_d = np.zeros((4, rep_ptb_time))
+def tgt_hsp_vec(tgt_hsp_list):
 
     flt_tgt_hsp_list = list(np.float_(tgt_hsp_list)) # the original usr input hsps are string type
 
     tgt_hsp_vec_with_1 = flt_tgt_hsp_list.append(1)
 
-    # tgt_hsp_vec = np.array([tgt_hsp_vec_with_1]).transpose()
-    
+    return tgt_hsp_vec_with_1
+
+
+def perturb_mat_d(tgt_hsp_list, rep_ptb_time = 50, var = 0.1):
+    """
+    apply perturbation on the target hsp
+    var is the variance of gaussian random variable serving as the perturbation
+    """
+    tgt_hsp_with_1 = tgt_hsp_vec(tgt_hsp_list)
+
     pbt_mat = np.random.randn(rep_ptb_time, 4) * (var, var, var, 0)
 
-    mat_d_bf_t = pbt_mat + tgt_hsp_vec_with_1
+    mat_d_bf_t = pbt_mat + tgt_hsp_with_1
 
     mat_d_t = np.array(mat_d_bf_t).transpose() # mat_d_t is now a 4 x rep_ptb_time matrix
 
@@ -170,7 +173,7 @@ def conc_filt_c(c_mean_vec, tol_conc_check):
         else:
             conc_filt_c_list.append(0)
     
-    conc_filt_c_mean_vec = np.array(conc_filt_c_list).transpose()
+    conc_filt_c_mean_vec = np.array([conc_filt_c_list]).transpose()
 
     return conc_filt_c_mean_vec
 
@@ -191,8 +194,25 @@ def renorm_c(c_mean_vec):
     return norm_c_mean_vec
 
 
+def norm_c_err(norm_c_mean_vec, mat_s, tgt_hsp):
+    """
+    calculate the final error based on the renormalised c and standard matrix s minus the target hsp
+    """
+
+    tgt_hsp_with_1_arr = np.array([tgt_hsp_vec(tgt_hsp)]).transpose()
+
+    norm_c_err_vec = mat_s @ norm_c_mean_vec - tgt_hsp_with_1_arr
+
+    return norm_c_err_vec
+
+
 def calc_vld_all_c():
     # invalid result will not be filtered out immediately, but will be marked with an invld note and filter in the final step
+
+
+
+
+
     pass
 
     

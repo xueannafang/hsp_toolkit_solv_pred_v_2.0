@@ -323,7 +323,7 @@ def is_c_vld(c_mean_vec):
     return vld_check_c
 
 
-def is_err_mat_accptbl(e_mean_ov_t_arr, tol_err_list):
+def is_err_mat_accptbl(e_mean_arr, tol_err_list):
     """
     check if the error is acceptable
     """
@@ -332,7 +332,7 @@ def is_err_mat_accptbl(e_mean_ov_t_arr, tol_err_list):
 
     err_mat_check = True
 
-    if abs(e_mean_ov_t_arr[0][0]) > flt_tol_err_list[0] or abs(e_mean_ov_t_arr[1][0]) > flt_tol_err_list[1] or abs(e_mean_ov_t_arr[2][0]) > flt_tol_err_list[2]:
+    if abs(e_mean_arr[0][0]) > flt_tol_err_list[0] or abs(e_mean_arr[1][0]) > flt_tol_err_list[1] or abs(e_mean_arr[2][0]) > flt_tol_err_list[2]:
 
         err_mat_check = False
     
