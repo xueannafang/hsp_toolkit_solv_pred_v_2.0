@@ -130,7 +130,35 @@ def solv_c_from_s_d(mat_s_arr, mat_d_arr):
     return mat_c_arr
 
 
+def solv_avg_std_sum_c(mat_c_arr):
+    """
+    solve the repeated time averaged c and corresponding std
+    solve the sum of mean
+    """
+    c_mean_ov_t_arr = np.mean(mat_c_arr, axis = 1) # work out the mean for each row in c
+    c_std_ov_t_arr = np.std(mat_c_arr, axis = 1)
+    c_tot_of_n = sum(c_mean_ov_t_arr)
 
+    return c_mean_ov_t_arr, c_std_ov_t_arr, c_tot_of_n
+
+
+def solv_e_from_s_c_d(mat_s_arr, mat_d_arr, mat_c_arr):
+    """
+    calculate the error matrix based on the difference of sc and d
+    """
+    mat_e_arr = mat_s_arr @ mat_c_arr - mat_d_arr
+
+    e_mean_ov_t_arr = np.mean(mat_e_arr, axis = 1)
+
+    return e_mean_ov_t_arr
+
+
+def renorm_c(mat_c_arr):
+    pass
+
+
+def calc_vld_all_c():
+    pass
 
     
 

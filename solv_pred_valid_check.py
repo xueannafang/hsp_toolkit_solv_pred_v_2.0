@@ -287,38 +287,31 @@ def is_target_achievable(db_info_list, cand_cas_list, target_hsp):
     return target_check
 
     
-def is_c_stable(mat_c_arr, tol_rep_std = 0.1):
+def is_c_stable(c_std, c_tot, tol_rep_std = 0.1):
     """
-    for as-calculated matrix c:
-        check if the standard deviation along all the perturbation is below tol_rep_std (default = 0.1)
-        check if the total concentration is above 105% or below 95%
+    check if the standard deviation along all the perturbation is below tol_rep_std (default = 0.1)
+    check if the total mean concentration is above 105% or below 95%
     """
-
-    c_mean_ov_t_arr = np.mean(mat_c_arr, axis = 1) # work out the mean for each row in c
-    c_std_ov_t_arr = np.std(mat_c_arr, axis = 1)
-    c_tot_of_n = sum(c_mean_ov_t_arr)
 
     stat_check_c = True
 
-    if c_std_ov_t_arr > tol_rep_std or c_tot_of_n > 1.05 or c_tot_of_n < 0.95:
+    if c_std > tol_rep_std or c_tot > 1.05 or c_tot < 0.95:
+
         stat_check_c = False
     
     return stat_check_c
 
-def is_err_mat_accptbl(mat_c_arr, mat_s_arr, mat_d_arr, tol_err_list):
+def is_err_mat_accptbl(e_mean_ov_t_arr, tol_err_list):
     """
-    calculate error and check if the error is acceptable
+    check if the error is acceptable
     """
-    mat_e_arr = mat_s_arr @ mat_c_arr - mat_d_arr
-
-    e_mean_ov_t_arr = np.mean(mat_e_arr, axis = 1)
 
     flt_tol_err_list = list(np.float_(tol_err_list))
 
     err_mat_check = True
 
     if abs(e_mean_ov_t_arr[0][0]) > flt_tol_err_list[0] or abs(e_mean_ov_t_arr[1][0]) > flt_tol_err_list[1] or abs(e_mean_ov_t_arr[2][0]) > flt_tol_err_list[2]:
-        
+
         err_mat_check = False
     
     return err_mat_check
