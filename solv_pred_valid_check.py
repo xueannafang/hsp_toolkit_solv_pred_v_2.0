@@ -314,10 +314,10 @@ def is_c_vld(c_mean_vec):
 
     for c_mean in c_mean_vec:
         
-        if c_mean < 0:
+        if c_mean < 0 or c_mean > 1:
             vld_check_c = False
 
-    if c_tot > 1.05 or c_tot < 0.95:
+    if c_tot > 1.1 or c_tot < 0.9:
         vld_check_c = False
     
     return vld_check_c
@@ -330,9 +330,15 @@ def is_err_mat_accptbl(e_mean_arr, tol_err_list):
 
     flt_tol_err_list = list(np.float_(tol_err_list))
 
+    e_d = e_mean_arr[0]
+    e_p = e_mean_arr[1]
+    e_h = e_mean_arr[2]
+
+    tol_e_d, tol_e_p, tol_e_h = flt_tol_err_list
+
     err_mat_check = True
 
-    if abs(e_mean_arr[0][0]) > flt_tol_err_list[0] or abs(e_mean_arr[1][0]) > flt_tol_err_list[1] or abs(e_mean_arr[2][0]) > flt_tol_err_list[2]:
+    if abs(e_d) > tol_e_d or abs(e_p) > tol_e_p or abs(e_h) > tol_e_h:
 
         err_mat_check = False
     
@@ -344,17 +350,26 @@ def is_conc_above_tol(c_mean_vec, tol_conc):
     save all the validity of each candidate with its idx in c_mean_vec
     """
     
+    print('conc_fil: ')
+    print(c_mean_vec)
+    print('tol_conc: ')
+    print(tol_conc)
+
     conc_tol_check_log = []
 
-    for i, c_mean in enumerate(c_mean_vec):
+    for solv_idx, c_mean in enumerate(c_mean_vec):
 
-        if c_mean < tol_conc:
+        if c_mean[0] < tol_conc:
 
-            conc_tol_check_log.append([i, False])
+            conc_tol_check_log.append([solv_idx, False])
         
         else:
-            conc_tol_check_log.append([i, True])
+            conc_tol_check_log.append([solv_idx, True])
     
+    print('c_mean[0]: ')
+    print(c_mean[0])
+    print('conc_tol_chk_log: ')
+    print(conc_tol_check_log)
     return conc_tol_check_log
         
 

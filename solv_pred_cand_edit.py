@@ -25,6 +25,7 @@ def remove_cas():
             to_continue_rm_cas = sp_vld_chk.finish_check()
 
         else:
+            cas_to_remove_usr = []
             sp_vld_chk.invalid_input()
         
         cas_to_remove += cas_to_remove_usr
