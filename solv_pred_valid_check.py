@@ -287,7 +287,7 @@ def is_target_achievable(db_info_list, cand_cas_list, target_hsp):
     return target_check
 
     
-def is_c_stable(c_std, c_tot, tol_rep_std = 0.1):
+def is_c_stable(c_std_vec, tol_rep_std = 0.1):
     """
     check if the standard deviation along all the perturbation is below tol_rep_std (default = 0.1)
     check if the total mean concentration is above 105% or below 95%
@@ -295,11 +295,33 @@ def is_c_stable(c_std, c_tot, tol_rep_std = 0.1):
 
     stat_check_c = True
 
-    if c_std > tol_rep_std or c_tot > 1.05 or c_tot < 0.95:
+    for c_std in c_std_vec:
+        if c_std > tol_rep_std:
+            stat_check_c = False
 
-        stat_check_c = False
     
     return stat_check_c
+
+
+def is_c_vld(c_mean_vec):
+    """
+    check if total conc is between 0.95 and 1.05
+    check if each c_mean is positive
+    """
+
+    c_tot = sum(c_mean_vec)
+    vld_check_c = True
+
+    for c_mean in c_mean_vec:
+        
+        if c_mean < 0:
+            vld_check_c = False
+
+    if c_tot > 1.05 or c_tot < 0.95:
+        vld_check_c = False
+    
+    return vld_check_c
+
 
 def is_err_mat_accptbl(e_mean_ov_t_arr, tol_err_list):
     """
@@ -315,6 +337,27 @@ def is_err_mat_accptbl(e_mean_ov_t_arr, tol_err_list):
         err_mat_check = False
     
     return err_mat_check
+
+def is_conc_above_tol(c_mean_vec, tol_conc):
+    """
+    check if each entry is above the concentration threshold
+    save all the validity of each candidate with its idx in c_mean_vec
+    """
+    
+    conc_tol_check_log = []
+
+    for i, c_mean in enumerate(c_mean_vec):
+
+        if c_mean < tol_conc:
+
+            conc_tol_check_log.append([i, False])
+        
+        else:
+            conc_tol_check_log.append([i, True])
+    
+    return conc_tol_check_log
+        
+
 
     
 

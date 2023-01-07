@@ -153,11 +153,46 @@ def solv_e_from_s_c_d(mat_s_arr, mat_d_arr, mat_c_arr):
     return e_mean_ov_t_arr
 
 
-def renorm_c(mat_c_arr):
-    pass
+def conc_filt_c(c_mean_vec, tol_conc_check):
+    """
+    based on the tol_conc validate results, updt redundant solv conc to 0
+    """
+    conc_filt_c_list = []
+
+    for i, c_mean in enumerate(c_mean_vec):
+
+        # idx_in_c = tol_conc_check[i][0]
+        is_conc_vld = tol_conc_check[i][1]
+
+        if is_conc_vld == True:
+            conc_filt_c_list.append(c_mean)
+        
+        else:
+            conc_filt_c_list.append(0)
+    
+    conc_filt_c_mean_vec = np.array(conc_filt_c_list).transpose()
+
+    return conc_filt_c_mean_vec
+
+
+def renorm_c(c_mean_vec):
+    """
+    this mat_c has been updated by replacing entries below tol_conc with 0
+    """
+    tot_c = sum(c_mean_vec)
+    norm_c_mean_list = []
+
+    for c_mean in c_mean_vec:
+        norm_c_mean = c_mean/tot_c
+        norm_c_mean_list.append(norm_c_mean)
+    
+    norm_c_mean_vec = np.array([norm_c_mean]).transpose()
+
+    return norm_c_mean_vec
 
 
 def calc_vld_all_c():
+    # invalid result will not be filtered out immediately, but will be marked with an invld note and filter in the final step
     pass
 
     
