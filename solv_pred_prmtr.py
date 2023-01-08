@@ -9,6 +9,7 @@ def specify_temp(orig_db_info_list):
     
     to_continue_spf_temp = True
     default_temp = 25
+    target_temp = default_temp
 
     while to_continue_spf_temp:
 
@@ -40,6 +41,7 @@ def specify_temp(orig_db_info_list):
                     db_temp_corr = orig_db_info_list
                     print('Continue?')
                     to_continue_spf_temp = sp_vld_chk.finish_check()
+                    
                 
                 else:
                     
@@ -64,7 +66,7 @@ def specify_temp(orig_db_info_list):
             if to_finish_temp_confm != True:
                 exit()
     
-    return [db_temp_corr, temp_edit]
+    return [db_temp_corr, temp_edit, target_temp]
 
 
 def specify_cand_parameter():

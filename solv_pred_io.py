@@ -130,14 +130,22 @@ def get_datetime_filename():
     generate unique filename based on time and date
     """
 
-    time_date = str(today.strftime("%DD%MM%YY")) + '_' + str(now.strftime("%H%M%S"))
+    time_name = sp_rtxt.date_time_form(now)
 
-    return time_date
+    return time_name
 
 
 def list2txt(list_to_convert, txt_name):
+    """
+    write calc_log_list to txt as reference
+    """
     current_path = os.getcwd()
-    os.mkdir('log')
+
+    if os.path.exists(current_path + '\\log'):
+        pass
+    else:
+        os.mkdir('log')
+    
     full_txt_path = current_path + "\\log\\" + str(txt_name) + '.txt'
 
     with open(str(full_txt_path), "w") as op_txt:
@@ -145,7 +153,8 @@ def list2txt(list_to_convert, txt_name):
 
 def calc_log_list2txt(calc_log_list):
 
-    txt_fname = 'calc_log_test'
+    time_name = get_datetime_filename()
+    txt_fname = 'calc_log_test_' + time_name
     list2txt(calc_log_list, txt_fname)
 
 
@@ -158,7 +167,9 @@ def calc_log_list2js(calc_log_list):
     # cal_log_dict = {}
     calc_log_json_list = []
 
-    js_name = 'calc_log_bsc_chk'
+    time_name = get_datetime_filename()
+
+    js_name = 'calc_log_bsc_chk_' + time_name
 
     current_path = os.getcwd()
 
@@ -182,6 +193,7 @@ def calc_log_list2js(calc_log_list):
             cas_comb = entry[1][0] #list
             conc = np.ndarray.tolist(np.array(entry[1][1]))
             err = np.ndarray.tolist(np.array(entry[1][2]))
+            calc_hsp = np.ndarray.tolist(np.array(entry[1][3]))
             quality = entry[2] # string
             validity = str(entry[-1]) # bool2str
             
@@ -190,6 +202,7 @@ def calc_log_list2js(calc_log_list):
                 'cas_comb' : cas_comb,
                 'conc' : conc,
                 'err' : err,
+                'calc_hsp' : calc_hsp,
                 'quality' : quality,
                 'validity' : validity
                 }
@@ -208,4 +221,56 @@ def calc_log_list2js(calc_log_list):
 
     # list2json(calc_log_json_list, js_name)
     
-    return calc_log_json_list
+    return full_js_path, calc_log_json_list
+
+
+def fail_calc_log(target_temp, n, target_hsp, tol_err, tol_conc, cand_cas_list, cand_name_list, calc_log_js_path):
+    """
+    summarise calculation details and related results files (based on failed test)
+    """
+    current_path = os.getcwd()
+
+    time_name = get_datetime_filename()
+
+    log_dir_name = 'log'
+
+    if os.path.exists(current_path + '\\' + log_dir_name):
+        pass
+    else:
+        os.mkdir(log_dir_name)
+    
+    txt_name = 'log_failed_' + str(time_name)
+    
+    full_txt_path = current_path + "\\" + log_dir_name + "\\" + txt_name + '.txt'
+
+    version, test_time = version_info()
+    current_time = now.strftime("%H:%M:%S")
+
+    to_summarise = {
+
+        'Target HSP (D, P, H)/MPa^(1/2)' : target_hsp,
+        'Temperature/degree c' : target_temp,
+        'n' : n,
+        'Tolerance of error (err_D, err_P, err_H)/MPa^(1/2)' : tol_err,
+        'Lowest concentration limit' : tol_conc,
+        'Candidate cas' : cand_cas_list,
+        'Candidate solvents' : cand_name_list,
+        'Calculation log path' : calc_log_js_path,
+        'Results' : 'Failed',
+        'Advice' : 'Please consider to increase the number of candidates or error tolerance.'
+
+    }
+
+    with open(str(full_txt_path), "w") as op_txt:
+        
+        op_txt.write('===============================' + '\n')
+        op_txt.write(str(version) + '\n')
+        op_txt.write(str(current_time) + '\n' + str(today) + '\n')
+        op_txt.write('===============================' + '\n'+ '\n')
+        
+        for key in to_summarise:
+            op_txt.write(str(key) + ': ' + '\n' + str(to_summarise[key]) + '\n' + '\n')
+        
+
+
+

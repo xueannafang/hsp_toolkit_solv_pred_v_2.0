@@ -319,15 +319,17 @@ def calc_vld_all_c(cand_cas_list, db_list, n, tgt_hsp_list, tol_err_list, tol_co
 
         rough_c_e_chk_list = [c_stable_chk, c_vld_chk, e_vld_chk]
 
+        calc_hsp_rough = mat_s @ c_mean_t
+
         if False in rough_c_e_chk_list:
             err_msg = 'UnstableResult'
-            cal_result = [cas_comb, [c_mean_t, c_std_t], [e_mean_t, e_std_t]]
+            cal_result = [cas_comb, [c_mean_t, c_std_t], [e_mean_t, e_std_t], calc_hsp_rough]
             calc_log_list.append([i, cal_result, err_msg, False])
         
         else:
             norm_c = renorm_c(c_mean_t)
-            print('norm_c in main: ')
-            print(norm_c)
+            # print('norm_c in main: ')
+            # print(norm_c)
 
             conc_tol_check_log = sp_vld_chk.is_conc_above_tol(norm_c, flt_tol_conc)
 
@@ -342,7 +344,9 @@ def calc_vld_all_c(cand_cas_list, db_list, n, tgt_hsp_list, tol_err_list, tol_co
             # print('tgt_hsp_with_1_arr: ')
             # print(tgt_hsp_with_1_arr)
             
-            norm_e = mat_s @ norm_conc_updt_c - tgt_hsp_with_1_arr
+            calc_hsp_norm_c = mat_s @ norm_conc_updt_c
+
+            norm_e = calc_hsp_norm_c - tgt_hsp_with_1_arr
 
             # print('norm_e: ')
             # print(norm_e)
@@ -354,12 +358,12 @@ def calc_vld_all_c(cand_cas_list, db_list, n, tgt_hsp_list, tol_err_list, tol_co
 
             if e_hsp_check == False:
                 err_msg = 'ErrorTooLarge'
-                cal_result = [cas_comb, norm_conc_updt_c, norm_e]
+                cal_result = [cas_comb, norm_conc_updt_c, norm_e, calc_hsp_norm_c]
                 calc_log_list.append([i, cal_result, err_msg, False]) 
                 vld_comb_number += 0
                
             else:
-                cal_result = [cas_comb, norm_conc_updt_c, norm_e]
+                cal_result = [cas_comb, norm_conc_updt_c, norm_e, calc_hsp_norm_c]
                 vld_msg = 'Valid'
                 calc_log_list.append([i, cal_result, vld_msg, True])
                 vld_comb_number += 1
@@ -378,10 +382,12 @@ def calc_vld_all_c(cand_cas_list, db_list, n, tgt_hsp_list, tol_err_list, tol_co
     # print(calc_log_list)
     # sp_io.calc_log_list2json(calc_log_list)
 
-    sp_io.calc_log_list2js(calc_log_list)
+    full_calc_log_js_path, calc_log_js_list = sp_io.calc_log_list2js(calc_log_list)
+
+    sp_io.calc_log_list2txt(calc_log_list)
     
 
-    return continue_idx, calc_log_list
+    return continue_idx, calc_log_list, full_calc_log_js_path
 
 
     

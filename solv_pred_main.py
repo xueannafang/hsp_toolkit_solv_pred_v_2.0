@@ -103,7 +103,7 @@ def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_sol
 
     print('=========================\nStep 2: Specify parameters. \n Please follow the instruction to specify the \n - Maximum number of solvents (n) to be included in each combination (default = 2); \n - Highest acceptable error of HSP (tol_err) of the predicted combination (default = 0.5); \n - Lowest acceptable concentration (tol_conc) of each predicted solvent component (default = 0.01). \n - Target HSP (target D, P, H). \n Temperature (default = 25 C). \n')
 
-    temp_updt_db, is_temp_updt = sp_prmtr.specify_temp(db_full_info_list) #is_temp_updt = 1 will disable the follow up miscibility check
+    temp_updt_db, is_temp_updt, tgt_temp = sp_prmtr.specify_temp(db_full_info_list) #is_temp_updt = 1 will disable the follow up miscibility check
     
     all_parameters = sp_prmtr.get_parameter(final_db_cas_filt, temp_updt_db)
     print('Parameter selection done.\n')
@@ -131,11 +131,23 @@ def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_sol
     #sp_clc.mtrx_s_bf_comb(cand_cas_for_calc_list, temp_updt_db)
     # sp_clc.itrt_cand(cand_cas_for_calc_list, temp_updt_db, n)
 
-    ctn_idx, calc_log = sp_clc.calc_vld_all_c(cand_cas_for_calc_list, temp_updt_db, n, target_hsp_list, tol_err_list, tol_conc)
+    ctn_idx, calc_log, calc_log_js_path = sp_clc.calc_vld_all_c(cand_cas_for_calc_list, temp_updt_db, n, target_hsp_list, tol_err_list, tol_conc)
 
+    # print(ctn_idx)
 
+    sp_io.fail_calc_log(tgt_temp, n, target_hsp_list, tol_err_list, tol_conc, cand_cas_for_calc_list, final_db_name_filt, calc_log_js_path)
+
+    if ctn_idx == 0:
+
+        print('No available results.\n Please check ./log/cal_log_bsc_chk_ddmmyyyySSMMHH.json for full calculation details.\n')
+        print('Please consider to increase the number of candidates or error tolerance.')
+
+        sp_io.fail_calc_log(tgt_temp, n, target_hsp_list, tol_err_list, tol_conc, cand_cas_for_calc_list, final_db_name_filt, calc_log_js_path)
+
+        # add one more final log summarising other calculation details
+
+        exit()
     
-
     
 
 
