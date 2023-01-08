@@ -135,8 +135,6 @@ def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_sol
 
     # print(ctn_idx)
 
-    sp_io.fail_calc_log(tgt_temp, n, target_hsp_list, tol_err_list, tol_conc, cand_cas_for_calc_list, final_db_name_filt, calc_log_js_path)
-
     if ctn_idx == 0:
 
         print('No available results.\n Please check ./log/cal_log_bsc_chk_ddmmyyyySSMMHH.json for full calculation details.\n')
@@ -148,9 +146,6 @@ def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_sol
 
         exit()
     
-    
-
-
     """
     Step 4
     optional filtrations
