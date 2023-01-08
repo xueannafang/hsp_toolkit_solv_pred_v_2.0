@@ -119,6 +119,8 @@ def perturb_mat_d(tgt_hsp_list, rep_ptb_time = 50, var = 0.1):
     """
     tgt_hsp_with_1 = tgt_hsp_vec(tgt_hsp_list)
 
+    print('Generating perturbated target HSP matrix... ')
+
     pbt_mat = np.random.randn(rep_ptb_time, 4) * (var, var, var, 0)
 
     mat_d_bf_t = pbt_mat + tgt_hsp_with_1
@@ -137,8 +139,8 @@ def solv_c_from_s_d(mat_s_arr, mat_d_arr):
     """
     mat_c_arr = solv_pinv_s(mat_s_arr) @ mat_d_arr
 
-    print('mat_c_arr: ')
-    print(mat_c_arr)
+    # print('mat_c_arr: ')
+    # print(mat_c_arr)
 
     return mat_c_arr
 
@@ -225,31 +227,31 @@ def renorm_c(c_mean_vec):
     """
     this mat_c has been updated by replacing entries below tol_conc with 0
     """
-    print('toberenormed c_mean_t: ')
-    print(c_mean_vec)
+    # print('toberenormed c_mean_t: ')
+    # print(c_mean_vec)
     
     tot_c = sum(c_mean_vec)[0]
-    print('tot_c: ')
-    print(tot_c)
+    # print('tot_c: ')
+    # print(tot_c)
 
     norm_c_mean_list = []
 
     for c_mean in c_mean_vec:
         
-        print('element in c_mean_vec during update:')
-        print(c_mean)
+        # print('element in c_mean_vec during update:')
+        # print(c_mean)
 
         norm_c_mean = c_mean[0]/tot_c
         norm_c_mean_list.append(norm_c_mean)
     
     
-    print('norm_c_list: ')
-    print(norm_c_mean_list)
+    # print('norm_c_list: ')
+    # print(norm_c_mean_list)
 
     norm_c_mean_vec = np.array([norm_c_mean_list]).transpose()
 
-    print('norm_c_vec: ')
-    print(norm_c_mean_vec)
+    # print('norm_c_vec: ')
+    # print(norm_c_mean_vec)
 
 
     return norm_c_mean_vec
@@ -291,17 +293,17 @@ def calc_vld_all_c(cand_cas_list, db_list, n, tgt_hsp_list, tol_err_list, tol_co
 
         mat_c = solv_c_from_s_d(mat_s, mat_d)
 
-        print('mat_c: ')
-        print(mat_c)
-
-        print('mat_d: ')
-        print(mat_d)
-        # mat_c = np.array(solv_c_from_s_d(mat_s, mat_d)).transpose()
+        # print('mat_c: ')
         # print(mat_c)
+
+        # print('mat_d: ')
+        # print(mat_d)
+        # # mat_c = np.array(solv_c_from_s_d(mat_s, mat_d)).transpose()
+        # # print(mat_c)
         c_mean_t, c_std_t, c_tot = solv_avg_std_sum_c(mat_c)
         
-        print('c_mean_t: ')
-        print(c_mean_t)
+        # print('c_mean_t: ')
+        # print(c_mean_t)
 
         c_stable_chk = sp_vld_chk.is_c_stable(c_std_t, tol_rep_std = 0.1)
         c_vld_chk = sp_vld_chk.is_c_vld(c_mean_t)
@@ -331,18 +333,18 @@ def calc_vld_all_c(cand_cas_list, db_list, n, tgt_hsp_list, tol_err_list, tol_co
 
             # print('mat_s: ')
             # print(mat_s)
-            print('norm_conc_updt_c: ')
-            print(norm_conc_updt_c)
+            # print('norm_conc_updt_c: ')
+            # print(norm_conc_updt_c)
             # print('tgt_hsp_with_1_arr: ')
             # print(tgt_hsp_with_1_arr)
             
             norm_e = mat_s @ norm_conc_updt_c - tgt_hsp_with_1_arr
 
-            print('norm_e: ')
-            print(norm_e)
+            # print('norm_e: ')
+            # print(norm_e)
 
-            print('tol_err_list: ')
-            print(tol_err_list)
+            # print('tol_err_list: ')
+            # print(tol_err_list)
 
             e_hsp_check = sp_vld_chk.is_err_mat_accptbl(norm_e, tol_err_list)
 
@@ -354,33 +356,10 @@ def calc_vld_all_c(cand_cas_list, db_list, n, tgt_hsp_list, tol_err_list, tol_co
                 cal_result = [cas_comb, norm_conc_updt_c, norm_e]
                 calc_log_list.append([i, cal_result, True])
     
+    print('calculation log: ')
     print(calc_log_list)
+    
     return calc_log_list
-
-
-
-
-
-
-
-
-            
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    pass
-
     
 
     

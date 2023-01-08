@@ -1,5 +1,7 @@
 import os
 import json
+from datetime import datetime
+from datetime import date
 
 import solv_pred_valid_check as sp_vld_chk
 import solv_pred_reg_txt as sp_rtxt
@@ -93,3 +95,30 @@ def db_init(db_js):
         full_db_info_list.append(db_key_list)
     
     return full_db_info_list
+
+
+def version_info():
+    """
+    print version info at the beginning of the program
+    """
+
+    date_time = get_datetime()
+    version_info = 'SolvPredictor v 2.0 \n License: GPL-3.0 \n'
+    print(version_info)
+
+    return version_info, date_time
+
+
+def get_datetime():
+    """
+    Get current date and time
+    """
+    today = date.today()
+    now = datetime.now()
+    current_time = now.strftime("%H:%M:%S")
+    
+    print(today + '  ' + current_time)
+    
+    date_time = [today, now]
+
+    return date_time

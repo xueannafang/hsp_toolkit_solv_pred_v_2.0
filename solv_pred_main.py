@@ -16,6 +16,7 @@ def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_sol
     """
     Load database and default candidate list.
     """
+    ver_info, dt_time = sp_io.version_info() # record current version info and time info for running the test.
 
     print('Loading database and default candidate list...')
     
