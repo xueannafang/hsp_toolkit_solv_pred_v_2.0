@@ -350,10 +350,10 @@ def is_conc_above_tol(c_mean_vec, tol_conc):
     save all the validity of each candidate with its idx in c_mean_vec
     """
     
-    print('conc_fil: ')
-    print(c_mean_vec)
-    print('tol_conc: ')
-    print(tol_conc)
+    # print('conc_fil: ')
+    # print(c_mean_vec)
+    # print('tol_conc: ')
+    # print(tol_conc)
 
     conc_tol_check_log = []
 
@@ -366,12 +366,29 @@ def is_conc_above_tol(c_mean_vec, tol_conc):
         else:
             conc_tol_check_log.append([solv_idx, True])
     
-    print('c_mean[0]: ')
-    print(c_mean[0])
-    print('conc_tol_chk_log: ')
-    print(conc_tol_check_log)
+    # print('c_mean[0]: ')
+    # print(c_mean[0])
+    # print('conc_tol_chk_log: ')
+    # print(conc_tol_check_log)
+
     return conc_tol_check_log
+
+
+def is_vld_comb_exist(vld_comb_n):
+    """
+    check if there is any vld results
+    """
+    is_vld_comb_exist == True
+
+    if vld_comb_n == 0:
+        print('Warning: No valid results. \n \nYou may need to: \n - Edit candidates \n - Increase tolerance of error \n - Modify target')
+        is_vld_comb_exist == False
+    
+    return is_vld_comb_exist
         
+
+
+
 
 
     

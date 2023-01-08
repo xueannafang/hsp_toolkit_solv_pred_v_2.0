@@ -131,7 +131,7 @@ def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_sol
     #sp_clc.mtrx_s_bf_comb(cand_cas_for_calc_list, temp_updt_db)
     # sp_clc.itrt_cand(cand_cas_for_calc_list, temp_updt_db, n)
 
-    sp_clc.calc_vld_all_c(cand_cas_for_calc_list, temp_updt_db, n, target_hsp_list, tol_err_list, tol_conc)
+    ctn_idx, calc_log = sp_clc.calc_vld_all_c(cand_cas_for_calc_list, temp_updt_db, n, target_hsp_list, tol_err_list, tol_conc)
 
 
     

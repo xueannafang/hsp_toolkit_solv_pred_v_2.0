@@ -3,6 +3,7 @@ from scipy.linalg import pinv
 import itertools
 import solv_pred_fetch_info as sp_ftch_info
 import solv_pred_valid_check as sp_vld_chk
+import solv_pred_io as sp_io
 
 def mtrx_s_bf_comb(cand_cas_list, db_list):
     """
@@ -283,6 +284,8 @@ def calc_vld_all_c(cand_cas_list, db_list, n, tgt_hsp_list, tol_err_list, tol_co
 
     calc_log_list = []
 
+    vld_comb_number = 0
+
     for i in range(0, len(all_mat_s_t)):
 
         mat_s = np.array(all_mat_s_t[i]).transpose()
@@ -318,7 +321,8 @@ def calc_vld_all_c(cand_cas_list, db_list, n, tgt_hsp_list, tol_err_list, tol_co
 
         if False in rough_c_e_chk_list:
             err_msg = 'UnstableResult'
-            calc_log_list.append([i, err_msg, False])
+            cal_result = [cas_comb, [c_mean_t, c_std_t], [e_mean_t, e_std_t]]
+            calc_log_list.append([i, cal_result, err_msg, False])
         
         else:
             norm_c = renorm_c(c_mean_t)
@@ -350,16 +354,36 @@ def calc_vld_all_c(cand_cas_list, db_list, n, tgt_hsp_list, tol_err_list, tol_co
 
             if e_hsp_check == False:
                 err_msg = 'ErrorTooLarge'
-                calc_log_list.append([i, err_msg, False]) 
+                cal_result = [cas_comb, norm_conc_updt_c, norm_e]
+                calc_log_list.append([i, cal_result, err_msg, False]) 
+                vld_comb_number += 0
                
             else:
                 cal_result = [cas_comb, norm_conc_updt_c, norm_e]
-                calc_log_list.append([i, cal_result, True])
+                vld_msg = 'Valid'
+                calc_log_list.append([i, cal_result, vld_msg, True])
+                vld_comb_number += 1
     
-    print('calculation log: ')
-    print(calc_log_list)
     
-    return calc_log_list
+    vld_comb_chk = sp_vld_chk.is_vld_comb_exist(vld_comb_number) # check if the vld comb is not empty
+
+    if vld_comb_chk == False:
+
+        continue_idx = 0
+    
+    else:
+
+        continue_idx = 1
+    # print('calculation log: ')
+    # print(calc_log_list)
+    # sp_io.calc_log_list2json(calc_log_list)
+
+    sp_io.calc_log_list2js(calc_log_list)
+    
+
+    return continue_idx, calc_log_list
+
+
     
 
     

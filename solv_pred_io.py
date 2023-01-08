@@ -2,10 +2,13 @@ import os
 import json
 from datetime import datetime
 from datetime import date
+import numpy as np
 
 import solv_pred_valid_check as sp_vld_chk
 import solv_pred_reg_txt as sp_rtxt
 
+today = date.today()
+now = datetime.now()
 
 def load_js(js_file):
     """
@@ -113,12 +116,96 @@ def get_datetime():
     """
     Get current date and time
     """
-    today = date.today()
-    now = datetime.now()
+    
     current_time = now.strftime("%H:%M:%S")
     
-    print(today + '  ' + current_time)
+    print(str(today) + '  ' + str(current_time))
     
     date_time = [today, now]
 
     return date_time
+
+def get_datetime_filename():
+    """
+    generate unique filename based on time and date
+    """
+
+    time_date = str(today.strftime("%DD%MM%YY")) + '_' + str(now.strftime("%H%M%S"))
+
+    return time_date
+
+
+def list2txt(list_to_convert, txt_name):
+    current_path = os.getcwd()
+    os.mkdir('log')
+    full_txt_path = current_path + "\\log\\" + str(txt_name) + '.txt'
+
+    with open(str(full_txt_path), "w") as op_txt:
+        op_txt.write(str(list_to_convert))
+
+def calc_log_list2txt(calc_log_list):
+
+    txt_fname = 'calc_log_test'
+    list2txt(calc_log_list, txt_fname)
+
+
+def calc_log_list2js(calc_log_list):
+    """
+    convert the calc log list to a dictionary
+    ready to be converted to json as output
+    """
+
+    # cal_log_dict = {}
+    calc_log_json_list = []
+
+    js_name = 'calc_log_bsc_chk'
+
+    current_path = os.getcwd()
+
+    if os.path.exists(current_path + '\\log'):
+        pass
+    else:
+        os.mkdir('log')
+
+    full_js_path = current_path + "\\log\\" + str(js_name) + '.json'
+
+    with open(str(full_js_path), "w") as op_js:
+
+        for entry in calc_log_list:
+
+            # cal_log_dict.clear()
+
+            # print('entry: ')
+            # print(entry)
+
+            idx = entry[0] #int
+            cas_comb = entry[1][0] #list
+            conc = np.ndarray.tolist(np.array(entry[1][1]))
+            err = np.ndarray.tolist(np.array(entry[1][2]))
+            quality = entry[2] # string
+            validity = str(entry[-1]) # bool2str
+            
+            data = {
+                'idx' : idx,
+                'cas_comb' : cas_comb,
+                'conc' : conc,
+                'err' : err,
+                'quality' : quality,
+                'validity' : validity
+                }
+            
+            calc_log_json_list.append(data)
+        
+        # print(calc_log_json_list)
+
+        json.dump(calc_log_json_list, op_js)
+
+        # jsonStr = json.dump(calc_log_json_list)
+    
+    # task_name = 'calc_log_bsc_chk'
+    # # time_date_name = get_datetime_filename()
+    # js_name = task_name
+
+    # list2json(calc_log_json_list, js_name)
+    
+    return calc_log_json_list
