@@ -144,10 +144,10 @@ def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_sol
 
     # sp_io.calc_log_list2txt(db_info_dict, '_db_info_dict_')
 
-    sp_io.sucs_result_fmt(vld_result_list, db_info_dict)
+    # sp_io.sucs_result_fmt(vld_result_list, db_info_dict)
 
 
-    
+
 
     if ctn_idx == 0:
 
@@ -161,7 +161,7 @@ def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_sol
         exit()
     
     else:
-        sucs_log_path = sp_io.sucs_calc_log(tgt_temp, n, target_hsp_list, tol_err_list, tol_conc, cand_cas_for_calc_list, final_db_name_filt, calc_log_js_path, calc_log_js_list)
+        sp_io.sucs_calc_log(tgt_temp, n, target_hsp_list, tol_err_list, tol_conc, cand_cas_for_calc_list, final_db_name_filt, calc_log_js_path, vld_result_list, db_info_dict)
     
     """
     Step 4

@@ -265,12 +265,23 @@ def fail_calc_log(target_temp, n, target_hsp, tol_err, tol_conc, cand_cas_list, 
     version, test_time = version_info()
     current_time = now.strftime("%H:%M:%S")
 
+    tgt_d = target_hsp[0]
+    tgt_p = target_hsp[1]
+    tgt_h = target_hsp[2]
+    tol_err_d = tol_err[0]
+    tol_err_p = tol_err[1]
+    tol_err_h = tol_err[2]
+
     to_summarise = {
 
-        'Target HSP (D, P, H)/MPa^(1/2)' : target_hsp,
-        'Temperature/degree c' : target_temp,
-        'n' : n,
-        'Tolerance of error (err_D, err_P, err_H)/MPa^(1/2)' : tol_err,
+        'Target D /MPa^(1/2)' : tgt_d,
+        'Target P /MPa^(1/2)' : tgt_p,
+        'Target H /MPa^(1/2)' : tgt_h,
+        'Temperature /degree c' : target_temp,
+        'Number of candidates in each combination (n)' : n,
+        'Tolerance of error for D /MPa^(1/2)' : tol_err_d,
+        'Tolerance of error for P /MPa^(1/2)' : tol_err_p,
+        'Tolerance of error for H /MPa^(1/2)' : tol_err_h,
         'Lowest concentration limit' : tol_conc,
         'Candidate cas' : cand_cas_list,
         'Candidate solvents' : cand_name_list,
@@ -291,33 +302,8 @@ def fail_calc_log(target_temp, n, target_hsp, tol_err, tol_conc, cand_cas_list, 
             op_txt.write(str(key) + ': ' + '\n' + str(to_summarise[key]) + '\n' + '\n')
 
 
-def sucs_result_fmt(vld_log_list, db_info_dict):
-    """
-    formatting the results of calculation log
-    """
+def sucs_calc_log(target_temp, n, target_hsp, tol_err, tol_conc, cand_cas_list, cand_name_list, calc_log_js_path, vld_log_list, db_info_dict):
 
-    all_fetched_info = []
-
-    for each_comb in vld_log_list:
-
-        cas_comb_list = each_comb['cas_comb']
-
-        to_fetch_key = ['Name']
-
-        fetched_info = sp_ftch_info.fetch_info_from_cas_list(cas_comb_list, to_fetch_key, db_info_dict)
-
-        all_fetched_info.append(fetched_info)
-    
-    calc_log_list2txt(all_fetched_info, '_bf_sucs_log_')
-
-    
-
-        
-        
-
-
-
-def sucs_calc_log(target_temp, n, target_hsp, tol_err, tol_conc, cand_cas_list, cand_name_list, calc_log_js_path, calc_log_js_list):
     """
     output successful calculation results
 
@@ -325,8 +311,129 @@ def sucs_calc_log(target_temp, n, target_hsp, tol_err, tol_conc, cand_cas_list, 
     for multi-solvent comb: iterate through the results and reorganise/reformatting the data.
 
     """
+    current_path = os.getcwd()
+
+    time_name = get_datetime_filename()
+
+    log_dir_name = 'log'
+
+    if os.path.exists(current_path + '\\' + log_dir_name):
+        pass
+    else:
+        os.mkdir(log_dir_name)
     
+    txt_name = 'log_success_' + str(time_name)
+    
+    full_txt_path = current_path + "\\" + log_dir_name + "\\" + txt_name + '.txt'
+
+    version, test_time = version_info()
+    current_time = now.strftime("%H:%M:%S")
+
+    tgt_d = target_hsp[0]
+    tgt_p = target_hsp[1]
+    tgt_h = target_hsp[2]
+    tol_err_d = tol_err[0]
+    tol_err_p = tol_err[1]
+    tol_err_h = tol_err[2]
+
+    to_summarise = {
+
+        'Target D /MPa^(1/2)' : tgt_d,
+        'Target P /MPa^(1/2)' : tgt_p,
+        'Target H /MPa^(1/2)' : tgt_h,
+        'Temperature /degree c' : target_temp,
+        'Number of candidates in each combination (n)' : n,
+        'Tolerance of error for D /MPa^(1/2)' : tol_err_d,
+        'Tolerance of error for P /MPa^(1/2)' : tol_err_p,
+        'Tolerance of error for H /MPa^(1/2)' : tol_err_h,
+        'Lowest concentration limit' : tol_conc,
+        'Candidate cas' : cand_cas_list,
+        'Candidate solvents' : cand_name_list,
+        'Calculation log path' : calc_log_js_path
+    }
+
+    # all_fetched_info = []
+    with open(str(full_txt_path), "w") as op_txt:
+        
+        op_txt.write('===============================' + '\n')
+        op_txt.write(str(version) + '\n')
+        op_txt.write(str(current_time) + '\n' + str(today) + '\n')
+        op_txt.write('===============================' + '\n'+ '\n')
+        
+        for key in to_summarise:
+            op_txt.write(str(key) + ': ' + '\n' + str(to_summarise[key]) + '\n' + '\n')
+        
+        op_txt.write('===============================' + '\n')
+        op_txt.write('results: \n')
+        op_txt.write('===============================' + '\n'+ '\n')
+
+        for g, each_comb in enumerate(vld_log_list):
+
+            op_txt.write('Group ' + str(g + 1) + ' : \n\n')
+
+            cas_comb_list = each_comb['cas_comb']
+
+            to_fetch_key = ['Name']
+
+            fetched_info = sp_ftch_info.fetch_info_from_cas_list(cas_comb_list, to_fetch_key, db_info_dict)
+
+            # all_fetched_info.append(fetched_info)
+
+            n_in_each_comb = len(cas_comb_list)
+
+            for i in range(0, n_in_each_comb):
+
+                op_txt.write('solvent ' + str(i + 1) + ' : ')
+                solvent_name = fetched_info[i]['Name']
+                solvent_cas = fetched_info[i]['CAS']
+                op_txt.write(str(solvent_name) + ' (' + str(solvent_cas) + ') \n')
+                solvent_conc = each_comb['conc'][i][0]
+                op_txt.write('concentration ' + str(i + 1) + " : "+ f"{solvent_conc: .2%}" + ' \n')
+                op_txt.write('\n')
+            
+            calc_hsp = each_comb['calc_hsp']
+            calc_err = each_comb['err']
+            
+            calc_d = calc_hsp[0][0]
+            calc_p = calc_hsp[1][0]
+            calc_h = calc_hsp[2][0]
+
+            err_d = calc_err[0][0]
+            err_p = calc_err[1][0]
+            err_h = calc_err[2][0]
+
+            op_txt.write('calculated D /MPa^(1/2): ' + str(calc_d) + '\n')
+            op_txt.write('calculated P /MPa^(1/2): ' + str(calc_p) + '\n')
+            op_txt.write('calculated H /MPa^(1/2): ' + str(calc_h) + '\n')
+            op_txt.write('error of D /MPa^(1/2): ' + str(err_d) + '\n')
+            op_txt.write('error of P /MPa^(1/2): ' + str(err_p) + '\n')
+            op_txt.write('error of H /MPa^(1/2): ' + str(err_h) + '\n')
+
+            op_txt.write('\n\n********\n')
+
+
+
+            
+
+
+                
+
+
+
+
+
+
+    
+
+    
+
+    
+        
+
+    
+    
+
+    
+
     # need to return the file name of this log
     # return sucs_log_path
-    pass
-
