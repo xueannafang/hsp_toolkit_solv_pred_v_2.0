@@ -140,6 +140,10 @@ def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_sol
 
     # print(ctn_idx)
 
+    db_info_dict = sp_io.db_info_list2dict(temp_updt_db)
+    
+    sp_io.calc_log_list2txt(db_info_dict, '_db_info_dict_')
+
     if ctn_idx == 0:
 
         print('No available results.\n Please check ./log/cal_log_bsc_chk_ddmmyyyySSMMHH.json for full calculation details.\n')

@@ -2,6 +2,7 @@
 
 ## TODO (09/01/2022)
 
+ - sp_ftch_info: fetch_info_from_cas_list
 - sp_io: sucs_calc_log
 - sp_adv_filt: adv_filt
 

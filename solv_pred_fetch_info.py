@@ -48,6 +48,8 @@ def fetch_info_from_cas_list(to_fetch_cas_list, to_fetch, db_info_dict):
     """
     pass
 
+
+
 def fetch_idx_cas_hsp(to_fetch_cas_list, db_info_list):
     """
     fetch current hsp of a given cas no. from the db info list
