@@ -410,6 +410,8 @@ def sucs_calc_log(target_temp, n, target_hsp, tol_err, tol_conc, cand_cas_list, 
             op_txt.write('error of H /MPa^(1/2): ' + str(err_h) + '\n')
 
             op_txt.write('\n\n********\n')
+    
+    return full_txt_path
 
 
 
