@@ -152,7 +152,34 @@ def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_sol
     miscibility check
     bp check
 
+
+    first save a log without optional filtration step.
+
+    let user determine if they want to do final filtration.
+
+    filter all the false results, in the remaining terms
+
+    fetch the original idx
+    
+    - if the temperarture has been modified before:
+    
+    this step will pop up a warning saying these check are based on room temperature. 
+
+    - bp check will highlight some solvent whose bp is below the required temperature.
+
+    - if any value is -1 or None, label it as data unavailbale, manual check required.
+
+    -miscibility check: this version (2.0) is only based on data available on pubchem.
+    
+    -Note that the limitation of miscibility check include
+    
+    1) many solvents do not have experimentally suggested immiscible solvents, or the description is ambiguous, e.g., very poor, poor, etc. Solvents that was mentioned with those "poor" solubility features are all classified as "immscible" at r.t.
+    
+    2) The term "immiscible" itself can be arguable. This property is ideally to be quantified by a continuous solubility variable, but at this stage, this data is very limited.
+
     """
+
+    
 
 
 
@@ -170,9 +197,3 @@ def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_sol
 
 
 solv_pred_main()
-
-
-
-#input_cas()
-#load_db("db_mis.json")
-#generate_candidate_list('default_solv_candidate.json')
