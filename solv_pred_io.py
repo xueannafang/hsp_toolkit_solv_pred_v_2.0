@@ -93,21 +93,6 @@ def db_info_list2dict(db_info_list):
     return db_info_dict
 
 
-
-
-
-        
-    
-    
-
-    
-
-
-
-
-
-
-
 def continue_check():
 
     continue_check_ip = sp_rtxt.rm_spc(input('[y/n]: ').lower())
@@ -306,19 +291,29 @@ def fail_calc_log(target_temp, n, target_hsp, tol_err, tol_conc, cand_cas_list, 
             op_txt.write(str(key) + ': ' + '\n' + str(to_summarise[key]) + '\n' + '\n')
 
 
-def sucs_result_fmt(vld_log_list, db_info_list):
+def sucs_result_fmt(vld_log_list, db_info_dict):
     """
     formatting the results of calculation log
     """
-    pass
 
-    fmt_log_list = []
+    all_fetched_info = []
 
     for each_comb in vld_log_list:
 
-        cas_comb_list = each_comb['cas']
-        name_comb_list = sp_ftch_info.fetch_name_from_cas_list(cas_comb_list, db_info_list)
-        # idx_comb_list = sp_ftch_info. fetch_idx_from_cas_list(cas_comb_list, db_info_list)
+        cas_comb_list = each_comb['cas_comb']
+
+        to_fetch_key = ['Name']
+
+        fetched_info = sp_ftch_info.fetch_info_from_cas_list(cas_comb_list, to_fetch_key, db_info_dict)
+
+        all_fetched_info.append(fetched_info)
+    
+    calc_log_list2txt(all_fetched_info, '_bf_sucs_log_')
+
+    
+
+        
+        
 
 
 

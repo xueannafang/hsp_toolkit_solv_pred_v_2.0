@@ -136,13 +136,18 @@ def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_sol
 
     vld_result_list = sp_clc.sucs_result_filt(calc_log_js_list)
 
-    sp_io.calc_log_list2txt(temp_updt_db, '_temp_updt_db_')
+    # sp_io.calc_log_list2txt(temp_updt_db, '_temp_updt_db_')
 
     # print(ctn_idx)
 
     db_info_dict = sp_io.db_info_list2dict(temp_updt_db)
+
+    # sp_io.calc_log_list2txt(db_info_dict, '_db_info_dict_')
+
+    sp_io.sucs_result_fmt(vld_result_list, db_info_dict)
+
+
     
-    sp_io.calc_log_list2txt(db_info_dict, '_db_info_dict_')
 
     if ctn_idx == 0:
 

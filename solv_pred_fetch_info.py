@@ -8,46 +8,38 @@ def fetch_name(cas, db_json):
             
     return solv_name
 
-def fetch_name_from_cas_list(to_fetch_cas_list, db_info_list):
-    """
-    return the name list of corresponding cas list
-    """
-    all_db_cas = db_info_list[1][1]
-    all_db_name = db_info_list[2][1]
-    
-    fetch_name_list = []
 
-    for cas in to_fetch_cas_list:
-        for i, db_cas in enumerate(all_db_cas):
-            if db_cas == cas:
-                fetch_name_list.append(all_db_name[i])
-    
-    return fetch_name_list
-
-
-def fetch_idx_from_cas_list(to_fetch_cas_list, db_info_list):
-    """
-    return the name list of corresponding cas list
-    """
-    all_db_cas = db_info_list[1][1]
-    all_db_idx = db_info_list[0][1]
-    
-    fetch_idx_list = []
-
-    for cas in to_fetch_cas_list:
-        for i, db_cas in enumerate(all_db_cas):
-            if db_cas == cas:
-                fetch_idx_list.append(all_db_idx[i])
-    
-    return fetch_idx_list
-
-def fetch_info_from_cas_list(to_fetch_cas_list, to_fetch, db_info_dict):
+def fetch_info_from_cas_list(to_fetch_cas_list, to_fetch_key, db_info_dict):
     """
     fetech the required information from the db_info_dict
     to_fetch argument is a list from the following items: ['No.', 'CAS', 'Name', 'D', 'P', 'H', 'Mole_vol', 'ims_idx', 'bp', 'mw', 'viscosity', 'vis_temp', ''heat_of_vap', 'hov_temp', 'SMILES']
     """
-    pass
+    # to_fetch_cas_idx = []
+    all_cas_in_db = db_info_dict['CAS']
 
+    all_key_dict_list = []
+
+    for cas in to_fetch_cas_list:
+
+        tuple_to_dict_list = []
+
+        for i, db_cas in enumerate(all_cas_in_db):
+
+            if db_cas == cas:
+                
+                tuple_to_dict_list.append(tuple(['CAS', db_info_dict['CAS'][i]]))
+
+                for key in to_fetch_key:
+                    
+                    tuple_each_key = tuple([key, db_info_dict[key][i]])
+
+                    tuple_to_dict_list.append(tuple_each_key)
+
+                key_dict = dict(tuple_to_dict_list)
+        
+        all_key_dict_list.append(key_dict)
+    
+    return all_key_dict_list
 
 
 def fetch_idx_cas_hsp(to_fetch_cas_list, db_info_list):
