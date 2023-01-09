@@ -387,7 +387,31 @@ def calc_vld_all_c(cand_cas_list, db_list, n, tgt_hsp_list, tol_err_list, tol_co
     sp_io.calc_log_list2txt(calc_log_list)
     
 
-    return continue_idx, calc_log_list, full_calc_log_js_path
+    return continue_idx, calc_log_js_list, full_calc_log_js_path
+
+
+def sucs_result_filt(calc_log_js_list):
+    """
+    remove invalid results
+    """
+    vld_log_list = []
+
+    # print(calc_log_js_list)
+
+    for each_comb in calc_log_js_list:
+        # print(each_comb)
+        # print(each_comb['validity'])
+
+        if each_comb['validity'] == 'True':
+
+            vld_log_list.append(each_comb)
+        
+    # print(invld_idx_list)
+    
+    print(vld_log_list)
+
+
+
 
 
     

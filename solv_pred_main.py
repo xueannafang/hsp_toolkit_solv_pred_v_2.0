@@ -132,7 +132,9 @@ def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_sol
     #sp_clc.mtrx_s_bf_comb(cand_cas_for_calc_list, temp_updt_db)
     # sp_clc.itrt_cand(cand_cas_for_calc_list, temp_updt_db, n)
 
-    ctn_idx, calc_log, calc_log_js_path = sp_clc.calc_vld_all_c(cand_cas_for_calc_list, temp_updt_db, n, target_hsp_list, tol_err_list, tol_conc)
+    ctn_idx, calc_log_js_list, calc_log_js_path = sp_clc.calc_vld_all_c(cand_cas_for_calc_list, temp_updt_db, n, target_hsp_list, tol_err_list, tol_conc)
+
+    sp_clc.sucs_result_filt(calc_log_js_list)
 
     # print(ctn_idx)
 
@@ -148,7 +150,7 @@ def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_sol
         exit()
     
     else:
-        sp_io.sucs_calc_log(tgt_temp, n, target_hsp_list, tol_err_list, tol_conc, cand_cas_for_calc_list, final_db_name_filt, calc_log_js_path)
+        sucs_log_path = sp_io.sucs_calc_log(tgt_temp, n, target_hsp_list, tol_err_list, tol_conc, cand_cas_for_calc_list, final_db_name_filt, calc_log_js_path, calc_log_js_list)
     
     """
     Step 4
@@ -198,7 +200,7 @@ def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_sol
         """
         user does not want to do the filtration.
         """
-        print('Please check ' + ' for calculation log.')
+        print('Please check ' + sucs_log_path + ' for calculation log.')
         # file name and path of the sucs log
         exit()
     

@@ -152,6 +152,9 @@ def list2txt(list_to_convert, txt_name):
         op_txt.write(str(list_to_convert))
 
 def calc_log_list2txt(calc_log_list):
+    """
+    save the temporary calculation log
+    """
 
     time_name = get_datetime_filename()
     txt_fname = 'calc_log_test_' + time_name
@@ -212,14 +215,6 @@ def calc_log_list2js(calc_log_list):
         # print(calc_log_json_list)
 
         json.dump(calc_log_json_list, op_js)
-
-        # jsonStr = json.dump(calc_log_json_list)
-    
-    # task_name = 'calc_log_bsc_chk'
-    # # time_date_name = get_datetime_filename()
-    # js_name = task_name
-
-    # list2json(calc_log_json_list, js_name)
     
     return full_js_path, calc_log_json_list
 
@@ -273,7 +268,14 @@ def fail_calc_log(target_temp, n, target_hsp, tol_err, tol_conc, cand_cas_list, 
         
 
 
-def sucs_calc_log(target_temp, n, target_hsp, tol_err, tol_conc, cand_cas_list, cand_name_list, calc_log_js_path):
+def sucs_result_fmt(calc_log_js_list):
+    """
+    formatting the results of calculation log
+    """
+    pass
+
+
+def sucs_calc_log(target_temp, n, target_hsp, tol_err, tol_conc, cand_cas_list, cand_name_list, calc_log_js_path, calc_log_js_list):
     """
     output successful calculation results
 
@@ -283,4 +285,6 @@ def sucs_calc_log(target_temp, n, target_hsp, tol_err, tol_conc, cand_cas_list, 
     """
     
     # need to return the file name of this log
+    # return sucs_log_path
     pass
+
