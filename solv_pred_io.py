@@ -6,6 +6,7 @@ import numpy as np
 
 import solv_pred_valid_check as sp_vld_chk
 import solv_pred_reg_txt as sp_rtxt
+import solv_pred_fetch_info as sp_ftch_info
 
 today = date.today()
 now = datetime.now()
@@ -67,6 +68,44 @@ def input_cas():
     
     #print(usr_cas_list)
     return usr_cas_list
+
+
+def db_info_list2dict(db_info_list):
+    """
+    convert the operated db_info_list back to dict
+    """
+    # all_property_name = []
+    # all_property_all_data = []
+    all_tuple_to_dict_list = []
+
+    for property in db_info_list:
+        
+        property_name = property[0]
+        property_all_data = property[1]
+        # all_property_name.append(property_name)
+        # all_property_all_data.append(property_all_data)
+
+        tuple_to_dict = tuple([property_name, property_all_data])
+        all_tuple_to_dict_list.append(tuple_to_dict)
+    
+    db_info_dict = dict(all_tuple_to_dict_list)
+
+    return db_info_dict
+
+
+
+
+
+        
+    
+    
+
+    
+
+
+
+
+
 
 
 def continue_check():
@@ -151,13 +190,13 @@ def list2txt(list_to_convert, txt_name):
     with open(str(full_txt_path), "w") as op_txt:
         op_txt.write(str(list_to_convert))
 
-def calc_log_list2txt(calc_log_list):
+def calc_log_list2txt(calc_log_list, log_type):
     """
     save the temporary calculation log
     """
 
     time_name = get_datetime_filename()
-    txt_fname = 'calc_log_test_' + time_name
+    txt_fname = 'calc_log' + str(log_type) + time_name
     list2txt(calc_log_list, txt_fname)
 
 
@@ -265,14 +304,22 @@ def fail_calc_log(target_temp, n, target_hsp, tol_err, tol_conc, cand_cas_list, 
         
         for key in to_summarise:
             op_txt.write(str(key) + ': ' + '\n' + str(to_summarise[key]) + '\n' + '\n')
-        
 
 
-def sucs_result_fmt(calc_log_js_list):
+def sucs_result_fmt(vld_log_list, db_info_list):
     """
     formatting the results of calculation log
     """
     pass
+
+    fmt_log_list = []
+
+    for each_comb in vld_log_list:
+
+        cas_comb_list = each_comb['cas']
+        name_comb_list = sp_ftch_info.fetch_name_from_cas_list(cas_comb_list, db_info_list)
+        # idx_comb_list = sp_ftch_info. fetch_idx_from_cas_list(cas_comb_list, db_info_list)
+
 
 
 def sucs_calc_log(target_temp, n, target_hsp, tol_err, tol_conc, cand_cas_list, cand_name_list, calc_log_js_path, calc_log_js_list):

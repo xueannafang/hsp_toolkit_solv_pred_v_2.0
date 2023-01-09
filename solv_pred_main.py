@@ -134,7 +134,9 @@ def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_sol
 
     ctn_idx, calc_log_js_list, calc_log_js_path = sp_clc.calc_vld_all_c(cand_cas_for_calc_list, temp_updt_db, n, target_hsp_list, tol_err_list, tol_conc)
 
-    sp_clc.sucs_result_filt(calc_log_js_list)
+    vld_result_list = sp_clc.sucs_result_filt(calc_log_js_list)
+
+    sp_io.calc_log_list2txt(temp_updt_db, '_temp_updt_db_')
 
     # print(ctn_idx)
 

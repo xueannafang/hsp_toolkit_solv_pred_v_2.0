@@ -384,7 +384,7 @@ def calc_vld_all_c(cand_cas_list, db_list, n, tgt_hsp_list, tol_err_list, tol_co
 
     full_calc_log_js_path, calc_log_js_list = sp_io.calc_log_list2js(calc_log_list)
 
-    sp_io.calc_log_list2txt(calc_log_list)
+    sp_io.calc_log_list2txt(calc_log_list, '_all_')
     
 
     return continue_idx, calc_log_js_list, full_calc_log_js_path
@@ -406,9 +406,10 @@ def sucs_result_filt(calc_log_js_list):
 
             vld_log_list.append(each_comb)
         
-    # print(invld_idx_list)
-    
-    print(vld_log_list)
+    # print(vld_log_list)
+    sp_io.calc_log_list2txt(vld_log_list, '_vld_')
+
+    return vld_log_list
 
 
 
