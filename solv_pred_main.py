@@ -9,6 +9,7 @@ import solv_pred_valid_check as sp_vld_chk
 import solv_pred_fetch_info as sp_ftch_info
 import solv_pred_prmtr as sp_prmtr
 import solv_pred_calc as sp_clc
+import solv_pred_adv_filt as sp_adv_filt
 
 
 def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_solv_candidate.json'):
@@ -146,12 +147,17 @@ def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_sol
 
         exit()
     
+    else:
+        sp_io.sucs_calc_log(tgt_temp, n, target_hsp_list, tol_err_list, tol_conc, cand_cas_for_calc_list, final_db_name_filt, calc_log_js_path)
+    
     """
     Step 4
-    optional filtrations
+    
+    advanced filtration
+
+    optional filtrations based on 
     miscibility check
     bp check
-
 
     first save a log without optional filtration step.
 
@@ -177,7 +183,33 @@ def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_sol
     
     2) The term "immiscible" itself can be arguable. This property is ideally to be quantified by a continuous solubility variable, but at this stage, this data is very limited.
 
+    3) Some data do not include test temperature.
+
+
     """
+
+    ctn_idx = 1
+
+    print('=========================\nStep 4: Advanced filtration (optional) \n This step will further include the consideration of solvent properties according to the condition set up. \n In this version, miscibility and boiling point will be evaluated. \n Data are based on PubChem. \n Please note, there could be some limitation of this function due to data availability. Check README for more discussion. \n')
+
+    ctn_idx = sp_adv_filt.ctn_adv_filt()
+
+    if ctn_idx == 0:
+        """
+        user does not want to do the filtration.
+        """
+        print('Please check ' + ' for calculation log.')
+        # file name and path of the sucs log
+        exit()
+    
+    else:
+        pass
+
+        
+
+
+
+    
 
     
 

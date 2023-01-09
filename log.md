@@ -1,5 +1,11 @@
 # Solvent Predictor v2.0
 
+## TODO (09/01/2022)
+
+- sp_io: sucs_calc_log
+- sp_adv_filt: adv_filt
+
+
 
 ## TODO (03/01/2022)
  - check the logic of quit check (finish check - unboundlocalerror: to_continue_finish referenced before assignment.

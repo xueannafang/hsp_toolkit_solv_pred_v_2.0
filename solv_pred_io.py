@@ -273,4 +273,14 @@ def fail_calc_log(target_temp, n, target_hsp, tol_err, tol_conc, cand_cas_list, 
         
 
 
+def sucs_calc_log(target_temp, n, target_hsp, tol_err, tol_conc, cand_cas_list, cand_name_list, calc_log_js_path):
+    """
+    output successful calculation results
 
+    save the log for current results by removing all the false data.
+    for multi-solvent comb: iterate through the results and reorganise/reformatting the data.
+
+    """
+    
+    # need to return the file name of this log
+    pass
