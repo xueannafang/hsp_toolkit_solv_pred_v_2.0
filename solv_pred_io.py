@@ -300,6 +300,8 @@ def fail_calc_log(target_temp, n, target_hsp, tol_err, tol_conc, cand_cas_list, 
         
         for key in to_summarise:
             op_txt.write(str(key) + ': ' + '\n' + str(to_summarise[key]) + '\n' + '\n')
+    
+    return full_txt_path
 
 
 def sucs_calc_log(target_temp, n, target_hsp, tol_err, tol_conc, cand_cas_list, cand_name_list, calc_log_js_path, vld_log_list, db_info_dict):

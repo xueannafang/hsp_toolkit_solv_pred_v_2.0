@@ -110,7 +110,7 @@ def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_sol
     print('Parameter selection done.\n')
     #print(all_parameters)
 
-    n = all_parameters[0]
+    n = int(all_parameters[0])
     target_hsp_list = all_parameters[1] # in the order of d, p, h
     tol_err_list = all_parameters[2] # in the order of tol_err_d, tol_err_p, tol_err_h
     tol_conc = all_parameters[3]
@@ -151,10 +151,12 @@ def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_sol
 
     if ctn_idx == 0:
 
-        print('No available results.\n Please check ./log/cal_log_bsc_chk_ddmmyyyySSMMHH.json for full calculation details.\n')
-        print('Please consider to increase the number of candidates or error tolerance.')
+        print('No available results.\n Please check ' + calc_log_js_path + ' for full calculation details.\n')
+        print('Please consider to increase the number of candidates or error tolerance.\n ')
 
-        sp_io.fail_calc_log(tgt_temp, n, target_hsp_list, tol_err_list, tol_conc, cand_cas_for_calc_list, final_db_name_filt, calc_log_js_path)
+        fail_log_txt_path = sp_io.fail_calc_log(tgt_temp, n, target_hsp_list, tol_err_list, tol_conc, cand_cas_for_calc_list, final_db_name_filt, calc_log_js_path)
+
+        print('Please check ' + fail_log_txt_path + ' for calculation log. \n')
 
         # add one more final log summarising other calculation details
 
@@ -207,7 +209,7 @@ def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_sol
 
     ctn_idx = sp_adv_filt.ctn_adv_filt()
 
-    adv_filt_opt_list = ['miscibility', 'bp']
+    adv_filt_opt_list = ['idx', 'solvent', 'miscibility', 'bp']
 
     if ctn_idx == 0:
         """

@@ -56,18 +56,25 @@ def adv_filt(vld_log_list, filt_opt, db_info_dict, target_temp):
     """
     db_opt_list = gen_filt_opt(filt_opt)
 
-    chk_name_list = []
+    # chk_name_list = []
 
-    for db_opt in db_opt_list:
-        chk_name = str(db_opt) + '_chk'
-        chk_name_list.append(chk_name)
+    # for db_opt in db_opt_list:
+    #     chk_name = str(db_opt) + '_chk'
+    #     chk_name_list.append(chk_name)
     
     # chk_name_list = ['ims_idx_chk', 'bp_chk']
 
     expand_info_list = sucs_result_expand(vld_log_list, db_info_dict, db_opt_list)
 
-    # sp_io.calc_log_list2txt(expand_info_list, '_exp_info_')
+    sp_io.calc_log_list2txt(expand_info_list, '_exp_info_')
 
+    # for comb_dict_list in expand_info_list:
+    #     pass
+
+
+    
+
+    pass
 
 
 

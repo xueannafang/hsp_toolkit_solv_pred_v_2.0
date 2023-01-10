@@ -115,7 +115,7 @@ def specify_cand_parameter():
             parameter_valid_check_list = [usr_n_valid, usr_tol_err_d_valid, usr_tol_err_p_valid, usr_tol_err_h_valid, usr_tol_conc_valid]
             
             if False not in parameter_valid_check_list:  # all
-                usr_cand_parameter_list = [usr_n, usr_tol_err_d, usr_tol_err_p, usr_tol_err_h, usr_tol_conc]
+                usr_cand_parameter_list = [int(usr_n), float(usr_tol_err_d), float(usr_tol_err_p), float(usr_tol_err_h), float(usr_tol_conc)]
                 print('n, tol_err, tol_conc have been specified as: ')
                 print(usr_cand_parameter_list)
                 print('Continue?')
@@ -137,6 +137,7 @@ def specify_n():
             print(usr_n)
             print('Continue?')
             to_continue_spf_n = sp_vld_chk.finish_check()
+            usr_n = int(usr_n)
     
     return usr_n
 
