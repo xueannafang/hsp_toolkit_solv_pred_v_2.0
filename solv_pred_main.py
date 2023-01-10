@@ -207,6 +207,8 @@ def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_sol
 
     ctn_idx = sp_adv_filt.ctn_adv_filt()
 
+    adv_filt_opt_list = ['miscibility', 'bp']
+
     if ctn_idx == 0:
         """
         user does not want to do the filtration.
@@ -216,25 +218,7 @@ def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_sol
         exit()
     
     else:
-        pass
-
-        
-
-
-
-    
-
-    
-
-
-
-
-
-
-
-
-
-
+        sp_adv_filt.adv_filt(vld_result_list, adv_filt_opt_list, db_info_dict, tgt_temp)
 
 
 
