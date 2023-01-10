@@ -220,7 +220,9 @@ def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_sol
         exit()
     
     else:
-        sp_adv_filt.adv_filt(vld_result_list, adv_filt_opt_list, db_info_dict, tgt_temp)
+        adv_filt_list = sp_adv_filt.adv_filt(vld_result_list, adv_filt_opt_list, db_info_dict, tgt_temp)
+
+        
 
 
 

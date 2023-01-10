@@ -174,6 +174,8 @@ def list2txt(list_to_convert, txt_name):
 
     with open(str(full_txt_path), "w") as op_txt:
         op_txt.write(str(list_to_convert))
+    
+    return full_txt_path
 
 def calc_log_list2txt(calc_log_list, log_type):
     """
@@ -182,7 +184,10 @@ def calc_log_list2txt(calc_log_list, log_type):
 
     time_name = get_datetime_filename()
     txt_fname = 'calc_log' + str(log_type) + time_name
-    list2txt(calc_log_list, txt_fname)
+    
+    txt_path = list2txt(calc_log_list, txt_fname)
+    
+    return txt_path
 
 
 def calc_log_list2js(calc_log_list):
@@ -366,7 +371,7 @@ def sucs_calc_log(target_temp, n, target_hsp, tol_err, tol_conc, cand_cas_list, 
             op_txt.write(str(key) + ': ' + '\n' + str(to_summarise[key]) + '\n' + '\n')
         
         op_txt.write('===============================' + '\n')
-        op_txt.write('results: \n')
+        op_txt.write('Results: \n')
         op_txt.write('===============================' + '\n'+ '\n')
 
         for g, each_comb in enumerate(vld_log_list):

@@ -387,6 +387,113 @@ def is_vld_comb_exist(vld_comb_n):
     return is_vld_comb_exist
         
 
+def bp_chk(vld_comb_list, tgt_temp):
+    """
+    check if the bp of any predicted solvent is below the set temperature
+
+    add bp_quality, bp_validity as new keys
+    """
+    for each_solv_dict in vld_comb_list:
+
+        bp = each_solv_dict['bp']
+        if bp in [None, -1]:
+            each_solv_dict['bp_chk_msg'] = 'NA'
+            each_solv_dict['bp_validity'] = 'NA'
+        else:
+            if bp < tgt_temp:
+                each_solv_dict['bp_chk_msg'] = 'Below set temp'
+                each_solv_dict['bp_validity'] = False
+            else:
+                each_solv_dict['bp_chk_msg'] = 'Above or equal to set temp'
+                each_solv_dict['bp_validity'] = True
+    
+    bp_chk_vld_list = vld_comb_list
+
+    return bp_chk_vld_list
+
+
+def ims_chk(vld_comb_list):
+    """
+    check if any solvent is immiscible with others in the group
+
+    note that in this version, immiscibility is only based on data available on PubChem
+
+    Some data did not specific measured temperature, so this result is just for a reference
+    """
+    idx_list = []
+    ims_idx_list = []
+
+    for each_solv_dict in vld_comb_list:
+
+        if each_solv_dict['ims_idx'] == None:
+
+            each_solv_dict['ims_chk_msg'] = 'No recorded miscibility issue or no solubility record. Manual check is recommended.'
+            each_solv_dict['ims_solvent_in_comb'] = None
+            each_solv_dict['ims_validity'] = 'NA'
+
+        else:
+            idx_list.append(each_solv_dict['No.'])
+            ims_idx_reg_list = sp_rtxt.separate_multi_entry(each_solv_dict['ims_idx'], ';')
+            ims_idx_list.append(ims_idx_reg_list)
+    
+    all_ims_comb_list = []
+
+    for i, idx in enumerate(idx_list):
+        for j, ims_idx in enumerate(ims_idx_list):
+            if i == j:
+                pass
+            elif i != j:
+                if idx in ims_idx_list[j]:
+                    all_ims_comb_list.append([idx, ims_idx])
+    
+   
+    for each_solv_dict in vld_comb_list:
+
+        if 'ims_validity' in each_solv_dict.keys():
+            pass
+
+        else:
+
+            if len(all_ims_comb_list) == 0:
+
+                each_solv_dict['ims_chk_msg'] = 'No recorded miscibility issue. Manual check is recommended if temperature has been varied.'
+                each_solv_dict['ims_solvent_in_comb'] = None
+                each_solv_dict['ims_validity'] = True
+
+            else:
+
+                ims_solv_in_comb_list = []
+
+                for k, ims_comb in enumerate(all_ims_comb_list):
+
+                    if each_solv_dict['idx'] == ims_comb[0]:
+
+                        ims_solv_in_comb_list.append(ims_comb[1])
+                        
+                        each_solv_dict['ims_chk_msg'] = 'May cause immiscible issue.'
+                        each_solv_dict['ims_solvent_in_comb'] = ims_solv_in_comb_list
+                        each_solv_dict['ims_validity'] = False
+
+    
+    ims_chk_vld_list = vld_comb_list
+
+    return ims_chk_vld_list
+
+
+
+
+
+        
+
+        
+    
+                    
+
+
+
+
+
+
 
 
 

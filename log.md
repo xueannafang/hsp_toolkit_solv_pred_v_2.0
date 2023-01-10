@@ -1,5 +1,13 @@
 # Solvent Predictor v2.0
 
+## TODO (10/01/2022)
+
+- log of adv
+- extract information from vld_log_list using ori_idx, think about the form - expand it to a new list
+- write a basic info dict in the main func
+
+
+
 ## TODO (09/01/2022)
 
  - sp_ftch_info: fetch_info_from_cas_list
