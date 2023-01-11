@@ -9,6 +9,8 @@
 ## future version:
 
         future version: check if the usr want to extract further info like solvent structure or viscosity, the final log and json can include further info fetched from db
+        consider the similarity of solvents and reactants directly based on SMILES structure (any optimisation required?)
+        consider group contribution
 
 ## TODO (10/01/2022)
 
