@@ -1,5 +1,11 @@
 # Solvent Predictor v2.0
 
+## TODO (11/01/2022)
+
+ - test the manual function
+ - generate v2.1 using input file rather than ui
+ - readme for 2.0
+
 ## future version:
 
         future version: check if the usr want to extract further info like solvent structure or viscosity, the final log and json can include further info fetched from db
