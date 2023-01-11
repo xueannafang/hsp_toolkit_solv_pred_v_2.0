@@ -119,12 +119,79 @@ def adv_filt(vld_log_list, filt_opt, db_info_dict, target_temp):
 
         adv_filt_log_txt_path = sp_io.calc_log_list2txt(vld_solv_comb_adv_list, '_adv_filt_')
         # sp_io.calc_log_list2js(updt_filt_list, '_adv_')
-        # print('Please check ' + str(adv_filt_log_txt_path) + ' for full advanced calculation information.\n')
 
-        # expand and export final log - need to visit back to the vld_log_list to extract the basic info
+        adv_filt_exp_list, adv_filt_exp_txt_path = adv_filt_expand(vld_log_list, vld_solv_comb_adv_list) # expand and export final log - need to visit back to the vld_log_list to extract the basic info
+
+
+        # print('Please check ' + str(final_adv_filt_log_txt_path) + ' for full advanced calculation information.\n')
 
     return adv_filt_log_txt_path
+
+
+def adv_filt_expand(vld_log_list, vld_solv_comb_adv_list):
+    """
+    from the adv_filtered list, using ori_idx to extract conc, err, calc_hsp info from the vld_log_list
+    """
+
+    adv_filt_expand_list = []
+
+    for solv_comb_adv_filt in vld_solv_comb_adv_list:
+
+        updt_solv_comb_list = []
+
+        for i, solv in enumerate(solv_comb_adv_filt):
+
+            updt_solv_dict = solv
+
+            idx_in_all_vld = solv['ori_idx']
+
+            for solv_comb_all_vld in vld_log_list:
+
+                if solv_comb_all_vld['idx'] == idx_in_all_vld:
+
+                    conc_i = solv_comb_all_vld['conc'][i][0]
+
+                    updt_solv_dict['conc'] = conc_i
+
+                    calc_d = solv_comb_all_vld['calc_hsp'][0][0]
+
+                    calc_p = solv_comb_all_vld['calc_hsp'][1][0]
+
+                    calc_h = solv_comb_all_vld['calc_hsp'][2][0]
+
+                    err_d = solv_comb_all_vld['err'][0][0]
+
+                    err_p = solv_comb_all_vld['err'][1][0]
+
+                    err_h = solv_comb_all_vld['err'][2][0]
+
+                    updt_solv_dict['calc_d'] = calc_d
+                    updt_solv_dict['calc_p'] = calc_p
+                    updt_solv_dict['calc_h'] = calc_h
+                    updt_solv_dict['err_d'] = err_d
+                    updt_solv_dict['err_p'] = err_p
+                    updt_solv_dict['err_h'] = err_h
         
+            updt_solv_comb_list.append(updt_solv_dict)
+    
+        adv_filt_expand_list.append(updt_solv_comb_list)
+
+    
+    adv_filt_exp_txt_path = sp_io.calc_log_list2txt(adv_filt_expand_list, '_adv_exp_')
+    
+    return adv_filt_expand_list, adv_filt_exp_txt_path
+    
+
+
+
+
+
+
+                    
+                    
+
+
+
 
 def sucs_result_expand(vld_log_list, db_info_dict, to_fetch_property):
     """
