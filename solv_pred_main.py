@@ -220,12 +220,30 @@ def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_sol
         exit()
     
     else:
-        
+
         basic_input_prmtr_dict = {
-            
-        }
-        
-        adv_filt_list = sp_adv_filt.adv_filt(vld_result_list, adv_filt_opt_list, db_info_dict, tgt_temp)
+
+        'Target D /MPa^(1/2)' : target_hsp_list[0],
+        'Target P /MPa^(1/2)' : target_hsp_list[1],
+        'Target H /MPa^(1/2)' : target_hsp_list[2],
+        'Temperature /degree c' : tgt_temp,
+        'Number of candidates in each combination (n)' : n,
+        'Tolerance of error for D /MPa^(1/2)' : tol_err_list[0],
+        'Tolerance of error for P /MPa^(1/2)' : tol_err_list[1],
+        'Tolerance of error for H /MPa^(1/2)' : tol_err_list[2],
+        'Lowest concentration limit' : tol_conc,
+        'Candidate cas' : cand_cas_for_calc_list,
+        'Candidate solvents' : final_db_name_filt,
+    
+        } # 'Full calculation log path' : calc_log_js_path will not be included in the sucs_adv_filt_log
+
+                    
+        adv_filt_log_path = sp_adv_filt.adv_filt(vld_result_list, adv_filt_opt_list, db_info_dict, tgt_temp, basic_input_prmtr_dict)
+
+
+
+
+        # check if the usr want to extract further info like solvent structure or viscosity, the final log and json can include further info fetched from db
 
 
 

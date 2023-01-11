@@ -45,7 +45,7 @@ def gen_filt_opt(filt_opt):
     return db_dict_readable_filt_opt_list
 
 
-def adv_filt(vld_log_list, filt_opt, db_info_dict, target_temp):
+def adv_filt(vld_log_list, filt_opt, db_info_dict, target_temp, bsc_ip_info_dict):
     """
     filt_opt is a list of solvent properties involved in the database
     in this version (v2.0) filt_opt is miscibility and bp - will be converted to ims_idx list and bp list
@@ -122,8 +122,14 @@ def adv_filt(vld_log_list, filt_opt, db_info_dict, target_temp):
 
         adv_filt_exp_list, adv_filt_exp_txt_path = adv_filt_expand(vld_log_list, vld_solv_comb_adv_list) # expand and export final log - need to visit back to the vld_log_list to extract the basic info
 
+        # convert adv_filt_exp_list to json and save as adv_filt_exp_json
+        adv_js_path, adv_js_list = sp_io.adv_filt_exp_list2json(adv_filt_exp_list)
 
-        # print('Please check ' + str(final_adv_filt_log_txt_path) + ' for full advanced calculation information.\n')
+
+        # save final log (need to include the adv_filt_exp_json)
+        adv_filt_sucs_log_txt_path = sp_io.adv_filt_sucs_log(adv_filt_exp_list, adv_js_path, bsc_ip_info_dict)
+
+        print('Please check: \n' + str(adv_filt_sucs_log_txt_path) + ' for calculation log.')
 
     return adv_filt_log_txt_path
 

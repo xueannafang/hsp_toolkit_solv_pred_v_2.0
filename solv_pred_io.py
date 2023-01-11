@@ -419,3 +419,136 @@ def sucs_calc_log(target_temp, n, target_hsp, tol_err, tol_conc, cand_cas_list, 
             op_txt.write('\n\n********\n')
     
     return full_txt_path
+
+
+def adv_filt_exp_list2json(adv_filt_exp_list):
+    """
+    convert full results after advanced filtration into json
+    """
+    calc_log_json_list = []
+
+    time_name = get_datetime_filename()
+
+    js_name = 'adv_filt_exp_info_' + time_name
+
+    current_path = os.getcwd()
+
+    if os.path.exists(current_path + '\\log'):
+        pass
+    else:
+        os.mkdir('log')
+
+    full_js_path = current_path + "\\log\\" + str(js_name) + '.json'
+
+    with open(str(full_js_path), "w") as op_js:
+
+        for i, solv_comb in enumerate(adv_filt_exp_list):
+
+            data = {
+                'group' : i,
+                'full_detail' : solv_comb
+            }
+            
+            calc_log_json_list.append(data)
+        
+        # print(calc_log_json_list)
+
+        json.dump(calc_log_json_list, op_js)
+    
+    return full_js_path, calc_log_json_list
+
+
+def adv_filt_fail_log():
+    pass
+
+
+def adv_filt_sucs_log(adv_filt_exp_list, adv_js_path, bsc_ip_info_dict):
+    """
+    export the final log after advanced filtration
+    """
+    current_path = os.getcwd()
+
+    time_name = get_datetime_filename()
+
+    log_dir_name = 'log'
+
+    if os.path.exists(current_path + '\\' + log_dir_name):
+        pass
+    else:
+        os.mkdir(log_dir_name)
+    
+    txt_name = 'log_adv_filt_success_' + str(time_name)
+    
+    full_txt_path = current_path + "\\" + log_dir_name + "\\" + txt_name + '.txt'
+
+    version, test_time = version_info()
+    current_time = now.strftime("%H:%M:%S")
+
+    basic_ip_dict = bsc_ip_info_dict
+
+    # all_fetched_info = []
+    with open(str(full_txt_path), "w") as op_txt:
+        
+        op_txt.write('===============================' + '\n')
+        op_txt.write(str(version) + '\n')
+        op_txt.write(str(current_time) + '\n' + str(today) + '\n')
+        op_txt.write('===============================' + '\n'+ '\n')
+        
+        for key in basic_ip_dict:
+            op_txt.write(str(key) + ': ' + '\n' + str(basic_ip_dict[key]) + '\n' + '\n')
+        
+        op_txt.write('Calculation log path: \n' + str(adv_js_path) + '\n' + '\n')
+        
+        op_txt.write('===============================' + '\n')
+        op_txt.write('Results: \n')
+        op_txt.write('===============================' + '\n'+ '\n')
+
+        for g, each_comb in enumerate(adv_filt_exp_list):
+
+            op_txt.write('Group ' + str(g + 1) + ' : \n\n')
+
+            # n_in_each_comb = len(each_comb)
+
+            for i, solv in enumerate(each_comb):
+
+                op_txt.write('solvent ' + str(i + 1) + ' : ')
+                solvent_name = solv['Name']
+                solvent_cas = solv['CAS']
+                op_txt.write(str(solvent_name) + ' (' + str(solvent_cas) + ') \n')
+                solvent_conc = solv['conc']
+                op_txt.write('concentration ' + str(i + 1) + " : "+ f"{solvent_conc: .2%}" + ' \n')
+                op_txt.write('\n')
+
+                bp = solv['bp']
+                op_txt.write('bp /degree C: ' + str(bp) + '\n' + '\n')
+
+                
+                ims_chk_msg = solv['ims_chk_msg']
+                op_txt.write('miscibility check: \n')
+                op_txt.write(str(ims_chk_msg) + '\n' + '\n')
+
+                
+
+
+                if i == len(each_comb) - 1:
+
+                    calc_d = solv['calc_d']
+                    calc_p = solv['calc_p']
+                    calc_h = solv['calc_h']
+                    err_d = solv['err_d']
+                    err_p = solv['err_p']
+                    err_h = solv['err_h']
+
+                    op_txt.write('calculated D /MPa^(1/2): ' + str(calc_d) + '\n')
+                    op_txt.write('calculated P /MPa^(1/2): ' + str(calc_p) + '\n')
+                    op_txt.write('calculated H /MPa^(1/2): ' + str(calc_h) + '\n')
+                    op_txt.write('error of D /MPa^(1/2): ' + str(err_d) + '\n')
+                    op_txt.write('error of P /MPa^(1/2): ' + str(err_p) + '\n')
+                    op_txt.write('error of H /MPa^(1/2): ' + str(err_h) + '\n')
+
+                    op_txt.write('\n\n********\n')
+    
+    return full_txt_path
+
+
+
