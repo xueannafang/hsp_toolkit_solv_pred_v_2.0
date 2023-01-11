@@ -9,6 +9,7 @@ def fetch_name(cas, db_json):
     return solv_name
 
 
+
 def fetch_info_from_cas_list(to_fetch_cas_list, to_fetch_key, db_info_dict):
     """
     fetech the required information from the db_info_dict
@@ -30,7 +31,7 @@ def fetch_info_from_cas_list(to_fetch_cas_list, to_fetch_key, db_info_dict):
                 tuple_to_dict_list.append(tuple(['CAS', db_info_dict['CAS'][i]]))
 
                 for key in to_fetch_key:
-                    
+
                     tuple_each_key = tuple([key, db_info_dict[key][i]])
 
                     tuple_to_dict_list.append(tuple_each_key)

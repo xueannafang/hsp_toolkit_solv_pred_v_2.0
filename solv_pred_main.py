@@ -1,6 +1,3 @@
-#import os
-#import numpy as np
-#import json
 
 import solv_pred_io as sp_io
 import solv_pred_gen_cand as sp_gen_cand
@@ -238,12 +235,11 @@ def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_sol
         } # 'Full calculation log path' : calc_log_js_path will not be included in the sucs_adv_filt_log
 
                     
-        adv_filt_log_path = sp_adv_filt.adv_filt(vld_result_list, adv_filt_opt_list, db_info_dict, tgt_temp, basic_input_prmtr_dict)
+        sp_adv_filt.adv_filt(vld_result_list, adv_filt_opt_list, db_info_dict, tgt_temp, basic_input_prmtr_dict)
 
 
 
 
-        # check if the usr want to extract further info like solvent structure or viscosity, the final log and json can include further info fetched from db
 
 
 

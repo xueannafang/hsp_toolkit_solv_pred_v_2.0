@@ -1,5 +1,9 @@
 # Solvent Predictor v2.0
 
+## future version:
+
+        future version: check if the usr want to extract further info like solvent structure or viscosity, the final log and json can include further info fetched from db
+
 ## TODO (10/01/2022)
 
 - log of adv

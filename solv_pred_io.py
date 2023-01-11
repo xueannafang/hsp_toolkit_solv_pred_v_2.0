@@ -421,7 +421,7 @@ def sucs_calc_log(target_temp, n, target_hsp, tol_err, tol_conc, cand_cas_list, 
     return full_txt_path
 
 
-def adv_filt_exp_list2json(adv_filt_exp_list):
+def adv_filt_exp_list2json(adv_filt_exp_list, js_type):
     """
     convert full results after advanced filtration into json
     """
@@ -429,7 +429,7 @@ def adv_filt_exp_list2json(adv_filt_exp_list):
 
     time_name = get_datetime_filename()
 
-    js_name = 'adv_filt_exp_info_' + time_name
+    js_name = js_type + time_name
 
     current_path = os.getcwd()
 
@@ -458,11 +458,64 @@ def adv_filt_exp_list2json(adv_filt_exp_list):
     return full_js_path, calc_log_json_list
 
 
-def adv_filt_fail_log():
-    pass
+def adv_filt_fail_log(bsc_ip_info_dict, adv_all_js_path, filt_opt):
+    """
+    output log for failed advanced filtration
+    """
+    current_path = os.getcwd()
+
+    time_name = get_datetime_filename()
+
+    log_dir_name = 'log'
+
+    if os.path.exists(current_path + '\\' + log_dir_name):
+        pass
+    else:
+        os.mkdir(log_dir_name)
+    
+    txt_name = 'log_adv_filt_fail_' + str(time_name)
+    
+    full_txt_path = current_path + "\\" + log_dir_name + "\\" + txt_name + '.txt'
+
+    version, test_time = version_info()
+    current_time = now.strftime("%H:%M:%S")
+
+    basic_ip_dict = bsc_ip_info_dict
 
 
-def adv_filt_sucs_log(adv_filt_exp_list, adv_js_path, bsc_ip_info_dict):
+    filt_opt_updt = []
+    
+    for opt in filt_opt:
+
+        if opt not in ['solvent', 'idx']:
+            filt_opt_updt.append(opt)
+
+
+    # all_fetched_info = []
+    with open(str(full_txt_path), "w") as op_txt:
+        
+        op_txt.write('===============================' + '\n')
+        op_txt.write(str(version) + '\n')
+        op_txt.write(str(current_time) + '\n' + str(today) + '\n')
+        op_txt.write('===============================' + '\n'+ '\n')
+        
+        for key in basic_ip_dict:
+            op_txt.write(str(key) + ': ' + '\n' + str(basic_ip_dict[key]) + '\n' + '\n')
+
+        op_txt.write('Advanced filter options: \n' + str(filt_opt_updt)  + '\n' + '\n')
+
+        op_txt.write('Full calculation log before filtration path: \n' + str(adv_all_js_path) + '\n' + '\n')
+        
+        op_txt.write('===============================' + '\n')
+        op_txt.write('Results: \n')
+        op_txt.write('===============================' + '\n'+ '\n')
+
+        op_txt.write('Failed to find any combination matching the requirement.' + '\n'+ '\n')
+
+    return full_txt_path
+
+
+def adv_filt_sucs_log(adv_filt_exp_list, filt_opt, adv_js_path, adv_all_js_path, bsc_ip_info_dict):
     """
     export the final log after advanced filtration
     """
@@ -486,6 +539,15 @@ def adv_filt_sucs_log(adv_filt_exp_list, adv_js_path, bsc_ip_info_dict):
 
     basic_ip_dict = bsc_ip_info_dict
 
+
+    filt_opt_updt = []
+    
+    for opt in filt_opt:
+
+        if opt not in ['solvent', 'idx']:
+            filt_opt_updt.append(opt)
+
+
     # all_fetched_info = []
     with open(str(full_txt_path), "w") as op_txt:
         
@@ -497,7 +559,13 @@ def adv_filt_sucs_log(adv_filt_exp_list, adv_js_path, bsc_ip_info_dict):
         for key in basic_ip_dict:
             op_txt.write(str(key) + ': ' + '\n' + str(basic_ip_dict[key]) + '\n' + '\n')
         
+        
+
+        op_txt.write('Advanced filter options: \n' + str(filt_opt_updt)  + '\n' + '\n')
+        
         op_txt.write('Calculation log path: \n' + str(adv_js_path) + '\n' + '\n')
+
+        op_txt.write('Full calculation log before filtration path: \n' + str(adv_all_js_path) + '\n' + '\n')
         
         op_txt.write('===============================' + '\n')
         op_txt.write('Results: \n')
@@ -526,9 +594,6 @@ def adv_filt_sucs_log(adv_filt_exp_list, adv_js_path, bsc_ip_info_dict):
                 ims_chk_msg = solv['ims_chk_msg']
                 op_txt.write('miscibility check: \n')
                 op_txt.write(str(ims_chk_msg) + '\n' + '\n')
-
-                
-
 
                 if i == len(each_comb) - 1:
 

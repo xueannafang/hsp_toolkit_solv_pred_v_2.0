@@ -90,8 +90,9 @@ def adv_filt(vld_log_list, filt_opt, db_info_dict, target_temp, bsc_ip_info_dict
     
     adv_all_log_txt_path = sp_io.calc_log_list2txt(updt_filt_list, '_adv_all_')
     # sp_io.calc_log_list2js(updt_filt_list, '_adv_')
-    
 
+    adv_all_js_path = sp_io.adv_filt_exp_list2json(updt_filt_list, 'adv_filt_all_')[0]
+    
     
     vld_solv_comb_adv_list = []
     
@@ -112,7 +113,10 @@ def adv_filt(vld_log_list, filt_opt, db_info_dict, target_temp, bsc_ip_info_dict
     if len(vld_solv_comb_adv_list) == 0:
 
         print('No results available')
-        print('Please check ' + str(adv_all_log_txt_path) + ' for full advanced calculation information.\n')
+
+        adv_filt_fail_log_path = sp_io.adv_filt_fail_log(bsc_ip_info_dict, adv_all_js_path, filt_opt)
+
+        print('Please check ' + str(adv_filt_fail_log_path) + ' for full advanced calculation information.\n')
         # run failed adv log
     
     else:
@@ -123,15 +127,17 @@ def adv_filt(vld_log_list, filt_opt, db_info_dict, target_temp, bsc_ip_info_dict
         adv_filt_exp_list, adv_filt_exp_txt_path = adv_filt_expand(vld_log_list, vld_solv_comb_adv_list) # expand and export final log - need to visit back to the vld_log_list to extract the basic info
 
         # convert adv_filt_exp_list to json and save as adv_filt_exp_json
-        adv_js_path, adv_js_list = sp_io.adv_filt_exp_list2json(adv_filt_exp_list)
+        adv_js_path, adv_js_list = sp_io.adv_filt_exp_list2json(adv_filt_exp_list, 'adv_filt_exp_info_')
 
 
-        # save final log (need to include the adv_filt_exp_json)
-        adv_filt_sucs_log_txt_path = sp_io.adv_filt_sucs_log(adv_filt_exp_list, adv_js_path, bsc_ip_info_dict)
+        # include a db_exp_version for adv_filt_exp_list, where all properties involved in this version can be extracted and saved in the output_js
+        # adv_filt_exp_list
+
+        
+        # save final log
+        adv_filt_sucs_log_txt_path = sp_io.adv_filt_sucs_log(adv_filt_exp_list, filt_opt, adv_js_path, adv_all_js_path, bsc_ip_info_dict)
 
         print('Please check: \n' + str(adv_filt_sucs_log_txt_path) + ' for calculation log.')
-
-    return adv_filt_log_txt_path
 
 
 def adv_filt_expand(vld_log_list, vld_solv_comb_adv_list):
