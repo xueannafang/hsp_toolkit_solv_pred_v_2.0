@@ -8,12 +8,11 @@ SolvPred is a solvent selection assisstant aiming at providing multi-solvent sug
 ## What's new in this version?
 
  - Exclusively python/json-based. (A simple user interactive interface has been included. No longer require Microsoft Excel or Jupyter Notebook. Less dependent on operating system.)
- - More physical/chemical properties has been included in the database (molar volume, molecular weight, boiling point, immiscible solvent pairs, molar heat of evaporation, viscosity and related measuring temperatures based on avilable data on PubChem).
+ - More physical/chemical properties have been included in the database (molar volume, molecular weight, boiling point, immiscible solvent pairs, molar heat of evaporation, viscosity and related measuring temperatures based on avilable data on PubChem).
  - Auto check the validity of user input CAS (as well as the existence in database).
  - Auto check the validity of target HSP. Filter impossible missions, i.e., those targets locating outside the region connected by all the solvent candidates in the Hansen space.
  - Allow flexible control of acceptable error in each sub HSP.
  - Allow temperature control and include temperautre-dependent correction of HSP.
- - The format of database and default candidate lists has been updated to json.
  - Advanced filtration step based on miscibility and boiling point has been included.
 
  

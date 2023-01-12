@@ -1,9 +1,10 @@
 import solv_pred_valid_check as sp_vld_chk
 import solv_pred_io as sp_io
 import solv_pred_reg_txt as sp_rtxt
+import json
 
 
-def generate_candidate_list(default_solv_cand_js):
+def generate_candidate_list(default_solv_cand_js: json) -> list:
     """
     Generate solvent candidate list. Ask users to determine whether they want to use default option or manually edit the list.
     """

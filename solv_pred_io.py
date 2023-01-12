@@ -12,10 +12,10 @@ today = date.today()
 now = datetime.now()
 
 def load_js(js_file: str) -> json:
-    """_Return loaded json_
+    """Return loaded json
 
     Args:
-        js_file (str): _json file name under cwd
+        js_file (str): json file name under cwd
     
     Returns:
         json
@@ -112,7 +112,15 @@ def continue_check():
     
     return continue_idx
 
-def get_key(key):
+def get_key(key: str):
+    """Return get(key) function
+
+    Args:
+        key (str): key in dict
+
+    Returns:
+        func: get values of the key
+    """
     return lambda x:x.get(key)
 
 def db_init(db_js: json) -> list:
@@ -122,7 +130,7 @@ def db_init(db_js: json) -> list:
         db_js (json): loaded db
     
     Returns:
-        list: 
+        list: full_db_info_list, a list of sub-list in the format of ['key', [all_values of this key]]
     
     """
     key_in_db_list = ['No.', 'CAS', 'Name', 'D', 'P', 'H', 'Mole_vol', 'ims_idx', 'bp', 'mw', 'viscosity', 'vis_temp', 'heat_of_vap', 'hov_temp', 'SMILES']
@@ -131,18 +139,17 @@ def db_init(db_js: json) -> list:
 
     for key in key_in_db_list:
         db_key_list = [key, list(map(get_key(key), db_js))]
-        full_db_info_list.append(db_key_list)
+        full_db_info_list.append(db_key_list) # collect all the values and save in one list for each key and save in a list in the format of ['key', 'all_values: list']
     
     return full_db_info_list
 
 
 def version_info():
-    """
-    print version info at the beginning of the program
+    """_print version info at the beginning of the program_
     """
 
     date_time = get_datetime()
-    version_info = 'SolvPredictor v 2.0 \n License: GPL-3.0 \n'
+    version_info = 'SolvPredictor v 2.0 \n (License: GPL-3.0) \n'
     print(version_info)
 
     return version_info, date_time

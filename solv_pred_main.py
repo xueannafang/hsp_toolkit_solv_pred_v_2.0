@@ -11,8 +11,9 @@ import solv_pred_prmtr as sp_prmtr
 import solv_pred_calc as sp_clc
 import solv_pred_adv_filt as sp_adv_filt
 
+
 def solv_pred_main(db: str = 'db_solv_pred_v2.json', default_candidate: str = 'default_solv_candidate.json'):
-    """_run all functions of SolvPred_2.0_
+    """run all functions of SolvPred_2.0
     
     Args:
         db (str): _database file name under current working directory_
@@ -22,6 +23,7 @@ def solv_pred_main(db: str = 'db_solv_pred_v2.json', default_candidate: str = 'd
         some logs and jsons... tbc
 
     """
+
     # Step 0: Load database and default candidate list.
 
     sp_io.version_info() # print current version info and time info for running the test.
@@ -31,24 +33,28 @@ def solv_pred_main(db: str = 'db_solv_pred_v2.json', default_candidate: str = 'd
     db_js = sp_io.load_js(db) # load solvent database
     default_solv_candidate_js = sp_io.load_js(default_candidate) # load default solvent candidate list
 
-    db_full_info_list = sp_io.db_init(db_js)
-    db_cas_list = db_full_info_list[1][1]
-    #db_name_list = db_full_info_list[2][1]
-    #print(db_cas_list, db_name_list)
+    db_full_info_list = sp_io.db_init(db_js) # save all the values for each key into a list of list
+
+    # sp_io.calc_log_list2txt(db_full_info_list, '_db_full_info_list')
+
+    db_cas_list = db_full_info_list[1][1] # extract all the cas in db
 
     if db_js and default_solv_candidate_js:
-        print('Database and default solvent candidate list has been loaded. \n Please follow the instruction to continue: ')
+        print('Done. \n')
+        print('Please follow the instruction to continue: ')
     
     
-    # """
+    #
+
     # Step_1: Generate candidate list
 
-    # user can choose to use default candidate list and then remove unwanted solvents or add more (recommended).
+    # In this step, user can choose to use default candidate list and then remove unwanted solvents or add more (recommended).
 
-    # Alternatively, users can create the candidate list by entering the cas no. of desired solvents.
-    # For the [manual] add method, users need to bear in mind that the minimum number of solvents must larger than 2 and there will be more likely to fail the prediction if the region connected by the selected solvents does not cover the target hsp.
+    # Alternatively (less recommended), user can create the candidate list by entering the cas no. of desired solvents.
 
-    # """
+    # For the "manual" method, users need to bear in mind that the minimum number of solvents must larger than 2 and there will be more likely to fail the prediction if the region connected by the selected solvents does not cover the target hsp, though SolvPred v2.0 has included the filteration of this case.
+
+    #
     
     usr_gen_cand_list = sp_gen_cand.generate_candidate_list(default_solv_candidate_js)
 
