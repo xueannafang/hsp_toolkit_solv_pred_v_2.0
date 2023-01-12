@@ -1,8 +1,22 @@
-#key func: fetch required information from the database (json)
+"""
+solv_pred_fetch_info includes functions to extract required information from database
+"""
 
-def fetch_name(cas, db_json):
+import json
+
+def fetch_name(cas: str, db_json: json) -> str:
+    """return solvent name of cas
+
+    Args:
+        cas (str): cas to be fetched
+        db_json (json): database js
+
+    Returns:
+        str: solvent name
+    """
 
     for i, entry in enumerate(db_json):
+        
         if cas == entry['CAS']:
             solv_name = entry['Name']
             

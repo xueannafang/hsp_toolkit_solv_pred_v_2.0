@@ -2,6 +2,7 @@
 
 
 ## TODO (12/01/2022)
+ - docstrings for step 2 onwards
  - PEP8
  - docstrings and comment format
  - auto api

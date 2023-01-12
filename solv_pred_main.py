@@ -73,47 +73,47 @@ def solv_pred_main(db: str = 'db_solv_pred_v2.json', default_candidate: str = 'd
     
     print('Done.')
     
-    edited_cand_list = sp_cand_ed.edit_cand_list(after_db_filt_cand_list) # before submission check and final user edit
+    edited_cand_list = sp_cand_ed.edit_cand_list(after_db_filt_cand_list) # confirm the final usr-edited candidate list before submission 
 
     not_in_db_cas_final = sp_vld_chk.is_cas_in(edited_cand_list, db_cas_list)
 
     final_db_cas_filt = sp_vld_chk.not_in_db_filt(edited_cand_list, not_in_db_cas_final)
 
     print('Candidate list has been successfully generated:')
-    #print(final_db_cas_filt)
 
     final_db_name_filt = []
 
     for cas in final_db_cas_filt:
-        matched_name = sp_ftch_info.fetch_name(cas, db_js)
+
+        matched_name = sp_ftch_info.fetch_name(cas, db_js) # fetch solvent name from db based on cas
         final_db_name_filt.append(matched_name)
     
-    print(final_db_name_filt)
+    print(final_db_name_filt) # print the name of all the candidates
 
 
     #
-    # Step 2: Specify calculation parameters.
+    # Step 2: Specify basic calculation parameters.
 
     # user need to first specify the temperature - default temperature is 25 degree c.
-    # if temperature is edited, the database will be updated by applying temperature correction for the three HSP.
+    # The database will be updated by applying temperature correction for the three HSP.
 
     # user then need to specify the following parameters:
 
     # n - maximum number of solvents involved in each combination. default n = 2. recommend to use 2 or 3.
 
     # tol_err_d, p, h - tolerance of error of the calculated HSP based on the predicted combinations.
-    # Errors higher than these values will be filtered.
+    # - Errors higher than these values will be filtered.
 
     # tol_conc - threshold of lowest acceptable concentration of each solvent component.
-    # Solvents with predicted concentration below this value will be filtered.
+    # - Solvents with predicted concentration below this value will be filtered.
 
-    # target_d, p, h - the target hsp to be achieved.
-    # This target must be included in the region connected by all the solvent candidates in the Hansen space.
-    # This version will automatically check if this requirement is met or not. 
+    # target_d, p, h - the target HSP to be achieved.
+    # - This target must be included in the region connected by all the solvent candidates in the Hansen space.
+    # - This version will automatically check if this requirement is met or not.
 
     #
 
-    print('=========================\nStep 2: Specify parameters. \n Please follow the instruction to specify the \n - Maximum number of solvents (n) to be included in each combination (default = 2); \n - Highest acceptable error of HSP (tol_err) of the predicted combination (default = 0.5); \n - Lowest acceptable concentration (tol_conc) of each predicted solvent component (default = 0.01). \n - Target HSP (target D, P, H). \n Temperature (default = 25 C). \n')
+    print('=========================\n\nStep 2: Specify parameters. \n Please follow the instruction to specify the \n - Maximum number of solvents (n) to be included in each combination (default = 2); \n - Highest acceptable error of HSP (tol_err) of the predicted combination (default = 0.5); \n - Lowest acceptable concentration (tol_conc) of each predicted solvent component (default = 0.01). \n - Target HSP (target D, P, H). \n Temperature (default = 25 degree C). \n')
 
     temp_updt_db, is_temp_updt, tgt_temp = sp_prmtr.specify_temp(db_full_info_list) #is_temp_updt = 1 will disable the follow up miscibility check
     
