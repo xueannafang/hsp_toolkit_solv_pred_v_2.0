@@ -30,15 +30,15 @@ def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_sol
         print('Database and default solvent candidate list has been loaded. \n Please follow the instruction to continue: ')
     
     
-    """
-    Step_1: Generate candidate list
+    # """
+    # Step_1: Generate candidate list
 
-    user can choose to use default candidate list and then remove unwanted solvents or add more (recommended).
+    # user can choose to use default candidate list and then remove unwanted solvents or add more (recommended).
 
-    Alternatively, users can create the candidate list by entering the cas no. of desired solvents.
-    For the [manual] add method, users need to bear in mind that the minimum number of solvents must larger than 2 and there will be more likely to fail the prediction if the region connected by the selected solvents does not cover the target hsp.
+    # Alternatively, users can create the candidate list by entering the cas no. of desired solvents.
+    # For the [manual] add method, users need to bear in mind that the minimum number of solvents must larger than 2 and there will be more likely to fail the prediction if the region connected by the selected solvents does not cover the target hsp.
 
-    """
+    # """
     
     usr_gen_cand_list = sp_gen_cand.generate_candidate_list(default_solv_candidate_js)
 
@@ -77,27 +77,27 @@ def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_sol
     print(final_db_name_filt)
 
 
-    """
-    Step 2: Specify calculation parameters.
+    #
+    # Step 2: Specify calculation parameters.
 
-    user need to first specify the temperature - default temperature is 25 degree c.
-    if temperature is edited, the database will be updated by applying temperature correction for the three HSP.
+    # user need to first specify the temperature - default temperature is 25 degree c.
+    # if temperature is edited, the database will be updated by applying temperature correction for the three HSP.
 
-    user then need to specify the following parameters:
+    # user then need to specify the following parameters:
 
-    n - maximum number of solvents involved in each combination. default n = 2. recommend to use 2 or 3.
+    # n - maximum number of solvents involved in each combination. default n = 2. recommend to use 2 or 3.
 
-    tol_err_d, p, h - tolerance of error of the calculated HSP based on the predicted combinations.
-    Errors higher than these values will be filtered.
+    # tol_err_d, p, h - tolerance of error of the calculated HSP based on the predicted combinations.
+    # Errors higher than these values will be filtered.
 
-    tol_conc - threshold of lowest acceptable concentration of each solvent component.
-    Solvents with predicted concentration below this value will be filtered.
+    # tol_conc - threshold of lowest acceptable concentration of each solvent component.
+    # Solvents with predicted concentration below this value will be filtered.
 
-    target_d, p, h - the target hsp to be achieved.
-    This target must be included in the region connected by all the solvent candidates in the Hansen space.
-    This version will automatically check if this requirement is met or not. 
+    # target_d, p, h - the target hsp to be achieved.
+    # This target must be included in the region connected by all the solvent candidates in the Hansen space.
+    # This version will automatically check if this requirement is met or not. 
 
-    """
+    #
 
     print('=========================\nStep 2: Specify parameters. \n Please follow the instruction to specify the \n - Maximum number of solvents (n) to be included in each combination (default = 2); \n - Highest acceptable error of HSP (tol_err) of the predicted combination (default = 0.5); \n - Lowest acceptable concentration (tol_conc) of each predicted solvent component (default = 0.01). \n - Target HSP (target D, P, H). \n Temperature (default = 25 C). \n')
 
@@ -113,17 +113,17 @@ def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_sol
     tol_conc = all_parameters[3]
     cand_cas_for_calc_list = all_parameters[4]
 
-    """
-    Step 3
+    # """
+    # Step 3
 
-    Main calculation cell
+    # Main calculation cell
 
-    Iterate through all the combinations of n-nary solvent systems
-    Construct standard HSP matrix based on n-candidate combination
-    Construct target HSP matrix with statistical perturbation
-    Statistical validation
-    Rough filtration - concentration renormalisation - fine filtration
-    """
+    # Iterate through all the combinations of n-nary solvent systems
+    # Construct standard HSP matrix based on n-candidate combination
+    # Construct target HSP matrix with statistical perturbation
+    # Statistical validation
+    # Rough filtration - concentration renormalisation - fine filtration
+    # """
 
     #print(temp_updt_db)
     #sp_clc.mtrx_s_bf_comb(cand_cas_for_calc_list, temp_updt_db)
@@ -162,43 +162,43 @@ def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_sol
     else:
         sucs_log_path = sp_io.sucs_calc_log(tgt_temp, n, target_hsp_list, tol_err_list, tol_conc, cand_cas_for_calc_list, final_db_name_filt, calc_log_js_path, vld_result_list, db_info_dict)
     
-    """
-    Step 4
+    # """
+    # Step 4
     
-    advanced filtration
+    # advanced filtration
 
-    optional filtrations based on 
-    miscibility check
-    bp check
+    # optional filtrations based on 
+    # miscibility check
+    # bp check
 
-    first save a log without optional filtration step.
+    # first save a log without optional filtration step.
 
-    let user determine if they want to do final filtration.
+    # let user determine if they want to do final filtration.
 
-    filter all the false results, in the remaining terms
+    # filter all the false results, in the remaining terms
 
-    fetch the original idx
+    # fetch the original idx
     
-    - if the temperarture has been modified before:
+    # - if the temperarture has been modified before:
     
-    this step will pop up a warning saying these check are based on room temperature. 
+    # this step will pop up a warning saying these check are based on room temperature. 
 
-    - bp check will highlight some solvent whose bp is below the required temperature.
+    # - bp check will highlight some solvent whose bp is below the required temperature.
 
-    - if any value is -1 or None, label it as data unavailbale, manual check required.
+    # - if any value is -1 or None, label it as data unavailbale, manual check required.
 
-    -miscibility check: this version (2.0) is only based on data available on pubchem.
+    # -miscibility check: this version (2.0) is only based on data available on pubchem.
     
-    -Note that the limitation of miscibility check include
+    # -Note that the limitation of miscibility check include
     
-    1) many solvents do not have experimentally suggested immiscible solvents, or the description is ambiguous, e.g., very poor, poor, etc. Solvents that was mentioned with those "poor" solubility features are all classified as "immscible" at r.t.
+    # 1) many solvents do not have experimentally suggested immiscible solvents, or the description is ambiguous, e.g., very poor, poor, etc. Solvents that was mentioned with those "poor" solubility features are all classified as "immscible" at r.t.
     
-    2) The term "immiscible" itself can be arguable. This property is ideally to be quantified by a continuous solubility variable, but at this stage, this data is very limited.
+    # 2) The term "immiscible" itself can be arguable. This property is ideally to be quantified by a continuous solubility variable, but at this stage, this data is very limited.
 
-    3) Some data do not include test temperature.
+    # 3) Some data do not include test temperature.
 
 
-    """
+    # """
 
     ctn_idx = 1
 
@@ -209,9 +209,9 @@ def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_sol
     adv_filt_opt_list = ['idx', 'solvent', 'miscibility', 'bp']
 
     if ctn_idx == 0:
-        """
-        user does not want to do the filtration.
-        """
+        # """
+        # user does not want to do the filtration.
+        # """
         print('Please check ' + sucs_log_path + ' for calculation log.')
         # file name and path of the sucs log
         exit()
@@ -236,18 +236,6 @@ def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_sol
 
                     
         sp_adv_filt.adv_filt(vld_result_list, adv_filt_opt_list, db_info_dict, tgt_temp, basic_input_prmtr_dict)
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
