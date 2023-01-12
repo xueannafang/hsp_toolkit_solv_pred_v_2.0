@@ -1,4 +1,5 @@
-"""_SolvPred_v2.0_
+"""
+SolvPred_v2.0
 Last update: 12/01/2023
 """
 
@@ -35,7 +36,7 @@ def solv_pred_main(db: str = 'db_solv_pred_v2.json', default_candidate: str = 'd
 
     db_full_info_list = sp_io.db_init(db_js) # save all the values for each key into a list of list
 
-    # sp_io.calc_log_list2txt(db_full_info_list, '_db_full_info_list')
+    # to check current db_info_list: sp_io.calc_log_list2txt(db_full_info_list, '_db_full_info_list')
 
     db_cas_list = db_full_info_list[1][1] # extract all the cas in db
 
@@ -56,26 +57,23 @@ def solv_pred_main(db: str = 'db_solv_pred_v2.json', default_candidate: str = 'd
 
     #
     
-    usr_gen_cand_list = sp_gen_cand.generate_candidate_list(default_solv_candidate_js)
+    usr_gen_cand_list = sp_gen_cand.generate_candidate_list(default_solv_candidate_js) # return candidate list
 
-    usr_gen_cas_to_remove = sp_cand_ed.remove_cas()
+    usr_gen_cas_to_remove = sp_cand_ed.remove_cas() # collect a list of cas to be removed, especially when default db is applied
 
     print('Checking if any solvent is not on the candidate list...')
 
-    after_usr_filt_cand_list = sp_vld_chk.can_be_removed_check(usr_gen_cas_to_remove, usr_gen_cand_list)
-    #check if cas to be removed is in the candidate list
+    after_usr_filt_cand_list = sp_vld_chk.can_be_removed_check(usr_gen_cas_to_remove, usr_gen_cand_list) # check and remove the requested cas from current candidate list
 
     print('Done. \n Checking if any solvent is not in the database...')
 
-    not_in_db_cas = sp_vld_chk.is_cas_in(after_usr_filt_cand_list, db_cas_list)
+    not_in_db_cas = sp_vld_chk.is_cas_in(after_usr_filt_cand_list, db_cas_list) # collect invalid cas that are not in db
 
-    after_db_filt_cand_list = sp_vld_chk.not_in_db_filt(after_usr_filt_cand_list, not_in_db_cas)
+    after_db_filt_cand_list = sp_vld_chk.not_in_db_filt(after_usr_filt_cand_list, not_in_db_cas) # check and remove not_db_cas from current candidate list
     
     print('Done.')
-    #print('\n The following solvents will be considered as candidates: ')
-    #print(after_db_filt_cand_list)
     
-    edited_cand_list = sp_cand_ed.edit_cand_list(after_db_filt_cand_list)
+    edited_cand_list = sp_cand_ed.edit_cand_list(after_db_filt_cand_list) # before submission check and final user edit
 
     not_in_db_cas_final = sp_vld_chk.is_cas_in(edited_cand_list, db_cas_list)
 

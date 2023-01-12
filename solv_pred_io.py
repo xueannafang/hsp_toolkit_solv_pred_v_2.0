@@ -30,10 +30,11 @@ def load_js(js_file: str) -> json:
 
     return js
 
-def input_cas():
-    """
-    construct solvent candidate list from user input
-    check the format of cas no is valid
+def input_cas() -> list:
+    """Return user-added solvent candidate list from user input; check the format of cas no. is valid before appending to the list.
+
+    Returns:
+        list: user input cas with valid format.
     """
 
     usr_cas_list = []
@@ -43,36 +44,38 @@ def input_cas():
     while to_continue:
 
         usr_input_cas = input("Please enter the CAS No. of solvent candidate " + str(i+1) + " : ")
-        #print(usr_input_cas)
-        usr_input_cas_no_spc = sp_rtxt.rm_spc(usr_input_cas)
-        #print(usr_input_cas_no_spc)
 
-        if not usr_input_cas:
+        usr_input_cas_no_spc = sp_rtxt.rm_spc(usr_input_cas) # remove space in input str
+
+
+        if not usr_input_cas: # when usr press enter without inputting anything
 
             print('Have all the solvent candidates been added?')
-            finish_check = continue_check()
+            finish_check = continue_check() # check if user wants to continue
 
             if finish_check== 1:
                 to_continue = False
+                # confirm to finish the current inputting stage, break the loop
 
             elif finish_check == 0:
-                pass
-                # not_finish = ' '
-                # while not_finish != '':
-                #     not_finish = input("Press enter to continue adding the next solvent. [enter]")
+                pass # refuse to finish the current stage, bring back to the cas input loop and continue add the next solvent
 
             else:
                 sp_vld_chk.invalid_input()
         
         else:
-            if not sp_vld_chk.is_cas_form_valid(usr_input_cas):
+
+            if not sp_vld_chk.is_cas_form_valid(usr_input_cas): # cas format check - wrong format
+
                 print("Wrong CAS No. format")
                 sp_vld_chk.invalid_input()
-            else:
+
+            else: # cas format is valid
+
                 usr_cas_list.append(usr_input_cas_no_spc)
+
                 i += 1
-    
-    #print(usr_cas_list)
+
     return usr_cas_list
 
 

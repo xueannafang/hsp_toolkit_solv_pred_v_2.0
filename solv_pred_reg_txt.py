@@ -1,10 +1,19 @@
-import numpy as np
+"""
 
-cas_valid_symbol_list = ['0','1','2','3','4','5','6','7','8','9','-'] # '0123456789-'
+solv_pred_reg_txt formatting specific input into required structures.
 
-def rm_spc(with_spc):
-    """
-    remove redundant spaces
+"""
+
+cas_valid_symbol_list = ['0','1','2','3','4','5','6','7','8','9','-'] # valid characters, symbols or numbers that are supposed to appear in usr input cas
+
+def rm_spc(with_spc: str) -> str:
+    """Return string without spaces.
+
+    Args:
+        with_spc (str): input string that may contain redundant space.
+    
+    Returns:
+        str: no_space
     """
     no_space = with_spc.replace(' ', '')
 

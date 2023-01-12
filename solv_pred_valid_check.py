@@ -1,3 +1,7 @@
+"""
+solv_pred_valid_check includes functions to validate a specific variable.
+"""
+
 import numpy as np
 from scipy.linalg import pinv
 
@@ -13,11 +17,12 @@ def data_available(entry):
         return False
 
 def invalid_input():
-    """
-    repeat until user press enter to continue
+    """repeat until user press enter to continue
     """
     invalid_check = ' '
+
     while invalid_check != '':
+        
         invalid_check = input("Invalid input. Press enter to continue. [enter]")
 
 def is_cas_form_valid(input_cas):
@@ -36,36 +41,65 @@ def is_symbol_valid(val_sym_list, usr_input):
             invalid_symbol_exist = True
     return not invalid_symbol_exist
 
-def is_option_valid(val_opt_list, usr_input):
-    no_space_usr_ip = sp_rtxt.rm_spc(usr_input)
+def is_option_valid(val_opt_list: list, usr_input: str) -> bool:
+    """check if the usr input is within valid options list.
+
+    Args:
+        val_opt_list (list): a list. containing all the possible valid usr input.
+        usr_input (str): already in lower cased input, but may include space.
+
+    Returns:
+        bool: if usr input is valid, return True. Else return False.
+    """
+    no_space_usr_ip = sp_rtxt.rm_spc(usr_input) # remove any space in usr input
+
     return no_space_usr_ip in val_opt_list
 
-def is_cas_in(input_cas_list, available_cas_list):
-    """
-    check if the cas on the current to-be-removed list is on the available cas list
+def is_cas_in(input_cas_list: list, available_cas_list: list) -> list:
+    """return a list of cas that is not on the current available list.
+
+    Args:
+        input_cas_list (list): cas list to check
+        available_cas_list (list): cas list avilable
+
+    Returns:
+        list: cas not avilable
     """
     not_in_list = []
 
     for input_cas in input_cas_list:
+
         if input_cas not in available_cas_list:
+
             not_in_list.append(input_cas)
 
     return not_in_list
 
-def can_be_removed_check(to_be_rm_list, to_rm_from_list):
+def can_be_removed_check(to_be_rm_list: list, to_rm_from_list: list) -> list:
+    """return cas list that removes valid entries in to_be_rm_list from to_rm_from_list.
 
-    cannot_rm_list = is_cas_in(to_be_rm_list, to_rm_from_list)
-    #check if cas to be removed is in the candidate list
+    Args:
+        to_be_rm_list (list): usr generated cas list to be removed.
+        to_rm_from_list (list): usr generated cas list before the removing step.
+
+    Returns:
+        list: after removing valid usr-specified to-be-removed cas.
+    """
+
+    cannot_rm_list = is_cas_in(to_be_rm_list, to_rm_from_list) # cas list that is not avilable on the current list
 
     if len(cannot_rm_list) != 0:
-        print('The following solvents can not be removed and will be ignored:')
+
+        print('The following solvents are absent from current candidate list and will be ignored:')
         print(cannot_rm_list)
-        valid_cas_to_remove = list(set(to_be_rm_list) - set(cannot_rm_list))
+
+        valid_cas_to_remove = list(set(to_be_rm_list) - set(cannot_rm_list)) # list of cas that can be removed
 
     else:
+
         valid_cas_to_remove = to_be_rm_list
     
-    cas_list_after_filt = list(set(to_rm_from_list) - set(valid_cas_to_remove))
+    cas_list_after_filt = list(set(to_rm_from_list) - set(valid_cas_to_remove)) # remove requested cas from current candidate list
     
     return cas_list_after_filt
 
@@ -180,12 +214,17 @@ def is_tol_conc_vld(usr_input_tol_conc):
 
 
 
-def rm_repeat(old_list):
-    """
-    Remove repeated elements in the list
+def rm_repeat(old_list: list) -> list:
+    """return list without repeated entries
+
+    Args:
+        old_list (list): list that may include repeated entries
+
+    Returns:
+        list: without repeated entries
     """
 
-    no_repeat_set = set(old_list)
+    no_repeat_set = set(old_list) # remove repeated terms
     new_list = list(no_repeat_set)
 
     return new_list
