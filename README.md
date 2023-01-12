@@ -44,6 +44,6 @@ SolvPred is a solvent selection assisstant aiming at providing multi-solvent sug
  - Jillisa Thompson (School of Chemistry, University of Bristol)
  - Bo Gao (School of Physics, University of Bristol)
 
- The development and communication of work are funded by:
+ The development and communication of this work are funded by:
  - University of Bristol - Chinese Scholarship Council Joint Scholarship
  - Royal Society of Chemistry Researcher Development Grants (2022)
