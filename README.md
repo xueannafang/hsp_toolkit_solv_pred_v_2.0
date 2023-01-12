@@ -1,14 +1,9 @@
-SolvPred_v2.0
-
+# SolvPred (v2.0)
 Last update: 12/01/2023
 
-# Introduction
+## Introduction
 
 SolvPred is a solvent selection assisstant aiming at providing multi-solvent suggestion based on target Hansen solubility parameters (HSP)
-
-# Version
-
-2.0
 
 ## What's new in this version?
 
