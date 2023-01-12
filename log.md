@@ -1,5 +1,13 @@
 # Solvent Predictor v2.0
 
+
+## TODO (12/01/2022)
+ - PEP8
+ - docstrings and comment format
+ - auto api
+
+
+
 ## TODO (11/01/2022)
 
  - test the manual function

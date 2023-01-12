@@ -11,15 +11,21 @@ import solv_pred_fetch_info as sp_ftch_info
 today = date.today()
 now = datetime.now()
 
-def load_js(js_file):
-    """
-    load json file
+def load_js(js_file: str) -> json:
+    """_Return loaded json_
+
+    Args:
+        js_file (str): _json file name under cwd
+    
+    Returns:
+        json
     """
     current_path = os.getcwd()
     full_js_path = current_path + "\\" + str(js_file)
 
     with open(full_js_path) as f:
         js = json.load(f)
+
     #print(db_js[1]["CAS"])
 
     return js
@@ -109,9 +115,15 @@ def continue_check():
 def get_key(key):
     return lambda x:x.get(key)
 
-def db_init(db_js):
-    """
-    initialise database
+def db_init(db_js: json) -> list:
+    """_Return a list of keys and corresponding all values from db_
+
+    Args:
+        db_js (json): loaded db
+    
+    Returns:
+        list: 
+    
     """
     key_in_db_list = ['No.', 'CAS', 'Name', 'D', 'P', 'H', 'Mole_vol', 'ims_idx', 'bp', 'mw', 'viscosity', 'vis_temp', 'heat_of_vap', 'hov_temp', 'SMILES']
 

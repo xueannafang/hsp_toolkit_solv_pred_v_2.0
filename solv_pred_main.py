@@ -1,3 +1,6 @@
+"""_SolvPred_v2.0_
+Last update: 12/01/2023
+"""
 
 import solv_pred_io as sp_io
 import solv_pred_gen_cand as sp_gen_cand
@@ -8,18 +11,25 @@ import solv_pred_prmtr as sp_prmtr
 import solv_pred_calc as sp_clc
 import solv_pred_adv_filt as sp_adv_filt
 
-
-def solv_pred_main(db = 'db_solv_pred_v2.json', default_candidate = 'default_solv_candidate.json'):
+def solv_pred_main(db: str = 'db_solv_pred_v2.json', default_candidate: str = 'default_solv_candidate.json'):
+    """_run all functions of SolvPred_2.0_
+    
+    Args:
+        db (str): _database file name under current working directory_
+        default_candidate (str): _default candidate json file name under current working directory_
+    
+    Returns:
+        some logs and jsons... tbc
 
     """
-    Load database and default candidate list.
-    """
-    ver_info, dt_time = sp_io.version_info() # record current version info and time info for running the test.
+    # Step 0: Load database and default candidate list.
+
+    sp_io.version_info() # print current version info and time info for running the test.
 
     print('Loading database and default candidate list...')
     
-    db_js = sp_io.load_js(db)
-    default_solv_candidate_js = sp_io.load_js(default_candidate)
+    db_js = sp_io.load_js(db) # load solvent database
+    default_solv_candidate_js = sp_io.load_js(default_candidate) # load default solvent candidate list
 
     db_full_info_list = sp_io.db_init(db_js)
     db_cas_list = db_full_info_list[1][1]
