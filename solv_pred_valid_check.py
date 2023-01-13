@@ -158,72 +158,142 @@ def is_float(usr_input_number_str: str) -> bool:
     except ValueError:
         return False
 
-def is_n_vld(usr_input_n):
-    """
-    check if the usr input is a positive integer larger or equal to 2
+def is_n_vld(usr_input_n: str) -> bool:
+    """return bool of whether the usr input is a positive integer larger or equal to 2.
+
+    Args:
+        usr_input_n (str): input n.
+
+    Returns:
+        bool: True if n is an int >= 2; else False.
     """
     try:
+
         if int(usr_input_n) > 1:
+
             return True
+
         elif int(usr_input_n) <= 1:
+
             print('Invalid input of n: n must be >= 2')
+
             return False
     
     except ValueError:
+
         print('Invalid input of n: Please enter an integer >= 2')
+
         return False
 
 
-def is_tol_err_vld(usr_input_tol_err):
-    """
-    check if the usr input tol_err is a positive float
+def is_tol_err_vld(usr_input_tol_err: str) -> bool:
+    """return bool of whether the usr input tol_err is a positive float.
+
+    Args:
+        usr_input_tol_err (str): input toloerance of error for d, p, h.
+
+    Returns:
+        bool: True if input tol_err is a positive float; else False.
     """
     try:
+
         if float(usr_input_tol_err) > 0:
+
             return True
         
         elif float(usr_input_tol_err) <= 0:
+
             print('Invalid input of tol_err: tolerance of error must be a positive float')
+
             return False
     
     except ValueError:
+
         print('Invalid input of tol_err: Please enter a positive float')
+
         return False
 
+def is_tgt_fmt_vld(usr_input_tgt: str) -> bool:
+    """return bool of whether the usr input target HSP is a positive float.
 
-def is_tgt_vld(usr_input_tgt):
-    """
-    check if the usr input tgt is a non-negative float
+    Args:
+        usr_input_tgt (str): input target HSP for d, p, h.
+
+    Returns:
+        bool: True if input target HSP is a positive float; else False.
     """
     try:
+
+        if float(usr_input_tgt) > 0:
+
+            return True
+        
+        elif float(usr_input_tgt) <= 0:
+
+            print('Invalid input of target HSP: Must be a positive float')
+
+            return False
+    
+    except ValueError:
+
+        print('Invalid input of target HSP: Please enter a positive float')
+
+        return False
+
+def is_tgt_vld(usr_input_tgt: str) -> bool:
+    """return bool of whether usr_input_tgt is a non-negative float.
+
+    Args:
+        usr_input_tgt (str): input target d, p, h.
+
+    Returns:
+        bool: True if input target HSP is a non-negative float; else False.
+    """
+    try:
+
         if float(usr_input_tgt) >= 0:
+
             return True
         
         elif float(usr_input_tgt) < 0:
+
             print('Invalid input of target HSP: Must be a non-negative float')
+
             return False
     
     except ValueError:
+
         print('Invalid input of target HSP: Must be a non-negative float')
+
         return False
 
-def is_tol_conc_vld(usr_input_tol_conc):
+def is_tol_conc_vld(usr_input_tol_conc: str) -> bool:
+    """return bool of whether the usr input tol_conc is a positive float between 0 and 1.
+
+    Args:
+        usr_input_tol_conc (str): input tolerance of concentration.
+
+    Returns:
+        bool: True if input is a float between 0 and 1; else False.
     """
-    check if the usr input tol_conc is a positive float between 0 and 1
-    """
+    
     try:
+
         if float(usr_input_tol_conc) >= 0 and float(usr_input_tol_conc) <= 1:
+
             return True
         
         elif float(usr_input_tol_conc) < 0 or float(usr_input_tol_conc) > 1:
+
             print('Invalid tol_conc: tolerance of concentration must be a float between 0 and 1')
+
             return False
     
     except ValueError:
-        print('Invalid input of tol_conc: Please enter a float between 0 and 1')
-        return False
-        
 
+        print('Invalid input of tol_conc: Please enter a float between 0 and 1')
+
+        return False
 
 
 def rm_repeat(old_list: list) -> list:
@@ -274,28 +344,49 @@ def rm_incomplete_entry(to_rm_idx_list, to_rm_from_db_info_list):
     return after_rm_db_info_list
 
 
-def is_cand_list_longer_than_n(cand_cas_list, n):
-    """
-    validate if the candidate list is longer than user-specified n
+def is_cand_list_longer_than_n(cand_cas_list: list, n: int) -> bool:
+    """return bool to validate if the candidate list is longer than user-specified n.
+
+    Args:
+        cand_cas_list (list): candidate cas list.
+        n (int): max number of solvents in each combination.
+
+    Returns:
+        bool: True if cand_cas_list is longer than n; else False.
     """
     if len(cand_cas_list) > int(n):
+
         print('Validation of n is done.')
+
         return True
+
     else:
+
         print('Warning: Candidate list does not contain enough solvents to iterate through.')
+
         print('Please add more solvent candidates or decrease n.')
+
         return False
 
 
-def is_target_achievable(db_info_list, cand_cas_list, target_hsp):
+def is_target_achievable(db_info_list: list, cand_cas_list: list, target_hsp: list) -> bool:
+    """return bool that validates if the target is covered by the region connected by all the solvent candidate in the hansen space.
+
+    Args:
+        db_info_list (list): list with full db info
+        cand_cas_list (list): all candidate cas
+        target_hsp (list): target d, p, h.
+
+    Returns:
+        bool: True if target hsp is located in the region connected by all the candidates in the Hansen space; else False.
     """
-    validate if the target is covered by the region connected by all the solvent candidate in the hansen space
-    """
-    cand_idx_cas_hsp_list = sp_ftch_info.fetch_idx_cas_hsp(cand_cas_list, db_info_list)
+    cand_idx_cas_hsp_list = sp_ftch_info.fetch_idx_cas_hsp(cand_cas_list, db_info_list) # fetch hsp from full db info list
 
     all_d = sp_ftch_info.fetch_sub_hsp(cand_idx_cas_hsp_list, 'd')
     all_p = sp_ftch_info.fetch_sub_hsp(cand_idx_cas_hsp_list, 'p')
     all_h = sp_ftch_info.fetch_sub_hsp(cand_idx_cas_hsp_list, 'h')
+
+    # calculate the range of candidate-covered region in the Hansen space
 
     d_range = [min(all_d), max(all_d)]
     p_range = [min(all_p), max(all_p)]
@@ -305,34 +396,47 @@ def is_target_achievable(db_info_list, cand_cas_list, target_hsp):
     target_p = float(target_hsp[1])
     target_h = float(target_hsp[2])
 
+    # check if the target is within this region
+
     if target_d > d_range[0] and target_d < d_range[1]:
+
         print('Target D validation done.')
         d_check = True
+
     else:
+
         print('Target D is not achievable.')
         print('Target D must be in the interval of ' + str(d_range[0]) + ' to ' + str(d_range[1]))
         d_check = False
     
     if target_p > p_range[0] and target_p < p_range[1]:
+
         print('Target P validation done.')
         p_check = True
+
     else:
+
         print('Target P is not achievable.')
         print('Target P must be in the interval of ' + str(p_range[0]) + ' to ' + str(p_range[1]))
         p_check = False
     
     if target_h > h_range[0] and target_h < h_range[1]:
+
         print('Target H validation done.')
         h_check = True
+
     else:
+
         print('Target H is not achievable.')
         print('Target H must be in the interval of ' + str(h_range[0]) + ' to ' + str(h_range[1]))
         h_check = False
     
     if False in [d_check, p_check, h_check]:
+
         target_check = False
     
     else:
+        
         target_check = True
 
     return target_check

@@ -122,12 +122,14 @@ def solv_pred_main(db: str = 'db_solv_pred_v2.json', default_candidate: str = 'd
     #print(all_parameters)
 
     n = int(all_parameters[0])
+
     target_hsp_list = all_parameters[1] # in the order of d, p, h
     tol_err_list = all_parameters[2] # in the order of tol_err_d, tol_err_p, tol_err_h
     tol_conc = all_parameters[3]
-    cand_cas_for_calc_list = all_parameters[4]
 
-    # """
+    cand_cas_for_calc_list = all_parameters[4] # valid candidate cas for next step calculation
+
+    # 
     # Step 3
 
     # Main calculation cell
@@ -135,21 +137,15 @@ def solv_pred_main(db: str = 'db_solv_pred_v2.json', default_candidate: str = 'd
     # Iterate through all the combinations of n-nary solvent systems
     # Construct standard HSP matrix based on n-candidate combination
     # Construct target HSP matrix with statistical perturbation
-    # Statistical validation
-    # Rough filtration - concentration renormalisation - fine filtration
-    # """
+    # Statistical validation - rough filtration - concentration renormalisation - fine filtration
+    # 
 
-    #print(temp_updt_db)
-    #sp_clc.mtrx_s_bf_comb(cand_cas_for_calc_list, temp_updt_db)
-    # sp_clc.itrt_cand(cand_cas_for_calc_list, temp_updt_db, n)
 
     ctn_idx, calc_log_js_list, calc_log_js_path = sp_clc.calc_vld_all_c(cand_cas_for_calc_list, temp_updt_db, n, target_hsp_list, tol_err_list, tol_conc)
 
     vld_result_list = sp_clc.sucs_result_filt(calc_log_js_list)
 
     # sp_io.calc_log_list2txt(temp_updt_db, '_temp_updt_db_')
-
-    # print(ctn_idx)
 
     db_info_dict = sp_io.db_info_list2dict(temp_updt_db)
 
