@@ -270,7 +270,7 @@ def norm_c_err(norm_c_mean_vec, mat_s, tgt_hsp):
     return norm_c_err_vec
 
 
-def calc_vld_all_c(cand_cas_list, db_list, n, tgt_hsp_list, tol_err_list, tol_conc):
+def calc_vld_all_c(cand_cas_list: list, db_list: list, n: int, tgt_hsp_list: list, tol_err_list: list, tol_conc: float) -> tuple[int, list, str]:
     # invalid result will not be filtered out immediately, but will be marked with an invld note and filter in the final step
 
     flt_tol_conc = float(tol_conc)

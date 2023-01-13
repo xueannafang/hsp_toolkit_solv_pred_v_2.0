@@ -1,5 +1,8 @@
 # Solvent Predictor v2.0
 
+## TODO (14/01/2023)
+- sp_calc: calc_vld_all_c docstrings
+
 ## TODO (13/01/2023)
 - temp_confirm in specify_temp in solv_pred_prmtr does not include the data type/avaibility check as what has been done in sp_temp_updt.temp_corr_db. Commented for now.
 
