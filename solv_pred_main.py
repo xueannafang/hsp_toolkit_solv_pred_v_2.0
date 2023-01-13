@@ -115,7 +115,7 @@ def solv_pred_main(db: str = 'db_solv_pred_v2.json', default_candidate: str = 'd
 
     print('=========================\n\nStep 2: Specify parameters. \n Please follow the instruction to specify the \n - Maximum number of solvents (n) to be included in each combination (default = 2); \n - Highest acceptable error of HSP (tol_err) of the predicted combination (default = 0.5); \n - Lowest acceptable concentration (tol_conc) of each predicted solvent component (default = 0.01). \n - Target HSP (target D, P, H). \n Temperature (default = 25 degree C). \n')
 
-    temp_updt_db, is_temp_updt, tgt_temp = sp_prmtr.specify_temp(db_full_info_list) #is_temp_updt = 1 will disable the follow up miscibility check
+    temp_updt_db, is_temp_updt, tgt_temp = sp_prmtr.specify_temp(db_full_info_list) # temperature correction based on user request
     
     all_parameters = sp_prmtr.get_parameter(final_db_cas_filt, temp_updt_db)
     print('Parameter selection done.\n')

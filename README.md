@@ -15,12 +15,15 @@ SolvPred is a solvent selection assisstant aiming at providing multi-solvent sug
  - Allow temperature control and include temperautre-dependent correction of HSP.
  - Advanced filtration step based on miscibility and boiling point has been included.
 
- 
+ ## Limitation
+
+   - Some categories may have a limitation of avilable data, which will be labelled as -1 or None in the database.
+   - The temperature control function is only based on correcting HSP in this version. Properties applied in advanced filtration (e.g., miscibility) may also be temperature-dependent but no direct correction is applied in this version.
+   - If user manually edited the database and add additional solvents without available HSP, the temperature correction for data-missing group will be disabled and corresponding solvent will be removed from database after temperature updating check step.
+
  ## Disclaimer
 
   - Phyciscal/Chemical data of solvents in the database were collected from PubChem.
-  - Some categories may have a limitation of avilable data, which will be labelled as -1 or None in the database.
-  - The temperature control function is only based on correcting HSP in this version. Properties applied in advanced filtration (e.g., miscibility) may also be temperature-dependent but no direct correction is applied in this version.
   - SolvPred only provides suggestion. Results may vary with multi factors in complicated situations. It is the users responsbility to manuallay check the exact experimental performance in different scenarios.
 
 

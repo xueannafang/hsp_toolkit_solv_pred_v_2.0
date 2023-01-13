@@ -104,14 +104,21 @@ def can_be_removed_check(to_be_rm_list: list, to_rm_from_list: list) -> list:
     return cas_list_after_filt
 
 
-def finish_check():
+def finish_check() -> bool:
+    """return bool to determine finish or not.
+
+    Returns:
+        bool: True for not exit. False for exit.
+    """
+
     finish_check = sp_io.continue_check()
+
     to_continue_finish_chk = True
 
-    if finish_check == 1:
+    if finish_check == 1: # to finish
         to_continue_finish_chk = False
 
-    elif finish_check == 0:
+    elif finish_check == 0: # not to finish
 
         pass
 
@@ -135,9 +142,14 @@ def not_in_db_filt(before_filt_list, not_in_db_list):
     return after_db_filt_cand_list
 
 
-def is_float(usr_input_number_str):
-    """
-    Check if usr input is a float
+def is_float(usr_input_number_str: str) -> bool:
+    """return bool of whether usr input is a float.
+
+    Args:
+        usr_input_number_str (str): usr input number after removing space
+
+    Returns:
+        bool: True if is float; False if else.
     """
     try:
         float(usr_input_number_str)

@@ -1,3 +1,7 @@
+"""
+solv_pred_prmtr includes functions for user-personalised calculation and basic filtration parameters, i.e., n, target HSP, acceptable error for calculated HSP and lowest acceptable concentration for predicted solvents. 
+"""
+
 import solv_pred_valid_check as sp_vld_chk
 import solv_pred_io as sp_io
 import solv_pred_temp_update as sp_temp_updt
@@ -5,65 +9,82 @@ import solv_pred_reg_txt as sp_rtxt
 import solv_pred_cand_edit as sp_ed
 
 
-def specify_temp(orig_db_info_list):
+def specify_temp(orig_db_info_list: list) -> list:
+    """Return temperature-corrected db based on updated HSP, whether temperature has been updated, target temperature in degree c.
+
+    Args:
+        orig_db_info_list (list): db with HSP before temperature correction.
+
+    Returns:
+        list: [db info list with temp-updated HSP, temp_edit (idx to show if temp has been modified: 0 - unmodified; 1 - modified), target_temp (unit in degree c)].
+    """
     
     to_continue_spf_temp = True
-    default_temp = 25
+    default_temp = 25 # default temp in degree c
     target_temp = default_temp
 
+    # user interactive process to specify temp and correct HSP
+    
     while to_continue_spf_temp:
 
         valid_temp_confirm_list = ['t', 'c', 'continue', 'q', 'quit']
         temp_confirm = input('[t] - set a different temperature \n[c] - continue as room temperature (25 degree c). \n[q] - quit\n').lower()
+
         temp_edit = 0
 
         if not sp_vld_chk.is_option_valid(valid_temp_confirm_list, temp_confirm):
+
             sp_vld_chk.invalid_input()
 
-        elif temp_confirm in ['t']:
-            #further ask for required temperature, pop up a warning that solvents whose boiling point below this point will be removed, miscibility will not be considered, all the standard hsp will be updated.
-            
-            #invoke updating temperature function
+        elif temp_confirm in ['t']: # update temp
             
             usr_target_temp = sp_rtxt.rm_spc(input('Please enter the target temperature (in degree C): '))
-            usr_target_temp_is_float = sp_vld_chk.is_float(usr_target_temp) #check this is a float
+            usr_target_temp_is_float = sp_vld_chk.is_float(usr_target_temp) # check this is a float
 
-            if usr_target_temp_is_float == False:
+            if usr_target_temp_is_float is False:
+
                 sp_vld_chk.invalid_input()
                 print('Please enter a valid number.')
             
             else:
+
                 target_temp = float(usr_target_temp)
                 
-                if target_temp == default_temp:
+                if target_temp == default_temp: # unchanged temp
 
                     print('25 C is the default temperature. \n Temperature correction will not be applied.')
                     db_temp_corr = orig_db_info_list
+                    
                     print('Continue?')
                     to_continue_spf_temp = sp_vld_chk.finish_check()
                     
                 
-                else:
+                else: # invoke temp correction
                     
                     print('Temperature has been set as: ' + usr_target_temp)
 
                     print('Applying temperature correction for standard HSP...')
 
                     db_temp_corr = sp_temp_updt.temp_corr_db(orig_db_info_list, 25, target_temp)
-                    temp_edit = 1
+
+                    print('Database HSP temperature correction done.')
+
+                    temp_edit = 1 # indicating temp has been updated
                     
-                    #db_temp_corr = sp_temp_updt.temp_updt_db(orig_db_info_list)
                     to_continue_spf_temp = False
 
         elif temp_confirm in ['c', 'continue']:
-            # finish_check, then start setting the rest of parameters
-            db_temp_corr = orig_db_info_list
+            
+            db_temp_corr = orig_db_info_list # pass the unmodified db to the next step
             to_continue_spf_temp = False
         
         elif temp_confirm in ['q', 'quit']:
+
             print('Confirm to quit?')
             to_finish_temp_confm = sp_vld_chk.finish_check()
-            if to_finish_temp_confm != True:
+
+            if to_finish_temp_confm is not True:
+
                 exit()
     
     return [db_temp_corr, temp_edit, target_temp]

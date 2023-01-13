@@ -1,5 +1,10 @@
 # Solvent Predictor v2.0
 
+## TODO (13/01/2023)
+- temp_confirm in specify_temp in solv_pred_prmtr does not include the data type/avaibility check as what has been done in sp_temp_updt.temp_corr_db. Commented for now.
+
+- it would assume all the data in sub HSP are complete and in the correct format. Comment may need to add to the next version that in the db init stage, the data need to be validated.
+
 
 ## TODO (12/01/2022)
  - docstrings for step 2 onwards
