@@ -436,52 +436,73 @@ def is_target_achievable(db_info_list: list, cand_cas_list: list, target_hsp: li
         target_check = False
     
     else:
-        
+
         target_check = True
 
     return target_check
 
     
-def is_c_stable(c_std_vec, tol_rep_std = 0.1):
+def is_c_stable(c_std_vec: np.ndarray, tol_rep_std: float = 0.1) -> bool:
+    """return statistic validity of mat C.
+
+    Args:
+        c_std_vec (np.ndarray): std of mat c over t.
+        tol_rep_std (float, optional): tolerance of acceptable std. Defaults to 0.1.
+
+    Returns:
+        bool: True if std among all the perturbation tests is below tol_rep_std; else False.
     """
-    check if the standard deviation along all the perturbation is below tol_rep_std (default = 0.1)
-    check if the total mean concentration is above 105% or below 95%
-    """
+    
 
     stat_check_c = True
 
     for c_std in c_std_vec:
+
         if c_std > tol_rep_std:
+
             stat_check_c = False
 
-    
     return stat_check_c
 
 
-def is_c_vld(c_mean_vec):
-    """
-    check if total conc is between 0.95 and 1.05
-    check if each c_mean is positive
-    """
+def is_c_vld(c_mean_vec: np.ndarray) -> bool:
+    """return bool that reflects the validity of the  physical meaning of matrix C and the stability in terms of total concentration.
 
-    c_tot = sum(c_mean_vec)
+    Args:
+        c_mean_vec (np.ndarray): t-averaged mat C.
+
+    Returns:
+        bool: True if total_conc is between 0.95 and 1.05, and all the elements are bewteen 0 and 1; else False.
+    """
+    
+
+    c_tot = sum(c_mean_vec) # sum over n.
     vld_check_c = True
 
     for c_mean in c_mean_vec:
         
         if c_mean < 0 or c_mean > 1:
-            vld_check_c = False
+
+            vld_check_c = False # invalid physical meaning
 
     if c_tot > 1.1 or c_tot < 0.9:
-        vld_check_c = False
+
+        vld_check_c = False # unstable, deviate too much from 1
     
     return vld_check_c
 
 
-def is_err_mat_accptbl(e_mean_arr, tol_err_list):
+def is_err_mat_accptbl(e_mean_arr: np.ndarray, tol_err_list: list) -> bool:
+    """return error validity by comparing with tolerance.
+
+    Args:
+        e_mean_arr (np.ndarray): n x 1 t-averaged error vec.
+        tol_err_list (list): tolerance of error [tol_err_d, tol_err_p, tol_err_h]
+
+    Returns:
+        bool: True if error is acceptable; else False.
     """
-    check if the error is acceptable
-    """
+    
 
     flt_tol_err_list = list(np.float_(tol_err_list))
 
