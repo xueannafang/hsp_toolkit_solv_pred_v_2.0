@@ -291,58 +291,56 @@ def solv_e_from_s_c_d(mat_s_arr: np.ndarray, mat_d_arr: np.ndarray, mat_c_arr: n
     return [e_mean_vec, e_std_vec]
 
 
-def conc_filt_c(c_mean_vec, tol_conc_check):
+def conc_filt_c(c_mean_vec: np.ndarray, tol_conc_check: list) -> np.ndarray:
+    """return updated mat c based on the tol_conc validate results, updt redundant solv conc to 0.
+
+    Args:
+        c_mean_vec (np.ndarray): original n x 1 matrix C.
+        tol_conc_check (list): concentration check log in the format of [[solv_idx i, validity (bool)]].
+
+    Returns:
+        np.ndarray: update matrix C by setting the concentration of redundant solvents as 0.
     """
-    based on the tol_conc validate results, updt redundant solv conc to 0
-    """
+    
     conc_filt_c_list = []
 
     for i, c_mean in enumerate(c_mean_vec):
 
-        # idx_in_c = tol_conc_check[i][0]
-        is_conc_vld = tol_conc_check[i][-1]
+        is_conc_vld = tol_conc_check[i][-1] # validity check
 
-        if is_conc_vld == True:
-            conc_filt_c_list.append(c_mean[0])
+        if is_conc_vld is True:
+
+            conc_filt_c_list.append(c_mean[0]) # append valid solvent
         
         else:
-            conc_filt_c_list.append(0)
+
+            conc_filt_c_list.append(0) # update conc of redundant solvent entry as 0
     
-    conc_filt_c_mean_vec = np.array([conc_filt_c_list]).transpose()
+    conc_filt_c_mean_vec = np.array([conc_filt_c_list]).transpose() # 1 x n to n x 1
 
     return conc_filt_c_mean_vec
 
 
 def renorm_c(c_mean_vec: np.ndarray) -> np.ndarray:
+    """return updated mat c by normalising total concentration to 1.
+
+    Args:
+        c_mean_vec (np.ndarray): original t-averaged mat c. total concentration may slighlty deviate from 1.
+
+    Returns:
+        np.ndarray: mat c whose sum over each element is 1.
     """
-    this mat_c has been updated by replacing entries below tol_conc with 0
-    """
-    # print('toberenormed c_mean_t: ')
-    # print(c_mean_vec)
     
-    tot_c = sum(c_mean_vec)[0]
-    # print('tot_c: ')
-    # print(tot_c)
+    tot_c = sum(c_mean_vec)[0] # current total concentration over all elements in mat c
 
     norm_c_mean_list = []
 
     for c_mean in c_mean_vec:
-        
-        # print('element in c_mean_vec during update:')
-        # print(c_mean)
 
         norm_c_mean = c_mean[0]/tot_c
         norm_c_mean_list.append(norm_c_mean)
-    
-    
-    # print('norm_c_list: ')
-    # print(norm_c_mean_list)
 
-    norm_c_mean_vec = np.array([norm_c_mean_list]).transpose()
-
-    # print('norm_c_vec: ')
-    # print(norm_c_mean_vec)
-
+    norm_c_mean_vec = np.array([norm_c_mean_list]).transpose() # 1 x n to n x 1
 
     return norm_c_mean_vec
 
@@ -424,42 +422,49 @@ def calc_vld_all_c(cand_cas_list: list, db_list: list, n: int, tgt_hsp_list: lis
 
             conc_tol_check_log = sp_vld_chk.is_conc_above_tol(norm_c, flt_tol_conc)
 
-            low_conc_updt_c = conc_filt_c(norm_c, conc_tol_check_log)
+            low_conc_updt_c = conc_filt_c(norm_c, conc_tol_check_log) # update low conc solvent into 0
 
-            norm_conc_updt_c = renorm_c(low_conc_updt_c)
+            norm_conc_updt_c = renorm_c(low_conc_updt_c) # renormalise
             
-            calc_hsp_norm_c = mat_s @ norm_conc_updt_c
+            calc_hsp_norm_c = mat_s @ norm_conc_updt_c # calculated HSP based on renormalised mat C
 
-            norm_e = calc_hsp_norm_c - tgt_hsp_with_1_arr
+            norm_e = calc_hsp_norm_c - tgt_hsp_with_1_arr # absolute error between calculated and target HSP (no perturbation)
 
-            e_hsp_check = sp_vld_chk.is_err_mat_accptbl(norm_e, tol_err_list)
+            e_hsp_check = sp_vld_chk.is_err_mat_accptbl(norm_e, tol_err_list) # error check again
 
-            if e_hsp_check == False:
+            if e_hsp_check is False:
+
                 err_msg = 'ErrorTooLarge'
                 cal_result = [cas_comb, norm_conc_updt_c, norm_e, calc_hsp_norm_c]
-                calc_log_list.append([i, cal_result, err_msg, False]) 
+
+                calc_log_list.append([i, cal_result, err_msg, False]) # the last term is the validity of this combination
+
                 vld_comb_number += 0
                
             else:
+
                 cal_result = [cas_comb, norm_conc_updt_c, norm_e, calc_hsp_norm_c]
+
                 vld_msg = 'Valid'
+
                 calc_log_list.append([i, cal_result, vld_msg, True])
+
                 vld_comb_number += 1
     
     
     vld_comb_chk = sp_vld_chk.is_vld_comb_exist(vld_comb_number) # check if the vld comb is not empty
 
-    if vld_comb_chk == False:
+    if vld_comb_chk is False:
 
-        continue_idx = 0
+        continue_idx = 0 # will not continue the future step
     
     else:
 
         continue_idx = 1
 
-    full_calc_log_js_path, calc_log_js_list = sp_io.calc_log_list2js(calc_log_list)
+    full_calc_log_js_path, calc_log_js_list = sp_io.calc_log_list2js(calc_log_list) # write json of full calculation data before advanced filtration
 
-    sp_io.calc_log_list2txt(calc_log_list, '_all_')
+    sp_io.calc_log_list2txt(calc_log_list, '_all_') # write log of full calculation details before advanced filtration
     
 
     return continue_idx, calc_log_js_list, full_calc_log_js_path

@@ -1,5 +1,10 @@
 # Solvent Predictor v2.0
 
+## TODO (15/01/2023)
+
+- sp_clc.sucs_result_filt docstrings
+
+
 ## TODO (14/01/2023)
 - sp_calc: calc_vld_all_c docstrings
 

@@ -181,10 +181,17 @@ def get_datetime_filename():
     return time_name
 
 
-def list2txt(list_to_convert, txt_name):
+def list2txt(list_to_convert: list, txt_name: str) -> str:
+    """return path of log txt.
+
+    Args:
+        list_to_convert (list): to be saved content.
+        txt_name (str): specified filename.
+
+    Returns:
+        str: path of the log txt file.
     """
-    write calc_log_list to txt as reference
-    """
+    
     current_path = os.getcwd()
 
     if os.path.exists(current_path + '\\log'):
@@ -199,9 +206,15 @@ def list2txt(list_to_convert, txt_name):
     
     return full_txt_path
 
-def calc_log_list2txt(calc_log_list, log_type):
-    """
-    save the temporary calculation log
+def calc_log_list2txt(calc_log_list: list, log_type: str) -> str:
+    """return path of the saved log txt file.
+
+    Args:
+        calc_log_list (list): content to be saved.
+        log_type (str): personalised filename.
+
+    Returns:
+        str: path of the saved log txt file.
     """
 
     time_name = get_datetime_filename()
@@ -212,13 +225,16 @@ def calc_log_list2txt(calc_log_list, log_type):
     return txt_path
 
 
-def calc_log_list2js(calc_log_list):
-    """
-    convert the calc log list to a dictionary
-    ready to be converted to json as output
+def calc_log_list2js(calc_log_list: list) -> tuple[str, list]:
+    """return path of json file containing full calculation detail and corresponding content.
+
+    Args:
+        calc_log_list (list): full calculation log before advanced filtration.
+
+    Returns:
+        tuple[str, list]: [json log path, json content].
     """
 
-    # cal_log_dict = {}
     calc_log_json_list = []
 
     time_name = get_datetime_filename()
@@ -229,6 +245,7 @@ def calc_log_list2js(calc_log_list):
 
     if os.path.exists(current_path + '\\log'):
         pass
+
     else:
         os.mkdir('log')
 
@@ -238,18 +255,16 @@ def calc_log_list2js(calc_log_list):
 
         for entry in calc_log_list:
 
-            # cal_log_dict.clear()
+            idx = entry[0] # int; solvent indx
 
-            # print('entry: ')
-            # print(entry)
+            cas_comb = entry[1][0] # list of cas combination
 
-            idx = entry[0] #int
-            cas_comb = entry[1][0] #list
             conc = np.ndarray.tolist(np.array(entry[1][1]))
             err = np.ndarray.tolist(np.array(entry[1][2]))
             calc_hsp = np.ndarray.tolist(np.array(entry[1][3]))
-            quality = entry[2] # string
-            validity = str(entry[-1]) # bool2str
+
+            quality = entry[2] # str, valid or not
+            validity = str(entry[-1]) # bool
             
             data = {
                 'idx' : idx,
@@ -263,8 +278,6 @@ def calc_log_list2js(calc_log_list):
             
             calc_log_json_list.append(data)
         
-        # print(calc_log_json_list)
-
         json.dump(calc_log_json_list, op_js)
     
     return full_js_path, calc_log_json_list

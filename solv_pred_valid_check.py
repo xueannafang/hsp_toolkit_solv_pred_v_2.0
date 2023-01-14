@@ -520,16 +520,16 @@ def is_err_mat_accptbl(e_mean_arr: np.ndarray, tol_err_list: list) -> bool:
     
     return err_mat_check
 
-def is_conc_above_tol(c_mean_vec, tol_conc):
+def is_conc_above_tol(c_mean_vec: np.ndarray, tol_conc: float) -> list:
+    """return [solv_idx, bool] that reflects the validity of solvent i in terms of whether its concentration is above the lowest acceptable concentration.
+
+    Args:
+        c_mean_vec (np.ndarray): n x 1 mat c.
+        tol_conc (float): tolerance of concentration. Results below this value is regarded as invalid.
+
+    Returns:
+        list: [[solv_idx i, validity of i]]
     """
-    check if each entry is above the concentration threshold
-    save all the validity of each candidate with its idx in c_mean_vec
-    """
-    
-    # print('conc_fil: ')
-    # print(c_mean_vec)
-    # print('tol_conc: ')
-    # print(tol_conc)
 
     conc_tol_check_log = []
 
@@ -541,24 +541,27 @@ def is_conc_above_tol(c_mean_vec, tol_conc):
         
         else:
             conc_tol_check_log.append([solv_idx, True])
-    
-    # print('c_mean[0]: ')
-    # print(c_mean[0])
-    # print('conc_tol_chk_log: ')
-    # print(conc_tol_check_log)
 
     return conc_tol_check_log
 
 
-def is_vld_comb_exist(vld_comb_n):
+def is_vld_comb_exist(vld_comb_n: int) -> bool:
+    """return bool value reflecting whether there is any valid results in the calculation.
+
+    Args:
+        vld_comb_n (int): number of valid combinations.
+
+    Returns:
+        bool: True if vld_comb_n not 0; False else.
     """
-    check if there is any vld results
-    """
-    is_vld_comb_exist == True
+    
+    is_vld_comb_exist = True
 
     if vld_comb_n == 0:
+
         print('Warning: No valid results. \n \nYou may need to: \n - Edit candidates \n - Increase tolerance of error \n - Modify target')
-        is_vld_comb_exist == False
+        
+        is_vld_comb_exist = False
     
     return is_vld_comb_exist
         
