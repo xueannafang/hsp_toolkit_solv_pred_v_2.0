@@ -1,6 +1,10 @@
 Last update: 15/01/2023
 # Introduction
 
+<p>
+ <img src=https://github.com/xueannafang/hsp-toolkits/blob/main/figs/logo_all.png width=100>
+ </p>
+
 ## Aim
 
 The aim of this project is to develop quantitative solvent selection tools for synthesis and property control of functional materials. The focus is based on Hansen solubility parameters (HSP).
@@ -33,7 +37,7 @@ To improve these issues, we developed two python-based toolkits:
 Given that HSP of a solvent mixture follows a linear combination of each individual component, researchers can easily calculate the HSP of solvent systems with known components. It is however much more difficult to reverse this process.
 
 <p>
- <img src="https://github.com/xueannafang/hsp-toolkits/blob/main/figs/bg_solvpred.png" width=1000>
+ <img src="https://github.com/xueannafang/hsp-toolkits/blob/main/figs/bg_solvpred.png" width=800>
  </p>
 
 The aim of *SolvPred* is to support the solvent suggestion when a desired goal of HSP is known.
@@ -41,7 +45,7 @@ The aim of *SolvPred* is to support the solvent suggestion when a desired goal o
 The key function is to convert the target HSP into a multi-solvent list based on the requirement of user.
 
 <p>
- <img src="https://github.com/xueannafang/hsp-toolkits/blob/main/figs/solv_pred_sch.png" width=500>
+ <img src="https://github.com/xueannafang/hsp-toolkits/blob/main/figs/solv_pred_sch.png" width=300>
  </p>
 
  Advanced property filtration could be avilable depending on users preference.
@@ -54,10 +58,6 @@ The key function is to convert the target HSP into a multi-solvent list based on
   <img src="https://github.com/xueannafang/hsp-toolkits/blob/main/figs/sch_sp_mloc.png" width=700>
  </p> -->
 
-<p>
- <img src=https://github.com/xueannafang/hsp-toolkits/blob/main/figs/logo_all.png width=200>
- </p>
-
 As indicated by its name, *MLoc* locates "*M*" in the Hansen space.
 
 It is a top-down approach aiming at obtaining the HSP of as-studied material (M) using a solubility score (*w<sub>i</sub>*) measured from a series of solvents.
@@ -65,7 +65,7 @@ It is a top-down approach aiming at obtaining the HSP of as-studied material (M)
 *MLoc* can be useful for complicated systems whose exact chemical component is hard to confirm. This could be, for example, polymeric systems with high dispersity, mixtures of isomers or analogous, etc., where bottom-up method like group contribution may not be easy to be carried out. 
 
 <p>
-  <img src=https://github.com/xueannafang/hsp-toolkits/blob/main/figs/m_loc_sch.png width=500>
+  <img src=https://github.com/xueannafang/hsp-toolkits/blob/main/figs/m_loc_sch.png width=300>
   </p>
 
 Part of the *MLoc* can be connected to *SolvPred*] to provide multi-solvent suggestion based on the as-predicted HSP of the material.
