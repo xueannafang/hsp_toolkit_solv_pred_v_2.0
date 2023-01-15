@@ -30,7 +30,7 @@ SolvPred is a solvent selection assisstant aiming at providing multi-solvent sug
   - Phyciscal/Chemical data of solvents in the database were collected from PubChem.
   - HSP data same as [last version](https://github.com/xueannafang/hsp_toolkit_prototype).
 
-## Acknowledgement
+<!-- ## Acknowledgement
 
  This work is developed by:
  - Xue Fang (School of Chemistry, University of Bristol)
@@ -46,4 +46,4 @@ SolvPred is a solvent selection assisstant aiming at providing multi-solvent sug
 
  The development and communication of this work are funded by:
  - University of Bristol - Chinese Scholarship Council Joint Scholarship
- - Royal Society of Chemistry Researcher Development Grants (2022)
+ - Royal Society of Chemistry Researcher Development Grants (2022) -->
