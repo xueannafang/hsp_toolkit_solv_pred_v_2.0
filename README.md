@@ -3,7 +3,7 @@ Last update: 15/01/2023
 
 ## Introduction
 
-SolvPred is a solvent selection assisstant aiming at providing multi-solvent suggestion based on target Hansen solubility parameters (HSP)
+SolvPred is a solvent selection assisstant aiming at providing multi-solvent suggestion based on target Hansen solubility parameters (HSP).
 
 ## What's new in this version?
 
@@ -23,10 +23,9 @@ SolvPred is a solvent selection assisstant aiming at providing multi-solvent sug
 
  ## Disclaimer
 
-
   - SolvPred only provides suggestion. Results may vary with multi factors in complicated situations. It is the users responsbility to manuallay check the exact experimental performance in different scenarios.
 
-## Data source:
+## Data source
 
   - Phyciscal/Chemical data of solvents in the database were collected from PubChem.
   - HSP data same as [last version](https://github.com/xueannafang/hsp_toolkit_prototype).
