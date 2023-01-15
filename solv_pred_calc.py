@@ -470,23 +470,24 @@ def calc_vld_all_c(cand_cas_list: list, db_list: list, n: int, tgt_hsp_list: lis
     return continue_idx, calc_log_js_list, full_calc_log_js_path
 
 
-def sucs_result_filt(calc_log_js_list):
+def sucs_result_filt(calc_log_js_list: list) -> list:
+    """return successful-only results (i.e., validity is True).
+
+    Args:
+        calc_log_js_list (list): full calculation info in a json list.
+
+    Returns:
+        list: successful calculation info.
     """
-    remove invalid results
-    """
+    
     vld_log_list = []
 
-    # print(calc_log_js_list)
-
     for each_comb in calc_log_js_list:
-        # print(each_comb)
-        # print(each_comb['validity'])
 
         if each_comb['validity'] == 'True':
 
             vld_log_list.append(each_comb)
         
-    # print(vld_log_list)
     sp_io.calc_log_list2txt(vld_log_list, '_vld_')
 
     return vld_log_list

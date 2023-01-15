@@ -566,23 +566,35 @@ def is_vld_comb_exist(vld_comb_n: int) -> bool:
     return is_vld_comb_exist
         
 
-def bp_chk(vld_comb_list, tgt_temp):
-    """
-    check if the bp of any predicted solvent is below the set temperature
+def bp_chk(vld_comb_list: list, tgt_temp: float) -> list:
+    """return updt bp checked list of dict involving check message and validity that reflects whether the bp of any predicted solvent is below the set temperature.
 
-    add bp_quality, bp_validity as new keys
+    Args:
+        vld_comb_list (list): list of n solvent dicts.
+        tgt_temp (float): target temperature.
+
+    Returns:
+        list: for each dict entry, based on the original information, further include 'bp_chk_msg' and 'bp_validity' keys.
     """
+    
     for each_solv_dict in vld_comb_list:
 
         bp = each_solv_dict['bp']
-        if bp in [None, -1]:
+
+        if bp in [None, -1]: # deal with missing data in db
+
             each_solv_dict['bp_chk_msg'] = 'NA'
             each_solv_dict['bp_validity'] = 'NA'
+
         else:
+
             if bp < tgt_temp:
+
                 each_solv_dict['bp_chk_msg'] = 'Below set temp'
                 each_solv_dict['bp_validity'] = False
+            
             else:
+
                 each_solv_dict['bp_chk_msg'] = 'Above or equal to set temp'
                 each_solv_dict['bp_validity'] = True
     
@@ -591,7 +603,7 @@ def bp_chk(vld_comb_list, tgt_temp):
     return bp_chk_vld_list
 
 
-def ims_chk(vld_comb_list):
+def ims_chk(vld_comb_list: list) -> list:
     """
     check if any solvent is immiscible with others in the group
 
@@ -625,7 +637,6 @@ def ims_chk(vld_comb_list):
                 if idx in ims_idx_list[j]:
                     all_ims_comb_list.append([idx, ims_idx])
     
-   
     for each_solv_dict in vld_comb_list:
 
         if 'ims_validity' in each_solv_dict.keys():

@@ -1,6 +1,6 @@
 """
 SolvPred_v2.0
-Last update: 12/01/2023
+Last update: 15/01/2023
 """
 
 import solv_pred_io as sp_io
@@ -143,25 +143,16 @@ def solv_pred_main(db: str = 'db_solv_pred_v2.json', default_candidate: str = 'd
 
     ctn_idx, calc_log_js_list, calc_log_js_path = sp_clc.calc_vld_all_c(cand_cas_for_calc_list, temp_updt_db, n, target_hsp_list, tol_err_list, tol_conc)
 
-    vld_result_list = sp_clc.sucs_result_filt(calc_log_js_list)
+    vld_result_list = sp_clc.sucs_result_filt(calc_log_js_list) # filter and only keep valid results
 
-    # sp_io.calc_log_list2txt(temp_updt_db, '_temp_updt_db_')
-
-    db_info_dict = sp_io.db_info_list2dict(temp_updt_db)
-
-    # sp_io.calc_log_list2txt(db_info_dict, '_db_info_dict_')
-
-    # sp_io.sucs_result_fmt(vld_result_list, db_info_dict)
-
-
-
+    db_info_dict = sp_io.db_info_list2dict(temp_updt_db) # convert db_info_list to a dictionary
 
     if ctn_idx == 0:
 
         print('No available results.\n Please check ' + calc_log_js_path + ' for full calculation details.\n')
         print('Please consider to increase the number of candidates or error tolerance.\n ')
 
-        fail_log_txt_path = sp_io.fail_calc_log(tgt_temp, n, target_hsp_list, tol_err_list, tol_conc, cand_cas_for_calc_list, final_db_name_filt, calc_log_js_path)
+        fail_log_txt_path = sp_io.fail_calc_log(tgt_temp, n, target_hsp_list, tol_err_list, tol_conc, cand_cas_for_calc_list, final_db_name_filt, calc_log_js_path) # output failed log txt file log_failed.
 
         print('Please check ' + fail_log_txt_path + ' for calculation log. \n')
 
@@ -170,9 +161,10 @@ def solv_pred_main(db: str = 'db_solv_pred_v2.json', default_candidate: str = 'd
         exit()
     
     else:
-        sucs_log_path = sp_io.sucs_calc_log(tgt_temp, n, target_hsp_list, tol_err_list, tol_conc, cand_cas_for_calc_list, final_db_name_filt, calc_log_js_path, vld_result_list, db_info_dict)
+
+        sucs_log_path = sp_io.sucs_calc_log(tgt_temp, n, target_hsp_list, tol_err_list, tol_conc, cand_cas_for_calc_list, final_db_name_filt, calc_log_js_path, vld_result_list, db_info_dict) # output successful log txt file log_success.
     
-    # """
+    # 
     # Step 4
     
     # advanced filtration
@@ -208,21 +200,22 @@ def solv_pred_main(db: str = 'db_solv_pred_v2.json', default_candidate: str = 'd
     # 3) Some data do not include test temperature.
 
 
-    # """
+    # 
 
     ctn_idx = 1
 
     print('=========================\nStep 4: Advanced filtration (optional) \n This step will further include the consideration of solvent properties according to the condition set up. \n In this version, miscibility and boiling point will be evaluated. \n Data are based on PubChem. \n Please note, there could be some limitation of this function due to data availability. Check README for more discussion. \n')
 
-    ctn_idx = sp_adv_filt.ctn_adv_filt()
+    ctn_idx = sp_adv_filt.ctn_adv_filt() # check if user wants to process advanced filteration or not.
 
-    adv_filt_opt_list = ['idx', 'solvent', 'miscibility', 'bp']
+    adv_filt_opt_list = ['idx', 'solvent', 'miscibility', 'bp'] # items except idx and solvent are advanced options to be filtered and checked.
 
     if ctn_idx == 0:
-        # """
+        
         # user does not want to do the filtration.
-        # """
+
         print('Please check ' + sucs_log_path + ' for calculation log.')
+
         # file name and path of the sucs log
         exit()
     
@@ -242,10 +235,10 @@ def solv_pred_main(db: str = 'db_solv_pred_v2.json', default_candidate: str = 'd
         'Candidate cas' : cand_cas_for_calc_list,
         'Candidate solvents' : final_db_name_filt,
     
-        } # 'Full calculation log path' : calc_log_js_path will not be included in the sucs_adv_filt_log
+        } # Full input parameters into a dict. 'Full calculation log path' : calc_log_js_path will not be included in the sucs_adv_filt_log
 
                     
-        sp_adv_filt.adv_filt(vld_result_list, adv_filt_opt_list, db_info_dict, tgt_temp, basic_input_prmtr_dict)
+        sp_adv_filt.adv_filt(vld_result_list, adv_filt_opt_list, db_info_dict, tgt_temp, basic_input_prmtr_dict) # advanced filtration
 
 
 

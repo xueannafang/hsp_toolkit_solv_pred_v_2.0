@@ -24,11 +24,19 @@ def fetch_name(cas: str, db_json: json) -> str:
 
 
 
-def fetch_info_from_cas_list(to_fetch_cas_list, to_fetch_key, db_info_dict):
+def fetch_info_from_cas_list(to_fetch_cas_list: list, to_fetch_key: list, db_info_dict: dict) -> list:
+    """return a list of dict involving fetched properties.
+    to_fetch argument is a list from the following items: ['No.', 'CAS', 'Name', 'D', 'P', 'H', 'Mole_vol', 'ims_idx', 'bp', 'mw', 'viscosity', 'vis_temp', ''heat_of_vap', 'hov_temp', 'SMILES'].
+
+    Args:
+        to_fetch_cas_list (list): cas list.
+        to_fetch_key (list): keys to be fetched.
+        db_info_dict (dict): {key_i: all_values of key i in db}.
+
+    Returns:
+        list: [{'CAS' : cas_i, 'to_be_fetched_key_j' : value_j}].
     """
-    fetech the required information from the db_info_dict
-    to_fetch argument is a list from the following items: ['No.', 'CAS', 'Name', 'D', 'P', 'H', 'Mole_vol', 'ims_idx', 'bp', 'mw', 'viscosity', 'vis_temp', ''heat_of_vap', 'hov_temp', 'SMILES']
-    """
+    
     # to_fetch_cas_idx = []
     all_cas_in_db = db_info_dict['CAS']
 

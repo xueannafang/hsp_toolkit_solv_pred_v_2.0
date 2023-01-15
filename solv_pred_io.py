@@ -79,20 +79,22 @@ def input_cas() -> list:
     return usr_cas_list
 
 
-def db_info_list2dict(db_info_list):
+def db_info_list2dict(db_info_list: list) -> dict:
+    """return the operated db_info_list back to dict format.
+
+    Args:
+        db_info_list (list): [[key i, [all values of key i]].
+
+    Returns:
+        dict: {{key i : all values of key i}}.
     """
-    convert the operated db_info_list back to dict
-    """
-    # all_property_name = []
-    # all_property_all_data = []
+    
     all_tuple_to_dict_list = []
 
     for property in db_info_list:
         
         property_name = property[0]
         property_all_data = property[1]
-        # all_property_name.append(property_name)
-        # all_property_all_data.append(property_all_data)
 
         tuple_to_dict = tuple([property_name, property_all_data])
         all_tuple_to_dict_list.append(tuple_to_dict)
@@ -102,15 +104,25 @@ def db_info_list2dict(db_info_list):
     return db_info_dict
 
 
-def continue_check():
+def continue_check() -> int:
+    """return continue idx.
+
+    Returns:
+        int: continue idx is 1 for yes, 0 for no, else for invalid.
+    """
 
     continue_check_ip = sp_rtxt.rm_spc(input('[y/n]: ').lower())
 
     if continue_check_ip in ['y', 'yes']:
+
         continue_idx = 1
+
     elif continue_check_ip in ['n', 'no']:
+
         continue_idx = 0
+
     else:
+
         continue_idx = -1
     
     return continue_idx
@@ -283,10 +295,23 @@ def calc_log_list2js(calc_log_list: list) -> tuple[str, list]:
     return full_js_path, calc_log_json_list
 
 
-def fail_calc_log(target_temp, n, target_hsp, tol_err, tol_conc, cand_cas_list, cand_name_list, calc_log_js_path):
+def fail_calc_log(target_temp: float, n: int, target_hsp: list, tol_err: list, tol_conc: float, cand_cas_list: list, cand_name_list: list, calc_log_js_path: str) -> str:
+    """return path of failed log txt that summarise calculation details and related results files (based on failed test).
+
+    Args:
+        target_temp (float): target temperature.
+        n (int): max number of solvents in each combination.
+        target_hsp (list): [d, p, h].
+        tol_err (list): [e_d, e_p, e_h].
+        tol_conc (float): lowest acceptable conc.
+        cand_cas_list (list): cas list of candidates.
+        cand_name_list (list): name list of candidates.
+        calc_log_js_path (str): full calculation detail json path.
+
+    Returns:
+        str: path of log txt file storing failed info.
     """
-    summarise calculation details and related results files (based on failed test)
-    """
+    
     current_path = os.getcwd()
 
     time_name = get_datetime_filename()
@@ -294,8 +319,11 @@ def fail_calc_log(target_temp, n, target_hsp, tol_err, tol_conc, cand_cas_list, 
     log_dir_name = 'log'
 
     if os.path.exists(current_path + '\\' + log_dir_name):
+
         pass
+
     else:
+
         os.mkdir(log_dir_name)
     
     txt_name = 'log_failed_' + str(time_name)
@@ -339,20 +367,32 @@ def fail_calc_log(target_temp, n, target_hsp, tol_err, tol_conc, cand_cas_list, 
         op_txt.write('===============================' + '\n'+ '\n')
         
         for key in to_summarise:
+
             op_txt.write(str(key) + ': ' + '\n' + str(to_summarise[key]) + '\n' + '\n')
     
     return full_txt_path
 
 
-def sucs_calc_log(target_temp, n, target_hsp, tol_err, tol_conc, cand_cas_list, cand_name_list, calc_log_js_path, vld_log_list, db_info_dict):
+def sucs_calc_log(target_temp: float, n: int, target_hsp: list, tol_err: list, tol_conc: float, cand_cas_list: list, cand_name_list: list, calc_log_js_path: str, vld_log_list: list, db_info_dict: dict) -> str:
+    """return path of log txt file storing successful calculation details. Save the log for current results by removing all the false data. For multi-solvent comb: iterate through the results and reorganise/reformatting the data.
 
+    Args:
+        target_temp (float): target temperature.
+        n (int): max number of solvents in each combination.
+        target_hsp (list): [d, p, h]
+        tol_err (list): [e_d, e_p, e_h]
+        tol_conc (float): lowest acceptable concentration.
+        cand_cas_list (list): cas list of all candidates.
+        cand_name_list (list): name list of all candidates.
+        calc_log_js_path (str): path of full calculation details json log file.
+        vld_log_list (list): valid results to be itereated through.
+        db_info_dict (dict): db info in a dict.
+
+    Returns:
+        str: path of log txt file storing successful results.
     """
-    output successful calculation results
 
-    save the log for current results by removing all the false data.
-    for multi-solvent comb: iterate through the results and reorganise/reformatting the data.
-
-    """
+    
     current_path = os.getcwd()
 
     time_name = get_datetime_filename()
@@ -403,13 +443,14 @@ def sucs_calc_log(target_temp, n, target_hsp, tol_err, tol_conc, cand_cas_list, 
         op_txt.write('===============================' + '\n'+ '\n')
         
         for key in to_summarise:
+
             op_txt.write(str(key) + ': ' + '\n' + str(to_summarise[key]) + '\n' + '\n')
         
         op_txt.write('===============================' + '\n')
         op_txt.write('Results: \n')
         op_txt.write('===============================' + '\n'+ '\n')
 
-        for g, each_comb in enumerate(vld_log_list):
+        for g, each_comb in enumerate(vld_log_list): # iterate through successful results and format into appropriate way
 
             op_txt.write('Group ' + str(g + 1) + ' : \n\n')
 

@@ -1,3 +1,7 @@
+"""
+solv_pred_adv_filt contains functions involved in advanced filtration step.
+"""
+
 import solv_pred_io as sp_io
 import solv_pred_fetch_info as sp_ftch_info
 import solv_pred_valid_check as sp_vld_chk
@@ -18,9 +22,11 @@ db_readable_opt_dict = {
 
     }
 
-def ctn_adv_filt():
-    """
-    check if the user wants to continue the advanced filtration.
+def ctn_adv_filt() -> int:
+    """return continue idx reflecting whether the user wants to continue the advanced filtration.
+
+    Returns:
+        int: 1 for to continue. 0 for not.
     """
 
     print("Continue advanced filtration? \n")
@@ -29,23 +35,27 @@ def ctn_adv_filt():
     return usr_ctn_adv_filt_idx
 
 
-def gen_filt_opt(filt_opt):
-    """
-    convert filt_opt to key name in db_info_dict
-    in this version the filt_opt is ['miscibility', 'bp']
-    needs to be converted to 'ims_idx' and 'bp'
+def gen_filt_opt(filt_opt: list) -> list:
+    """return name that fits the db dict based on the filt_opt list.  
+
+    Args:
+        filt_opt (list): in this version it is ['miscibility', 'bp'] in addition to standard terms ['idx', 'solvent'] - needs to be converted to 'ims_idx' and 'bp'.
+
+    Returns:
+        list: corresponding keys readable by the db dict.
     """
 
     db_dict_readable_filt_opt_list = []
 
     for opt in filt_opt:
+
         db_dict_readable_opt = db_readable_opt_dict[str(opt)]
         db_dict_readable_filt_opt_list.append(db_dict_readable_opt)
     
     return db_dict_readable_filt_opt_list
 
 
-def adv_filt(vld_log_list, filt_opt, db_info_dict, target_temp, bsc_ip_info_dict):
+def adv_filt(vld_log_list: list, filt_opt: list, db_info_dict: dict, target_temp: float, bsc_ip_info_dict: dict):
     """
     filt_opt is a list of solvent properties involved in the database
     in this version (v2.0) filt_opt is miscibility and bp - will be converted to ims_idx list and bp list
@@ -55,14 +65,9 @@ def adv_filt(vld_log_list, filt_opt, db_info_dict, target_temp, bsc_ip_info_dict
     for bp filt part:
         solvents with bp belowing the target temp will trigger a warning message and return a False value for bp_chk
     """
-    db_opt_list = gen_filt_opt(filt_opt)
+    db_opt_list = gen_filt_opt(filt_opt) # convert into db readable options
 
-    expand_info_list = sucs_result_expand(vld_log_list, db_info_dict, db_opt_list)
-
-    # sp_io.calc_log_list2txt(expand_info_list, '_exp_info_')
-
-    # for comb_dict_list in expand_info_list:
-    #     pass
+    expand_info_list = sucs_result_expand(vld_log_list, db_info_dict, db_opt_list) # expand current valid log list with requested properties
 
     updt_filt_list = expand_info_list
 
@@ -73,6 +78,7 @@ def adv_filt(vld_log_list, filt_opt, db_info_dict, target_temp, bsc_ip_info_dict
             exp_info_bp_chk_list = []
             
             for each_comb in updt_filt_list:
+                
                 each_comb_bp_chk = sp_vld_chk.bp_chk(each_comb, target_temp)
                 exp_info_bp_chk_list.append(each_comb_bp_chk)
             
@@ -205,11 +211,18 @@ def adv_filt_expand(vld_log_list, vld_solv_comb_adv_list):
 
 
 
-def sucs_result_expand(vld_log_list, db_info_dict, to_fetch_property):
+def sucs_result_expand(vld_log_list: list, db_info_dict: dict, to_fetch_property: list) -> list:
+    """return list of dict involving requested properties expanded from the valid results in calculation log.
+
+    Args:
+        vld_log_list (list): [{'idx' : idx_i in all calc details, 'cas_comb' : [cas_1, cas_2, .., cas_n], 'conc' : [[conc_1], [conc_2], ...,  [conc_n], 'err' : [[e_d], [e_p], [e_h], [e_I = 1]], 'calc_hsp' : [[calc_d], [calc_p], [calc_h], [1]], 'quality' : 'Valid', 'validity' : 'True'}]
+        db_info_dict (dict): {key_i: all_values of key i in db}
+        to_fetch_property (list): keys in db to be fetched.
+
+    Returns:
+        list: with attached to_fetch_key : fetched value in the current list.
     """
-    expand the sucs results from calculation log
-    to_fetch_property is a list matching the filt_opt in adv_filt
-    """
+    
 
     expand_vld_info_dict = []
 
@@ -218,14 +231,12 @@ def sucs_result_expand(vld_log_list, db_info_dict, to_fetch_property):
         cas_comb_list = each_comb['cas_comb']
 
         each_comb_idx = each_comb['idx']
-        # each_comb_conc = each_comb['conc']
-        # each_comb_err = each_comb['err']
-        # each_comb_calc_hsp = each_comb['calc_hsp']
 
-        vld_info_dict = sp_ftch_info.fetch_info_from_cas_list(cas_comb_list, to_fetch_property, db_info_dict) # need to fetch ['No.', 'Name', 'bp', 'ims_idx']
+        vld_info_dict = sp_ftch_info.fetch_info_from_cas_list(cas_comb_list, to_fetch_property, db_info_dict) #  [{'CAS' : cas_i, 'to_be_fetched_key_j' : value_j}]
 
         for solv_dict in vld_info_dict:
-            solv_dict['ori_idx'] = each_comb_idx
+
+            solv_dict['ori_idx'] = each_comb_idx # attach idx in the full calc log as ori_idx in the expanded info
 
         expand_vld_info_dict.append(vld_info_dict)
     

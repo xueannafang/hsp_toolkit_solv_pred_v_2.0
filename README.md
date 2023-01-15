@@ -39,33 +39,6 @@ As one of the [HSP toolkits](https://github.com/xueannafang/HSP_toolkit_docs/blo
 
   - SolvPred is under continous tests and improvement. The output only provide suggestion. Results may vary with multi factors in complicated situations. It is the users responsbility to manuallay check the exact experimental performance in different scenarios.
 
----
-
-This project is developed by
-
-- [Xue Fang](https://www.linkedin.com/in/xue-fang-811204163/) (School of chemistry, University of Bristol, UK)
-
-with instruction from
-
-- [Prof Charl FJ Faul](https://faulresearchgroup.com/charl-f-j-faul/) (School of chemistry, University of Bristol, UK)
-- [Prof Natalie Fey](https://feygroupchem.wordpress.com/) (School of chemistry, University of Bristol, UK)
-- [Dr Ella Gale](https://www.bristol.ac.uk/people/person/Ella-Gale-58ab10ba-8b85-4513-944e-6d9020b6ff2c/) (School of chemistry, University of Bristol, UK)
-
-
-The development and communication of this work are funded by::
-
-- [University of Bristol](https://www.bristol.ac.uk/) - [Chinese Scholarship Council](https://www.chinesescholarshipcouncil.com/) Joint Scholarship
-- [Royal Society of Chemistry Researcher Development Grants](https://www.rsc.org/prizes-funding/funding/find-funding/researcher-development-grant/)
-- [Bristol Doctoral College](http://www.bristol.ac.uk/doctoral-college/)
-
-The author acknowledges all those who have provided inputs and technical support during the design and exploration of these toolkits, in particular:
-
-- [Dr Jie Chen](https://scholar.google.com/citations?user=GPM9kTgAAAAJ&hl=en) (Fuzhou University, China)
-- Jillisa Thompson (School of Chemistry, University of Bristol, UK)
-- [Bo Gao](https://www.linkedin.com/in/bo-gao-771841199/) (School of physics, University of Bristol, UK)
-- [ChatGPT](https://openai.com/blog/chatgpt/)
-
-
  ---
 
 This project is licensed under [GPL-3.0](https://www.gnu.org/licenses/gpl-3.0.html).
