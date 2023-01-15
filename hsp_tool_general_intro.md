@@ -75,7 +75,7 @@ The solubility indicator applied in the prototype version is based on UV-Vis spe
 The studied materials tested during the development of *MLoc* are mainly based on [conjugated microporous polymers (CMP)](https://www.sciencedirect.com/topics/engineering/conjugated-microporous-polymer).
 
 
-# Versions
+## Versions
 
 ### SolvPred
 
@@ -88,8 +88,10 @@ The studied materials tested during the development of *MLoc* are mainly based o
 <!-- - [v2.0](https://github.com/xueannafang/HSP_toolkit_MLoc_v2) -->
 - [Prototype/v1.0](https://github.com/xueannafang/hsp_toolkit_prototype/tree/main/HSP_MLocator)
 
+
+---
  
- ### References
+## References
 
 1. C. Hansen, Hansen Solubility Parameters – A user’s handbook, 2nd edition, 2011.
 2. X. Fang, C. F.J. Faul, N. Fey, E. Gale, Solvent Predictor - A python toolkit to predict multi-solvent combinations with target Hansen solubility parameters (manuscript in preparation)
