@@ -27,7 +27,7 @@ There are nevertheless a couple of challenges when using HSP:
 
 To improve these issues, we developed two python-based toolkits:
 
-* *Solvent Predictor (SolvPred)*:
+1. *Solvent Predictor (SolvPred)*:
 - Based on the target Hansen solubility parameters (HSPs), propose a list of multi-solvent combination.
 
 Given that HSP of a solvent mixture follows a linear combination of each individual component, researchers can easily calculate the HSP of solvent systems with known components. It is however much more difficult to reverse this process.
@@ -47,7 +47,7 @@ The key function is to convert the target HSP into a multi-solvent list based on
  Advanced property filtration could be avilable depending on users preference.
 
 
-* *M Locator (MLoc)*:
+2. *M Locator (MLoc)*:
 - Predict HSPs of the studied material based on an experimental-measurable solubility score.
 
  <!-- <p>
