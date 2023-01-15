@@ -3,7 +3,8 @@ Last update: 15/01/2023
 
 ## Introduction
 
-SolvPred is a solvent selection assisstant aiming at providing multi-solvent suggestion based on target Hansen solubility parameters (HSP).
+As one of the [HSP toolkits](https://github.com/xueannafang/HSP_toolkit_docs/blob/main/hsp_tool_general_intro.md), SolvPred is a solvent selection assisstant aiming at providing multi-solvent suggestion based on target Hansen solubility parameters (HSP).
+
 
 ## What's new in this version?
 
@@ -15,35 +16,56 @@ SolvPred is a solvent selection assisstant aiming at providing multi-solvent sug
  - Allow temperature control and include temperautre-dependent correction of HSP.
  - Advanced filtration step based on miscibility and boiling point has been included.
 
- ## Limitation
+ ## Limitations
 
    - Some categories may have a limitation of avilable data, which will be labelled as -1 or None in the database.
    - The temperature control function is only based on correcting HSP in this version. Properties applied in advanced filtration (e.g., miscibility) may also be temperature-dependent but no direct correction is applied in this version.
    - If user manually edited the database and add additional solvents without available HSP, the temperature correction for data-missing group will be disabled and corresponding solvent will be removed from database after temperature updating check step.
 
- ## Disclaimer
-
-  - SolvPred only provides suggestion. Results may vary with multi factors in complicated situations. It is the users responsbility to manuallay check the exact experimental performance in different scenarios.
 
 ## Data source
 
   - Phyciscal/Chemical data of solvents in the database were collected from PubChem.
-  - HSP data same as [last version](https://github.com/xueannafang/hsp_toolkit_prototype).
+  - HSP data remain same as [last version](https://github.com/xueannafang/hsp_toolkit_prototype), as collected from HSP handbook (ref 1).
 
-<!-- ## Acknowledgement
 
- This work is developed by:
- - Xue Fang (School of Chemistry, University of Bristol)
+## References
 
- with the instruction from:
- - Prof Charl FJ Faul (School of Chemistry, University of Bristol)
- - Prof Natalie Fey (School of Chemistry, University of Bristol)
- - Dr Ella Gale (School of Chemistry, University of Bristol)
+1. C. Hansen, Hansen Solubility Parameters – A user’s handbook, 2nd edition, 2011.
+2. X. Fang, C. F.J. Faul, N. Fey, E. Gale, SolvPred - A python toolkit to predict multi-solvent combinations with target Hansen solubility parameters (manuscript in preparation).
 
- and the following people providing techniqual advice:
- - Jillisa Thompson (School of Chemistry, University of Bristol)
- - Bo Gao (School of Physics, University of Bristol)
 
- The development and communication of this work are funded by:
- - University of Bristol - Chinese Scholarship Council Joint Scholarship
- - Royal Society of Chemistry Researcher Development Grants (2022) -->
+## Disclaimer
+
+  - SolvPred is under continous tests and improvement. The output only provide suggestion. Results may vary with multi factors in complicated situations. It is the users responsbility to manuallay check the exact experimental performance in different scenarios.
+
+---
+
+This project is developed by
+
+- [Xue Fang](https://www.linkedin.com/in/xue-fang-811204163/) (School of chemistry, University of Bristol, UK)
+
+with instruction from
+
+- [Prof Charl FJ Faul](https://faulresearchgroup.com/charl-f-j-faul/) (School of chemistry, University of Bristol, UK)
+- [Prof Natalie Fey](https://feygroupchem.wordpress.com/) (School of chemistry, University of Bristol, UK)
+- [Dr Ella Gale](https://www.bristol.ac.uk/people/person/Ella-Gale-58ab10ba-8b85-4513-944e-6d9020b6ff2c/) (School of chemistry, University of Bristol, UK)
+
+
+The development and communication of this work are funded by::
+
+- [University of Bristol](https://www.bristol.ac.uk/) - [Chinese Scholarship Council](https://www.chinesescholarshipcouncil.com/) Joint Scholarship
+- [Royal Society of Chemistry Researcher Development Grants](https://www.rsc.org/prizes-funding/funding/find-funding/researcher-development-grant/)
+- [Bristol Doctoral College](http://www.bristol.ac.uk/doctoral-college/)
+
+The author acknowledges all those who have provided inputs and technical support during the design and exploration of these toolkits, in particular:
+
+- [Dr Jie Chen](https://scholar.google.com/citations?user=GPM9kTgAAAAJ&hl=en) (Fuzhou University, China)
+- Jillisa Thompson (School of Chemistry, University of Bristol, UK)
+- [Bo Gao](https://www.linkedin.com/in/bo-gao-771841199/) (School of physics, University of Bristol, UK)
+- [ChatGPT](https://openai.com/blog/chatgpt/)
+
+
+ ---
+
+This project is licensed under [GPL-3.0](https://www.gnu.org/licenses/gpl-3.0.html).
