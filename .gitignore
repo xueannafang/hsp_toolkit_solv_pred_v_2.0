@@ -135,3 +135,6 @@ dmypy.json
 
 #log dir
 log/
+
+# temp dir
+temp/
