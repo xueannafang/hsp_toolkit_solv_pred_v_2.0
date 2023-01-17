@@ -497,10 +497,17 @@ def sucs_calc_log(target_temp: float, n: int, target_hsp: list, tol_err: list, t
     return full_txt_path
 
 
-def adv_filt_exp_list2json(adv_filt_exp_list, js_type):
+def adv_filt_exp_list2json(adv_filt_exp_list: list, js_type: str) -> tuple[str, list]:
+    """return path and expanded log after adv filt as json file.
+
+    Args:
+        adv_filt_exp_list (list): full info after adv filt.
+        js_type (str): part of the output json file name; summary of the task.
+
+    Returns:
+        tuple[str, list]: [json path, json content].
     """
-    convert full results after advanced filtration into json
-    """
+    
     calc_log_json_list = []
 
     time_name = get_datetime_filename()
@@ -510,8 +517,11 @@ def adv_filt_exp_list2json(adv_filt_exp_list, js_type):
     current_path = os.getcwd()
 
     if os.path.exists(current_path + '\\log'):
+
         pass
+
     else:
+
         os.mkdir('log')
 
     full_js_path = current_path + "\\log\\" + str(js_name) + '.json'
@@ -526,8 +536,6 @@ def adv_filt_exp_list2json(adv_filt_exp_list, js_type):
             }
             
             calc_log_json_list.append(data)
-        
-        # print(calc_log_json_list)
 
         json.dump(calc_log_json_list, op_js)
     
@@ -591,10 +599,20 @@ def adv_filt_fail_log(bsc_ip_info_dict, adv_all_js_path, filt_opt):
     return full_txt_path
 
 
-def adv_filt_sucs_log(adv_filt_exp_list, filt_opt, adv_js_path, adv_all_js_path, bsc_ip_info_dict):
+def adv_filt_sucs_log(adv_filt_exp_list: list, filt_opt: list, adv_js_path: str, adv_all_js_path: str, bsc_ip_info_dict: dict) -> str:
+    """return final log path after adv filtration.
+
+    Args:
+        adv_filt_exp_list (list): adv_filt results with expanded info.
+        filt_opt (list): adv filteration option.
+        adv_js_path (str): path of full adv filt process log.
+        adv_all_js_path (str): path of full log before adv filt.
+        bsc_ip_info_dict (dict): input settings dict.
+
+    Returns:
+        str: path of saved log.
     """
-    export the final log after advanced filtration
-    """
+    
     current_path = os.getcwd()
 
     time_name = get_datetime_filename()
@@ -623,8 +641,6 @@ def adv_filt_sucs_log(adv_filt_exp_list, filt_opt, adv_js_path, adv_all_js_path,
         if opt not in ['solvent', 'idx']:
             filt_opt_updt.append(opt)
 
-
-    # all_fetched_info = []
     with open(str(full_txt_path), "w") as op_txt:
         
         op_txt.write('===============================' + '\n')
@@ -650,8 +666,6 @@ def adv_filt_sucs_log(adv_filt_exp_list, filt_opt, adv_js_path, adv_all_js_path,
         for g, each_comb in enumerate(adv_filt_exp_list):
 
             op_txt.write('Group ' + str(g + 1) + ' : \n\n')
-
-            # n_in_each_comb = len(each_comb)
 
             for i, solv in enumerate(each_comb):
 
