@@ -604,47 +604,58 @@ def bp_chk(vld_comb_list: list, tgt_temp: float) -> list:
 
 
 def ims_chk(vld_comb_list: list) -> list:
-    """
-    check if any solvent is immiscible with others in the group
+    """return solvent results list with immiscbile pair check included. Check if any solvent is immiscible with others in the group according to ims_idx. Note that in this version, immiscibility is only based on data available on PubChem. Some data did not specific measured temperature, so this result is just for a reference.
 
-    note that in this version, immiscibility is only based on data available on PubChem. Some data did not specific measured temperature, so this result is just for a reference. 
+    Args:
+        vld_comb_list (list): current valid solvent pair.
+
+    Returns:
+        list: solvent pair info with ims_chk_msg, ims_solvent_in_comb, ims_validity info included.
     """
+    
     idx_list = []
     ims_idx_list = []
 
     for each_solv_dict in vld_comb_list:
 
-        if each_solv_dict['ims_idx'] == None:
+        if each_solv_dict['ims_idx'] is None: # data not available
 
             each_solv_dict['ims_chk_msg'] = 'No recorded miscibility issue or no solubility record. Manual check is recommended.'
             each_solv_dict['ims_solvent_in_comb'] = None
             each_solv_dict['ims_validity'] = 'NA'
 
         else:
-            idx_list.append(each_solv_dict['No.'])
-            ims_idx_reg_list = sp_rtxt.separate_multi_entry(each_solv_dict['ims_idx'], ';')
+
+            idx_list.append(each_solv_dict['No.']) # db_idx
+            ims_idx_reg_list = sp_rtxt.separate_multi_entry(each_solv_dict['ims_idx'], ';') # separate immiscible solvent idx into a list
             ims_idx_list.append(ims_idx_reg_list)
     
     all_ims_comb_list = []
+
+    # note that idx_list and ims_idx_list share same sequence i and j
 
     for i, idx in enumerate(idx_list):
 
         for j, ims_idx in enumerate(ims_idx_list):
 
-            if i == j:
+            if i == j: # solvent itself
                 pass
+
             elif i != j:
+
                 if idx in ims_idx_list[j]:
-                    all_ims_comb_list.append([idx, ims_idx])
+
+                    all_ims_comb_list.append([idx, ims_idx]) # immiscible pair
     
     for each_solv_dict in vld_comb_list:
 
         if 'ims_validity' in each_solv_dict.keys():
+
             pass
 
         else:
 
-            if len(all_ims_comb_list) == 0:
+            if len(all_ims_comb_list) == 0: # no misciblity issue
 
                 each_solv_dict['ims_chk_msg'] = 'No recorded miscibility issue. Manual check is recommended if temperature has been varied.'
                 each_solv_dict['ims_solvent_in_comb'] = None
@@ -656,9 +667,9 @@ def ims_chk(vld_comb_list: list) -> list:
 
                 for k, ims_comb in enumerate(all_ims_comb_list):
 
-                    if each_solv_dict['idx'] == ims_comb[0]:
+                    if each_solv_dict['idx'] == ims_comb[0]: # ims_comb[0] is idx in input solvent list
 
-                        ims_solv_in_comb_list.append(ims_comb[1])
+                        ims_solv_in_comb_list.append(ims_comb[1]) # immiscible pair of solvent[idx]
                         
                         each_solv_dict['ims_chk_msg'] = 'May cause immiscible issue.'
                         each_solv_dict['ims_solvent_in_comb'] = ims_solv_in_comb_list
