@@ -391,7 +391,7 @@ def calc_vld_all_c(cand_cas_list: list, db_list: list, n: int, tgt_hsp_list: lis
     for i, s_comb in enumerate(all_mat_s_t):
 
         mat_s = np.array(s_comb).transpose() # mat_s is now a 4 x n matrix
-        print(mat_s)
+        # print(mat_s)
         cas_comb = all_mat_cas[i]
 
         mat_c = solv_c_from_s_d(mat_s, mat_d) # mat c is a n x t matrix 
