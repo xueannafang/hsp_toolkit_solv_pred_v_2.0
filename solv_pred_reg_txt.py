@@ -32,13 +32,12 @@ def separate_multi_entry(multi_entry: str, separate_symbol: str = ";") -> list:
         list: separated info list.
     """
     
-
     multi_entry_list = multi_entry.split(separate_symbol)
     
     return multi_entry_list
 
 
-def date_time_form(now: datetime.datetime) -> str:
+def date_time_form(now: datetime) -> str:
     """return formatted time as part of the file name.
 
     Args:

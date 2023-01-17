@@ -133,7 +133,7 @@ def itrt_cand(cand_cas_list: list, db_list: list, n: int) -> tuple[list, list]:
 
 
 def all_mat_s_arr(all_mat_s_arr_t):
-    
+
     all_mat_s_arr_t_back = []
     
     for arr_t in all_mat_s_arr_t:
@@ -144,7 +144,7 @@ def all_mat_s_arr(all_mat_s_arr_t):
     # print(all_mat_s_arr_t_back)
     return all_mat_s_arr_t_back
 
-def solv_pinv_s(mat_s_arr: np.ndarray) -> np.ndarray:
+def solv_pinv_s(mat_s_arr):
     """return the left pseudoinverse of matrix S.
 
     Args:
@@ -158,7 +158,7 @@ def solv_pinv_s(mat_s_arr: np.ndarray) -> np.ndarray:
 
     return pinv_s_arr
 
-def tgt_hsp_vec(tgt_hsp_list: list) -> np.ndarray:
+def tgt_hsp_vec(tgt_hsp_list: list):
     """return target hsp vector in the format of array[d, p, h, 1].
 
     Args:
@@ -177,7 +177,7 @@ def tgt_hsp_vec(tgt_hsp_list: list) -> np.ndarray:
     return tgt_hsp_vec_with_1
 
 
-def perturb_mat_d(tgt_hsp_list: list, rep_ptb_time: int = 50, var: float = 0.1) -> np.ndarray:
+def perturb_mat_d(tgt_hsp_list: list, rep_ptb_time: int = 50, var: float = 0.1):
     """return GRN perturbated target hsp array, i.e., matrix D. 
     
 
@@ -206,7 +206,7 @@ def perturb_mat_d(tgt_hsp_list: list, rep_ptb_time: int = 50, var: float = 0.1) 
     return mat_d_t
 
 
-def solv_c_from_s_d(mat_s_arr: np.ndarray, mat_d_arr: np.ndarray) -> np.ndarray:
+def solv_c_from_s_d(mat_s_arr, mat_d_arr):
     """return the coefficient matrix C by calculating the left pseudoinverse of mat S and apply it to mat D.
 
     Args:
@@ -216,13 +216,14 @@ def solv_c_from_s_d(mat_s_arr: np.ndarray, mat_d_arr: np.ndarray) -> np.ndarray:
     Returns:
         np.ndarray: coefficient or concentration matrix C (in the size of n x t). Row i corresponds to the concentraion of the ith solvent in mat S. Column j is the tth calculation. 
     """
-    
+    # print(mat_s_arr)
+    # print(type(mat_s_arr))
     mat_c_arr = solv_pinv_s(mat_s_arr) @ mat_d_arr
 
     return mat_c_arr
 
 
-def nparr_vec(np_arr: np.ndarray) -> np.ndarray:
+def nparr_vec(np_arr):
     """return a n x 1 array from a 1 x n array.
 
     Args:
@@ -389,7 +390,8 @@ def calc_vld_all_c(cand_cas_list: list, db_list: list, n: int, tgt_hsp_list: lis
 
     for i, s_comb in enumerate(all_mat_s_t):
 
-        mat_s = np.array(s_comb[i]).transpose() # mat_s is now a 4 x n matrix
+        mat_s = np.array(s_comb).transpose() # mat_s is now a 4 x n matrix
+        print(mat_s)
         cas_comb = all_mat_cas[i]
 
         mat_c = solv_c_from_s_d(mat_s, mat_d) # mat c is a n x t matrix 
