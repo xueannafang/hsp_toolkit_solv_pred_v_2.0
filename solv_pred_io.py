@@ -704,6 +704,3 @@ def adv_filt_sucs_log(adv_filt_exp_list: list, filt_opt: list, adv_js_path: str,
                     op_txt.write('\n\n********\n')
     
     return full_txt_path
-
-
-
