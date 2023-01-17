@@ -30,6 +30,15 @@ As one of the [HSP toolkits](https://github.com/xueannafang/HSP_toolkit_docs/blo
 
 ## How to use (to be updated)
 
+### Before start
+
+Required packages:
+
+- numpy, scipy.linalg, json, math, itertools, os, datetime
+
+
+### Run SolvPred 2.0
+
 ```
 python solv_pred_main.py
 
