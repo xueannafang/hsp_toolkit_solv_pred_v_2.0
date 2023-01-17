@@ -92,31 +92,35 @@ def adv_filt(vld_log_list: list, filt_opt: list, db_info_dict: dict, target_temp
 
             for each_comb in updt_filt_list:
 
-                each_comb_ims_chk = sp_vld_chk.ims_chk(each_comb)
+                each_comb_ims_chk = sp_vld_chk.ims_chk(each_comb) # check miscibility issue of each combination
                 exp_info_ims_chk_list.append(each_comb_ims_chk)
             
             updt_filt_list = exp_info_ims_chk_list
     
-    adv_all_log_txt_path = sp_io.calc_log_list2txt(updt_filt_list, '_adv_all_')
+    adv_all_log_txt_path = sp_io.calc_log_list2txt(updt_filt_list, '_adv_all_') # full log of advanced filtration
+
     # sp_io.calc_log_list2js(updt_filt_list, '_adv_')
 
-    adv_all_js_path = sp_io.adv_filt_exp_list2json(updt_filt_list, 'adv_filt_all_')[0]
+    adv_all_js_path = sp_io.adv_filt_exp_list2json(updt_filt_list, 'adv_filt_all_')[0] # save full log of advanced filtration results as json file
     
     
     vld_solv_comb_adv_list = []
     
+    # filter invalid results from the expanded list that includes validity info
+
     for i, solv_comb in enumerate(updt_filt_list):
 
-        comb_vld = 1
+        comb_vld = 1 # idx of whether any entry is invalid
 
         for solv_dict in solv_comb:
 
             if False in solv_dict.values():
-                comb_vld = 0
+
+                comb_vld = 0 # one or more property check has returned invalid, further filtration required
         
         if comb_vld == 1:
 
-            vld_solv_comb_adv_list.append(solv_comb)
+            vld_solv_comb_adv_list.append(solv_comb) # no property is invalid, directly append the result to output list
     
     
     if len(vld_solv_comb_adv_list) == 0:
@@ -126,7 +130,7 @@ def adv_filt(vld_log_list: list, filt_opt: list, db_info_dict: dict, target_temp
         adv_filt_fail_log_path = sp_io.adv_filt_fail_log(bsc_ip_info_dict, adv_all_js_path, filt_opt)
 
         print('Please check ' + str(adv_filt_fail_log_path) + ' for full advanced calculation information.\n')
-        # run failed adv log
+
     
     else:
 
@@ -137,22 +141,23 @@ def adv_filt(vld_log_list: list, filt_opt: list, db_info_dict: dict, target_temp
 
         # convert adv_filt_exp_list to json and save as adv_filt_exp_json
         adv_js_path, adv_js_list = sp_io.adv_filt_exp_list2json(adv_filt_exp_list, 'adv_filt_exp_info_')
-
-
-        # include a db_exp_version for adv_filt_exp_list, where all properties involved in this version can be extracted and saved in the output_js
-        # adv_filt_exp_list
-
         
-        # save final log
-        adv_filt_sucs_log_txt_path = sp_io.adv_filt_sucs_log(adv_filt_exp_list, filt_opt, adv_js_path, adv_all_js_path, bsc_ip_info_dict)
+        adv_filt_sucs_log_txt_path = sp_io.adv_filt_sucs_log(adv_filt_exp_list, filt_opt, adv_js_path, adv_all_js_path, bsc_ip_info_dict) # save final log
 
         print('Please check: \n' + str(adv_filt_sucs_log_txt_path) + ' for calculation log.')
 
 
-def adv_filt_expand(vld_log_list, vld_solv_comb_adv_list):
+def adv_filt_expand(vld_log_list: list, vld_solv_comb_adv_list: list) -> tuple[list, str]:
+    """return [info_expanded list, path of expanded info log]. From the adv_filtered list, using ori_idx to extract conc, err, calc_hsp info from the vld_log_list.
+
+    Args:
+        vld_log_list (list): full valid calculation log before adv filtration.
+        vld_solv_comb_adv_list (list): valid combination based on adv filtration.
+
+    Returns:
+        tuple[list, str]: [expanded info after adv filtration, path of adv_exp log].
     """
-    from the adv_filtered list, using ori_idx to extract conc, err, calc_hsp info from the vld_log_list
-    """
+    
 
     adv_filt_expand_list = []
 
@@ -193,12 +198,12 @@ def adv_filt_expand(vld_log_list, vld_solv_comb_adv_list):
                     updt_solv_dict['err_p'] = err_p
                     updt_solv_dict['err_h'] = err_h
         
-            updt_solv_comb_list.append(updt_solv_dict)
+            updt_solv_comb_list.append(updt_solv_dict) # update solvent comb info
     
-        adv_filt_expand_list.append(updt_solv_comb_list)
+        adv_filt_expand_list.append(updt_solv_comb_list) # attach to the expanded list
 
     
-    adv_filt_exp_txt_path = sp_io.calc_log_list2txt(adv_filt_expand_list, '_adv_exp_')
+    adv_filt_exp_txt_path = sp_io.calc_log_list2txt(adv_filt_expand_list, '_adv_exp_') # save log
     
     return adv_filt_expand_list, adv_filt_exp_txt_path
 
