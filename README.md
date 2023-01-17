@@ -41,7 +41,6 @@ Required packages:
 
 ```
 python solv_pred_main.py
-
 ```
 
 
