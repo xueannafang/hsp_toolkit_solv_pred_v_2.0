@@ -1,6 +1,6 @@
 """
 SolvPred_v2.0
-Last update: 15/01/2023
+Last update: 17/01/2023
 """
 
 import solv_pred_io as sp_io
