@@ -28,6 +28,21 @@ As one of the [HSP toolkits](https://github.com/xueannafang/HSP_toolkit_docs/blo
   - Phyciscal/Chemical data of solvents in the database were collected from PubChem.
   - HSP data remain same as [last version](https://github.com/xueannafang/hsp_toolkit_prototype), as collected from HSP handbook (ref 1).
 
+## How to use (to be updated)
+
+### Before start
+
+Required packages:
+
+- numpy, scipy.linalg, json, math, itertools, os, datetime
+
+
+### Run SolvPred 2.0
+
+```
+python solv_pred_main.py
+```
+
 
 ## References
 
