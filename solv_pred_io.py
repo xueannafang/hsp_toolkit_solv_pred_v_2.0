@@ -170,9 +170,11 @@ def version_info():
     return version_info, date_time
 
 
-def get_datetime():
-    """
-    Get current date and time
+def get_datetime() -> list:
+    """return current date and time
+
+    Returns:
+        list: [today, now]
     """
     
     current_time = now.strftime("%H:%M:%S")
@@ -183,9 +185,11 @@ def get_datetime():
 
     return date_time
 
-def get_datetime_filename():
-    """
-    generate unique filename based on time and date
+def get_datetime_filename() -> str:
+    """return formatted date and time as filename.
+
+    Returns:
+        str: formatted date and time.
     """
 
     time_name = sp_rtxt.date_time_form(now)
@@ -434,7 +438,6 @@ def sucs_calc_log(target_temp: float, n: int, target_hsp: list, tol_err: list, t
         'Calculation log path' : calc_log_js_path
     }
 
-    # all_fetched_info = []
     with open(str(full_txt_path), "w") as op_txt:
         
         op_txt.write('===============================' + '\n')

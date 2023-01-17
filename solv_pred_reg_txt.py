@@ -4,6 +4,8 @@ solv_pred_reg_txt formatting specific input into required structures.
 
 """
 
+from datetime import datetime
+
 cas_valid_symbol_list = ['0','1','2','3','4','5','6','7','8','9','-'] # valid characters, symbols or numbers that are supposed to appear in usr input cas
 
 def rm_spc(with_spc: str) -> str:
@@ -19,20 +21,33 @@ def rm_spc(with_spc: str) -> str:
 
     return no_space
 
-def separate_multi_entry(multi_entry, separate_symbol = ";"):
+def separate_multi_entry(multi_entry: str, separate_symbol: str = ";") -> list:
+    """return separated text based on separate symbol.
+
+    Args:
+        multi_entry (str): multi-entry info, e.g., immiscible solvent index, synonyms, etc.
+        separate_symbol (str, optional): symbol to separate. Defaults to ";".
+
+    Returns:
+        list: separated info list.
     """
-    separate cells with more than one elements, e.g., immiscible solvent index, synonyms
-    """
+    
 
     multi_entry_list = multi_entry.split(separate_symbol)
     
     return multi_entry_list
 
 
-def date_time_form(now):
+def date_time_form(now: datetime.datetime) -> str:
+    """return formatted time as part of the file name.
+
+    Args:
+        now (datetime.datetime): current time
+
+    Returns:
+        _type_: _description_
     """
-    formatting current time as part of the file name
-    """
+    
     dd = str(now.day)
     mm = str(now.month)
     yyyy = str(now.year)
@@ -58,11 +73,3 @@ def date_time_form(now):
     time_comb = mm + dd + yyyy + t_hh + t_mm + t_ss
 
     return time_comb
-
-    
-
-
-
-
-
-
