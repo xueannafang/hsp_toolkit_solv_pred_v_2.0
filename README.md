@@ -37,7 +37,7 @@ Required packages:
 - numpy, scipy.linalg, json, math, itertools, os, datetime
 
 
-### Run SolvPred 2.0
+### Run SolvPred
 
 ```
 python solv_pred_main.py
