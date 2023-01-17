@@ -56,15 +56,17 @@ def gen_filt_opt(filt_opt: list) -> list:
 
 
 def adv_filt(vld_log_list: list, filt_opt: list, db_info_dict: dict, target_temp: float, bsc_ip_info_dict: dict):
-    """
-    filt_opt is a list of solvent properties involved in the database
-    in this version (v2.0) filt_opt is miscibility and bp - will be converted to ims_idx list and bp list
+    """return advanced filtration based on filt_opt (in this version bp and miscibility is checked). a mis_chk and bp_chk bool value will be included for each combinations.
+    solvents with bp belowing the target temp will return a False value for bp_chk.
 
-    a mis_chk and bp_chk bool value will be included for each combinations
-
-    for bp filt part:
-        solvents with bp belowing the target temp will trigger a warning message and return a False value for bp_chk
+    Args:
+        vld_log_list (list): log of valid calculation info.
+        filt_opt (list): options of advanced filtrations to be applied.
+        db_info_dict (dict): dict of full db info.
+        target_temp (float): target temperature as a reference of bp filtration.
+        bsc_ip_info_dict (dict): basic input parameters.
     """
+    
     db_opt_list = gen_filt_opt(filt_opt) # convert into db readable options
 
     expand_info_list = sucs_result_expand(vld_log_list, db_info_dict, db_opt_list) # expand current valid log list with requested properties
@@ -78,7 +80,7 @@ def adv_filt(vld_log_list: list, filt_opt: list, db_info_dict: dict, target_temp
             exp_info_bp_chk_list = []
             
             for each_comb in updt_filt_list:
-                
+
                 each_comb_bp_chk = sp_vld_chk.bp_chk(each_comb, target_temp)
                 exp_info_bp_chk_list.append(each_comb_bp_chk)
             
@@ -89,6 +91,7 @@ def adv_filt(vld_log_list: list, filt_opt: list, db_info_dict: dict, target_temp
             exp_info_ims_chk_list = []
 
             for each_comb in updt_filt_list:
+
                 each_comb_ims_chk = sp_vld_chk.ims_chk(each_comb)
                 exp_info_ims_chk_list.append(each_comb_ims_chk)
             
@@ -198,16 +201,6 @@ def adv_filt_expand(vld_log_list, vld_solv_comb_adv_list):
     adv_filt_exp_txt_path = sp_io.calc_log_list2txt(adv_filt_expand_list, '_adv_exp_')
     
     return adv_filt_expand_list, adv_filt_exp_txt_path
-    
-
-
-
-
-
-
-                    
-                    
-
 
 
 

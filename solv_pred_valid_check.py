@@ -607,9 +607,7 @@ def ims_chk(vld_comb_list: list) -> list:
     """
     check if any solvent is immiscible with others in the group
 
-    note that in this version, immiscibility is only based on data available on PubChem
-
-    Some data did not specific measured temperature, so this result is just for a reference
+    note that in this version, immiscibility is only based on data available on PubChem. Some data did not specific measured temperature, so this result is just for a reference. 
     """
     idx_list = []
     ims_idx_list = []
@@ -630,7 +628,9 @@ def ims_chk(vld_comb_list: list) -> list:
     all_ims_comb_list = []
 
     for i, idx in enumerate(idx_list):
+
         for j, ims_idx in enumerate(ims_idx_list):
+
             if i == j:
                 pass
             elif i != j:
