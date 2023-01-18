@@ -25,7 +25,7 @@ As one of the [HSP toolkits](https://github.com/xueannafang/HSP_toolkit_docs/blo
 
 ## Data source
 
-  - Physical/Chemical data of solvents in the database were collected from PubChem.
+  - Physical/Chemical data of solvents in the database were collected from [PubChem](https://pubchem.ncbi.nlm.nih.gov/).
   - HSP data remain same as [last version](https://github.com/xueannafang/hsp_toolkit_prototype), as collected from HSP handbook (ref 1).
 
 ## How to use (to be updated)
