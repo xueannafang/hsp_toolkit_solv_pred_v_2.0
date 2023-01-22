@@ -278,11 +278,11 @@ Applying a different temperature will update all D, P, H in the database.
 
 Temperature correction is based on the following formula (ref Hansen user book):
 
-$ temp_corr_d = ori_d * exp(-1.25 * tml_expn_coeff * delta_temp) $
+temp_corr_d = ori_d * exp(-1.25 * tml_expn_coeff * delta_temp)
 
-$ temp_corr_p = ori_p * exp(-0.5 * tml_expn_coeff * delta_temp) $
+temp_corr_p = ori_p * exp(-0.5 * tml_expn_coeff * delta_temp)
 
-$ temp_corr_h = ori_h * exp(-(0.00122 + 0.5 * tml_expn_coeff) * delta_temp) $
+temp_corr_h = ori_h * exp(-(0.00122 + 0.5 * tml_expn_coeff) * delta_temp)
 
 where
 
