@@ -187,6 +187,8 @@ Please select the method to construct solvent candidate list:
 
 ```
 
+#### Default
+
 After selecting the default list, you have a chance to remove any unwanted solvents:
 
 ```
@@ -249,6 +251,96 @@ The following solvents will be considered as candidates:
 Candidate list has been successfully generated:
 ['Chloroform', 'Phenol', 'Propylene carbonate', 'Triethylamine', 'Pyridine', 'Methyl chloride', '1-Methylimidazole', 'm-Xylene', 'Acetonitrile', 'Dimethyl sulfoxide', 'Ethyl acetate', 'Methylene dichloride', 'Chlorobenzene', 'Heptane', '2-Propanol', 'Diethyl ether', '1,4-Dioxane', 'Trichloroethylene', 'Dimethylformamide', 'Hexane', 'Tetrahydrofuran', 't-Butyl Alcohol', 'Methyl-2-pyrrolidone', 'N,N-dimethylacetamide', 'Glycerol', 'Mesitylene', 'Acetone', 'Cyclohexane', '1-Propanol', 'Pentane', 'Quinoline', 'Methanol', 'Toluene', 'Ethanol', 'Benzene']
 ```
+
+#### Manual
+
+Back to the start, if you choose to manually add solvent candidates. Press [m] and add CAS No. based on your preference.
+
+```
+Please follow the instruction to continue: 
+=========================
+Step 1: Generate solvent candidate list: 
+ You can select to use the default list (recommend) or manually input the CAS No. for each solvent.
+
+Please select the method to construct solvent candidate list: 
+ [d] - default (recommend - the default list can still be edited in the following steps) 
+ [m] - manual 
+ [v] - visualise default solvent list
+ [q] - quit
+m
+Please submit CAS No. of solvents to be considered as candidates. Add one solvent at one time. Press [enter] to continue.
+Please enter the CAS No. of solvent candidate 1 : 121-44-8
+Please enter the CAS No. of solvent candidate 2 : 109-66-0
+Please enter the CAS No. of solvent candidate 3 : 109-99-9
+Please enter the CAS No. of solvent candidate 4 : 
+Have all the solvent candidates been added?
+[y/n]: y
+Solvent candidate list has been generated successfully.
+Do you want to remove any solvent?
+
+[y/n]: n
+Continue? 
+[y/n]: y
+```
+
+Again, *SolvPred* will quickly look at your candidates in case anything is beyong its control.
+
+If everything goes smoothly, you will see the message below:
+
+```
+Checking if any solvent is not on the candidate list...
+Done.
+ Checking if any solvent is not in the database...
+Done.
+```
+
+Before submission, you will have a final chance to edit the candidate list:
+
+```
+Submit?
+[y/n]:
+```
+
+In the above example, you will see all the valid candidates before you go to the next step:
+
+```
+y
+The following solvents will be considered as candidates: 
+['121-44-8', '109-66-0', '109-99-9']
+Candidate list has been successfully generated:
+['Triethylamine', 'Pentane', 'Tetrahydrofuran']
+```
+
+#### Final edit before submission
+
+If you choose [n] during the submission confirm, you will still be able to edit your candidate list by adding[a] or removing[rm] any entry. 
+
+```
+Submit?
+[y/n]: n
+Please select one of the following options: 
+[a] - add CAS
+[rm] - remove CAS
+[v] - visualise current candidate list
+[s] - submit
+[q] - quit
+```
+
+Press [v] can see current candidate list.
+
+```
+v
+Current candidate list:
+['108-90-7', '79-01-6', '110-54-3', '127-19-5', '91-22-5', '872-50-4', '108-39-4', '67-68-5', '108-88-3', '64-17-5', '108-32-7', '68-12-2', '109-99-9', '110-82-7', '67-56-1', '75-09-2', '1330-20-7', '67-66-3', '616-47-7', '121-44-8', '75-05-8', '71-43-2', '67-63-0', '60-29-7', '109-66-0', '71-23-8', '67-64-1', '75-65-0', '141-78-6', '56-81-5', '74-87-3', '123-91-1', '142-82-5', '108-67-8', '110-86-1', '108-95-2']
+Continue?
+[y/n]:
+```
+
+Please note, after this step, the candidate list will not be editable.
+
+
+
+
 
 ### Step 2: Specify parameters
 
@@ -486,7 +578,7 @@ In this example, all the dispersion term (D) of candidates fall between (14.06 a
 
 (We will address this issue again in *MLoc v2.0* and illustrate the impact of this issue towards HSP prediction for materials.)
 
-Now you have two options, either update your target (enter $[r]$), or find more candidates ($[a]$) that may expand the achievable target in the Hansen space.
+Now you have two options, either update your target (enter $[r]$), or find more candidates ($[a]$) that may expand the achievable target in the Hansen space. (NOTE THAT THE SECOND OPTION IS STILL UNDER TEST.)
 
 (This would be case dependent, for P and H term, expanding candidates may help, but D would be a bit tricky.)
 
@@ -498,7 +590,6 @@ Please choose to reset the required parameters or add more solvent candidates.
 ```
 
 We would go for the easier case (reset target) for simplicity. (And this is also more recommended. You can of course play around the other option, but it may be a bit tough as you need to be clear of the candidate HSP before including them in the calculation, which might not be a quick job.)
-
 
 Let's go for 18, 3, 2 for target d, p, h now:
 
@@ -605,7 +696,7 @@ Candidate solvents:
 ['Chloroform', 'Phenol', 'Propylene carbonate', 'Triethylamine', 'Pyridine', 'Methyl chloride', '1-Methylimidazole', 'm-Xylene', 'Acetonitrile', 'Dimethyl sulfoxide', 'Ethyl acetate', 'Methylene dichloride', 'Chlorobenzene', 'Heptane', '2-Propanol', 'Diethyl ether', '1,4-Dioxane', 'Trichloroethylene', 'Dimethylformamide', 'Hexane', 'Tetrahydrofuran', 't-Butyl Alcohol', 'Methyl-2-pyrrolidone', 'N,N-dimethylacetamide', 'Glycerol', 'Mesitylene', 'Acetone', 'Cyclohexane', '1-Propanol', 'Pentane', 'Quinoline', 'Methanol', 'Toluene', 'Ethanol', 'Benzene']
 ```
 
-We dumped the full calculation log in a json file named after # "calc_log_bsc_chk_" #, whose path is stored in the next part of successful log output:
+We dumped the full calculation log in a json file named after  "calc_log_bsc_chk_",  whose path is stored in the next part of successful log output:
 
 ```
 Calculation log path: 
@@ -945,6 +1036,40 @@ The key process of immiscbility check is to look at whether the idx in db ("No."
 #### Other outputs
 
 Other outputs (adv_filt_all_01222023101554.json, calc_log_adv_all_01222023101554.txt, calc_log_adv_exp_01222023101554.txt, calc_log_adv_filt_01222023101554.txt) have overlaped info with the above mentioned results. (They are intermediate output for the developer team to test and check.)
+
+
+
+### General note
+
+Please read the instruction carefully and enter the correct format for each input as possible. (though *SolvPred* will check the validity in many cases.)
+
+In case something unexpected has been submitted, you may see:
+
+```
+Invalid input. Press enter to continue. [enter]
+```
+
+See the example below: 
+
+```
+[t] - set a different temperature
+[c] - continue as room temperature (25 degree c).
+[q] - quit
+
+# Here I pressed enter without entering anything....
+```
+
+If the "Invalid input" warning pop up, a follow-up suggestion will present. (In this case it asks you to press [enter], any other character will return the same error message).
+
+
+```
+Invalid input. Press enter to continue. [enter]q
+Invalid input. Press enter to continue. [enter]
+[t] - set a different temperature
+[c] - continue as room temperature (25 degree c).
+[q] - quit
+q
+```
 
 
 ## Limitations
