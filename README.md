@@ -16,12 +16,6 @@ As one of the [HSP toolkits](https://github.com/xueannafang/HSP_toolkit_docs/blo
  - Allow temperature control and include temperautre-dependent correction of HSP.
  - Advanced filtration step based on miscibility and boiling point has been included.
 
- ## Limitations
-
-   - Some categories may have a limitation of avilable data, which will be labelled as -1 or None in the database.
-   - The temperature control function is only based on correcting HSP in this version. Properties applied in advanced filtration (e.g., miscibility) may also be temperature-dependent but no direct correction is applied in this version.
-   - If user manually edited the database and add additional solvents without available HSP, the temperature correction for data-missing group will be disabled and corresponding solvent will be removed from database after temperature updating check step.
-
 
 ## Data source
 
@@ -41,8 +35,71 @@ As one of the [HSP toolkits](https://github.com/xueannafang/HSP_toolkit_docs/blo
 
 *Must be stored under current working directory. DO NOT rename or remove!*
 
-- database (db_solv_pred_v2.json)
-- default solvent candidate list (default_solv_candidate.json)
+##### database (db_solv_pred_v2.json)
+
+Database in this version contains property information for 249 solvents.
+
+Example structure of one entry:
+
+```
+{
+  "No.": 2,
+  "CAS": "64-19-7",
+  "Name": "Acetic acid",
+  "D": 14.5,
+  "P": 8,
+  "H": 13.5,
+  "Mole_vol": "57.1",
+  "ims_idx": "139;190;39",
+  "bp": 117,
+  "mw": 60.05,
+  "viscosity": 1.056,
+  "vis_temp": 25,
+  "heat_of_vap": 23.7,
+  "hov_temp": 117.9,
+  "SMILES": "CC(=O)O",
+  "synonyms": "ethanoic acid;Ethylic acid;Vinegar acid"
+ }
+```
+
+Each explained in the comment below:
+
+```
+{
+  "No.": 2, # idx of entry in the database. In the last version, this is called "no_db" or "db_no"
+  "CAS": "64-19-7", # CAS No. of this entry
+  "Name": "Acetic acid", # solvent name.
+  "D": 14.5, # dispersion term of HSP.
+  "P": 8, # dipolar term of HSP.
+  "H": 13.5, # hydrogen bond term of HSP.
+  "Mole_vol": "57.1", # molecular volume, unit: cm^(-3).
+  "ims_idx": "139;190;39", # solvent index that has immiscible record with the current solvent on PubChem.
+  "bp": 117, # boiling point, unit: degree C.
+  "mw": 60.05, # molecular weight, unit: g mol^(-1).
+  "viscosity": 1.056, # viscosity, unit: mPas or cP.
+  "vis_temp": 25, # temperature of viscosity recorded, unit: degree C.
+  "heat_of_vap": 23.7, # molar heat of evaporation, unit: kJ mol^(-1).
+  "hov_temp": 117.9, # temperature of molar heat of evaporation is recorded, unit: degree C.
+  "SMILES": "CC(=O)O", # structure of current solvent.
+  "synonyms": "ethanoic acid;Ethylic acid;Vinegar acid" # synonyms - if helpful for user to search name, but not recommended.
+ }
+```
+
+
+##### default solvent candidate list (default_solv_candidate.json)
+
+A list of solvent cas and name dictionaries, serving as candidates (also called "solvent pool" in the previous version.)
+
+Take one entry as an example:
+
+```
+{
+  "CAS": "121-44-8",
+  "Solvent": "Triethylamine"
+ }
+```
+
+Note that only "CAS" is useful for further calculation. Solvent name ("Solvent") does not matter too much, just as a reference.
 
 
 ### Run SolvPred
@@ -472,6 +529,8 @@ Target H validation done.
 Parameter selection done.
 ```
 
+### Step 3: carry out main calculation process
+
 Now *SolvPred* will generate a perturbated HSP matrix based on the absolute target. This is to apply a +/- 0.1 fluctuation (reflected by a Gaussian random number) to your target. (Otherwise you may receive a prediction with an accuarcy of the 16th decimal place, that, significantly shrinks the valid results. In addition, this step is to serve as a statistic stability check to filter out some unstable results, say, a tiny deviation in concentration, which is common in experimental operation, will lead to a large deviation in resulting HSP.)
 
 ```
@@ -724,6 +783,13 @@ In short, the structure of the full calculation log json is:
 }]
 ```
 
+#### Other outputs
+
+calc_log_vld_01222023101554.txt: This file contains all the valid results after filteration. Information here has been reorganised into the successful log txt file. No need to pay too much attention on this file. (This is for the dedeveloper team to check intermediate output.)
+
+
+### Step 4: advanced filtration
+
 Now you can decide to relax or continue the advanced filtration step, which is based on the physical/chemical properties check.
 
 In this version, we check the boiling point and miscibility. (There is limitation due to data availbility. Check Limitation section for more details.)
@@ -743,9 +809,150 @@ Continue advanced filtration?
 [y/n]:
 ```
 
+Select [y] will start two more filtration based on miscibility and boiling point check.
+
+- If a solvent has an immiscible pair within the same predicted group, this group will be filtered out.
+- If a solvent has a lower boiling point than set temperature, this group will be filtered out.
+
+More output files will be saved in the log folder. We will briefly mention how it works as we go through those outputs.
+
+#### log_adv_filt_success_01222023101554.txt
+
+Again, this is the one of your interest.
+
+The first part remains same. One more filtration option list will be stored:
+
+```
+Advanced filter options: 
+['miscibility', 'bp']
+```
+
+One more filteration log json (named after "adv_filt_exp_info_") path will be presented:
+
+```
+Calculation log path: 
+C:\Users\sh19129\OneDrive - University of Bristol\Documents\MyProject\ML\HSP_python\calculation\cal_20221227_solv_pred_v2\hsp_toolkit_solv_pred_v_2.0\log\adv_filt_exp_info_01222023101554.json
+```
+
+In the results section, more details regarding advanced filteration properties will be discussed:
+
+```
+Group 1 : 
+
+solvent 1 : Propylene carbonate (108-32-7) 
+concentration 1 :  9.47% 
+
+bp /degree C: 241.6
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : Toluene (108-88-3) 
+concentration 2 :  90.53% 
+
+bp /degree C: 110.6
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.640788087782173
+calculated P /MPa^(1/2): 2.9357929244636503
+calculated H /MPa^(1/2): 2.0812967786641057
+error of D /MPa^(1/2): -0.3592119122178268
+error of P /MPa^(1/2): -0.06420707553634974
+error of H /MPa^(1/2): 0.08129677866410567
+
+
+```
+
+There are two different message for immiscibility check:
+
+The first one corresponds to the situation when the database does not contain any info of miscibility for this solvent. *SolvPred* will return a message saying:
+
+```
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+```
+
+If this solvent contains an immiscible solvent pair in the database but no solvent in the same group conflicts to that, you will see:
+
+```
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+```
+
+Refer to the Limitation section of this function, miscibility data is very limited in current database (based on PubChem). We can only provide as much info as we have to prevent miscibility issue. In addition, this property is temperature-dependent, which has even less experimental data available for each solvent. Therefore, for now we would still suggest to do manual check and can not 100% guarantee the as-predicted combinations do not lead to any undesired situation. (Improvement is on going!) 
 
 
 
+#### adv_filt_exp_info_01222023101554.json
+
+This file contain full details for each advanced filtration process.
+
+The list could be very long. Let's take one element as an example:
+
+```
+{
+  "group": 4, 
+  "full_detail": 
+  [
+    {
+      "CAS": "67-68-5", 
+      "No.": 93, 
+      "Name": "Dimethyl sulfoxide", 
+      "ims_idx": "139;81;244;47;136;240;190;106", 
+      "bp": 189, 
+      "ori_idx": 285, 
+      "ims_chk_msg": "No recorded miscibility issue. Manual check is recommended if temperature has been varied.", 
+      "ims_solvent_in_comb": null, 
+      "ims_validity": true, 
+      "bp_chk_msg": "Above or equal to set temp", 
+      "bp_validity": true, 
+      "conc": 0.17370185847668593, 
+      "calc_d": 17.524490650842214, 
+      "calc_p": 2.8140266478430767, 
+      "calc_h": 2.1462982015123093, 
+      "err_d": -0.475509349157786, 
+      "err_p": -0.18597335215692334, 
+      "err_h": 0.14629820151230932
+    }, 
+    {
+      "CAS": "108-67-8", 
+      "No.": 149, 
+      "Name": "Mesitylene", 
+      "ims_idx": "243", 
+      "bp": 164.7, 
+      "ori_idx": 285, 
+      "ims_chk_msg": "No recorded miscibility issue. Manual check is recommended if temperature has been varied.", 
+      "ims_solvent_in_comb": null, 
+      "ims_validity": true, 
+      "bp_chk_msg": "Above or equal to set temp", 
+      "bp_validity": true, 
+      "conc": 0.826298141523314, 
+      "calc_d": 17.524490650842214, 
+      "calc_p": 2.8140266478430767, 
+      "calc_h": 2.1462982015123093, 
+      "err_d": -0.475509349157786, 
+      "err_p": -0.18597335215692334, 
+      "err_h": 0.14629820151230932
+    }
+  ]
+}
+      
+```
+
+The key process of immiscbility check is to look at whether the idx in db ("No." in the above json case) matches any idx in the "ims_idx" list. (In this case, there is no crash, so its "ims_validity" is True.)
+
+
+#### Other outputs
+
+Other outputs (adv_filt_all_01222023101554.json, calc_log_adv_all_01222023101554.txt, calc_log_adv_exp_01222023101554.txt, calc_log_adv_filt_01222023101554.txt) have overlaped info with the above mentioned results. (They are intermediate output for the developer team to test and check.)
+
+
+## Limitations
+
+   - Some categories may have a limitation of avilable data, which will be labelled as -1 or None in the database.
+   - The temperature control function is only based on correcting HSP in this version. Properties applied in advanced filtration (e.g., miscibility) may also be temperature-dependent but no direct correction is applied in this version.
+   - If user manually edited the database and add additional solvents without available HSP, the temperature correction for data-missing group will be disabled and corresponding solvent will be removed from database after temperature updating check step.
+   - The miscbility check function may not be 100% guaranteed due to limited data and complex temperature-dependent behaviour. In addition, the defintion of "miscibility" is ambiguous: partial soluble cases (which nevertheless has a severe lack of data in terms of the partition threshold) will be regarded as not-immiscible in this version and will be present as valid results. It is recommended to manually check the performance if unsure.
 
 
 ## References
