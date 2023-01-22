@@ -1,5 +1,5 @@
 # SolvPred (v2.0)
-Last update: 15/01/2023
+Last update: 22/01/2023
 
 ## Introduction
 
