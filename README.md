@@ -69,9 +69,9 @@ Each explained in the comment below:
   "No.": 2, # idx of entry in the database. In the last version, this is called "no_db" or "db_no"
   "CAS": "64-19-7", # CAS No. of this entry
   "Name": "Acetic acid", # solvent name.
-  "D": 14.5, # dispersion term of HSP.
-  "P": 8, # dipolar term of HSP.
-  "H": 13.5, # hydrogen bond term of HSP.
+  "D": 14.5, # dispersion term of HSP, unit: MPa^(1/2).
+  "P": 8, # dipolar term of HSP, unit: MPa^(1/2).
+  "H": 13.5, # hydrogen bond term of HSP, unit: MPa^(1/2).
   "Mole_vol": "57.1", # molecular volume, unit: cm^(-3).
   "ims_idx": "139;190;39", # solvent index that has immiscible record with the current solvent on PubChem.
   "bp": 117, # boiling point, unit: degree C.
@@ -135,9 +135,9 @@ Please select the method to construct solvent candidate list:
 
 ### Step 1: candidate list construction
 
-The first step is to construct solvent candidate list. We recommend to first load the *default* list (press $[d]$) and modify on it if necessary.
+The first step is to construct solvent candidate list. We recommend to first load the *default* list (press [d]) and modify on it if necessary.
 
-You can view the default solvent list by pressing $[v]$. You will see:
+You can view the default solvent list by pressing [v]. You will see:
 
 ```
 v
@@ -200,9 +200,9 @@ Do you want to remove any solvent?
 [y/n]:
 ```
 
-If you am happy with the default list, press $[n]$ to process.
+If you am happy with the default list, press [n] to process.
 
-If you want to remove some candidates, which, may be unavailable in your lab or you don't like certain properties, press $[y]$ to enter CAS of unwanted solvents. Press $[enter]$ to finish.
+If you want to remove some candidates, which, may be unavailable in your lab or you don't like certain properties, press [y] to enter CAS of unwanted solvents. Press [enter] to finish.
 
 ```
 Do you want to remove any solvent?
@@ -216,7 +216,7 @@ Have all the solvent candidates been added?
 
 *Make sure you enter the correct CAS (with correct format, on both the candidate list and database. (This version will auto check before removing anything from the candidate list and pop up warning if any input is invalid.)*
 
-You will then be asked again whether you want to remove any solvent. Press $[n]$ to continue.
+You will then be asked again whether you want to remove any solvent. Press [n] to continue.
 
 *SolvPred* will then return the list of solvents to be removed from the current list and check if they are removable from current list and database.
 
@@ -234,7 +234,7 @@ Done.
 Done.
 ```
 
-Once this is done. You can submit by selecting $[y]$.
+Once this is done. You can submit by selecting [y].
 
 (If you did not edit the default list, you will directly go to this step.)
 
@@ -283,7 +283,7 @@ Continue?
 [y/n]: y
 ```
 
-Again, *SolvPred* will quickly look at your candidates in case anything is beyong its control.
+Again, *SolvPred* will quickly look at your candidates in case anything is beyond its control.
 
 If everything goes smoothly, you will see the message below:
 
@@ -440,7 +440,7 @@ the thermal expansion coefficient (tml_expn_coeff) = 0.0007, unit: K^(-1).
 delta_temp is the temperature difference between target temp and room temp (25 degree C).
 
 
-You can decide to edit the temperature by pressing $[t]$ or continue as room temperature $[c]$.
+You can decide to edit the temperature by pressing [t] or continue as room temperature [c].
 
 If you choose to edit the temperature (for example, for the purpose of selecting a correct condition matching your reaction), you will then see:
 
@@ -471,7 +471,7 @@ Set parameters:
 
 In this step, you need to determine whether to adapt default settings for all the parameters of *err_d, p, h*, *tol_conc*, *n* or not.
 
-Enter $[d]$ for default settings:
+Enter [d] for default settings:
 
 ```
 d
@@ -479,7 +479,7 @@ Default parameters will be applied.
 [n, tol_err_d, tol_err_p, tol_err_h, tol_conc] : [2, 0.5, 0.5, 0.5, 0.01]
 ```
 
-Alternatively, enter $[m]$ to manually set up these parameters following the instruction:
+Alternatively, enter [m] to manually set up these parameters following the instruction:
 
 Specify *n*:
 
@@ -540,7 +540,7 @@ Please specify the target of dispersion term (target D):
 
 Note if you input a set of target that is beyond the capacity of your candidates, *SolvPred* will remind you of the constraints and ask you to re-consider your target HSP:
 
-See this example, we ask *SolvPred* to give us a 37 for target D:
+See this example, we ask *SolvPred* to give us a 36 for target D:
 
 ```
 Please specify the target of dispersion term (target D): 36
@@ -578,7 +578,7 @@ In this example, all the dispersion term (D) of candidates fall between (14.06 a
 
 (We will address this issue again in *MLoc v2.0* and illustrate the impact of this issue towards HSP prediction for materials.)
 
-Now you have two options, either update your target (enter $[r]$), or find more candidates ($[a]$) that may expand the achievable target in the Hansen space. (NOTE THAT THE SECOND OPTION IS STILL UNDER TEST.)
+Now you have two options, either update your target (enter [r]), or find more candidates ([a]) that may expand the achievable target in the Hansen space. (NOTE THAT THE SECOND OPTION IS STILL UNDER TEST.)
 
 (This would be case dependent, for P and H term, expanding candidates may help, but D would be a bit tricky.)
 
