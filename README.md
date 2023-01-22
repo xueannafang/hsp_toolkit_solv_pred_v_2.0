@@ -32,12 +32,12 @@ As one of the [HSP toolkits](https://github.com/xueannafang/HSP_toolkit_docs/blo
 
 ### Before start
 
-# Required packages:#
+#### Required packages:
 
 - [numpy](https://numpy.org/), [scipy.linalg](https://docs.scipy.org/doc/scipy/reference/linalg.html), [json](https://docs.python.org/3/library/json.html), [math](https://docs.python.org/3/library/math.html), [itertools](https://docs.python.org/3/library/itertools.html), [os](https://docs.python.org/3/library/os.html), [datetime](https://docs.python.org/3/library/datetime.html).
 
 
-# Auto-loaded files:#
+#### Auto-loaded files:
 
 *Must be stored under current working directory. DO NOT rename or remove!*
 
@@ -216,7 +216,7 @@ Step 2: Specify parameters.
 
 This step requires you to specify all the calculation parameters (details summarised below).
 
-# target_d: Target D to be achieved. #
+#### target_d: Target D to be achieved.
 
 - unit: MPa^(1/2)
 - value example: 18
@@ -224,47 +224,47 @@ This step requires you to specify all the calculation parameters (details summar
 
 (*SolvPred* will auto check the validity of the target. Here the basic is, your target point must be surrounded by all the candidates, since you have to attribute your candidate with a positive concentration. Therefore, if any target falls beyond the interval quantified by all the solvent candidates, that mission would be impossible.)
 
-# target_p: Target P to be achieved. #
+#### target_p: Target P to be achieved.
 
 - unit: MPa^(1/2)
 - value example: 3
 - requirement: non-negative float; must fall in the range of (min P, max P) of all solvent candidates.
 
 
-# target_h: Target H to be achieved. #
+#### target_h: Target H to be achieved.
 
 - unit: MPa^(1/2)
 - value example: 2
 - requirement: non-negative float; must fall in the range of (min H, max H) of all solvent candidates.
 
-# err_d: maximum error of D. # 
+#### err_d: maximum error of D.
 
 - unit: MPa^(1/2)
 - value example: 0.5
 - default: 0.5
 - requirement: non-negative float.
 
-# err_p: maximum error of P. # 
+#### err_p: maximum error of P.
 
 - unit: MPa^(1/2)
 - value example: 0.5
 - default: 0.5
 - requirement: non-negative float.
 
-# err_h: maximum error of H. # 
+#### err_h: maximum error of H.
 
 - unit: MPa^(1/2)
 - value example: 0.5
 - default: 0.5
 - requirement: non-negative float.
 
-# n: maximum number of solvents in each combination. #
+#### n: maximum number of solvents in each combination.
 
 - value example: 2
 - default: 2
 - requirement: n >=2, integer, less than total number of candidates. Recommend to be 2 or 3.
 
-# tol_conc: lowest acceptable concentration. #
+#### tol_conc: lowest acceptable concentration.
 
 Any prediction with solvent whose concentration below this value will be determined as "redundant results". This is to include the practical experimental situation, for some extremely low conc. component, their contribution towards final HSP would be very limited but still creating complexity to the experiment operation. Therefore, we set this parameter to filter out unnecessary results.
 
@@ -272,7 +272,7 @@ Any prediction with solvent whose concentration below this value will be determi
 - default: 0.01
 - requirement: float in the range of (0, 1) (*Please DO NOT enter percentage format.*).
 
-# target_temp: target temperature of prediction. #
+#### target_temp: target temperature of prediction.
 
 Applying a different temperature will update all D, P, H in the database.
 
@@ -497,7 +497,7 @@ If you go to your current working directory, you can see a new folder named "log
 
 (Note that the 14-digit suffix is the date and time when this calculation was carried out, so as to avoid accidental overwriting of your previous outputs.)
 
-# log_success_01222023101554.txt #
+#### log_success_01222023101554.txt
 
 This one contains the majority of things you are interested in.
 
@@ -683,7 +683,7 @@ error of H /MPa^(1/2): -0.1069350532119846
 
 ```
 
-# calc_log_bsc_chk_01222023101554.json #
+#### calc_log_bsc_chk_01222023101554.json
 
 This json file contains the full calculation log (including what has been filtered out and the reason why they have been filtered out).
 
