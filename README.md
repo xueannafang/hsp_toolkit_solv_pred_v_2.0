@@ -651,7 +651,7 @@ If you go to your current working directory, you can see a new folder named "log
 
 This one contains the majority of things you are interested in.
 
-The first part if the version info and input parameters:
+The first part is the version info and input parameters:
 
 ```
 ===============================
