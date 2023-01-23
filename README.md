@@ -72,7 +72,7 @@ Each explained in the comment below:
   "D": 14.5, # dispersion term of HSP, unit: MPa^(1/2).
   "P": 8, # dipolar term of HSP, unit: MPa^(1/2).
   "H": 13.5, # hydrogen bond term of HSP, unit: MPa^(1/2).
-  "Mole_vol": "57.1", # molecular volume, unit: cm^(-3).
+  "Mole_vol": "57.1", # molecular volume, unit: cm^3 mol^(-1).
   "ims_idx": "139;190;39", # solvent index that has immiscible record with the current solvent on PubChem.
   "bp": 117, # boiling point, unit: degree C.
   "mw": 60.05, # molecular weight, unit: g mol^(-1).
