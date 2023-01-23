@@ -905,6 +905,30 @@ Select [y] will start two more filtration based on miscibility and boiling point
 - If a solvent has an immiscible pair within the same predicted group, this group will be filtered out.
 - If a solvent has a lower boiling point than set temperature, this group will be filtered out.
 
+Once everything has been successfully checked, *SolvPred* will return you the path of advanced filtration log.The whole process has now been finished:
+
+
+```
+Continue advanced filtration?
+
+[y/n]: y
+2023-01-23  07:50:28
+SolvPredictor v 2.0
+ (License: GPL-3.0)
+
+Please check:
+C:\Users\sh19129\OneDrive - University of Bristol\Documents\MyProject\ML\HSP_python\calculation\cal_20221227_solv_pred_v2\hsp_toolkit_solv_pred_v_2.0\log\log_adv_filt_success_01232023075028.txt for calculation log.
+```
+
+The version, time and license info will also present again. *Don't worry about the huge time difference from the previous.. This example was done on the second day morning.*
+
+The normal calculation time for a 2-solvent combination would be less than 1 second.
+
+For 3-solvent it might be longer, but no longer than 5 seconds normally.
+
+In the very rare case if it stucks to give any update after 10 seconds (dead loop somewhere I guess - hope not happen), use [ctrl + c] to force abort the program.
+
+
 More output files will be saved in the log folder. We will briefly mention how it works as we go through those outputs.
 
 #### log_adv_filt_success_01222023101554.txt
@@ -1038,6 +1062,23 @@ The key process of immiscbility check is to look at whether the idx in db ("No."
 Other outputs (adv_filt_all_01222023101554.json, calc_log_adv_all_01222023101554.txt, calc_log_adv_exp_01222023101554.txt, calc_log_adv_filt_01222023101554.txt) have overlaped info with the above mentioned results. (They are intermediate output for the developer team to test and check.)
 
 
+#### Not continue advanced filtration
+
+If you do not want to conduct this process, select [n]. *SolvPred* will return you the path of where the previous step log has been stored, so that you can check:
+
+```
+Continue advanced filtration?
+
+[y/n]: n
+Please check C:\Users\sh19129\OneDrive - University of Bristol\Documents\MyProject\ML\HSP_python\calculation\cal_20221227_solv_pred_v2\hsp_toolkit_solv_pred_v_2.0\log\log_success_01232023074457.txt for calculation log.
+
+```
+
+It will then terminate the whole program. To start another attempt, you need to go back to the first step and run it from the beginning:
+
+```
+(hsp_solv_pred_2) PS C:\Users\sh19129\OneDrive - University of Bristol\Documents\MyProject\ML\HSP_python\calculation\cal_20221227_solv_pred_v2\hsp_toolkit_solv_pred_v_2.0> python solv_pred_main.py
+```
 
 ### General note
 
