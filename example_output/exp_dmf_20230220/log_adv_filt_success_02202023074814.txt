@@ -1,0 +1,648 @@
+===============================
+SolvPredictor v 2.0 
+ (License: GPL-3.0) 
+
+07:48:14
+2023-02-20
+===============================
+
+Target D /MPa^(1/2): 
+16.72
+
+Target P /MPa^(1/2): 
+13.48
+
+Target H /MPa^(1/2): 
+10.53
+
+Temperature /degree c: 
+70.0
+
+Number of candidates in each combination (n): 
+2
+
+Tolerance of error for D /MPa^(1/2): 
+0.5
+
+Tolerance of error for P /MPa^(1/2): 
+0.5
+
+Tolerance of error for H /MPa^(1/2): 
+0.5
+
+Lowest concentration limit: 
+0.01
+
+Candidate cas: 
+['872-50-4', '110-82-7', '79-01-6', '67-68-5', '616-47-7', '108-32-7', '74-87-3', '91-22-5', '60-29-7', '108-39-4', '123-91-1', '71-43-2', '67-56-1', '71-23-8', '141-78-6', '110-86-1', '67-66-3', '108-95-2', '142-82-5', '108-90-7', '108-88-3', '75-65-0', '108-67-8', '121-44-8', '67-63-0', '109-66-0', '64-17-5', '75-09-2', '56-81-5', '68-12-2', '75-05-8', '109-99-9', '110-54-3', '67-64-1', '127-19-5', '1330-20-7']
+
+Candidate solvents: 
+['Methyl-2-pyrrolidone', 'Cyclohexane', 'Trichloroethylene', 'Dimethyl sulfoxide', '1-Methylimidazole', 'Propylene carbonate', 'Methyl chloride', 'Quinoline', 'Diethyl ether', 'm-cresol', '1,4-Dioxane', 'Benzene', 'Methanol', '1-Propanol', 'Ethyl acetate', 'Pyridine', 'Chloroform', 'Phenol', 'Heptane', 'Chlorobenzene', 'Toluene', 't-Butyl Alcohol', 'Mesitylene', 'Triethylamine', '2-Propanol', 'Pentane', 'Ethanol', 'Methylene dichloride', 'Glycerol', 'Dimethylformamide', 'Acetonitrile', 'Tetrahydrofuran', 'Hexane', 'Acetone', 'N,N-dimethylacetamide', 'm-Xylene']
+
+Advanced filter options: 
+['miscibility', 'bp']
+
+Calculation log path: 
+C:\Users\sh19129\OneDrive - University of Bristol\Documents\MyProject\ML\HSP_python\calculation\cal_20221227_solv_pred_v2\hsp_toolkit_solv_pred_v_2.0\log\adv_filt_exp_info_02202023074814.json
+
+Full calculation log before filtration path: 
+C:\Users\sh19129\OneDrive - University of Bristol\Documents\MyProject\ML\HSP_python\calculation\cal_20221227_solv_pred_v2\hsp_toolkit_solv_pred_v_2.0\log\adv_filt_all_02202023074814.json
+
+===============================
+Results: 
+===============================
+
+Group 1 : 
+
+solvent 1 : Cyclohexane (110-82-7) 
+concentration 1 :  0.00% 
+
+bp /degree C: 80.7
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 2 : Dimethylformamide (68-12-2) 
+concentration 2 :  100.00% 
+
+bp /degree C: 153
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 16.728188092264418
+calculated P /MPa^(1/2): 13.485915342193216
+calculated H /MPa^(1/2): 10.529203957588438
+error of D /MPa^(1/2): 0.008188092264418856
+error of P /MPa^(1/2): 0.005915342193215878
+error of H /MPa^(1/2): -0.0007960424115616149
+
+
+********
+Group 2 : 
+
+solvent 1 : Trichloroethylene (79-01-6) 
+concentration 1 :  0.00% 
+
+bp /degree C: 87.2
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 2 : Dimethylformamide (68-12-2) 
+concentration 2 :  100.00% 
+
+bp /degree C: 153
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 16.728188092264418
+calculated P /MPa^(1/2): 13.485915342193216
+calculated H /MPa^(1/2): 10.529203957588438
+error of D /MPa^(1/2): 0.008188092264418856
+error of P /MPa^(1/2): 0.005915342193215878
+error of H /MPa^(1/2): -0.0007960424115616149
+
+
+********
+Group 3 : 
+
+solvent 1 : Dimethyl sulfoxide (67-68-5) 
+concentration 1 :  76.07% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 2 : t-Butyl Alcohol (75-65-0) 
+concentration 2 :  23.93% 
+
+bp /degree C: 82.3
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+calculated D /MPa^(1/2): 16.953428175908584
+calculated P /MPa^(1/2): 13.48204856822685
+calculated H /MPa^(1/2): 10.5075730121511
+error of D /MPa^(1/2): 0.23342817590858544
+error of P /MPa^(1/2): 0.002048568226848957
+error of H /MPa^(1/2): -0.02242698784889896
+
+
+********
+Group 4 : 
+
+solvent 1 : Dimethyl sulfoxide (67-68-5) 
+concentration 1 :  77.11% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 2 : 2-Propanol (67-63-0) 
+concentration 2 :  22.89% 
+
+bp /degree C: 82.3
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+calculated D /MPa^(1/2): 17.117427725784502
+calculated P /MPa^(1/2): 13.822941431613406
+calculated H /MPa^(1/2): 10.826586085560166
+error of D /MPa^(1/2): 0.39742772578450314
+error of P /MPa^(1/2): 0.34294143161340607
+error of H /MPa^(1/2): 0.2965860855601665
+
+
+********
+Group 5 : 
+
+solvent 1 : Quinoline (91-22-5) 
+concentration 1 :  0.00% 
+
+bp /degree C: 237.7
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 2 : Dimethylformamide (68-12-2) 
+concentration 2 :  100.00% 
+
+bp /degree C: 153
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 16.728188092264418
+calculated P /MPa^(1/2): 13.485915342193216
+calculated H /MPa^(1/2): 10.529203957588438
+error of D /MPa^(1/2): 0.008188092264418856
+error of P /MPa^(1/2): 0.005915342193215878
+error of H /MPa^(1/2): -0.0007960424115616149
+
+
+********
+Group 6 : 
+
+solvent 1 : m-cresol (108-39-4) 
+concentration 1 :  0.00% 
+
+bp /degree C: 202.2
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 2 : Dimethylformamide (68-12-2) 
+concentration 2 :  100.00% 
+
+bp /degree C: 153
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 16.728188092264418
+calculated P /MPa^(1/2): 13.485915342193216
+calculated H /MPa^(1/2): 10.529203957588438
+error of D /MPa^(1/2): 0.008188092264418856
+error of P /MPa^(1/2): 0.005915342193215878
+error of H /MPa^(1/2): -0.0007960424115616149
+
+
+********
+Group 7 : 
+
+solvent 1 : 1,4-Dioxane (123-91-1) 
+concentration 1 :  0.00% 
+
+bp /degree C: 101.2
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : Dimethylformamide (68-12-2) 
+concentration 2 :  100.00% 
+
+bp /degree C: 153
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 16.728188092264418
+calculated P /MPa^(1/2): 13.485915342193216
+calculated H /MPa^(1/2): 10.529203957588438
+error of D /MPa^(1/2): 0.008188092264418856
+error of P /MPa^(1/2): 0.005915342193215878
+error of H /MPa^(1/2): -0.0007960424115616149
+
+
+********
+Group 8 : 
+
+solvent 1 : Benzene (71-43-2) 
+concentration 1 :  0.00% 
+
+bp /degree C: 80.08
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 2 : Dimethylformamide (68-12-2) 
+concentration 2 :  100.00% 
+
+bp /degree C: 153
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 16.728188092264418
+calculated P /MPa^(1/2): 13.485915342193216
+calculated H /MPa^(1/2): 10.529203957588438
+error of D /MPa^(1/2): 0.008188092264418856
+error of P /MPa^(1/2): 0.005915342193215878
+error of H /MPa^(1/2): -0.0007960424115616149
+
+
+********
+Group 9 : 
+
+solvent 1 : 1-Propanol (71-23-8) 
+concentration 1 :  0.00% 
+
+bp /degree C: 97.2
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : Dimethylformamide (68-12-2) 
+concentration 2 :  100.00% 
+
+bp /degree C: 153
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 16.728188092264418
+calculated P /MPa^(1/2): 13.485915342193216
+calculated H /MPa^(1/2): 10.529203957588438
+error of D /MPa^(1/2): 0.008188092264418856
+error of P /MPa^(1/2): 0.005915342193215878
+error of H /MPa^(1/2): -0.0007960424115616149
+
+
+********
+Group 10 : 
+
+solvent 1 : Ethyl acetate (141-78-6) 
+concentration 1 :  0.00% 
+
+bp /degree C: 77.1
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 2 : Dimethylformamide (68-12-2) 
+concentration 2 :  100.00% 
+
+bp /degree C: 153
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 16.728188092264418
+calculated P /MPa^(1/2): 13.485915342193216
+calculated H /MPa^(1/2): 10.529203957588438
+error of D /MPa^(1/2): 0.008188092264418856
+error of P /MPa^(1/2): 0.005915342193215878
+error of H /MPa^(1/2): -0.0007960424115616149
+
+
+********
+Group 11 : 
+
+solvent 1 : Phenol (108-95-2) 
+concentration 1 :  0.00% 
+
+bp /degree C: 182
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : Dimethylformamide (68-12-2) 
+concentration 2 :  100.00% 
+
+bp /degree C: 153
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 16.728188092264418
+calculated P /MPa^(1/2): 13.485915342193216
+calculated H /MPa^(1/2): 10.529203957588438
+error of D /MPa^(1/2): 0.008188092264418856
+error of P /MPa^(1/2): 0.005915342193215878
+error of H /MPa^(1/2): -0.0007960424115616149
+
+
+********
+Group 12 : 
+
+solvent 1 : Heptane (142-82-5) 
+concentration 1 :  0.00% 
+
+bp /degree C: 98.38
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 2 : Dimethylformamide (68-12-2) 
+concentration 2 :  100.00% 
+
+bp /degree C: 153
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 16.728188092264418
+calculated P /MPa^(1/2): 13.485915342193216
+calculated H /MPa^(1/2): 10.529203957588438
+error of D /MPa^(1/2): 0.008188092264418856
+error of P /MPa^(1/2): 0.005915342193215878
+error of H /MPa^(1/2): -0.0007960424115616149
+
+
+********
+Group 13 : 
+
+solvent 1 : Chlorobenzene (108-90-7) 
+concentration 1 :  0.00% 
+
+bp /degree C: 131.6
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 2 : Dimethylformamide (68-12-2) 
+concentration 2 :  100.00% 
+
+bp /degree C: 153
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 16.728188092264418
+calculated P /MPa^(1/2): 13.485915342193216
+calculated H /MPa^(1/2): 10.529203957588438
+error of D /MPa^(1/2): 0.008188092264418856
+error of P /MPa^(1/2): 0.005915342193215878
+error of H /MPa^(1/2): -0.0007960424115616149
+
+
+********
+Group 14 : 
+
+solvent 1 : Toluene (108-88-3) 
+concentration 1 :  0.00% 
+
+bp /degree C: 110.6
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 2 : Dimethylformamide (68-12-2) 
+concentration 2 :  100.00% 
+
+bp /degree C: 153
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 16.728188092264418
+calculated P /MPa^(1/2): 13.485915342193216
+calculated H /MPa^(1/2): 10.529203957588438
+error of D /MPa^(1/2): 0.008188092264418856
+error of P /MPa^(1/2): 0.005915342193215878
+error of H /MPa^(1/2): -0.0007960424115616149
+
+
+********
+Group 15 : 
+
+solvent 1 : t-Butyl Alcohol (75-65-0) 
+concentration 1 :  0.00% 
+
+bp /degree C: 82.3
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : Dimethylformamide (68-12-2) 
+concentration 2 :  100.00% 
+
+bp /degree C: 153
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 16.728188092264418
+calculated P /MPa^(1/2): 13.485915342193216
+calculated H /MPa^(1/2): 10.529203957588438
+error of D /MPa^(1/2): 0.008188092264418856
+error of P /MPa^(1/2): 0.005915342193215878
+error of H /MPa^(1/2): -0.0007960424115616149
+
+
+********
+Group 16 : 
+
+solvent 1 : Mesitylene (108-67-8) 
+concentration 1 :  0.00% 
+
+bp /degree C: 164.7
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 2 : Dimethylformamide (68-12-2) 
+concentration 2 :  100.00% 
+
+bp /degree C: 153
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 16.728188092264418
+calculated P /MPa^(1/2): 13.485915342193216
+calculated H /MPa^(1/2): 10.529203957588438
+error of D /MPa^(1/2): 0.008188092264418856
+error of P /MPa^(1/2): 0.005915342193215878
+error of H /MPa^(1/2): -0.0007960424115616149
+
+
+********
+Group 17 : 
+
+solvent 1 : Triethylamine (121-44-8) 
+concentration 1 :  0.00% 
+
+bp /degree C: 88.8
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : Dimethylformamide (68-12-2) 
+concentration 2 :  100.00% 
+
+bp /degree C: 153
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 16.728188092264418
+calculated P /MPa^(1/2): 13.485915342193216
+calculated H /MPa^(1/2): 10.529203957588438
+error of D /MPa^(1/2): 0.008188092264418856
+error of P /MPa^(1/2): 0.005915342193215878
+error of H /MPa^(1/2): -0.0007960424115616149
+
+
+********
+Group 18 : 
+
+solvent 1 : 2-Propanol (67-63-0) 
+concentration 1 :  0.00% 
+
+bp /degree C: 82.3
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : Dimethylformamide (68-12-2) 
+concentration 2 :  100.00% 
+
+bp /degree C: 153
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 16.728188092264418
+calculated P /MPa^(1/2): 13.485915342193216
+calculated H /MPa^(1/2): 10.529203957588438
+error of D /MPa^(1/2): 0.008188092264418856
+error of P /MPa^(1/2): 0.005915342193215878
+error of H /MPa^(1/2): -0.0007960424115616149
+
+
+********
+Group 19 : 
+
+solvent 1 : Ethanol (64-17-5) 
+concentration 1 :  0.00% 
+
+bp /degree C: 78.2
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 2 : Dimethylformamide (68-12-2) 
+concentration 2 :  100.00% 
+
+bp /degree C: 153
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 16.728188092264418
+calculated P /MPa^(1/2): 13.485915342193216
+calculated H /MPa^(1/2): 10.529203957588438
+error of D /MPa^(1/2): 0.008188092264418856
+error of P /MPa^(1/2): 0.005915342193215878
+error of H /MPa^(1/2): -0.0007960424115616149
+
+
+********
+Group 20 : 
+
+solvent 1 : Glycerol (56-81-5) 
+concentration 1 :  0.00% 
+
+bp /degree C: 290
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 2 : Dimethylformamide (68-12-2) 
+concentration 2 :  100.00% 
+
+bp /degree C: 153
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 16.728188092264418
+calculated P /MPa^(1/2): 13.485915342193216
+calculated H /MPa^(1/2): 10.529203957588438
+error of D /MPa^(1/2): 0.008188092264418856
+error of P /MPa^(1/2): 0.005915342193215878
+error of H /MPa^(1/2): -0.0007960424115616149
+
+
+********
+Group 21 : 
+
+solvent 1 : Dimethylformamide (68-12-2) 
+concentration 1 :  100.00% 
+
+bp /degree C: 153
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 2 : N,N-dimethylacetamide (127-19-5) 
+concentration 2 :  0.00% 
+
+bp /degree C: 163
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+calculated D /MPa^(1/2): 16.728188092264418
+calculated P /MPa^(1/2): 13.485915342193216
+calculated H /MPa^(1/2): 10.529203957588438
+error of D /MPa^(1/2): 0.008188092264418856
+error of P /MPa^(1/2): 0.005915342193215878
+error of H /MPa^(1/2): -0.0007960424115616149
+
+
+********
+Group 22 : 
+
+solvent 1 : Dimethylformamide (68-12-2) 
+concentration 1 :  100.00% 
+
+bp /degree C: 153
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 2 : m-Xylene (1330-20-7) 
+concentration 2 :  0.00% 
+
+bp /degree C: 139.1
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 16.728188092264418
+calculated P /MPa^(1/2): 13.485915342193216
+calculated H /MPa^(1/2): 10.529203957588438
+error of D /MPa^(1/2): 0.008188092264418856
+error of P /MPa^(1/2): 0.005915342193215878
+error of H /MPa^(1/2): -0.0007960424115616149
+
+
+********

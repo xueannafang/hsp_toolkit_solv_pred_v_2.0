@@ -1,0 +1,1979 @@
+===============================
+SolvPredictor v 2.0 
+ (License: GPL-3.0) 
+
+08:09:46
+2023-02-20
+===============================
+
+Target D /MPa^(1/2): 
+16.72
+
+Target P /MPa^(1/2): 
+13.48
+
+Target H /MPa^(1/2): 
+10.53
+
+Temperature /degree c: 
+70.0
+
+Number of candidates in each combination (n): 
+3
+
+Tolerance of error for D /MPa^(1/2): 
+0.5
+
+Tolerance of error for P /MPa^(1/2): 
+0.5
+
+Tolerance of error for H /MPa^(1/2): 
+0.5
+
+Lowest concentration limit: 
+0.01
+
+Candidate cas: 
+['110-54-3', '75-09-2', '1330-20-7', '108-88-3', '67-63-0', '71-23-8', '75-05-8', '109-66-0', '123-91-1', '616-47-7', '91-22-5', '60-29-7', '110-86-1', '109-99-9', '108-95-2', '108-90-7', '127-19-5', '74-87-3', '141-78-6', '121-44-8', '67-64-1', '67-56-1', '110-82-7', '75-65-0', '56-81-5', '79-01-6', '67-68-5', '142-82-5', '108-67-8', '71-43-2', '872-50-4', '67-66-3', '64-17-5', '108-32-7', '108-39-4']
+
+Candidate solvents: 
+['Hexane', 'Methylene dichloride', 'm-Xylene', 'Toluene', '2-Propanol', '1-Propanol', 'Acetonitrile', 'Pentane', '1,4-Dioxane', '1-Methylimidazole', 'Quinoline', 'Diethyl ether', 'Pyridine', 'Tetrahydrofuran', 'Phenol', 'Chlorobenzene', 'N,N-dimethylacetamide', 'Methyl chloride', 'Ethyl acetate', 'Triethylamine', 'Acetone', 'Methanol', 'Cyclohexane', 't-Butyl Alcohol', 'Glycerol', 'Trichloroethylene', 'Dimethyl sulfoxide', 'Heptane', 'Mesitylene', 'Benzene', 'Methyl-2-pyrrolidone', 'Chloroform', 'Ethanol', 'Propylene carbonate', 'm-cresol']
+
+Advanced filter options: 
+['miscibility', 'bp']
+
+Calculation log path: 
+C:\Users\sh19129\OneDrive - University of Bristol\Documents\MyProject\ML\HSP_python\calculation\cal_20221227_solv_pred_v2\hsp_toolkit_solv_pred_v_2.0\log\adv_filt_exp_info_02202023080946.json
+
+Full calculation log before filtration path: 
+C:\Users\sh19129\OneDrive - University of Bristol\Documents\MyProject\ML\HSP_python\calculation\cal_20221227_solv_pred_v2\hsp_toolkit_solv_pred_v_2.0\log\adv_filt_all_02202023080946.json
+
+===============================
+Results: 
+===============================
+
+Group 1 : 
+
+solvent 1 : m-Xylene (1330-20-7) 
+concentration 1 :  0.00% 
+
+bp /degree C: 139.1
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 2 : 2-Propanol (67-63-0) 
+concentration 2 :  22.46% 
+
+bp /degree C: 82.3
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 3 : Dimethyl sulfoxide (67-68-5) 
+concentration 3 :  77.54% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.128282765003533
+calculated P /MPa^(1/2): 13.866972120545476
+calculated H /MPa^(1/2): 10.801498019850309
+error of D /MPa^(1/2): 0.4082827650035341
+error of P /MPa^(1/2): 0.3869721205454759
+error of H /MPa^(1/2): 0.2714980198503092
+
+
+********
+Group 2 : 
+
+solvent 1 : m-Xylene (1330-20-7) 
+concentration 1 :  1.69% 
+
+bp /degree C: 139.1
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 2 : 1-Propanol (71-23-8) 
+concentration 2 :  21.24% 
+
+bp /degree C: 97.2
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 3 : Dimethyl sulfoxide (67-68-5) 
+concentration 3 :  77.07% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.186476988862722
+calculated P /MPa^(1/2): 13.88020146155101
+calculated H /MPa^(1/2): 10.817432571607968
+error of D /MPa^(1/2): 0.4664769888627234
+error of P /MPa^(1/2): 0.4002014615510099
+error of H /MPa^(1/2): 0.28743257160796887
+
+
+********
+Group 3 : 
+
+solvent 1 : m-Xylene (1330-20-7) 
+concentration 1 :  5.49% 
+
+bp /degree C: 139.1
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 2 : Dimethyl sulfoxide (67-68-5) 
+concentration 2 :  75.13% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 3 : Ethanol (64-17-5) 
+concentration 3 :  19.38% 
+
+bp /degree C: 78.2
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.1628316126398
+calculated P /MPa^(1/2): 13.861173914895462
+calculated H /MPa^(1/2): 10.80260357550367
+error of D /MPa^(1/2): 0.4428316126398002
+error of P /MPa^(1/2): 0.38117391489546115
+error of H /MPa^(1/2): 0.27260357550366976
+
+
+********
+Group 4 : 
+
+solvent 1 : Toluene (108-88-3) 
+concentration 1 :  0.00% 
+
+bp /degree C: 110.6
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 2 : 2-Propanol (67-63-0) 
+concentration 2 :  22.48% 
+
+bp /degree C: 82.3
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 3 : Dimethyl sulfoxide (67-68-5) 
+concentration 3 :  77.52% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.12761489228724
+calculated P /MPa^(1/2): 13.864263065771567
+calculated H /MPa^(1/2): 10.803041601062134
+error of D /MPa^(1/2): 0.407614892287242
+error of P /MPa^(1/2): 0.38426306577156666
+error of H /MPa^(1/2): 0.2730416010621344
+
+
+********
+Group 5 : 
+
+solvent 1 : Toluene (108-88-3) 
+concentration 1 :  1.60% 
+
+bp /degree C: 110.6
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 2 : 1-Propanol (71-23-8) 
+concentration 2 :  21.42% 
+
+bp /degree C: 97.2
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 3 : Dimethyl sulfoxide (67-68-5) 
+concentration 3 :  76.97% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.189069127854058
+calculated P /MPa^(1/2): 13.88231377382391
+calculated H /MPa^(1/2): 10.81908293931021
+error of D /MPa^(1/2): 0.4690691278540591
+error of P /MPa^(1/2): 0.4023137738239093
+error of H /MPa^(1/2): 0.28908293931021056
+
+
+********
+Group 6 : 
+
+solvent 1 : Toluene (108-88-3) 
+concentration 1 :  5.31% 
+
+bp /degree C: 110.6
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 2 : Dimethyl sulfoxide (67-68-5) 
+concentration 2 :  74.75% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 3 : Ethanol (64-17-5) 
+concentration 3 :  19.94% 
+
+bp /degree C: 78.2
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.170744093986492
+calculated P /MPa^(1/2): 13.8675649246947
+calculated H /MPa^(1/2): 10.807588477641008
+error of D /MPa^(1/2): 0.4507440939864935
+error of P /MPa^(1/2): 0.38756492469469883
+error of H /MPa^(1/2): 0.27758847764100913
+
+
+********
+Group 7 : 
+
+solvent 1 : 2-Propanol (67-63-0) 
+concentration 1 :  29.72% 
+
+bp /degree C: 82.3
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : Acetonitrile (75-05-8) 
+concentration 2 :  31.47% 
+
+bp /degree C: 81.6
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 3 : 1-Methylimidazole (616-47-7) 
+concentration 3 :  38.82% 
+
+bp /degree C: 198
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+calculated D /MPa^(1/2): 16.494212586154063
+calculated P /MPa^(1/2): 13.320785145889712
+calculated H /MPa^(1/2): 10.38052298011538
+error of D /MPa^(1/2): -0.2257874138459357
+error of P /MPa^(1/2): -0.15921485411028868
+error of H /MPa^(1/2): -0.14947701988461937
+
+
+********
+Group 8 : 
+
+solvent 1 : 2-Propanol (67-63-0) 
+concentration 1 :  22.37% 
+
+bp /degree C: 82.3
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : 1,4-Dioxane (123-91-1) 
+concentration 2 :  0.00% 
+
+bp /degree C: 101.2
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 3 : Dimethyl sulfoxide (67-68-5) 
+concentration 3 :  77.63% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.130347132544188
+calculated P /MPa^(1/2): 13.875345699229989
+calculated H /MPa^(1/2): 10.79672687278541
+error of D /MPa^(1/2): 0.41034713254418875
+error of P /MPa^(1/2): 0.3953456992299884
+error of H /MPa^(1/2): 0.2667268727854104
+
+
+********
+Group 9 : 
+
+solvent 1 : 2-Propanol (67-63-0) 
+concentration 1 :  22.47% 
+
+bp /degree C: 82.3
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : Quinoline (91-22-5) 
+concentration 2 :  0.00% 
+
+bp /degree C: 237.7
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 3 : Dimethyl sulfoxide (67-68-5) 
+concentration 3 :  77.53% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.127867169729498
+calculated P /MPa^(1/2): 13.865286364661655
+calculated H /MPa^(1/2): 10.80245853978333
+error of D /MPa^(1/2): 0.4078671697294993
+error of P /MPa^(1/2): 0.38528636466165445
+error of H /MPa^(1/2): 0.27245853978333123
+
+
+********
+Group 10 : 
+
+solvent 1 : 2-Propanol (67-63-0) 
+concentration 1 :  22.54% 
+
+bp /degree C: 82.3
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : Pyridine (110-86-1) 
+concentration 2 :  0.00% 
+
+bp /degree C: 115.2
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 3 : Dimethyl sulfoxide (67-68-5) 
+concentration 3 :  77.46% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.126242492380673
+calculated P /MPa^(1/2): 13.858696276729427
+calculated H /MPa^(1/2): 10.806213478965242
+error of D /MPa^(1/2): 0.4062424923806738
+error of P /MPa^(1/2): 0.37869627672942663
+error of H /MPa^(1/2): 0.27621347896524284
+
+
+********
+Group 11 : 
+
+solvent 1 : 2-Propanol (67-63-0) 
+concentration 1 :  21.50% 
+
+bp /degree C: 82.3
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : Phenol (108-95-2) 
+concentration 2 :  1.09% 
+
+bp /degree C: 182
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 3 : Dimethyl sulfoxide (67-68-5) 
+concentration 3 :  77.40% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.147878893712804
+calculated P /MPa^(1/2): 13.850403813632145
+calculated H /MPa^(1/2): 10.794412847477638
+error of D /MPa^(1/2): 0.42787889371280485
+error of P /MPa^(1/2): 0.37040381363214436
+error of H /MPa^(1/2): 0.2644128474776384
+
+
+********
+Group 12 : 
+
+solvent 1 : 2-Propanol (67-63-0) 
+concentration 1 :  22.52% 
+
+bp /degree C: 82.3
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : Chlorobenzene (108-90-7) 
+concentration 2 :  0.00% 
+
+bp /degree C: 131.6
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 3 : Dimethyl sulfoxide (67-68-5) 
+concentration 3 :  77.48% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.126557177187728
+calculated P /MPa^(1/2): 13.859972715125599
+calculated H /MPa^(1/2): 10.8054861823652
+error of D /MPa^(1/2): 0.40655717718772877
+error of P /MPa^(1/2): 0.37997271512559827
+error of H /MPa^(1/2): 0.27548618236520106
+
+
+********
+Group 13 : 
+
+solvent 1 : 2-Propanol (67-63-0) 
+concentration 1 :  21.86% 
+
+bp /degree C: 82.3
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : N,N-dimethylacetamide (127-19-5) 
+concentration 2 :  2.32% 
+
+bp /degree C: 163
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 3 : Dimethyl sulfoxide (67-68-5) 
+concentration 3 :  75.82% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.107503245571234
+calculated P /MPa^(1/2): 13.815593669175822
+calculated H /MPa^(1/2): 10.766899980695548
+error of D /MPa^(1/2): 0.38750324557123506
+error of P /MPa^(1/2): 0.3355936691758217
+error of H /MPa^(1/2): 0.23689998069554896
+
+
+********
+Group 14 : 
+
+solvent 1 : 2-Propanol (67-63-0) 
+concentration 1 :  22.39% 
+
+bp /degree C: 82.3
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : Ethyl acetate (141-78-6) 
+concentration 2 :  0.00% 
+
+bp /degree C: 77.1
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 3 : Dimethyl sulfoxide (67-68-5) 
+concentration 3 :  77.61% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.129979789467058
+calculated P /MPa^(1/2): 13.873855666035816
+calculated H /MPa^(1/2): 10.79757587268961
+error of D /MPa^(1/2): 0.4099797894670587
+error of P /MPa^(1/2): 0.39385566603581523
+error of H /MPa^(1/2): 0.26757587268961025
+
+
+********
+Group 15 : 
+
+solvent 1 : 2-Propanol (67-63-0) 
+concentration 1 :  22.49% 
+
+bp /degree C: 82.3
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : Triethylamine (121-44-8) 
+concentration 2 :  0.00% 
+
+bp /degree C: 88.8
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 3 : Dimethyl sulfoxide (67-68-5) 
+concentration 3 :  77.51% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.127520960773154
+calculated P /MPa^(1/2): 13.863882056620502
+calculated H /MPa^(1/2): 10.80325869470409
+error of D /MPa^(1/2): 0.40752096077315514
+error of P /MPa^(1/2): 0.3838820566205019
+error of H /MPa^(1/2): 0.27325869470409003
+
+
+********
+Group 16 : 
+
+solvent 1 : 2-Propanol (67-63-0) 
+concentration 1 :  22.49% 
+
+bp /degree C: 82.3
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : Cyclohexane (110-82-7) 
+concentration 2 :  0.00% 
+
+bp /degree C: 80.7
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 3 : Dimethyl sulfoxide (67-68-5) 
+concentration 3 :  77.51% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.127340415873537
+calculated P /MPa^(1/2): 13.863149722434247
+calculated H /MPa^(1/2): 10.803675968397322
+error of D /MPa^(1/2): 0.40734041587353786
+error of P /MPa^(1/2): 0.38314972243424705
+error of H /MPa^(1/2): 0.2736759683973222
+
+
+********
+Group 17 : 
+
+solvent 1 : 2-Propanol (67-63-0) 
+concentration 1 :  22.44% 
+
+bp /degree C: 82.3
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : Trichloroethylene (79-01-6) 
+concentration 2 :  0.00% 
+
+bp /degree C: 87.2
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 3 : Dimethyl sulfoxide (67-68-5) 
+concentration 3 :  77.56% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.128753588924432
+calculated P /MPa^(1/2): 13.868881897303044
+calculated H /MPa^(1/2): 10.80040985598217
+error of D /MPa^(1/2): 0.4087535889244336
+error of P /MPa^(1/2): 0.3888818973030439
+error of H /MPa^(1/2): 0.27040985598217127
+
+
+********
+Group 18 : 
+
+solvent 1 : 2-Propanol (67-63-0) 
+concentration 1 :  22.50% 
+
+bp /degree C: 82.3
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : Dimethyl sulfoxide (67-68-5) 
+concentration 2 :  77.50% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 3 : Heptane (142-82-5) 
+concentration 3 :  0.00% 
+
+bp /degree C: 98.38
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.127267007379068
+calculated P /MPa^(1/2): 13.862851959660672
+calculated H /MPa^(1/2): 10.803845629427178
+error of D /MPa^(1/2): 0.40726700737906896
+error of P /MPa^(1/2): 0.3828519596606714
+error of H /MPa^(1/2): 0.2738456294271785
+
+
+********
+Group 19 : 
+
+solvent 1 : 2-Propanol (67-63-0) 
+concentration 1 :  22.49% 
+
+bp /degree C: 82.3
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : Dimethyl sulfoxide (67-68-5) 
+concentration 2 :  77.51% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 3 : Mesitylene (108-67-8) 
+concentration 3 :  0.00% 
+
+bp /degree C: 164.7
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.127482000955766
+calculated P /MPa^(1/2): 13.86372402609056
+calculated H /MPa^(1/2): 10.80334873827178
+error of D /MPa^(1/2): 0.4074820009557669
+error of P /MPa^(1/2): 0.3837240260905599
+error of H /MPa^(1/2): 0.2733487382717801
+
+
+********
+Group 20 : 
+
+solvent 1 : 2-Propanol (67-63-0) 
+concentration 1 :  22.47% 
+
+bp /degree C: 82.3
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : Dimethyl sulfoxide (67-68-5) 
+concentration 2 :  77.53% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 3 : Benzene (71-43-2) 
+concentration 3 :  0.00% 
+
+bp /degree C: 80.08
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.128032359389127
+calculated P /MPa^(1/2): 13.86595641424611
+calculated H /MPa^(1/2): 10.802076754977973
+error of D /MPa^(1/2): 0.40803235938912863
+error of P /MPa^(1/2): 0.3859564142461096
+error of H /MPa^(1/2): 0.2720767549779737
+
+
+********
+Group 21 : 
+
+solvent 1 : 2-Propanol (67-63-0) 
+concentration 1 :  22.67% 
+
+bp /degree C: 82.3
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : Dimethyl sulfoxide (67-68-5) 
+concentration 2 :  77.33% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 3 : Methyl-2-pyrrolidone (872-50-4) 
+concentration 3 :  0.00% 
+
+bp /degree C: 202
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+calculated D /MPa^(1/2): 17.12290925444485
+calculated P /MPa^(1/2): 13.84517584997393
+calculated H /MPa^(1/2): 10.813917227489153
+error of D /MPa^(1/2): 0.40290925444485026
+error of P /MPa^(1/2): 0.36517584997393016
+error of H /MPa^(1/2): 0.2839172274891535
+
+
+********
+Group 22 : 
+
+solvent 1 : 2-Propanol (67-63-0) 
+concentration 1 :  23.09% 
+
+bp /degree C: 82.3
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : Dimethyl sulfoxide (67-68-5) 
+concentration 2 :  76.91% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 3 : Propylene carbonate (108-32-7) 
+concentration 3 :  0.00% 
+
+bp /degree C: 241.6
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+calculated D /MPa^(1/2): 17.112534753461688
+calculated P /MPa^(1/2): 13.803094341432342
+calculated H /MPa^(1/2): 10.837894677696443
+error of D /MPa^(1/2): 0.392534753461689
+error of P /MPa^(1/2): 0.3230943414323413
+error of H /MPa^(1/2): 0.30789467769644396
+
+
+********
+Group 23 : 
+
+solvent 1 : 2-Propanol (67-63-0) 
+concentration 1 :  22.07% 
+
+bp /degree C: 82.3
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : Dimethyl sulfoxide (67-68-5) 
+concentration 2 :  77.93% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 3 : m-cresol (108-39-4) 
+concentration 3 :  0.00% 
+
+bp /degree C: 202.2
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.13780159624858
+calculated P /MPa^(1/2): 13.905582823748912
+calculated H /MPa^(1/2): 10.779498185585481
+error of D /MPa^(1/2): 0.41780159624858015
+error of P /MPa^(1/2): 0.4255828237489112
+error of H /MPa^(1/2): 0.2494981855854821
+
+
+********
+Group 24 : 
+
+solvent 1 : 1-Propanol (71-23-8) 
+concentration 1 :  24.77% 
+
+bp /degree C: 97.2
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : Acetonitrile (75-05-8) 
+concentration 2 :  23.84% 
+
+bp /degree C: 81.6
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 3 : 1-Methylimidazole (616-47-7) 
+concentration 3 :  51.39% 
+
+bp /degree C: 198
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+calculated D /MPa^(1/2): 17.04970774166959
+calculated P /MPa^(1/2): 13.773482646756197
+calculated H /MPa^(1/2): 10.734276651447642
+error of D /MPa^(1/2): 0.3297077416695906
+error of P /MPa^(1/2): 0.2934826467561962
+error of H /MPa^(1/2): 0.20427665144764262
+
+
+********
+Group 25 : 
+
+solvent 1 : 1-Propanol (71-23-8) 
+concentration 1 :  21.50% 
+
+bp /degree C: 97.2
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : Pyridine (110-86-1) 
+concentration 2 :  2.85% 
+
+bp /degree C: 115.2
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 3 : Dimethyl sulfoxide (67-68-5) 
+concentration 3 :  75.66% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.209989039223583
+calculated P /MPa^(1/2): 13.899371908861998
+calculated H /MPa^(1/2): 10.832411315532374
+error of D /MPa^(1/2): 0.48998903922358394
+error of P /MPa^(1/2): 0.41937190886199716
+error of H /MPa^(1/2): 0.30241131553237466
+
+
+********
+Group 26 : 
+
+solvent 1 : 1-Propanol (71-23-8) 
+concentration 1 :  21.66% 
+
+bp /degree C: 97.2
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : Chlorobenzene (108-90-7) 
+concentration 2 :  1.73% 
+
+bp /degree C: 131.6
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 3 : Dimethyl sulfoxide (67-68-5) 
+concentration 3 :  76.61% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.19966460181093
+calculated P /MPa^(1/2): 13.890950967293131
+calculated H /MPa^(1/2): 10.825831453957264
+error of D /MPa^(1/2): 0.4796646018109314
+error of P /MPa^(1/2): 0.41095096729313063
+error of H /MPa^(1/2): 0.2958314539572644
+
+
+********
+Group 27 : 
+
+solvent 1 : 1-Propanol (71-23-8) 
+concentration 1 :  18.44% 
+
+bp /degree C: 97.2
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : N,N-dimethylacetamide (127-19-5) 
+concentration 2 :  12.80% 
+
+bp /degree C: 163
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 3 : Dimethyl sulfoxide (67-68-5) 
+concentration 3 :  68.75% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.06707862007805
+calculated P /MPa^(1/2): 13.783219018630906
+calculated H /MPa^(1/2): 10.7416802291829
+error of D /MPa^(1/2): 0.3470786200780509
+error of P /MPa^(1/2): 0.30321901863090517
+error of H /MPa^(1/2): 0.2116802291829014
+
+
+********
+Group 28 : 
+
+solvent 1 : 1-Propanol (71-23-8) 
+concentration 1 :  20.48% 
+
+bp /degree C: 97.2
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : Ethyl acetate (141-78-6) 
+concentration 2 :  3.41% 
+
+bp /degree C: 77.1
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 3 : Dimethyl sulfoxide (67-68-5) 
+concentration 3 :  76.11% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.131786325385537
+calculated P /MPa^(1/2): 13.835702237234202
+calculated H /MPa^(1/2): 10.782669444459453
+error of D /MPa^(1/2): 0.4117863253855383
+error of P /MPa^(1/2): 0.35570223723420114
+error of H /MPa^(1/2): 0.2526694444594533
+
+
+********
+Group 29 : 
+
+solvent 1 : 1-Propanol (71-23-8) 
+concentration 1 :  21.47% 
+
+bp /degree C: 97.2
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : Triethylamine (121-44-8) 
+concentration 2 :  1.49% 
+
+bp /degree C: 88.8
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 3 : Dimethyl sulfoxide (67-68-5) 
+concentration 3 :  77.03% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.185520786702643
+calculated P /MPa^(1/2): 13.879422333988988
+calculated H /MPa^(1/2): 10.816823837442868
+error of D /MPa^(1/2): 0.4655207867026441
+error of P /MPa^(1/2): 0.3994223339889871
+error of H /MPa^(1/2): 0.2868238374428689
+
+
+********
+Group 30 : 
+
+solvent 1 : 1-Propanol (71-23-8) 
+concentration 1 :  21.51% 
+
+bp /degree C: 97.2
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : Cyclohexane (110-82-7) 
+concentration 2 :  1.51% 
+
+bp /degree C: 80.7
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 3 : Dimethyl sulfoxide (67-68-5) 
+concentration 3 :  76.97% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.169922238544366
+calculated P /MPa^(1/2): 13.866717999559606
+calculated H /MPa^(1/2): 10.806898282979406
+error of D /MPa^(1/2): 0.4499222385443673
+error of P /MPa^(1/2): 0.38671799955960573
+error of H /MPa^(1/2): 0.2768982829794062
+
+
+********
+Group 31 : 
+
+solvent 1 : 1-Propanol (71-23-8) 
+concentration 1 :  11.20% 
+
+bp /degree C: 97.2
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : t-Butyl Alcohol (75-65-0) 
+concentration 2 :  11.67% 
+
+bp /degree C: 82.3
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 3 : Dimethyl sulfoxide (67-68-5) 
+concentration 3 :  77.13% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.072165263477874
+calculated P /MPa^(1/2): 13.787338182787225
+calculated H /MPa^(1/2): 10.744896847482101
+error of D /MPa^(1/2): 0.35216526347787536
+error of P /MPa^(1/2): 0.307338182787225
+error of H /MPa^(1/2): 0.2148968474821018
+
+
+********
+Group 32 : 
+
+solvent 1 : 1-Propanol (71-23-8) 
+concentration 1 :  21.05% 
+
+bp /degree C: 97.2
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : Trichloroethylene (79-01-6) 
+concentration 2 :  2.04% 
+
+bp /degree C: 87.2
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 3 : Dimethyl sulfoxide (67-68-5) 
+concentration 3 :  76.91% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.196053450560925
+calculated P /MPa^(1/2): 13.888006690181097
+calculated H /MPa^(1/2): 10.823530960035614
+error of D /MPa^(1/2): 0.47605345056092574
+error of P /MPa^(1/2): 0.4080066901810966
+error of H /MPa^(1/2): 0.2935309600356142
+
+
+********
+Group 33 : 
+
+solvent 1 : 1-Propanol (71-23-8) 
+concentration 1 :  21.51% 
+
+bp /degree C: 97.2
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : Dimethyl sulfoxide (67-68-5) 
+concentration 2 :  76.85% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 3 : Heptane (142-82-5) 
+concentration 3 :  1.65% 
+
+bp /degree C: 98.38
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.144353888820017
+calculated P /MPa^(1/2): 13.8459164478537
+calculated H /MPa^(1/2): 10.790648102307483
+error of D /MPa^(1/2): 0.42435388882001845
+error of P /MPa^(1/2): 0.36591644785369937
+error of H /MPa^(1/2): 0.26064810230748314
+
+
+********
+Group 34 : 
+
+solvent 1 : 1-Propanol (71-23-8) 
+concentration 1 :  21.50% 
+
+bp /degree C: 97.2
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : Dimethyl sulfoxide (67-68-5) 
+concentration 2 :  77.07% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 3 : Mesitylene (108-67-8) 
+concentration 3 :  1.43% 
+
+bp /degree C: 164.7
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.188096150908294
+calculated P /MPa^(1/2): 13.881520868939685
+calculated H /MPa^(1/2): 10.818463433653099
+error of D /MPa^(1/2): 0.4680961509082948
+error of P /MPa^(1/2): 0.4015208689396843
+error of H /MPa^(1/2): 0.28846343365309934
+
+
+********
+Group 35 : 
+
+solvent 1 : 1-Propanol (71-23-8) 
+concentration 1 :  21.35% 
+
+bp /degree C: 97.2
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : Dimethyl sulfoxide (67-68-5) 
+concentration 2 :  77.18% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 3 : Benzene (71-43-2) 
+concentration 3 :  1.47% 
+
+bp /degree C: 80.08
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.19698366571151
+calculated P /MPa^(1/2): 13.888765067624155
+calculated H /MPa^(1/2): 10.824123510278028
+error of D /MPa^(1/2): 0.4769836657115114
+error of P /MPa^(1/2): 0.4087650676241541
+error of H /MPa^(1/2): 0.29412351027802863
+
+
+********
+Group 36 : 
+
+solvent 1 : 1-Propanol (71-23-8) 
+concentration 1 :  21.73% 
+
+bp /degree C: 97.2
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : Dimethyl sulfoxide (67-68-5) 
+concentration 2 :  72.66% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 3 : Methyl-2-pyrrolidone (872-50-4) 
+concentration 3 :  5.61% 
+
+bp /degree C: 202
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+calculated D /MPa^(1/2): 17.166709633186155
+calculated P /MPa^(1/2): 13.864102780559975
+calculated H /MPa^(1/2): 10.804855169654981
+error of D /MPa^(1/2): 0.4467096331861562
+error of P /MPa^(1/2): 0.3841027805599744
+error of H /MPa^(1/2): 0.27485516965498213
+
+
+********
+Group 37 : 
+
+solvent 1 : 1-Propanol (71-23-8) 
+concentration 1 :  24.73% 
+
+bp /degree C: 97.2
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : Dimethyl sulfoxide (67-68-5) 
+concentration 2 :  69.42% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 3 : Propylene carbonate (108-32-7) 
+concentration 3 :  5.84% 
+
+bp /degree C: 241.6
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+calculated D /MPa^(1/2): 17.2087294750186
+calculated P /MPa^(1/2): 13.898344319717763
+calculated H /MPa^(1/2): 10.83160837289359
+error of D /MPa^(1/2): 0.48872947501860153
+error of P /MPa^(1/2): 0.41834431971776276
+error of H /MPa^(1/2): 0.30160837289359144
+
+
+********
+Group 38 : 
+
+solvent 1 : Acetonitrile (75-05-8) 
+concentration 1 :  50.99% 
+
+bp /degree C: 81.6
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 2 : Quinoline (91-22-5) 
+concentration 2 :  27.57% 
+
+bp /degree C: 237.7
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 3 : Glycerol (56-81-5) 
+concentration 3 :  21.44% 
+
+bp /degree C: 290
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 16.228684001108807
+calculated P /MPa^(1/2): 13.108794489410597
+calculated H /MPa^(1/2): 10.216193724708216
+error of D /MPa^(1/2): -0.49131599889119215
+error of P /MPa^(1/2): -0.37120551058940343
+error of H /MPa^(1/2): -0.3138062752917836
+
+
+********
+Group 39 : 
+
+solvent 1 : Acetonitrile (75-05-8) 
+concentration 1 :  42.86% 
+
+bp /degree C: 81.6
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 2 : Pyridine (110-86-1) 
+concentration 2 :  35.35% 
+
+bp /degree C: 115.2
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 3 : Glycerol (56-81-5) 
+concentration 3 :  21.79% 
+
+bp /degree C: 290
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 16.40653628121774
+calculated P /MPa^(1/2): 13.252111663009552
+calculated H /MPa^(1/2): 10.327763437536916
+error of D /MPa^(1/2): -0.3134637187822591
+error of P /MPa^(1/2): -0.22788833699044808
+error of H /MPa^(1/2): -0.2022365624630833
+
+
+********
+Group 40 : 
+
+solvent 1 : Acetonitrile (75-05-8) 
+concentration 1 :  23.59% 
+
+bp /degree C: 81.6
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 2 : Glycerol (56-81-5) 
+concentration 2 :  19.28% 
+
+bp /degree C: 290
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 3 : Methyl-2-pyrrolidone (872-50-4) 
+concentration 3 :  57.13% 
+
+bp /degree C: 202
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+calculated D /MPa^(1/2): 16.581558207202953
+calculated P /MPa^(1/2): 13.39324517388379
+calculated H /MPa^(1/2): 10.437615447029884
+error of D /MPa^(1/2): -0.13844179279704605
+error of P /MPa^(1/2): -0.08675482611621099
+error of H /MPa^(1/2): -0.09238455297011505
+
+
+********
+Group 41 : 
+
+solvent 1 : Acetonitrile (75-05-8) 
+concentration 1 :  12.69% 
+
+bp /degree C: 81.6
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 2 : Ethanol (64-17-5) 
+concentration 2 :  45.75% 
+
+bp /degree C: 78.2
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 3 : Propylene carbonate (108-32-7) 
+concentration 3 :  41.56% 
+
+bp /degree C: 241.6
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+calculated D /MPa^(1/2): 16.806923549939672
+calculated P /MPa^(1/2): 13.575331740867906
+calculated H /MPa^(1/2): 10.579394241988021
+error of D /MPa^(1/2): 0.086923549939673
+error of P /MPa^(1/2): 0.09533174086790552
+error of H /MPa^(1/2): 0.049394241988022
+
+
+********
+Group 42 : 
+
+solvent 1 : Chlorobenzene (108-90-7) 
+concentration 1 :  5.87% 
+
+bp /degree C: 131.6
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 2 : Dimethyl sulfoxide (67-68-5) 
+concentration 2 :  73.43% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 3 : Ethanol (64-17-5) 
+concentration 3 :  20.70% 
+
+bp /degree C: 78.2
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.20611149987741
+calculated P /MPa^(1/2): 13.896142057674624
+calculated H /MPa^(1/2): 10.829876901325708
+error of D /MPa^(1/2): 0.48611149987740987
+error of P /MPa^(1/2): 0.4161420576746231
+error of H /MPa^(1/2): 0.29987690132570854
+
+
+********
+Group 43 : 
+
+solvent 1 : N,N-dimethylacetamide (127-19-5) 
+concentration 1 :  45.62% 
+
+bp /degree C: 163
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : Glycerol (56-81-5) 
+concentration 2 :  6.46% 
+
+bp /degree C: 290
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 3 : Dimethyl sulfoxide (67-68-5) 
+concentration 3 :  47.92% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 16.925770394044726
+calculated P /MPa^(1/2): 13.669984100848367
+calculated H /MPa^(1/2): 10.653407292177116
+error of D /MPa^(1/2): 0.20577039404472686
+error of P /MPa^(1/2): 0.18998410084836692
+error of H /MPa^(1/2): 0.12340729217711655
+
+
+********
+Group 44 : 
+
+solvent 1 : N,N-dimethylacetamide (127-19-5) 
+concentration 1 :  31.99% 
+
+bp /degree C: 163
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : Dimethyl sulfoxide (67-68-5) 
+concentration 2 :  54.99% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 3 : Ethanol (64-17-5) 
+concentration 3 :  13.01% 
+
+bp /degree C: 78.2
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 16.872169889243953
+calculated P /MPa^(1/2): 13.627005003567614
+calculated H /MPa^(1/2): 10.619876632907104
+error of D /MPa^(1/2): 0.1521698892439538
+error of P /MPa^(1/2): 0.1470050035676138
+error of H /MPa^(1/2): 0.08987663290710479
+
+
+********
+Group 45 : 
+
+solvent 1 : Ethyl acetate (141-78-6) 
+concentration 1 :  16.98% 
+
+bp /degree C: 77.1
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 2 : Glycerol (56-81-5) 
+concentration 2 :  9.98% 
+
+bp /degree C: 290
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 3 : Dimethyl sulfoxide (67-68-5) 
+concentration 3 :  73.04% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.169137685504026
+calculated P /MPa^(1/2): 13.865702480844849
+calculated H /MPa^(1/2): 10.806044322403238
+error of D /MPa^(1/2): 0.4491376855040272
+error of P /MPa^(1/2): 0.3857024808448486
+error of H /MPa^(1/2): 0.27604432240323895
+
+
+********
+Group 46 : 
+
+solvent 1 : Ethyl acetate (141-78-6) 
+concentration 1 :  10.24% 
+
+bp /degree C: 77.1
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 2 : Dimethyl sulfoxide (67-68-5) 
+concentration 2 :  72.46% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 3 : Ethanol (64-17-5) 
+concentration 3 :  17.30% 
+
+bp /degree C: 78.2
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.001257269955108
+calculated P /MPa^(1/2): 13.730856997340016
+calculated H /MPa^(1/2): 10.700933580536837
+error of D /MPa^(1/2): 0.281257269955109
+error of P /MPa^(1/2): 0.25085699734001565
+error of H /MPa^(1/2): 0.17093358053683794
+
+
+********
+Group 47 : 
+
+solvent 1 : Triethylamine (121-44-8) 
+concentration 1 :  4.97% 
+
+bp /degree C: 88.8
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : Dimethyl sulfoxide (67-68-5) 
+concentration 2 :  74.94% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 3 : Ethanol (64-17-5) 
+concentration 3 :  20.09% 
+
+bp /degree C: 78.2
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.158787980362806
+calculated P /MPa^(1/2): 13.857908153163946
+calculated H /MPa^(1/2): 10.800056282064556
+error of D /MPa^(1/2): 0.4387879803628074
+error of P /MPa^(1/2): 0.3779081531639452
+error of H /MPa^(1/2): 0.2700562820645569
+
+
+********
+Group 48 : 
+
+solvent 1 : Cyclohexane (110-82-7) 
+concentration 1 :  5.05% 
+
+bp /degree C: 80.7
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 2 : Dimethyl sulfoxide (67-68-5) 
+concentration 2 :  74.73% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 3 : Ethanol (64-17-5) 
+concentration 3 :  20.22% 
+
+bp /degree C: 78.2
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.10644912361104
+calculated P /MPa^(1/2): 13.815657919024083
+calculated H /MPa^(1/2): 10.767098476391103
+error of D /MPa^(1/2): 0.38644912361104033
+error of P /MPa^(1/2): 0.33565791902408293
+error of H /MPa^(1/2): 0.23709847639110393
+
+
+********
+Group 49 : 
+
+solvent 1 : t-Butyl Alcohol (75-65-0) 
+concentration 1 :  20.72% 
+
+bp /degree C: 82.3
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : Glycerol (56-81-5) 
+concentration 2 :  1.96% 
+
+bp /degree C: 290
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 3 : Dimethyl sulfoxide (67-68-5) 
+concentration 3 :  77.33% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.03342721605757
+calculated P /MPa^(1/2): 13.756502329202434
+calculated H /MPa^(1/2): 10.720901101277466
+error of D /MPa^(1/2): 0.3134272160575726
+error of P /MPa^(1/2): 0.2765023292024331
+error of H /MPa^(1/2): 0.19090110127746662
+
+
+********
+Group 50 : 
+
+solvent 1 : t-Butyl Alcohol (75-65-0) 
+concentration 1 :  18.35% 
+
+bp /degree C: 82.3
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : Dimethyl sulfoxide (67-68-5) 
+concentration 2 :  76.67% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 3 : Ethanol (64-17-5) 
+concentration 3 :  4.98% 
+
+bp /degree C: 78.2
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.00066087599544
+calculated P /MPa^(1/2): 13.730376651413053
+calculated H /MPa^(1/2): 10.700558739090049
+error of D /MPa^(1/2): 0.28066087599544076
+error of P /MPa^(1/2): 0.25037665141305254
+error of H /MPa^(1/2): 0.17055873909004937
+
+
+********
+Group 51 : 
+
+solvent 1 : Trichloroethylene (79-01-6) 
+concentration 1 :  6.48% 
+
+bp /degree C: 87.2
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 2 : Dimethyl sulfoxide (67-68-5) 
+concentration 2 :  74.69% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 3 : Ethanol (64-17-5) 
+concentration 3 :  18.83% 
+
+bp /degree C: 78.2
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.19401884634425
+calculated P /MPa^(1/2): 13.886369185196763
+calculated H /MPa^(1/2): 10.822254905031311
+error of D /MPa^(1/2): 0.47401884634425073
+error of P /MPa^(1/2): 0.4063691851967626
+error of H /MPa^(1/2): 0.2922549050313119
+
+
+********
+Group 52 : 
+
+solvent 1 : Dimethyl sulfoxide (67-68-5) 
+concentration 1 :  74.32% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 2 : Heptane (142-82-5) 
+concentration 2 :  5.49% 
+
+bp /degree C: 98.38
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 3 : Ethanol (64-17-5) 
+concentration 3 :  20.19% 
+
+bp /degree C: 78.2
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.021263691281977
+calculated P /MPa^(1/2): 13.746973399984975
+calculated H /MPa^(1/2): 10.713509756198468
+error of D /MPa^(1/2): 0.30126369128197794
+error of P /MPa^(1/2): 0.26697339998497505
+error of H /MPa^(1/2): 0.1835097561984682
+
+
+********
+Group 53 : 
+
+solvent 1 : Dimethyl sulfoxide (67-68-5) 
+concentration 1 :  75.07% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 2 : Mesitylene (108-67-8) 
+concentration 2 :  4.77% 
+
+bp /degree C: 164.7
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 3 : Ethanol (64-17-5) 
+concentration 3 :  20.16% 
+
+bp /degree C: 78.2
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.167291432842294
+calculated P /MPa^(1/2): 13.864776062051
+calculated H /MPa^(1/2): 10.805413215775328
+error of D /MPa^(1/2): 0.4472914328422952
+error of P /MPa^(1/2): 0.38477606205099946
+error of H /MPa^(1/2): 0.2754132157753286
+
+
+********
+Group 54 : 
+
+solvent 1 : Dimethyl sulfoxide (67-68-5) 
+concentration 1 :  75.46% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 2 : Benzene (71-43-2) 
+concentration 2 :  4.84% 
+
+bp /degree C: 80.08
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 3 : Ethanol (64-17-5) 
+concentration 3 :  19.71% 
+
+bp /degree C: 78.2
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.19698366571151
+calculated P /MPa^(1/2): 13.888765067624153
+calculated H /MPa^(1/2): 10.824123510278023
+error of D /MPa^(1/2): 0.4769836657115114
+error of P /MPa^(1/2): 0.4087650676241523
+error of H /MPa^(1/2): 0.2941235102780233
+
+
+********
+Group 55 : 
+
+solvent 1 : Dimethyl sulfoxide (67-68-5) 
+concentration 1 :  59.89% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 2 : Methyl-2-pyrrolidone (872-50-4) 
+concentration 2 :  19.21% 
+
+bp /degree C: 202
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 3 : Ethanol (64-17-5) 
+concentration 3 :  20.90% 
+
+bp /degree C: 78.2
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 17.09333504392001
+calculated P /MPa^(1/2): 13.805077562031006
+calculated H /MPa^(1/2): 10.758844372358661
+error of D /MPa^(1/2): 0.3733350439200116
+error of P /MPa^(1/2): 0.32507756203100513
+error of H /MPa^(1/2): 0.22884437235866173
+
+
+********

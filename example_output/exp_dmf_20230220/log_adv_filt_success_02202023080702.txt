@@ -1,0 +1,108 @@
+===============================
+SolvPredictor v 2.0 
+ (License: GPL-3.0) 
+
+08:07:02
+2023-02-20
+===============================
+
+Target D /MPa^(1/2): 
+16.72
+
+Target P /MPa^(1/2): 
+13.48
+
+Target H /MPa^(1/2): 
+10.53
+
+Temperature /degree c: 
+70.0
+
+Number of candidates in each combination (n): 
+2
+
+Tolerance of error for D /MPa^(1/2): 
+0.5
+
+Tolerance of error for P /MPa^(1/2): 
+0.5
+
+Tolerance of error for H /MPa^(1/2): 
+0.5
+
+Lowest concentration limit: 
+0.01
+
+Candidate cas: 
+['109-99-9', '110-82-7', '75-65-0', '67-66-3', '71-43-2', '64-17-5', '74-87-3', '110-54-3', '67-56-1', '67-68-5', '1330-20-7', '71-23-8', '75-09-2', '67-64-1', '142-82-5', '91-22-5', '127-19-5', '121-44-8', '109-66-0', '872-50-4', '60-29-7', '616-47-7', '108-32-7', '108-95-2', '56-81-5', '79-01-6', '123-91-1', '67-63-0', '75-05-8', '110-86-1', '108-67-8', '108-88-3', '141-78-6', '108-90-7', '108-39-4']
+
+Candidate solvents: 
+['Tetrahydrofuran', 'Cyclohexane', 't-Butyl Alcohol', 'Chloroform', 'Benzene', 'Ethanol', 'Methyl chloride', 'Hexane', 'Methanol', 'Dimethyl sulfoxide', 'm-Xylene', '1-Propanol', 'Methylene dichloride', 'Acetone', 'Heptane', 'Quinoline', 'N,N-dimethylacetamide', 'Triethylamine', 'Pentane', 'Methyl-2-pyrrolidone', 'Diethyl ether', '1-Methylimidazole', 'Propylene carbonate', 'Phenol', 'Glycerol', 'Trichloroethylene', '1,4-Dioxane', '2-Propanol', 'Acetonitrile', 'Pyridine', 'Mesitylene', 'Toluene', 'Ethyl acetate', 'Chlorobenzene', 'm-cresol']
+
+Advanced filter options: 
+['miscibility', 'bp']
+
+Calculation log path: 
+C:\Users\sh19129\OneDrive - University of Bristol\Documents\MyProject\ML\HSP_python\calculation\cal_20221227_solv_pred_v2\hsp_toolkit_solv_pred_v_2.0\log\adv_filt_exp_info_02202023080702.json
+
+Full calculation log before filtration path: 
+C:\Users\sh19129\OneDrive - University of Bristol\Documents\MyProject\ML\HSP_python\calculation\cal_20221227_solv_pred_v2\hsp_toolkit_solv_pred_v_2.0\log\adv_filt_all_02202023080702.json
+
+===============================
+Results: 
+===============================
+
+Group 1 : 
+
+solvent 1 : t-Butyl Alcohol (75-65-0) 
+concentration 1 :  23.71% 
+
+bp /degree C: 82.3
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+solvent 2 : Dimethyl sulfoxide (67-68-5) 
+concentration 2 :  76.29% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+calculated D /MPa^(1/2): 16.96023536287144
+calculated P /MPa^(1/2): 13.506661103479354
+calculated H /MPa^(1/2): 10.498295155578653
+error of D /MPa^(1/2): 0.24023536287144154
+error of P /MPa^(1/2): 0.026661103479353798
+error of H /MPa^(1/2): -0.03170484442134658
+
+
+********
+Group 2 : 
+
+solvent 1 : Dimethyl sulfoxide (67-68-5) 
+concentration 1 :  77.30% 
+
+bp /degree C: 189
+
+miscibility check: 
+No recorded miscibility issue. Manual check is recommended if temperature has been varied.
+
+solvent 2 : 2-Propanol (67-63-0) 
+concentration 2 :  22.70% 
+
+bp /degree C: 82.3
+
+miscibility check: 
+No recorded miscibility issue or no solubility record. Manual check is recommended.
+
+calculated D /MPa^(1/2): 17.122129005165256
+calculated P /MPa^(1/2): 13.84201096842666
+calculated H /MPa^(1/2): 10.815720532369173
+error of D /MPa^(1/2): 0.40212900516525707
+error of P /MPa^(1/2): 0.3620109684266595
+error of H /MPa^(1/2): 0.28572053236917405
+
+
+********
