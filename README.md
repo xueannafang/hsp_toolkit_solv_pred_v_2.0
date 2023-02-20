@@ -204,7 +204,7 @@ If you am happy with the default list, press [n] to process.
 
 If you want to remove some candidates, which, may be unavailable in your lab or you don't like certain properties, press [y] to enter CAS of unwanted solvents. Press [enter] to finish.
 
-If you are doing solvent replacement, remember to remove the solvent to-be-replaced at this step. (Otherwise your output will include all the combination of 100% solvent to-be-replaced + 0% the rest available on the candidate list.)
+
 
 ```
 Do you want to remove any solvent?
@@ -215,6 +215,10 @@ Please enter the CAS No. of solvent candidate 2 :
 Have all the solvent candidates been added?
 [y/n]:
 ```
+
+If you are doing solvent replacement, remember to remove the solvent to be replaced at this step. (Otherwise your output will include all the combination of 100% solvent to be replaced + 0% the rest available on the candidate list.)
+
+For example, if you want to replace DMF, you need to input the cas No. of DMF (68-12-2, which can be searched in default_solv_candidate.json) in this removal step.
 
 *Make sure you enter the correct CAS (with correct format, on both the candidate list and database. (This version will auto check before removing anything from the candidate list and pop up warning if any input is invalid.)*
 
