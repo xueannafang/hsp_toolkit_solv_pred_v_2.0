@@ -1,5 +1,5 @@
 # SolvPred (v2.0)
-Last update: 23/01/2023
+Last update: 20/02/2023
 
 ## Introduction
 
@@ -203,6 +203,8 @@ Do you want to remove any solvent?
 If you am happy with the default list, press [n] to process.
 
 If you want to remove some candidates, which, may be unavailable in your lab or you don't like certain properties, press [y] to enter CAS of unwanted solvents. Press [enter] to finish.
+
+If you are doing solvent replacement, remember to remove the solvent to-be-replaced at this step. (Otherwise your output will include all the combination of 100% solvent to-be-replaced + 0% the rest available on the candidate list.)
 
 ```
 Do you want to remove any solvent?
