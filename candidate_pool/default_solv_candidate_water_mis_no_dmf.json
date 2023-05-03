@@ -24,6 +24,10 @@
   "Solvent": "ethyl acetate"
  },
  {
+  "CAS": "123-91-1",
+  "Solvent": "dioxane"
+ },
+ {
   "CAS": "67-64-1",
   "Solvent": "acetone"
  },
@@ -48,7 +52,15 @@
   "Solvent": "dimethylsulfoxide"
  },
  {
-  "CAS": "71-23-8",
-  "Solvent": "1-propanol"
+  "CAS": "616-47-7",
+  "Solvent": "N-methylimidazole(NMI)"
+ },
+ {
+  "CAS": "872-50-4",
+  "Solvent": "N-Methyl-2-pyrrolidone(NMP)"
+ },
+ {
+  "CAS": "127-19-5",
+  "Solvent": "N,N-dimethylacetamide"
  }
 ]

@@ -48,6 +48,10 @@
   "Solvent": "dimethylsulfoxide"
  },
  {
+  "CAS": "616-47-7",
+  "Solvent": "N-methylimidazole(NMI)"
+ },
+ {
   "CAS": "71-23-8",
   "Solvent": "1-propanol"
  }
