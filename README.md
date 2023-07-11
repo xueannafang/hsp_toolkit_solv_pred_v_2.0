@@ -706,7 +706,7 @@ We dumped the full calculation log in a json file named after  "calc_log_bsc_chk
 
 ```
 Calculation log path: 
-C:\Users\sh19129\OneDrive - University of Bristol\Documents\MyProject\ML\HSP_python\calculation\cal_20221227_solv_pred_v2\hsp_toolkit_solv_pred_v_2.0\log\calc_log_bsc_chk_01222023101554.json
+C:\Users\...\hsp_toolkit_solv_pred_v_2.0\log\calc_log_bsc_chk_01222023101554.json
 
 ```
 
@@ -923,7 +923,7 @@ SolvPredictor v 2.0
  (License: GPL-3.0)
 
 Please check:
-C:\Users\sh19129\OneDrive - University of Bristol\Documents\MyProject\ML\HSP_python\calculation\cal_20221227_solv_pred_v2\hsp_toolkit_solv_pred_v_2.0\log\log_adv_filt_success_01232023075028.txt for calculation log.
+C:\Users\...\hsp_toolkit_solv_pred_v_2.0\log\log_adv_filt_success_01232023075028.txt for calculation log.
 ```
 
 The version, time and license info will also present again. *Don't worry about the huge time difference from the previous.. This example was done on the second day morning.*
@@ -952,7 +952,7 @@ One more filteration log json (named after "adv_filt_exp_info_") path will be pr
 
 ```
 Calculation log path: 
-C:\Users\sh19129\OneDrive - University of Bristol\Documents\MyProject\ML\HSP_python\calculation\cal_20221227_solv_pred_v2\hsp_toolkit_solv_pred_v_2.0\log\adv_filt_exp_info_01222023101554.json
+C:\Users\...\hsp_toolkit_solv_pred_v_2.0\log\adv_filt_exp_info_01222023101554.json
 ```
 
 In the results section, more details regarding advanced filteration properties will be discussed:
@@ -1076,14 +1076,14 @@ If you do not want to conduct this process, select [n]. *SolvPred* will return y
 Continue advanced filtration?
 
 [y/n]: n
-Please check C:\Users\sh19129\OneDrive - University of Bristol\Documents\MyProject\ML\HSP_python\calculation\cal_20221227_solv_pred_v2\hsp_toolkit_solv_pred_v_2.0\log\log_success_01232023074457.txt for calculation log.
+Please check C:\Users\...\hsp_toolkit_solv_pred_v_2.0\log\log_success_01232023074457.txt for calculation log.
 
 ```
 
 It will then terminate the whole program. To start another attempt, you need to go back to the first step and run it from the beginning:
 
 ```
-(hsp_solv_pred_2) PS C:\Users\sh19129\OneDrive - University of Bristol\Documents\MyProject\ML\HSP_python\calculation\cal_20221227_solv_pred_v2\hsp_toolkit_solv_pred_v_2.0> python solv_pred_main.py
+(hsp_solv_pred_2) PS C:\Users\...\hsp_toolkit_solv_pred_v_2.0> python solv_pred_main.py
 ```
 
 ### General note
