@@ -1135,8 +1135,14 @@ q
 
 ## Disclaimer
 
-  - SolvPred is under continous tests and improvement. The output only provide suggestion. Results may vary with multi factors in complicated situations. It is the users responsbility to manuallay check the exact experimental performance in different scenarios.
+  - SolvPred is under continous tests and improvement. The output only provide suggestion. Results may vary with multi factors in complicated situations. We encourage users to manuallay check the exact experimental performance in different scenarios.
+
+
+## Cite this work
+ 
+X. Fang, E. Gale, N. Fey, C. F.J. Faul, SolvPred - A python toolkit to predict multi-solvent combinations with target Hansen solubility parameters (v2.0), 2023, https://github.com/xueannafang/hsp_toolkit_solv_pred_v_2.0.
+
 
  ---
-
+ 
 This project is licensed under [GPL-3.0](https://www.gnu.org/licenses/gpl-3.0.html).
