@@ -12,8 +12,11 @@ import solv_pred_prmtr as sp_prmtr
 import solv_pred_calc as sp_clc
 import solv_pred_adv_filt as sp_adv_filt
 
+#selected candidates: 'default_solv_candidate.json'
+#full candidates: 'solv_candidate_full.json'
 
-def solv_pred_main(db: str = 'db_solv_pred_v2.json', default_candidate: str = 'default_solv_candidate.json'):
+
+def solv_pred_main(db: str = 'db_solv_pred_v2.json', default_candidate: str = 'solv_candidate_full.json'):
     """run all functions of SolvPred_2.0
     
     Args:

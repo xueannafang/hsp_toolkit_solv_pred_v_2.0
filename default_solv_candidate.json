@@ -28,10 +28,6 @@
   "Solvent": "acetone"
  },
  {
-  "CAS": "110-86-1",
-  "Solvent": "pyridine"
- },
- {
   "CAS": "64-17-5",
   "Solvent": "ethyl alcohol"
  },
@@ -50,5 +46,17 @@
  {
   "CAS": "71-23-8",
   "Solvent": "1-propanol"
- }
+ },
+ {
+    "CAS": "108-32-7",
+    "Solvent": "propylene carbonate"
+   },
+{
+   "CAS": "68-12-2",
+   "Solvent": "dimethylformamide"
+  },
+  {
+     "CAS": "872-50-4",
+     "Solvent": "Methyl-2-pyrrolidone"
+    }
 ]

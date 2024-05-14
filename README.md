@@ -1,5 +1,5 @@
 # SolvPred (v2.0)
-Last update: 20/02/2023
+Last update: 30/05/2023
 
 ## Introduction
 
@@ -15,6 +15,7 @@ As one of the [HSP toolkits](https://github.com/xueannafang/HSP_toolkit_docs/blo
  - Allow flexible control of acceptable error in each sub HSP.
  - Allow temperature control and include temperautre-dependent correction of HSP.
  - Advanced filtration step based on miscibility and boiling point has been included.
+ - A checklist for candidate selection criteria in different situations is proposed.
 
 
 ## Data source
@@ -100,6 +101,9 @@ Take one entry as an example:
 ```
 
 Note that only "CAS" is useful for further calculation. Solvent name ("Solvent") does not matter too much, just as a reference.
+
+Please check here with the document for candidate selection checklist.
+
 
 
 ### Run SolvPred

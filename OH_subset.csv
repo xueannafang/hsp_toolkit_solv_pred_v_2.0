@@ -1,0 +1,74 @@
+,No.,CAS,Name,D,P,H,Mole_vol,bp,mw,viscosity,vis_temp,heat_of_vap,hov_temp,SMILES,synonyms,ims_idx,alias,Note,OH
+0,2,64-19-7,Acetic acid,14.5,8.0,13.5,57.1,117.0,60.05,1.056,25.0,23.7,117.9,CC(=O)O,ethanoic acid;Ethylic acid;Vinegar acid,139;190;39,,,True
+1,8,107-18-6,Allyl alcohol,16.2,10.8,16.8,68.4,96.9,58.08,1.218,25.0,40.0,97.4,C=CCO,2-Propen-1-ol;Vinylcarbinol,,,,True
+2,14,108-46-3,"1,3-Benzenediol",18.0,8.4,21.0,87.5,280.0,110.11,-1.0,-1.0,72.0,190.0,C1=CC(=CC(=C1)O)O,resorcinol,13;44;120,,,True
+3,15,65-85-0,Benzoic acid,18.2,6.9,9.8,113.1,249.2,122.12,1.26,130.0,425.0,249.0,C1=CC=C(C=C1)C(=O)O,Carboxybenzene,243,,,True
+4,17,100-51-6,Benzyl alcohol,18.4,6.3,13.7,103.6,205.3,108.14,5.474,25.0,50.48,205.31,C1=CC=C(C=C1)CO,phenylmethanol;benzenemethanol,243,,,True
+5,27,107-88-0,"1,3-Butanediol",16.6,10.0,21.5,89.9,207.5,90.12,0.96,25.0,67.94,25.0,CC(CCO)O,"Butane-1,3-diol;1,3-Butylene glycol;1,3-Dihydroxybutane",13;224;40;104,,,True
+6,28,71-36-3,1-Butanol,16.0,5.7,15.8,91.5,117.7,74.12,2.544,25.0,52.35,25.0,CCCCO,butanol;n-butanol;Butyl alcohol,243,,,True
+7,29,78-92-2,2-Butanol,15.8,5.7,14.5,92.0,99.5,74.12,4.21,15.0,49.72,25.0,CCC(C)O,Butan-2-ol;sec-Butanol;,,,,True
+8,34,138-22-7,Butyl lactate,15.8,6.5,10.2,149.0,186.0,146.18,-1.0,-1.0,47.33,20.0,CCCCOC(=O)C(C)O,Butyl 2-hydroxypropanoate;n-Butyl lactate;Butyllactate,243,,,True
+9,36,107-92-6,Butyric acid,14.9,4.1,10.6,110.0,163.7,88.11,1.426,25.0,40.45,25.0,CCCC(=O)O,butanoic acid;n-Butyric acid;n-Butanoic acid,40,,,True
+10,45,627-30-5,3-Chloro-1-propanol,17.5,5.7,14.7,84.2,160.0,94.54,-1.0,-1.0,-1.0,-1.0,C(CO)CCl,3-Chloropropan-1-ol;3-Chloropropanol,,,,True
+11,46,108-39-4,m-cresol,18.0,5.1,12.9,104.7,202.2,108.14,12.9,25.0,47.4,202.27,CC1=CC(=CC=C1)O,3-methylphenol;Metacresol,243,,,True
+12,48,108-93-0,Cyclohexanol,17.4,4.1,13.5,106.0,160.8,100.16,4.6,25.0,62.007,25.0,C1CCC(CC1)O,Cyclohexyl alcohol;Hexahydrophenol;1-Cyclohexanol,44;243,,,True
+13,55,112-30-1,1-Decanol,16.0,4.7,10.0,191.8,229.0,158.28,10.9,25.0,81.5,225.0,CCCCCCCCCCO,Decyl alcohol;Decan-1-ol,243;135,,,True
+14,56,123-42-2,Diacetone alcohol,15.8,8.2,10.8,124.2,167.9,116.16,-1.0,-1.0,49.031,-1.0,CC(=O)CC(C)(C)O,4-Hydroxy-4-methylpentan-2-one;Diacetonalkohol;4-HYDROXY-4-METHYL-2-PENTANONE,,,,True
+15,68,108-82-7,Di-iso-butyl carbinol,14.9,3.1,10.8,177.8,176.0,144.25,-1.0,-1.0,-1.0,-1.0,CC(C)CC(CC(C)C)O,"2,6-Dimethylheptan-4-ol;2,6-Dimethyl-4-heptanol;4-Heptanol, 2,6-dimethyl-",243,,,True
+16,69,111-42-2,Diethanolamine,17.2,10.8,21.2,95.9,268.8,105.14,351.9,30.0,-1.0,-1.0,C(CO)NCCO,"2,2'-Iminodiethanol;Diolamine;Iminodiethanol",81;13;40;136,,,True
+17,71,100-37-8,2-(Diethylamino) ethanol,14.9,5.8,12.0,133.2,163.0,117.19,5.0,20.0,44.91,-1.0,CCN(CC)CCO,"2-Diethylaminoethanol;N,N-Diethylethanolamine",,,,True
+18,74,111-46-6,Diethylene glycol,16.6,12.0,20.7,94.9,245.8,106.12,0.30000000000000004,25.0,66.6,-1.0,C(COCCO)O,"2,2'-Oxydiethanol;Diglycol;2,2'-Oxybisethanol",224;13;40,,,True
+19,76,112-59-4,Diethylene glycol hexyl ether,16.0,6.0,10.0,204.3,258.0,190.28,8.6,20.0,-1.0,-1.0,CCCCCCOCCOCCO,2-(2-Hexyloxyethoxy)ethanol;Hexol carbitol;Hexyl carbitol,,,,True
+20,77,112-34-5,Diethylene glycol monobutyl ether,16.0,7.0,10.6,170.6,230.4,162.23,0.0649,20.0,-1.0,-1.0,CCCCOCCOCCO,Butyldiglycol;Butyl carbitol;2-(2-Butoxyethoxy)ethanol,,,,True
+21,78,111-90-0,Diethylene glycol monoethyl ether,16.1,9.2,12.2,130.9,196.0,134.17,3.85,25.0,-1.0,-1.0,CCOCCOCCO,2-(2-Ethoxyethoxy)ethanol;CARBITOL;Transcutol,,,,True
+22,79,111-77-3,Diethylene glycol monomethyl ether,16.2,7.8,12.6,118.0,193.0,120.15,3.48,25.0,45.25,-1.0,COCCOCCO,Methyl carbitol;Methoxydiglycol;2-(2-Methoxyethoxy)ethanol,,,,True
+23,97,25265-71-8,Dipropylene glycol,16.5,10.6,17.7,130.9,-1.0,134.17,-1.0,-1.0,-1.0,-1.0,CCC(O)OC(CC)O,1-(1-hydroxypropoxy)propan-1-ol,,,,True
+24,98,34590-94-8,Dipropyiene glycol methyl ether,15.5,5.7,11.2,157.4,-1.0,148.2,-1.0,-1.0,-1.0,-1.0,CCC(O)OCCCOC,1-(3-methoxypropoxy)propan-1-ol,,,,True
+25,103,64-17-5,Ethanol,15.8,8.8,19.4,58.5,78.2,46.07,1.074,25.0,42.32,25.0,CCO,ethyl alcohol;grain alcohol,105;130;137;146;184;214,,,True
+26,104,141-43-5,Ethanolamine,17.0,15.5,21.2,59.8,171.0,61.08,18.95,25.0,49.83,171.0,C(CO)N,2-aminoethanol;monoethanolamine;colamine,27;13;81;40;136;139,,,True
+27,110,97-95-0,2-Ethyl-1-butanol,15.8,4.3,13.5,123.2,146.27,102.17,-1.0,-1.0,-1.0,-1.0,CCC(CC)CO,2-Ethylbutan-1-ol;2-Ethylbutanol,243,,,True
+28,116,109-78-4,Ethylene cyanohydrin,17.2,18.8,17.6,68.3,221.0,71.08,-1.0,-1.0,-1.0,-1.0,C(CO)C#N,3-Hydroxypropanenitrile;Hydracrylonitrile;3-Hydroxypropionitrile,13;40;39;174,,,True
+29,120,107-21-1,Ethylene glycol,17.0,11.0,26.0,55.8,197.3,62.07,16.1,20.0,50.5,-1.0,C(CO)O,"1,2-ethanediol;glycol;Ethane-1,2-diol",13;14;40;44;224;108;244;245;161,,,True
+30,122,111-76-2,Ethylene glycol monobutyl ether,16.0,5.1,12.3,131.6,168.4,118.17,2.83,25.0,56.59,25.0,CCCCOCCO,Butyl glycol;Butyl cellosolve;2-Butoxyethanol,,,,True
+31,123,109-86-4,Ethylene glycol monoethyl ether,16.2,9.2,14.3,97.8,124.1,76.09,-1.0,-1.0,37.54,124.1,COCCO,2-METHOXYETHANOL;Methyl cellosolve,,,,True
+32,125,128-37-0,Ethylene glycol monomethyl ether,16.2,9.2,16.4,79.1,265.0,220.35,-1.0,-1.0,-1.0,-1.0,CC1=CC(=C(C(=C1)C(C)(C)C)O)C(C)(C)C,"2,6-Di-tert-butyl-4-methylphenol;Butylated hydroxytoluene;2,6-Di-tert-butyl-p-cresol",243;204,,,True
+33,128,104-76-7,2-Ethyl hexanol,15.9,3.3,11.8,156.6,184.34,130.23,9.8,20.0,45.19,184.34,CCCCC(CC)CO,2-Ethylhexan-1-ol,243,,,True
+34,129,97-64-3,Ethyl lactate,16.0,7.6,12.5,115.0,154.0,118.13,-1.0,-1.0,46.4,154.0,CCOC(=O)C(C)O,Solactol;Actylol;Ethyl 2-hydroxypropanoate,,,,True
+35,131,64-18-6,Formic acid,14.3,11.9,16.6,37.8,101.0,46.025,1.607,25.0,20.1,25.0,C(=O)O,Methanoic acid;Formylic acid;Aminic acid,,,,True
+36,134,98-00-0,Furfuryl alcohol,17.4,7.6,15.1,86.5,171.0,98.1,4.62,25.0,53.6,171.0,C1=COC(=C1)CO,2-Furanmethanol;furan-2-ylmethanol;2-Furylmethanol,,,,True
+37,135,56-81-5,Glycerol,17.4,12.1,29.3,73.3,290.0,92.09,954.0,25.0,61.65,-1.0,C(C(CO)O)O,"glycerin;Glycerine;1,2,3-Propanetriol",55;105;127;13;44;40;39;141;186,,,True
+38,140,107-41-5,Hexylene glycol,15.7,8.4,17.8,123.0,198.0,118.17,34.0,20.0,13.7,198.0,CC(CC(C)(C)O)O,"2-Methylpentane-2,4-diol;Diolane",40,,,True
+39,143,78-83-1,Isobutyl alcohol,15.1,5.7,15.9,92.8,108.0,74.12,4.0,20.0,45.76,-1.0,CC(C)CO,Isobutanol;2-Methylpropan-1-ol;2-Methyl-1-propanol,,,,True
+40,145,1653-40-3,Isooctyl alcohol,14.4,7.3,12.9,156.6,188.0,130.23,10.6,15.0,41.96,-1.0,CC(C)CCCCCO,6-METHYLHEPTAN-1-OL;6-METHYL-1-HEPTANOL,243,,,True
+41,152,67-56-1,Methanol,15.1,12.3,22.3,40.7,64.7,32.042,0.544,25.0,37.34,25.0,CO,carbinol;methyl alcohol;wood alcohol,47;136;139;240;190,,,True
+42,153,90-05-1,o-Methoxyphenol,18.0,8.2,13.3,109.5,203.0,124.14,-1.0,-1.0,-1.0,-1.0,COC1=CC=CC=C1O,2-Methoxyphenol;guaiacol;2-Hydroxyanisole,243,,,True
+43,165,108-11-2,Methyl isobutyl carbinol,15.4,3.3,12.3,127.2,133.0,102.17,-1.0,-1.0,-1.0,-1.0,CC(C)CC(C)O,4-Methylpentan-2-ol;Isobutylmethylcarbinol;4-METHYL-2-PENTANOL,243,,,True
+44,170,000-78-83-1,2-Methyl-1-propanol(repeated),15.1,5.7,15.9,92.8,108.0,74.12,4.0,20.0,45.76,-1.0,CC(C)CO,Isobutanol;2-Methylpropan-1-ol;2-Methyl-1-propanol,,,,True
+45,172,119-36-8,Methyl salicylate,18.1,8.0,13.9,129.6,220.0,152.15,-1.0,-1.0,46.7,220.0,COC(=O)C1=CC=CC=C1O,Methyl 2-hydroxybenzoate;Wintergreen oil;Gaultheria oil,243,,,True
+46,182,104-40-5,Nonyl phenol,16.5,4.1,9.2,231.0,317.0,220.35,563.0,20.0,-1.0,-1.0,CCCCCCCCCC1=CC=C(C=C1)O,4-n-Nonylphenol;p-Nonylphenol;4-nonylphenol,243,,,True
+47,183,27986-36-3,Nonyl phenoxy ethanol,16.7,10.2,8.4,275.0,-1.0,264.4,-1.0,-1.0,-1.0,-1.0,CCCCCCCCCC1=CC=CC=C1OCCO,2-(2-nonylphenoxy)ethanol,,,,True
+48,185,124-07-2,Octanoic acid,15.1,3.3,8.2,159.0,239.0,144.21,5.74,-1.0,-1.0,-1.0,CCCCCCCC(=O)O,caprylic acid;n-octanoic acid;Octylic acid,243,,,True
+49,186,111-87-5,1-Octanol,16.0,5.0,11.9,157.7,194.7,130.23,7.288,25.0,70.98,25.0,CCCCCCCCO,octanol;N-octanol,243;135,,,True
+50,187,123-96-6,2-Octanol,16.1,4.9,11.0,159.1,179.0,130.23,-1.0,-1.0,44.4,179.3,CCCCCCC(C)O,Octan-2-ol;Hexylmethylcarbinol,243,,,True
+51,188,112-80-1,Oleic acid,16.0,28.0,6.2,317.0,286.0,282.5,25.6,30.0,67.298,286.0,CCCCCCCCC=CCCCCCCCC(=O)O,oleate;(Z)-Octadec-9-enoic acid;cis-9-Octadecenoic acid,243,,,True
+52,189,143-28-2,Oleyl alcohol,16.0,2.6,8.0,316.0,305.0,268.5,-1.0,-1.0,-1.0,-1.0,CCCCCCCCC=CCCCCCCCCO,Ocenol;cis-9-Octadecen-1-ol;(Z)-octadec-9-en-1-ol,243;40,,,True
+53,192,71-41-0,1-Pentanol,15.9,5.9,13.9,108.6,137.5,88.15,4.07,20.0,44.83,-1.0,CCCCCO,Amyl alcohol;N-Amyl alcohol,,,,True
+54,196,108-95-2,Phenol,18.0,5.9,14.9,87.5,182.0,94.11,3.437,50.0,57.82,25.0,C1=CC=C(C=C1)O,carbolic acid;Phenic acid;Hydroxybenzene,,,,True
+55,198,71-23-8,1-Propanol,16.0,6.8,17.4,75.2,97.2,60.1,2.2560000000000002,20.0,47.45,20.0,CCCO,n-propanol;Propyl alcohol,,,,True
+56,199,67-63-0,2-Propanol,15.8,6.1,16.4,76.8,82.3,60.1,2.038,25.0,45.39,25.0,CC(C)O,Propan-2-ol;isopropanol,,IPA,,True
+57,204,57-55-6,Propylene glycol,16.8,9.4,23.3,73.6,187.6,76.09,0.581,20.0,53.62,187.6,CC(CO)O,"propane-1,2-diol;1,2-propanediol",125,,,True
+58,205,9003-13-8,Propylene glycol monobutyl ether,15.3,4.5,9.2,132.0,230.0,190.28,19.46,20.0,-1.0,-1.0,CCCCOCC(C)OCC(C)O,"2-Propanol, 1-(2-butoxy-1-methylethoxy)-;1-(2-Butoxy-1-methylethoxy)propan-2-ol;1-((1-Butoxypropan-2-yl)oxy)propan-2-ol",243,,,True
+59,206,1569-02-4,Propylene glycol monoethyl ether,15.7,6.5,10.5,115.6,133.0,104.15,2.08,20.0,-1.0,-1.0,CCOCC(C)O,1-Ethoxy-2-propanol;1-Ethoxypropan-2-ol,,,,True
+60,207,23436-19-3,Propylene glycol monoisobutyl ether,15.1,4.7,9.8,132.2,-1.0,132.2,-1.0,-1.0,-1.0,-1.0,CC(C)COCC(C)O,1-Isobutoxypropan-2-ol;1-(2-methylpropoxy)propan-2-ol;Dowanol pib-T,,,,True
+61,208,107-98-2,Propylene glycol monomethyl ether,15.6,6.3,11.6,93.8,120.0,90.12,1.81,20.0,46.2,20.0,CC(COC)O,1-Methoxypropan-2-ol;1-Methoxy-2-propanol;Methoxyisopropanol,,PGME,,True
+62,209,122-99-6,Propylene glycol monophenyl ether,17.4,5.3,11.5,143.2,245.2,138.16,20.91,25.0,-1.0,-1.0,C1=CC=C(C=C1)OCCO,2-PHENOXYETHANOL;Phenyl cellosolve,,,,True
+63,210,1569-01-3,Propylene glycol monopropyl ether,15.8,7.0,9.2,130.3,150.2,118.17,-1.0,-1.0,-1.0,-1.0,CCCOCC(C)O,1-Propoxypropan-2-ol;PROPASOL Solvent P,,,,True
+64,214,57-11-4,Stearic acid,16.3,3.3,5.5,326.0,383.0,284.5,9.87,70.0,-1.0,-1.0,CCCCCCCCCCCCCCCCCC(=O)O,Octadecanoic acid;Stearophanic acid,243;103;13,,,True
+65,232,112-70-9,Tridecyl alcohol,16.2,3.1,9.0,242.0,273.0,200.36,-1.0,-1.0,53.6,-1.0,CCCCCCCCCCCCCO,Tridecanol;Tridecan-1-ol,243,,,True
+66,233,102-71-6,Triethanolamine,17.3,22.4,23.3,133.2,335.4,149.19,590.5,25.0,67.41,335.4,C(CO)N(CCO)CCO,"Trolamine;Sterolamide;2,2',2''-Nitrilotriethanol",81;13;136,,,True
+67,235,112-27-6,Triethyleneglycol,16.0,12.5,18.6,114.0,285.0,150.17,47.8,20.0,61.04,-1.0,C(COCCOCCO)O,"Triglycol;2,2'-(Ethane-1,2-diylbis(oxy))diethanol",81;44,,,True
+68,236,112-35-6,Triethylene glycol monooleyl ether,16.0,3.1,8.4,418.5,249.0,164.2,7.35,25.0,-1.0,-1.0,COCCOCCOCCO,Methyltrioxitol;m-PEG3-alcohol;2-(2-(2-Methoxyethoxy)ethoxy)ethanol,136,,,True
+69,238,76-05-1,Trifluoroacetic acid,15.6,9.9,11.6,74.2,72.4,114.02,-1.0,-1.0,-1.0,-1.0,C(=O)(C(F)(F)F)O,Trifluoroethanoic acid;Perfluoroacetic acid,,,,True
+70,241,77-68-9,"2,2,4-Trimethyl-1,3-pentanediol monoisobutyrate",15.1,6.1,9.8,227.4,255.0,216.32,-1.0,-1.0,-1.0,-1.0,CC(C)C(C(C)(C)COC(=O)C(C)C)O,"Texanol;3-Hydroxy-2,2,4-trimethylpentyl isobutyrate",243,,,True
+71,243,7732-18-5,Water,15.5,16.0,42.3,18.0,100.0,18.015,0.8949,25.0,40.62,-1.0,O,,28;105;63;249;30;248;44;228;224;244;13;40;47;136;139;240;190;6;9;11;15;17;18;20;21;22;23;25;26;32;34;38;39;41;42;43;46;48;51;52;53;54;55;57;58;59;60;61;62;64;65;66;67;68;72;73;83;85;86;91;94;96;99;100;102;106;107;108;109;110;111;112;113;114;118;119;125;128;137;141;142;144;145;146;147;148;149;150;151;153;155;157;158;159;160;161;164;165;166;167;168;169;172;175;176;177;179;180;181;182;184;185;186;187;188;189;202;205;213;214;215;216;217;218;219;220;222;225;227;229;230;231;232;239;241;245,h2o,,True
+72,246,75-65-0,t-Butyl Alcohol,15.2,5.1,14.7,96,82.3,74.12,-1.0,-1.0,39.07,-1.0,CC(C)(C)O,2-Methyl-2-propanol;2-Methylpropan-2-ol;tert-Butanol,,tbuoh,,True
