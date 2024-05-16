@@ -36,6 +36,7 @@ def get_content_by_sec_head(full_data_json, sec_head = "Chemical Safety"):
             return -1
     else:
         return -1
+
     
 def get_safety_kw_from_safety_section(safety_section):
     if safety_section != -1:
