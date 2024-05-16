@@ -24,7 +24,8 @@ def get_MACCS_from_sm(sm):
 FG_to_chk = alcohol
 
 
-OH_subset = []
+# OH_subset = []
+non_OH_subset = []
 
 for entry in db_dict:
     entry_sm = entry["SMILES"]
@@ -33,9 +34,10 @@ for entry in db_dict:
         FG_dig = FG_to_chk["MACCS_dig"]
         if entry_MACCS[FG_dig] == str(1):
             entry[FG_to_chk["FG"]] = "True"
-            OH_subset.append(entry)
+            # OH_subset.append(entry)
         else:
             entry[FG_to_chk["FG"]] = "False"
+            non_OH_subset.append(entry)
     else:
         entry[FG_to_chk["FG"]] = -1
 
@@ -43,12 +45,19 @@ for entry in db_dict:
 # FG_filt_db = pd.DataFrame.from_dict(data = db_dict)
 # FG_filt_db.to_csv("alcohol_chk.csv", index = None)
 
-OH_db = pd.DataFrame.from_dict(data = OH_subset)
-OH_db.to_csv("OH_subset.csv")
-OH_cand = pd.DataFrame()
-OH_cand["CAS"] = OH_db["CAS"]
-OH_cand["Solvent"] = OH_db["Name"]
-OH_cand.to_json("OH_candidates.json", orient = "records")
+# OH_db = pd.DataFrame.from_dict(data = OH_subset)
+# OH_db.to_csv("OH_subset.csv")
+# OH_cand = pd.DataFrame()
+# OH_cand["CAS"] = OH_db["CAS"]
+# OH_cand["Solvent"] = OH_db["Name"]
+# OH_cand.to_json("OH_candidates.json", orient = "records")
+
+non_OH_db = pd.DataFrame.from_dict(data = non_OH_subset)
+non_OH_db.to_csv("non_OH_subset.csv")
+non_OH_cand = pd.DataFrame()
+non_OH_cand["CAS"] = non_OH_db["CAS"]
+non_OH_cand["Solvent"] = non_OH_db["Name"]
+non_OH_cand.to_json("non_OH_candidates.json", orient = "records")
 
 
 
