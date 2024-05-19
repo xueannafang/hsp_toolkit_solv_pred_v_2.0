@@ -92,6 +92,7 @@ for entry in db_dict:
 db_with_safe = pd.DataFrame.from_dict(data = db_dict)
 db_with_safe.head()
 
-db_with_safe.to_csv("db_with_safe_info.csv", index = None)
+# db_with_safe.to_csv("db_with_safe_info.csv", index = None)
+db_with_safe.to_json("db_with_safe_info.json", orient = "records")
         
 
