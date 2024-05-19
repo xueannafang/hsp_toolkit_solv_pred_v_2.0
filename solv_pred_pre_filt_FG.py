@@ -9,6 +9,8 @@ db_dict = db_df.to_dict("records")
 
 #dig of target FG
 
+#Check this database for full substructure information: https://github.com/rdkit/rdkit-orig/blob/master/rdkit/Chem/MACCSkeys.py
+
 alcohol = {
     "MACCS_dig" : 139,
     "FG" : "OH"
