@@ -17,9 +17,10 @@ import solv_pred_adv_filt as sp_adv_filt
 #non-chlorinated candidates: 'non_chlorinated_candidates.json'
 #candidates containing OH group: 'OH_candidates.json'
 #candidates not containing OH group: 'non_OH_candidates.json'
+#candidates with non-chlorinated and safe green candidates: 'non_chlorinated_safe_green_candidates.json'
+# safe green candidates without OH group: 'non_OH_safe_green_candidates.json'
 
-
-def solv_pred_main(db: str = 'db_solv_pred_v2.json', default_candidate: str = 'non_OH_candidates.json'):
+def solv_pred_main(db: str = 'db_solv_pred_v2.json', default_candidate: str = 'solv_candidate_full.json'):
     """run all functions of SolvPred_2.0
     
     Args:
