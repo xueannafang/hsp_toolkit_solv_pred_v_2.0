@@ -29,7 +29,8 @@ As one of the [HSP toolkits](https://github.com/xueannafang/HSP_toolkit_docs/blo
 
 #### Required packages:
 
-- [numpy](https://numpy.org/), [scipy.linalg](https://docs.scipy.org/doc/scipy/reference/linalg.html), [json](https://docs.python.org/3/library/json.html), [math](https://docs.python.org/3/library/math.html), [itertools](https://docs.python.org/3/library/itertools.html), [os](https://docs.python.org/3/library/os.html), [datetime](https://docs.python.org/3/library/datetime.html).
+- [numpy](https://numpy.org/) (1.21.5), [scipy.linalg](https://docs.scipy.org/doc/scipy/reference/linalg.html) (1.7.3), [json](https://docs.python.org/3/library/json.html), [math](https://docs.python.org/3/library/math.html), [itertools](https://docs.python.org/3/library/itertools.html), [os](https://docs.python.org/3/library/os.html), [datetime](https://docs.python.org/3/library/datetime.html).
+- This workflow was developed using Python 3.9.12.
 
 
 #### Auto-loaded files:
