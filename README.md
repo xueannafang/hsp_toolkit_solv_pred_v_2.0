@@ -1,9 +1,13 @@
 # SolvPred (v2.0)
 Last update: 18/06/2026
 
+## Desktop GUI
+
+- A desktop GUI is now available [here](https://github.com/xueannafang/SolvPred_App).
+
 ## Introduction
 
-As one of the [HSP toolkits](https://github.com/xueannafang/HSP_toolkit_docs/blob/main/hsp_tool_general_intro.md), SolvPred is a solvent selection assisstant aiming at providing multi-solvent suggestion based on target Hansen solubility parameters (HSP).
+As one of the [HSP toolkits](https://github.com/xueannafang/HSP_toolkit_docs/blob/main/hsp_tool_general_intro.md), SolvPred is a solvent selection assisstant aiming at providing multi-solvent suggestion based on target Hansen solubility parameters (HSP). This version is a command line-based interface.
 
 
 ## What's new in this version?
@@ -1066,20 +1070,10 @@ Invalid input. Press enter to continue. [enter]
    - Some categories may have limited avilable data, which will be labelled as -1 or None in the database.
    - The temperature correction function is based on HSPs only. Properties used in the advanced filtration step (e.g., miscibility) may also be temperature-dependent but no direct correction is implemented. Users can adopt the same interface and add additional correction functions as needed.
 
-## Desktop GUI
-
-- A desktop GUI is available [here](https://github.com/xueannafang/SolvPred_App).
-
-
 ## References
 
 1. C. Hansen, Hansen Solubility Parameters – A user’s handbook, 2nd edition, 2011.
 2. X. Fang, C. F. J. Faul, N. Fey, [Development of Solvent Selection Methods for Functional Materials Preparation](https://research-information.bris.ac.uk/en/studentTheses/development-of-solvent-selection-methods-for-functional-materials), University of Bristol (PhD Dissertation), 4 Feb 2025.
-
-
-## Disclaimer
-
-  - SolvPred is under continous tests and improvement. The output only provide suggestion. Results may vary with multi factors in complicated situations. We encourage users to manuallay check the exact experimental performance in different scenarios.
 
 
 ## Cite this work
