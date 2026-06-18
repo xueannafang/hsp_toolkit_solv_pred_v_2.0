@@ -1,5 +1,5 @@
 # SolvPred (v2.0)
-Last update: 30/05/2023
+Last update: 18/06/2026
 
 ## Introduction
 
@@ -8,20 +8,19 @@ As one of the [HSP toolkits](https://github.com/xueannafang/HSP_toolkit_docs/blo
 
 ## What's new in this version?
 
- - Exclusively python/json-based. (A simple user interactive interface has been included. No longer require Microsoft Excel or Jupyter Notebook. Less dependent on operating system.)
- - More physical/chemical properties have been included in the database (molar volume, molecular weight, boiling point, immiscible solvent pairs, molar heat of evaporation, viscosity and related measuring temperatures based on avilable data on PubChem).
- - Auto check the validity of user input CAS (as well as the existence in database).
- - Auto check the validity of target HSP. Filter impossible missions, i.e., those targets locating outside the region connected by all the solvent candidates in the Hansen space.
- - Allow flexible control of acceptable error in each sub HSP.
- - Allow temperature control and include temperautre-dependent correction of HSP.
- - Advanced filtration step based on miscibility and boiling point has been included.
- - A checklist for candidate selection criteria in different situations is proposed.
+ - More physical and chemical properties have been added to the database, including molar volume, molecular weight, boiling point, immiscible solvent pairs, molar heat of evaporation, viscosity and related measurement temperatures based on avilable data on PubChem.
+ - Automatically validates user inputted CAS.
+ - Automatically validates target HSP values and filters out infeasible cases.
+ - Allows flexible control over the acceptable error in each HSP dimension.
+ - Incorperates temperautre-dependent correction of HSP.
+ - An advanced filtration step based on miscibility and boiling point has been included.
+ - A checklist for candidate selection criteria in varying situations is proposed.
 
+## Data sources
 
-## Data source
+  - Physical and chemical data of solvents in the database were collected from [PubChem](https://pubchem.ncbi.nlm.nih.gov/).
+  - HSP data remain the same as in the [last version](https://github.com/xueannafang/hsp_toolkit_prototype), as originally collected from the HSP handbook (ref 1).
 
-  - Physical/Chemical data of solvents in the database were collected from [PubChem](https://pubchem.ncbi.nlm.nih.gov/).
-  - HSP data remain same as [last version](https://github.com/xueannafang/hsp_toolkit_prototype), as collected from HSP handbook (ref 1).
 
 ## How to use?
 
@@ -33,13 +32,13 @@ As one of the [HSP toolkits](https://github.com/xueannafang/HSP_toolkit_docs/blo
 - This workflow was developed using Python 3.9.12.
 
 
-#### Auto-loaded files:
+#### Automatically-loaded files:
 
-*Must be stored under current working directory. DO NOT rename or remove!*
+*The following files must be stored under current working directory. Renaming or removing may cause issues.*
 
 ##### database (db_solv_pred_v2.json)
 
-Database in this version contains property information for 249 solvents.
+The database in this version contains property information for 249 solvents.
 
 Example structure of one entry:
 
@@ -64,7 +63,7 @@ Example structure of one entry:
  }
 ```
 
-Each explained in the comment below:
+Each is explained in the comment below:
 
 ```
 {
@@ -90,9 +89,9 @@ Each explained in the comment below:
 
 ##### default solvent candidate list (default_solv_candidate.json)
 
-A list of solvent cas and name dictionaries, serving as candidates (also called "solvent pool" in the previous version.)
+A list of solvent CAS and name dictionaries, serving as candidates (also called "solvent pool" in the previous version.)
 
-Take one entry as an example:
+Example entry:
 
 ```
 {
@@ -101,21 +100,16 @@ Take one entry as an example:
  }
 ```
 
-Note that only "CAS" is useful for further calculation. Solvent name ("Solvent") does not matter too much, just as a reference.
-
-Please check here with the document for candidate selection checklist.
-
-
+"CAS" is used to query solvent information for further calculation.
 
 ### Run SolvPred
 
-Go to terminal. Activate the correct environment (i.e., with required packages pre-installed). Go to the correct directory.
-
+Run:
 ```
 python solv_pred_main.py
 ```
 
-You will see:
+It should show the following content in the terminal:
 
 ```
 2023-01-22  10:15:54
@@ -140,9 +134,9 @@ Please select the method to construct solvent candidate list:
 
 ### Step 1: candidate list construction
 
-The first step is to construct solvent candidate list. We recommend to first load the *default* list (press [d]) and modify on it if necessary.
+The first step is to construct the solvent candidate list. We recommend first loading the *default* list (using keyboard option [d]) and modify on it if necessary.
 
-You can view the default solvent list by pressing [v]. You will see:
+The default solvent list can be visualised using keyboard option [v]:
 
 ```
 v
@@ -194,7 +188,7 @@ Please select the method to construct solvent candidate list:
 
 #### Default
 
-After selecting the default list, you have a chance to remove any unwanted solvents:
+After selecting the default list, users can remove any unwanted solvents:
 
 ```
 d
@@ -205,9 +199,9 @@ Do you want to remove any solvent?
 [y/n]:
 ```
 
-If you am happy with the default list, press [n] to process.
+If users are happy with the default list, user keyboard option [n] to process.
 
-If you want to remove some candidates, which, may be unavailable in your lab or you don't like certain properties, press [y] to enter CAS of unwanted solvents. Press [enter] to finish.
+If users want to remove certain candidates, use keyboard option [y], followed by entering CAS of unwanted solvents. Press [enter] to finish.
 
 
 
@@ -221,13 +215,11 @@ Have all the solvent candidates been added?
 [y/n]:
 ```
 
-If you are doing solvent replacement, remember to remove the solvent to be replaced at this step. (Otherwise your output will include all the combination of 100% solvent to be replaced + 0% the rest available on the candidate list.)
+If users are doing a solvent replacement task, it is recommended to remove the solvent to be replaced at this step.
 
-For example, if you want to replace DMF, you need to input the cas No. of DMF (68-12-2, which can be searched in default_solv_candidate.json) in this removal step.
+*Please make sure the correct CAS has been entered (with correct format, on both the candidate list and database.) This version will automatically validate the CAS No. before removing anything from the candidate list and pop up a warning message if any input is invalid.)*
 
-*Make sure you enter the correct CAS (with correct format, on both the candidate list and database. (This version will auto check before removing anything from the candidate list and pop up warning if any input is invalid.)*
-
-You will then be asked again whether you want to remove any solvent. Press [n] to continue.
+Users will then be asked again whether they want to remove any solvent. Press [n] to continue.
 
 *SolvPred* will then return the list of solvents to be removed from the current list and check if they are removable from current list and database.
 
@@ -245,16 +237,16 @@ Done.
 Done.
 ```
 
-Once this is done. You can submit by selecting [y].
+Once this is done, users can submit the candidate list using keyboard option [y].
 
-(If you did not edit the default list, you will directly go to this step.)
+(If users have not edited the default list, they will directly arrive at this step.)
 
 ```
 Submit?
 [y/n]: y
 ```
 
-The candidates will be presented to you:
+The solvent candidates will be presented to the users:
 
 ```
 The following solvents will be considered as candidates: 
@@ -265,7 +257,7 @@ Candidate list has been successfully generated:
 
 #### Manual
 
-Back to the start, if you choose to manually add solvent candidates. Press [m] and add CAS No. based on your preference.
+To manually add solvent candidates, users can use keyboard option [m] and add CAS No. as needed.
 
 ```
 Please follow the instruction to continue: 
@@ -294,9 +286,7 @@ Continue?
 [y/n]: y
 ```
 
-Again, *SolvPred* will quickly look at your candidates in case anything is beyond its control.
-
-If everything goes smoothly, you will see the message below:
+*SolvPred* will validate the selection of solvents and lead to this page:
 
 ```
 Checking if any solvent is not on the candidate list...
@@ -305,14 +295,13 @@ Done.
 Done.
 ```
 
-Before submission, you will have a final chance to edit the candidate list:
-
+before submission:
 ```
 Submit?
 [y/n]:
 ```
 
-In the above example, you will see all the valid candidates before you go to the next step:
+All the valid candidates will be presented to the user:
 
 ```
 y
@@ -324,7 +313,7 @@ Candidate list has been successfully generated:
 
 #### Final edit before submission
 
-If you choose [n] during the submission confirm, you will still be able to edit your candidate list by adding[a] or removing[rm] any entry. 
+Users can choose [n] and edit the candidate list by adding[a] or removing[rm] any entries. 
 
 ```
 Submit?
@@ -337,7 +326,7 @@ Please select one of the following options:
 [q] - quit
 ```
 
-Press [v] can see current candidate list.
+Using keyboard option [v] can visualise the current candidate list.
 
 ```
 v
@@ -347,15 +336,10 @@ Continue?
 [y/n]:
 ```
 
-Please note, after this step, the candidate list will not be editable.
-
-
-
+The candidate list will not be editable after this step.
 
 
 ### Step 2: Specify parameters
-
-You will now see:
 
 ```
 =========================
@@ -374,7 +358,7 @@ Step 2: Specify parameters.
 
 ```
 
-This step requires you to specify all the calculation parameters (details summarised below).
+This step requires users to specify all the calculation parameters:
 
 #### target_d: Target D to be achieved.
 
@@ -382,7 +366,7 @@ This step requires you to specify all the calculation parameters (details summar
 - value example: 18
 - requirement: non-negative float; must fall in the range of (min D, max D) of all solvent candidates. 
 
-(*SolvPred* will auto check the validity of the target. Here the basic is, your target point must be surrounded by all the candidates, since you have to attribute your candidate with a positive concentration. Therefore, if any target falls beyond the interval quantified by all the solvent candidates, that mission would be impossible.)
+(*SolvPred* will automatically check the validity of the target. An achievable target value must be surrounded by all the candidates to ensure positive concentrations. Any target falling beyond the interval quantified by all the solvent candidates will be claimed non-achievable.)
 
 #### target_p: Target P to be achieved.
 
@@ -426,11 +410,11 @@ This step requires you to specify all the calculation parameters (details summar
 
 #### tol_conc: lowest acceptable concentration.
 
-Any prediction with solvent whose concentration below this value will be determined as "redundant results". This is to include the practical experimental situation, for some extremely low conc. component, their contribution towards final HSP would be very limited but still creating complexity to the experiment operation. Therefore, we set this parameter to filter out unnecessary results.
+Any predicted concentration below this value will be determined as a "redundant result". This is to accommodate practical experimental situations: for some extremely low concentrations, their contribution towards the actual HSP would be very limited while complicating experiments.
 
-- value example: 0.01 (which means conc. below 1% is regarded as redundant.)
+- value example: 0.01 (which means that any concentration below 1% will be regarded as redundant.)
 - default: 0.01
-- requirement: float in the range of (0, 1) (*Please DO NOT enter percentage format.*).
+- requirement: float in the range of (0, 1).
 
 #### target_temp: target temperature of prediction.
 
@@ -451,9 +435,9 @@ the thermal expansion coefficient (tml_expn_coeff) = 0.0007, unit: K^(-1).
 delta_temp is the temperature difference between target temp and room temp (25 degree C).
 
 
-You can decide to edit the temperature by pressing [t] or continue as room temperature [c].
+Users can decide whether to edit the temperature by keyboard operation [t] or to continue as room temperature using keyboard operation [c].
 
-If you choose to edit the temperature (for example, for the purpose of selecting a correct condition matching your reaction), you will then see:
+To edit the temperature:
 
 ```
 t
@@ -470,9 +454,9 @@ Applying temperature correction for standard HSP...
 Database HSP temperature correction done.
 ```
 
-Now all the HSP in the database has been corrected based on your setting.
+Now all the HSP values in the database have been corrected based on the previous setting.
 
-You will then see the following instruction (If you continue as room temperature in the last step, you will go to this step directly.):
+Users will then see the following instruction:
 
 ```
 Set parameters:
@@ -480,7 +464,7 @@ Set parameters:
 [m] - manually set parameters.
 ```
 
-In this step, you need to determine whether to adapt default settings for all the parameters of *err_d, p, h*, *tol_conc*, *n* or not.
+In this step, users can decide to apply or adapt default settings for all the parameters of *err_d, p, h*, *tol_conc*, *n* if needed.
 
 Enter [d] for default settings:
 
@@ -490,7 +474,7 @@ Default parameters will be applied.
 [n, tol_err_d, tol_err_p, tol_err_h, tol_conc] : [2, 0.5, 0.5, 0.5, 0.01]
 ```
 
-Alternatively, enter [m] to manually set up these parameters following the instruction:
+Enter [m] to manually set up these parameters following the instruction:
 
 Specify *n*:
 
@@ -510,7 +494,7 @@ tolerance of error is the highest acceptable absolute error of HSP from the pred
 Please specify tolerance of error for dispersion term (tol_err_D):
 ```
 
-And same for error of P and H:
+Specify error of P and H:
 
 ```
 Please specify tolerance of error for dispersion term (tol_err_D): 0.5
@@ -529,7 +513,9 @@ Must be a float between 0 and 1.
 Please specify lowest acceptable concentration:
 ```
 
-We set it as 0.02 for an example. You now need to confirm the settings:
+We set it as 0.02 for an example.
+
+To confirm:
 
 ```
 Please specify lowest acceptable concentration: 0.02
@@ -539,7 +525,7 @@ Continue?
 [y/n]:
 ```
 
-Note that in this step, if any parameter is invalid, *SolvPred* will ask you to re-input a valid number.
+If any parameter is invalid, *SolvPred* will ask to re-input a valid number.
 
 Now specify target D, P, H:
 
@@ -549,9 +535,9 @@ target d, p, h are target HSPs to be achieved.
 Please specify the target of dispersion term (target D):
 ```
 
-Note if you input a set of target that is beyond the capacity of your candidates, *SolvPred* will remind you of the constraints and ask you to re-consider your target HSP:
+If the target is beyond the capacity of candidates selected, *SolvPred* will present the constraints and ask for updating either the target HSPs or candidates:
 
-See this example, we ask *SolvPred* to give us a 36 for target D:
+For example, if target D is set to 36:
 
 ```
 Please specify the target of dispersion term (target D): 36
@@ -563,7 +549,7 @@ Continue?
 [y/n]: y
 ```
 
-It will validate your goal:
+*SolvPred* will validate this target:
 
 ```
 Validating parameters...
@@ -572,7 +558,7 @@ Validation of n is done.
 Validating target HSP...
 ```
 
-And tell you target D is an impossible task:
+And tell us that this target D is an impossible task:
 
 ```
 Target D is not achievable.
@@ -581,17 +567,7 @@ Target P validation done.
 Target H validation done.
 ```
 
-You gonna make sure target D falls in the interval suggested above (in this case, 14.06 and 19.40).
-
-Note that this issue coming out depending on the selection of solvent candidates:
-
-In this example, all the dispersion term (D) of candidates fall between (14.06 and 19.40). This is a hard-to-change fact that common lab solvents we put on the default candidate list can only achieve these values.
-
-(We will address this issue again in *MLoc v2.0* and illustrate the impact of this issue towards HSP prediction for materials.)
-
-Now you have two options, either update your target (enter [r]), or find more candidates ([a]) that may expand the achievable target in the Hansen space. (NOTE THAT THE SECOND OPTION IS STILL UNDER TEST.)
-
-(This would be case dependent, for P and H term, expanding candidates may help, but D would be a bit tricky.)
+The target HSP value needs to fall in the interval suggested above (in this case, 14.06 and 19.40). Users can reset the target HSP using keyboard operation [r].
 
 ```
 Please choose to reset the required parameters or add more solvent candidates.
@@ -600,9 +576,7 @@ Please choose to reset the required parameters or add more solvent candidates.
  [q] - quit
 ```
 
-We would go for the easier case (reset target) for simplicity. (And this is also more recommended. You can of course play around the other option, but it may be a bit tough as you need to be clear of the candidate HSP before including them in the calculation, which might not be a quick job.)
-
-Let's go for 18, 3, 2 for target d, p, h now:
+For example, 18, 3, 2 are set for target d, p, h now:
 
 ```
 r
@@ -633,16 +607,16 @@ Parameter selection done.
 
 ### Step 3: carry out main calculation process
 
-Now *SolvPred* will generate a perturbated HSP matrix based on the absolute target. This is to apply a +/- 0.1 fluctuation (reflected by a Gaussian random number) to your target. (Otherwise you may receive a prediction with an accuarcy of the 16th decimal place, that, significantly shrinks the valid results. In addition, this step is to serve as a statistic stability check to filter out some unstable results, say, a tiny deviation in concentration, which is common in experimental operation, will lead to a large deviation in resulting HSP.)
+Now *SolvPred* will generate a perturbated HSP matrix based on the absolute target. This is to apply a +/- 0.1 fluctuation (reflected by a Gaussian random number) to the target. (Please refer to the manuscript for explanation.)
 
 ```
 Generating perturbated target HSP matrix...
 Done.
 ```
 
-So far, the basic calculation has been finished.
+The basic calculation has been finished.
 
-You may see (and only see, hopefully) the time, date and version, license info again on your terminal:
+If calculation finishes successfully, the time, date and version, license info will be presented in the terminal:
 
 ```
 2023-01-22  10:15:54
@@ -650,17 +624,17 @@ SolvPredictor v 2.0
  (License: GPL-3.0)
 ```
 
-(A congrats if nothing containing pathway poping out - in that case, please go for the suggested path, which is the failed-calculation log, to check what's going wrong there.)
+If calculation has failed, users can go to the path suggested, which is the failed-calculation log, to check the error message.
 
 In the above example, we can get a list of successful predictions.
 
-If you go to your current working directory, you can see a new folder named "log". We briefly look at what is already there:
+A new folder named "log" will be constructed under the working directory.
 
-(Note that the 14-digit suffix is the date and time when this calculation was carried out, so as to avoid accidental overwriting of your previous outputs.)
+(The 14-digit suffix is the date and time when this calculation has been carried out. This is to avoid accidental overwriting of previous outputs.)
 
 #### log_success_01222023101554.txt
 
-This one contains the majority of things you are interested in.
+This file contains the majority of results.
 
 The first part is the version info and input parameters:
 
@@ -848,7 +822,7 @@ error of H /MPa^(1/2): -0.1069350532119846
 
 This json file contains the full calculation log (including what has been filtered out and the reason why they have been filtered out).
 
-We take the first entry as an example:
+Taking the first entry as an example:
 
 ```
 {
@@ -867,10 +841,10 @@ Here it stores everything including:
 - corresponding concentration statistical information ('conc', with full statistic details: the first element for each solvent is statistic average, the second is std.),
 - statistical information for error (in the order of D, P, H, 1; for each term, the first entry corresponds to average, and the second is std.),
 - calculated HSP from this combination ('calc_hsp', in the order of D, P, H, 1).
-- data quality (suggests if the result is valid or not, and the reason to be filtered out), and
+- data quality (this suggests if the result is valid or not, and the reason for entries to be filtered out), and
 - validity (False results will be filtered out).
 
-In short, the structure of the full calculation log json is:
+The structure of the full calculation log json is:
 
 ```
 [{
@@ -887,16 +861,14 @@ In short, the structure of the full calculation log json is:
 
 #### Other outputs
 
-calc_log_vld_01222023101554.txt: This file contains all the valid results after filteration. Information here has been reorganised into the successful log txt file. No need to pay too much attention on this file. (This is for the dedeveloper team to check intermediate output.)
+calc_log_vld_01222023101554.txt: This file contains all the valid results after filteration. Information here has been reorganised into the successful log txt file. (This is for the dedeveloper team to check intermediate output.)
 
 
 ### Step 4: advanced filtration
 
-Now you can decide to relax or continue the advanced filtration step, which is based on the physical/chemical properties check.
+Now users can decide to continue with the advanced filtration step, which is based on the physical/chemical properties check.
 
-In this version, we check the boiling point and miscibility. (There is limitation due to data availbility. Check Limitation section for more details.)
-
-You will see:
+In this version, *SolvPred* can check the boiling point and miscibility:
 
 ```
 =========================
@@ -911,12 +883,12 @@ Continue advanced filtration?
 [y/n]:
 ```
 
-Select [y] will start two more filtration based on miscibility and boiling point check.
+Select [y] will take the following actions:
 
 - If a solvent has an immiscible pair within the same predicted group, this group will be filtered out.
-- If a solvent has a lower boiling point than set temperature, this group will be filtered out.
+- If a solvent has a lower boiling point than the temperature set, this group will be filtered out.
 
-Once everything has been successfully checked, *SolvPred* will return you the path of advanced filtration log.The whole process has now been finished:
+Once everything has been successfully checked, *SolvPred* will return the path of advanced filtration log. The whole process has now been finished:
 
 
 ```
@@ -931,22 +903,20 @@ Please check:
 C:\Users\...\hsp_toolkit_solv_pred_v_2.0\log\log_adv_filt_success_01232023075028.txt for calculation log.
 ```
 
-The version, time and license info will also present again. *Don't worry about the huge time difference from the previous.. This example was done on the second day morning.*
+The version, time and license info will also present again.
 
-The normal calculation time for a 2-solvent combination would be less than 1 second.
+The normal calculation time for binary solvent combinations would be within seconds.
 
-For 3-solvent it might be longer, but no longer than 5 seconds normally.
+For ternary solvents it could take longer, subject to the number of candidates.
 
-In the very rare case if it stucks to give any update after 10 seconds (dead loop somewhere I guess - hope not happen), use [ctrl + c] to force abort the program.
+In the very rare case if it stucks, use [ctrl + c] to force abort the program.
 
 
-More output files will be saved in the log folder. We will briefly mention how it works as we go through those outputs.
+More output files will be saved in the log folder, including:
 
 #### log_adv_filt_success_01222023101554.txt
 
-Again, this is the one of your interest.
-
-The first part remains same. One more filtration option list will be stored:
+The first part remains the same. One more filtration option list will be stored:
 
 ```
 Advanced filter options: 
@@ -991,29 +961,28 @@ error of H /MPa^(1/2): 0.08129677866410567
 
 ```
 
-There are two different message for immiscibility check:
+There are two different messages for immiscibility check:
 
-The first one corresponds to the situation when the database does not contain any info of miscibility for this solvent. *SolvPred* will return a message saying:
+The first corresponds to the situation when the database does not contain any info of miscibility for this solvent. *SolvPred* will return a message saying:
 
 ```
 No recorded miscibility issue or no solubility record. Manual check is recommended.
 ```
 
-If this solvent contains an immiscible solvent pair in the database but no solvent in the same group conflicts to that, you will see:
+If this solvent contains an immiscible solvent pair in the database but no solvent in the same group conflicts to that, users will see:
 
 ```
 No recorded miscibility issue. Manual check is recommended if temperature has been varied.
 ```
 
-Refer to the Limitation section of this function, miscibility data is very limited in current database (based on PubChem). We can only provide as much info as we have to prevent miscibility issue. In addition, this property is temperature-dependent, which has even less experimental data available for each solvent. Therefore, for now we would still suggest to do manual check and can not 100% guarantee the as-predicted combinations do not lead to any undesired situation. (Improvement is on going!) 
-
+Miscibility data is limited in the current database (based on available information on PubChem). This property is also temperature-dependent, which has even less experimental data available for each solvent. We would suggest a manual check if in doubt.
 
 
 #### adv_filt_exp_info_01222023101554.json
 
-This file contain full details for each advanced filtration process.
+This file contains full details for each advanced filtration process.
 
-The list could be very long. Let's take one element as an example:
+Taking one element as an example:
 
 ```
 {
@@ -1065,17 +1034,17 @@ The list could be very long. Let's take one element as an example:
       
 ```
 
-The key process of immiscbility check is to look at whether the idx in db ("No." in the above json case) matches any idx in the "ims_idx" list. (In this case, there is no crash, so its "ims_validity" is True.)
+The key process of immiscbility check is to look at whether the idx in db ("No." in the above json case) matches any idx in the "ims_idx" list. (In this case, there is no crash, so the "ims_validity" is True.)
 
 
 #### Other outputs
 
-Other outputs (adv_filt_all_01222023101554.json, calc_log_adv_all_01222023101554.txt, calc_log_adv_exp_01222023101554.txt, calc_log_adv_filt_01222023101554.txt) have overlaped info with the above mentioned results. (They are intermediate output for the developer team to test and check.)
+Other outputs (adv_filt_all_01222023101554.json, calc_log_adv_all_01222023101554.txt, calc_log_adv_exp_01222023101554.txt, calc_log_adv_filt_01222023101554.txt) have overlaped info with the above mentioned results. (They are intermediate outputs for the developers to test and check.)
 
 
 #### Not continue advanced filtration
 
-If you do not want to conduct this process, select [n]. *SolvPred* will return you the path of where the previous step log has been stored, so that you can check:
+If users do not want to conduct this process, select [n]. *SolvPred* will return you the path of where the previous step log has been stored:
 
 ```
 Continue advanced filtration?
@@ -1085,57 +1054,27 @@ Please check C:\Users\...\hsp_toolkit_solv_pred_v_2.0\log\log_success_0123202307
 
 ```
 
-It will then terminate the whole program. To start another attempt, you need to go back to the first step and run it from the beginning:
-
-```
-(hsp_solv_pred_2) PS C:\Users\...\hsp_toolkit_solv_pred_v_2.0> python solv_pred_main.py
-```
+It will then terminate the whole program.
 
 ### General note
 
-Please read the instruction carefully and enter the correct format for each input as possible. (though *SolvPred* will check the validity in many cases.)
-
-In case something unexpected has been submitted, you may see:
+  - In case something unexpected has been submitted, users may see:
 
 ```
 Invalid input. Press enter to continue. [enter]
 ```
+   - Some categories may have limited avilable data, which will be labelled as -1 or None in the database.
+   - The temperature correction function is based on HSPs only. Properties used in the advanced filtration step (e.g., miscibility) may also be temperature-dependent but no direct correction is implemented. Users can adopt the same interface and add additional correction functions as needed.
 
-See the example below: 
+## Desktop GUI
 
-```
-[t] - set a different temperature
-[c] - continue as room temperature (25 degree c).
-[q] - quit
-
-# Here I pressed enter without entering anything....
-```
-
-If the "Invalid input" warning pop up, a follow-up suggestion will present. (In this case it asks you to press [enter], any other character will return the same error message).
-
-
-```
-Invalid input. Press enter to continue. [enter]q
-Invalid input. Press enter to continue. [enter]
-[t] - set a different temperature
-[c] - continue as room temperature (25 degree c).
-[q] - quit
-q
-```
-
-
-## Limitations
-
-   - Some categories may have a limitation of avilable data, which will be labelled as -1 or None in the database.
-   - The temperature control function is only based on correcting HSP in this version. Properties applied in advanced filtration (e.g., miscibility) may also be temperature-dependent but no direct correction is applied in this version.
-   - If user manually edited the database and add additional solvents without available HSP, the temperature correction for data-missing group will be disabled and corresponding solvent will be removed from database after temperature updating check step.
-   - The miscbility check function may not be 100% guaranteed due to limited data and complex temperature-dependent behaviour. In addition, the defintion of "miscibility" is ambiguous: partial soluble cases (which nevertheless has a severe lack of data in terms of the partition threshold) will be regarded as not-immiscible in this version and will be present as valid results. It is recommended to manually check the performance if unsure.
+- A desktop GUI is available [here](https://github.com/xueannafang/SolvPred_App).
 
 
 ## References
 
 1. C. Hansen, Hansen Solubility Parameters – A user’s handbook, 2nd edition, 2011.
-2. X. Fang, C. F.J. Faul, N. Fey, E. Gale, SolvPred - A python toolkit to predict multi-solvent combinations with target Hansen solubility parameters (manuscript in preparation).
+2. X. Fang, C. F. J. Faul, N. Fey, [Development of Solvent Selection Methods for Functional Materials Preparation](https://research-information.bris.ac.uk/en/studentTheses/development-of-solvent-selection-methods-for-functional-materials), University of Bristol (PhD Dissertation), 4 Feb 2025.
 
 
 ## Disclaimer
