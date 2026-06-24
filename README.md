@@ -1078,11 +1078,9 @@ Invalid input. Press enter to continue. [enter]
 
 ## Cite this work
  
-- X. Fang, E. Gale, N. Fey, C. F.J. Faul, SolvPred - A python toolkit to predict multi-solvent combinations with target Hansen solubility parameters (v2.0), 2023, https://github.com/xueannafang/hsp_toolkit_solv_pred_v_2.0.
+- X. Fang, S. Li, B. Gao, E. M. Gale, C. F. J. Faul, N. Fey, An Inverse Design Workflow for Solvent Mixtures Based on Hansen Solubility Parameters, ChemRxiv, 2026, [https://doi.org/10.26434/chemrxiv.15005117/v1](https://doi.org/10.26434/chemrxiv.15005117/v1).
 
 - X. Fang, C. F. J. Faul, N. Fey, [Development of Solvent Selection Methods for Functional Materials Preparation](https://research-information.bris.ac.uk/en/studentTheses/development-of-solvent-selection-methods-for-functional-materials), University of Bristol (PhD Dissertation), 4 Feb 2025.
-
-- X. Fang, S. Li, E. M. Gale, C. F. J. Faul, N. Fey, [SolvPred (10.5281/zenodo.15383065)](10.5281/zenodo.15383065), 11 May 2025.
 
  ---
  
