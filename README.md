@@ -1132,10 +1132,17 @@ q
    - The miscbility check function may not be 100% guaranteed due to limited data and complex temperature-dependent behaviour. In addition, the defintion of "miscibility" is ambiguous: partial soluble cases (which nevertheless has a severe lack of data in terms of the partition threshold) will be regarded as not-immiscible in this version and will be present as valid results. It is recommended to manually check the performance if unsure.
 
 
+# Additional resources
+
+ - Additional solvent filtering modules are available in the ext_cand_filt directory. 
+ Users can replace candidate list using subset filtered by physicochemical properties and chemical features. Example candidate subsets are available in the cand_subsets directory.
+ 
+ - An app is available in the SolvPred_App repository.
+
 ## References
 
 1. C. Hansen, Hansen Solubility Parameters – A user’s handbook, 2nd edition, 2011.
-2. X. Fang, C. F.J. Faul, N. Fey, E. Gale, SolvPred - A python toolkit to predict multi-solvent combinations with target Hansen solubility parameters (manuscript in preparation).
+2. X. Fang, S. Li, B. Gao, E. M. Gale, C. F.J. Faul, N. Fey, SolvPred - A solvent design toolkit (manuscript in preparation).
 
 
 ## Disclaimer
