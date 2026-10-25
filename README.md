@@ -1085,7 +1085,7 @@ Invalid input. Press enter to continue. [enter]
 
 ## Cite this work
  
-- X. Fang, S. Li, B. Gao, E. M. Gale, C. F. J. Faul, N. Fey, An Inverse Design Workflow for Solvent Mixtures Based on Hansen Solubility Parameters, ChemRxiv, 2026, [https://doi.org/10.26434/chemrxiv.15005117/v1](https://doi.org/10.26434/chemrxiv.15005117/v1).
+- X. Fang, S. Li, B. Gao, E. M. Gale, C. F. J. Faul, N. Fey, An Inverse Design Workflow for Solvent Mixtures Based on Hansen Solubility Parameters, J. Chem. Inf. Model. (2026), [https://doi.org/10.1021/acs.jcim.6c02092](https://doi.org/10.1021/acs.jcim.6c02092).
 
 - X. Fang, C. F. J. Faul, N. Fey, [Development of Solvent Selection Methods for Functional Materials Preparation](https://research-information.bris.ac.uk/en/studentTheses/development-of-solvent-selection-methods-for-functional-materials), University of Bristol (PhD Dissertation), 4 Feb 2025.
 
